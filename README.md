@@ -6,6 +6,7 @@ Ecommerce orientada a la venta de electrodomésticos y demás productos electró
 
 El público al cual está dirigido es principalmente a personas de clase media que puedan permitirse comprar dichos productos. También hay algunos productos premium, como por ejemplo smart tv de 98”, que por su elevado precio sólo son accesibles por personas de mayores recursos econónicos.
 
+
 **Integrantes del equipo**
 
 Leguiza, Martin Leandro
@@ -14,6 +15,7 @@ Paradiso, Matias
 
 Samudio Cáceres, Brian:
 Ingeniero en Sistemas e Ingeniero en Electrónica, egresado de UTN FRBA.
+
 
 **Sitios de referencia**
 
