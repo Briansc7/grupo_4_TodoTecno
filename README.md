@@ -1,13 +1,12 @@
 # grupo_4_ecommerce
 
-**Descripción del sitio web**
+<h1>Descripción del sitio web</h1>
 
 Ecommerce orientada a la venta de electrodomésticos y demás productos electrónicos como televisores, celulares y tablets.
 
 El público al cual está dirigido es principalmente a personas de clase media que puedan permitirse comprar dichos productos. También hay algunos productos premium, como por ejemplo smart tv de 98”, que por su elevado precio sólo son accesibles por personas de mayores recursos econónicos.
 
-
-**Integrantes del equipo**
+<h2>Integrantes del equipo</h2>
 
 Leguiza, Martin Leandro
 
@@ -16,8 +15,7 @@ Paradiso, Matias
 Samudio Cáceres, Brian:
 Ingeniero en Sistemas e Ingeniero en Electrónica, egresado de UTN FRBA.
 
-
-**Sitios de referencia**
+<h2>Sitios de referencia</h2>
 
 Se tomó como referencia las siguientes páginas web:
 
