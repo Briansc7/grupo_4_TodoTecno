@@ -1,4 +1,4 @@
-# grupo_4_ecommerce
+# grupo_4_TodoElectro
 
 <h1>Descripción del sitio web</h1>
 
