@@ -8,6 +8,8 @@ El público al cual está dirigido es principalmente a personas de clase media q
 
 <h2>Integrantes del equipo</h2>
 
+Cattaneo, Santino
+
 Leguiza, Martin Leandro
 
 Paradiso, Matias
