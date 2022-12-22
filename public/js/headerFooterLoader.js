@@ -1,29 +1,29 @@
 class MyHeader extends HTMLElement {
     connectedCallback() {
-       
-
-        this.innerHTML = 
-        `
-        <header>
-            Acá va el header
-        </header>
-
-        `
-       
+        var client = new XMLHttpRequest();
+        var target = this;
+        client.open('GET', '/header');
+        client.onreadystatechange = function() {
+          target.innerHTML = client.responseText;
+          
+        }
+        client.send();       
     }
 }
 customElements.define('my-header', MyHeader)
 
+
+
 class MyFooter extends HTMLElement {
     connectedCallback() {
-        this.innerHTML = 
-        `
-        <footer>
-            Acá va el footer
-        </footer>
-        `
-        
-
+        var client = new XMLHttpRequest();
+        var target = this;
+        client.open('GET', '/footer');
+        client.onreadystatechange = function() {
+          target.innerHTML = client.responseText;
+          
+        }
+        client.send();       
     }
 }
 

@@ -30,6 +30,14 @@ app.get("/login", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./views/login.html"))
 })
 
+app.get("/header", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./views/header.html"))
+})
+
+app.get("/footer", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./views/footer.html"))
+})
+
 
 
 
