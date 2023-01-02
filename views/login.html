@@ -19,13 +19,26 @@
     <main>
         <form action="/" method="get">
             <div class="login">
+                <h2>Clientes Registrados</h2>
+                <p>Si tiene una cuenta, inicie sesión con su dirección de correo electrónico</p>
+                <h5>Correo electronico<p>*</p></h5>
                 <input class="buttom" type="text" name="nombre de usuario" placeholder="nombre de usuario" required>
                 <br>
-                <input class="buttom" type="password" name="contraseña" placeholder="contraseña" required>
+                <h5>Contraseña <p>*</p></h5>
+                <input class="buttom" type="password" name="contraseña" placeholder="ingresa tu contraseña" required>
                 <br>
-                <button href="/index"    class="submit" type="submit">Enviar</button>
+                <div>
+                     <button href="/index"    class="submit" type="submit">Enviar</button>
+                     <button href="#" class="submit" type="submit">¿Olvidaste tu contraseña?</button>
+                </div>
+                <h5><p>Campos requeridos *</p></h5>
             </div>
         </form>
+            <div>   
+                <h2>Nuevos Clientes</h2>        
+                <p>Crear cuenta tiene muchos beneficion: Paga más rapido, puede guardar mas de una dirección, seguimiento de pedidos, descuentos exclusivos y mucho más.</p>
+                <button href="/register"    class="submit" type="submit">Crear Cuenta</button>
+            </div>
     </main>
 
     <my-footer></my-footer>

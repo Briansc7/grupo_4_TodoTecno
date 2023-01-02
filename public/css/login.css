@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+h2{
+   padding: 15px;
+    border-bottom: 2px black;
+   width: 100%;
+   display: flex;
+   background-color: aqua;
+}
+main form div h5 p{
+    color: red;
+    display: flex;
+}
+main form div h5{
+    display: flex;
+}
