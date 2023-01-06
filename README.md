@@ -1,4 +1,4 @@
-# grupo_4_TodoElectro
+# grupo_4_TodoTecno
 
 <h1>Descripción del sitio web</h1>
 
