@@ -8,8 +8,13 @@ header {
     align-items: center;
 }
 
-.hamburguer-container {
-    grid-area: hamburguer;
+.hamburger-container {
+    grid-area: hamburger;
+    padding-right: 10px;
+}
+
+.hamburger-container label{
+    display: none;
 }
 
 .logo-container {
@@ -40,10 +45,10 @@ header {
 }
 
 .header-logo {
-    width: 100px;
+    width: 50px;
 }
 
-.hamburguer-button i{
+.hamburger-button i{
     background-color: black;
     color: white;
     display: flex;
@@ -83,8 +88,52 @@ header {
     padding-right: 5px;
 }
 
+.user-button label{
+    cursor: pointer;
+}
+
 
 
 .user-button label {
     font-size: 16px;
+}
+
+@media (min-width: 361px){
+    header {        
+        grid-template-columns: auto 1fr auto auto;
+        grid-template-areas: 
+        "logo search user cart"
+        "hamburger hamburger hamburger hamburger";
+        align-items: center;
+    }
+
+    .hamburger-container, .hamburger-button {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .hamburger-button {
+        gap: 10px;
+    }
+
+    .hamburger-button label{
+        display: inline-block;
+        cursor: pointer;
+    }
+
+
+    
+
+    
+
+    .logo-container{
+        display: flex;
+        justify-content: start;
+    }
+
+    .search-bar-container{
+        padding: 0 10px;
+    }
+
 }
