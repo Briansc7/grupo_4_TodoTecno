@@ -69,6 +69,10 @@ header {
     justify-content: center;
 }
 
+.user-label{
+    display: none;
+}
+
 .user-button i, .cart-button i{
     color: black;
     width: 50px;
@@ -132,6 +136,10 @@ header {
     .header-logo {
         content:url("/images/logo-tablet.png");
         width: 100px;
+    }
+
+    .user-label {
+        display: inline;
     }
 
     .search-bar-container{
