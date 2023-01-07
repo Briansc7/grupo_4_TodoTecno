@@ -13,6 +13,10 @@ header {
     padding-right: 10px;
 }
 
+.hamburger-container label{
+    display: none;
+}
+
 .logo-container {
     grid-area: logo;
 }
@@ -84,6 +88,10 @@ header {
     padding-right: 5px;
 }
 
+.user-button label{
+    cursor: pointer;
+}
+
 
 
 .user-button label {
@@ -94,13 +102,30 @@ header {
     header {        
         grid-template-columns: auto 1fr auto auto;
         grid-template-areas: 
-        "logo search user cart";
+        "logo search user cart"
+        "hamburger hamburger hamburger hamburger";
         align-items: center;
     }
 
-    .hamburger-container{
-        display: none;
+    .hamburger-container, .hamburger-button {
+        display: flex;
+        justify-content: start;
+        align-items: center;
     }
+
+    .hamburger-button {
+        gap: 10px;
+    }
+
+    .hamburger-button label{
+        display: inline-block;
+        cursor: pointer;
+    }
+
+
+    
+
+    
 
     .logo-container{
         display: flex;
