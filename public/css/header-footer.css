@@ -10,6 +10,7 @@ header {
 
 .hamburger-container {
     grid-area: hamburger;
+    padding-right: 10px;
 }
 
 .logo-container {
@@ -40,7 +41,7 @@ header {
 }
 
 .header-logo {
-    width: 100px;
+    width: 50px;
 }
 
 .hamburger-button i{
@@ -100,4 +101,14 @@ header {
     .hamburger-container{
         display: none;
     }
+
+    .logo-container{
+        display: flex;
+        justify-content: start;
+    }
+
+    .search-bar-container{
+        padding: 0 10px;
+    }
+
 }
