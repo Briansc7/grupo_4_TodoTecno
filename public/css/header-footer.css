@@ -5,7 +5,6 @@ header {
     grid-template-areas: 
     "hamburger logo user cart"
     "search search search search";
-    align-items: center;
 }
 
 .hamburger-container {
@@ -137,7 +136,14 @@ header {
 
     .search-bar-container{
         padding: 0 10px;
+        max-width: 500px;
+        margin: auto;
     }
+
+    .search-bar-container form input {
+        width: 50vw;
+    }
+
 
     @media (min-width: 769px) {
         .header-logo {
