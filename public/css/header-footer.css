@@ -33,6 +33,11 @@ header {
     grid-area: search;    
 }
 
+.header-logo {
+    content:url("/images/logo-mobile.png");
+    width: 50px;
+}
+
 .search-bar-container form {
     display: flex;
     justify-content: center;
@@ -42,10 +47,6 @@ header {
 
 .search-bar-container form input{
     width: 100%;
-}
-
-.header-logo {
-    width: 50px;
 }
 
 .hamburger-button i{
@@ -120,20 +121,29 @@ header {
     .hamburger-button label{
         display: inline-block;
         cursor: pointer;
-    }
-
-
-    
+    }  
 
     
-
     .logo-container{
         display: flex;
         justify-content: start;
+        align-items: center;
+    }
+
+    .header-logo {
+        content:url("/images/logo-tablet.png");
+        width: 100px;
     }
 
     .search-bar-container{
         padding: 0 10px;
+    }
+
+    @media (min-width: 769px) {
+        .header-logo {
+            content:url("/images/logo-desktop.png");
+            width: 150px;
+        }
     }
 
 }
