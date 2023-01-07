@@ -148,10 +148,13 @@ header {
         margin: auto;
     }
 
-    .search-bar-container form input {
-        width: 50vw;
-    }
+    
 
+    @media (min-width: 600px) {
+        .search-bar-container form input {
+            width: 50vw;
+        }
+    }
 
     @media (min-width: 769px) {
         .header-logo {
