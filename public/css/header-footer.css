@@ -36,7 +36,7 @@ header {
 }
 
 .search-bar-container form input{
-    width: 90%;
+    width: 100%;
 }
 
 .header-logo {
@@ -58,6 +58,12 @@ header {
     justify-content: center;
 }
 
+.user-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .user-button i, .cart-button i{
     color: black;
     width: 50px;
@@ -66,4 +72,19 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.cart-button i{
+    justify-content: end;
+}
+
+.user-button i{
+    width: auto;
+    padding-right: 5px;
+}
+
+
+
+.user-button label {
+    font-size: 16px;
 }
