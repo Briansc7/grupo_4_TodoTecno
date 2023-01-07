@@ -33,6 +33,10 @@ header {
     grid-area: search;    
 }
 
+.header-logo {
+    content:url("/images/logo-mobile-no-background.png");
+}
+
 .search-bar-container form {
     display: flex;
     justify-content: center;
@@ -120,20 +124,26 @@ header {
     .hamburger-button label{
         display: inline-block;
         cursor: pointer;
-    }
-
-
-    
+    }  
 
     
-
     .logo-container{
         display: flex;
         justify-content: start;
     }
 
+    .header-logo {
+        content:url("/images/logo-tablet.png");
+    }
+
     .search-bar-container{
         padding: 0 10px;
+    }
+
+    @media (min-width: 769px) {
+        .header-logo {
+            content:url("/images/logo-desktop.png");
+        }
     }
 
 }
