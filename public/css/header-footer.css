@@ -135,6 +135,10 @@ header, footer {
     padding-right: 10px;
 }
 
+.close-button {
+    font-size: 25px;
+}
+
 .menu-container .menu {
     display: flex;
     align-items: flex-start;
