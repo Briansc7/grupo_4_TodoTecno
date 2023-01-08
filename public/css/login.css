@@ -4,17 +4,77 @@
     box-sizing: border-box;
 }
 
+main{
+    display: flex;
+    align-items: center;
+}
+
+.global-login{
+    display: grid;
+    padding: 0.6em 1em;
+    align-items: center;
+    width:450px;
+}
+main div .login{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 h2{
    padding: 15px;
     border-bottom: 2px black;
    width: 100%;
    display: flex;
    background-color: aqua;
+    justify-content: center;
 }
 main form div h5 p{
     color: red;
-    display: flex;
+    display: flex; 
+    font-style: italic;
+    justify-content: center;
+    font-size: 14px;
 }
 main form div h5{
     display: flex;
+} 
+
+
+.login{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding-top: 30px;
 }
+
+main .login .btn-submit:hover{
+    background-color: #0022AA;
+    color: #fff;
+
+}
+
+main .login .btn-forget-pass{
+    display: flex;
+    margin: none ;
+}
+main .login .btn-forget-pass:hover{
+    color: #0022AA;
+}
+main .login .submit {
+    background-color: #ffffff;
+    border: 1px solid #000;
+    color: rgb(8, 8, 8);
+    padding: 2px;
+    align-items: center;
+    font-style: oblique;
+    transition: 450ms;
+
+}
+.buttom{
+    font-style: oblique;
+
+}
+
