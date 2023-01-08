@@ -138,6 +138,8 @@ header, footer {
 
 
 
+
+
 @media (min-width: 361px){
     header {        
         grid-template-columns: auto 1fr auto auto;
@@ -162,7 +164,12 @@ header, footer {
         left: 0px;
         height: 300px;
         width: 300px;
-        padding-bottom: 10px;        
+        padding-bottom: 10px;
+        padding-top: 10px;        
+    }
+
+    .menu-container .close-menu{
+        display: none;
     }
 
     .hamburger-button:hover +.menu-container, .menu-container:hover{
