@@ -116,9 +116,12 @@ header {
     padding: 0;
 }
 
-.hamburger-button:focus +.menu-container{
-    display: block;
+@media (max-width: 360px){
+    .hamburger-button:focus +.menu-container{
+        display: block;
+    }
 }
+
 
 .menu-container .close-menu{
     display: flex;
@@ -155,10 +158,10 @@ header {
         left: 0px;
         height: 300px;
         width: 300px;
-        padding-bottom: 10px;
+        padding-bottom: 10px;        
     }
 
-    .hamburger-button:focus +.menu-container{
+    .hamburger-button:hover +.menu-container, .menu-container:hover{
         display: block;
     }
 
