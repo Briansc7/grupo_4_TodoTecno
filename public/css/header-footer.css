@@ -94,13 +94,25 @@ header {
 
 .user-button label{
     cursor: pointer;
-}
-
-
-
-.user-button label {
     font-size: 16px;
 }
+
+.menu-container {
+    position: absolute;
+    background-color: gainsboro;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+.hamburger-button:focus +.menu-container{
+    display: grid;
+}
+
+
 
 @media (min-width: 361px){
     header {        
