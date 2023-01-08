@@ -103,7 +103,7 @@ header, footer {
 
 .menu-container {
     position: absolute;
-    background-color: gainsboro;
+    background-color: white;
     width: 100vw;    
     z-index: 100;
     top: 0px;
