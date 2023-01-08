@@ -7,6 +7,10 @@ header {
     "search search search search";
 }
 
+header, footer {
+    background-color: white;
+}
+
 .hamburger-container {
     grid-area: hamburger;
     padding-right: 10px;
