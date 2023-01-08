@@ -135,6 +135,14 @@ header, footer {
     padding-right: 10px;
 }
 
+.menu-container .menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 
 
 
