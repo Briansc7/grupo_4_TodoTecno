@@ -40,3 +40,13 @@
 .nav-bar-separator{
     color:gray;
 }
+
+.picture{
+    display: flex;
+    justify-content: center;
+}
+.product-picture{
+    content:url("/images/products/neoQled8k-01.jpg");
+    width: 300px;
+    mix-blend-mode: multiply; /*fondo blanco se hace transparente*/
+}
