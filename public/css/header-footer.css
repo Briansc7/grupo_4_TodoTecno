@@ -7,9 +7,18 @@ header {
     "search search search search";
 }
 
+header, footer {
+    background-color: white;
+}
+
 .hamburger-container {
     grid-area: hamburger;
     padding-right: 10px;
+}
+
+.quick-menu-container ul{
+    grid-area: quick-menu;
+    display: none;
 }
 
 .hamburger-container label{
@@ -99,7 +108,7 @@ header {
 
 .menu-container {
     position: absolute;
-    background-color: gainsboro;
+    background-color: white;
     width: 100vw;    
     z-index: 100;
     top: 0px;
@@ -110,15 +119,18 @@ header {
     
 }
 
-.menu-container ul {
+.menu-container ul, .quick-menu-container ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.hamburger-button:focus +.menu-container{
-    display: block;
+@media (max-width: 360px){
+    .hamburger-button:focus +.menu-container{
+        display: block;
+    }
 }
+
 
 .menu-container .close-menu{
     display: flex;
@@ -128,6 +140,20 @@ header {
     padding-right: 10px;
 }
 
+.close-button {
+    font-size: 25px;
+}
+
+.menu-container .menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+
 
 
 
@@ -136,7 +162,7 @@ header {
         grid-template-columns: auto 1fr auto auto;
         grid-template-areas: 
         "logo search user cart"
-        "hamburger hamburger hamburger hamburger";
+        "hamburger quick-menu quick-menu quick-menu";
         align-items: center;
     }
 
@@ -156,9 +182,14 @@ header {
         height: 300px;
         width: 300px;
         padding-bottom: 10px;
+        padding-top: 10px;        
     }
 
-    .hamburger-button:focus +.menu-container{
+    .menu-container .close-menu{
+        display: none;
+    }
+
+    .hamburger-button:hover +.menu-container, .menu-container:hover{
         display: block;
     }
 
@@ -169,7 +200,12 @@ header {
     .hamburger-button label{
         display: inline-block;
         cursor: pointer;
-    }  
+    }
+    
+    .quick-menu-container ul{
+        display: flex;
+        gap: 10px;
+    }
 
     
     .logo-container{
@@ -195,7 +231,7 @@ header {
 
     
 
-    @media (min-width: 600px) {
+    @media (min-width: 720px) {
         .search-bar-container form input {
             width: 50vw;
         }
@@ -208,4 +244,76 @@ header {
         }
     }
 
+}
+
+/*Estilos del Footer*/
+
+footer{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "social"
+    "offices"
+    "about-us"
+    "contact";
+}
+
+.social{
+    grid-area: social;
+}
+
+.offices{
+    grid-area: offices;
+}
+
+.about-us{
+    grid-area: about-us;
+}
+
+.contact{
+    grid-area: contact;
+}
+
+.social-menu, .offices, .about-us, .contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.social-menu{
+    gap: 10px;
+}
+
+.offices, .about-us, .contact{
+    flex-wrap: wrap;
+}
+
+.offices h2, .offices-list li, .about-us h2, .about-us-list li, .contact h2, .contact-list li{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+@media (min-width: 361px){
+    .social-menu{
+        flex-wrap: wrap;
+    }
+
+    .social-menu .footer-logo-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+@media (min-width: 769px){
+    footer{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "social offices about-us contact";
+    }
+    
 }
