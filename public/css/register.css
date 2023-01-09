@@ -1,17 +1,54 @@
 .main-register{
+    width: 100%;
     display: grid;
     padding: 1em 1em;
     align-items: center;
-    width: 100%;
     border-top: solid black 2px;
     border-bottom: solid black 2px;
 }
-div .register{
+
+.main-register h2{
+width: 100%;
+display: grid;
+justify-items: center;
+justify-content: start;
+border-bottom: 2px solid black;
+}
+
+main .register input{
     display: grid;
     justify-content: center;
+    width: 100%;
 }
+
+
 .reset,
 .submit{
     width: 100%;
     border-radius: 2em;
+    grid-gap: 10px;
+}
+
+main div .reset,
+main div .submit {
+    color: black;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+    padding: 5px;
+    width: 100%;
+    border-radius: 2em;
+}
+
+
+ @media (min-width: 769px) {
+       main .register{
+        width: 50%;
+        display: grid;
+        grid-gap: 10px;
+    }
+    .main-register h2{
+        width: 50%;
+    
+        }
+
 }
