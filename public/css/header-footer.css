@@ -16,6 +16,11 @@ header, footer {
     padding-right: 10px;
 }
 
+.quick-menu-container ul{
+    grid-area: quick-menu;
+    display: none;
+}
+
 .hamburger-container label{
     display: none;
 }
@@ -114,7 +119,7 @@ header, footer {
     
 }
 
-.menu-container ul {
+.menu-container ul, .quick-menu-container ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -157,7 +162,7 @@ header, footer {
         grid-template-columns: auto 1fr auto auto;
         grid-template-areas: 
         "logo search user cart"
-        "hamburger hamburger hamburger hamburger";
+        "hamburger quick-menu quick-menu quick-menu";
         align-items: center;
     }
 
@@ -195,7 +200,12 @@ header, footer {
     .hamburger-button label{
         display: inline-block;
         cursor: pointer;
-    }  
+    }
+    
+    .quick-menu-container ul{
+        display: flex;
+        gap: 10px;
+    }
 
     
     .logo-container{
