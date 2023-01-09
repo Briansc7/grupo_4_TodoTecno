@@ -20,7 +20,55 @@
 <body>
     <my-header></my-header>
 
-    
+    <main class="main-register"><form action="/" method="get">
+        <div class="register">
+           <input  type="text" name="" placeholder="Nombre y apellido" >
+           <br>
+           <input  type="text" name="" placeholder="nombre de usuario" >
+           <br>
+           <input  type="date" name="" placeholder="Fecha de nacimiento" >
+           <br>
+           <input  type="text" name="" placeholder="Domicilio" >
+           <br>
+           <fieldset class="comprarVender">
+                <legend>Perfil de Usuario</legend>
+                <br>
+                <label for="perfilUsuario">
+                    <input  type="radio" name="perfilUsuario" placeholder="Perfil de usuario comprar o vender" required id="perfilUsuario">Comprar
+                 </label>
+                 <label for="perfilUsuario">
+                    <input  type="radio" name="perfilUsuario" placeholder="Perfil de usuario comprar o vender" required id="perfilUsuario">Vender
+                 </label>
+            </fieldset>
+           <br>
+             <fieldset class="intereses">
+                 <legend>Categorías de interés</legend>
+                 <br>
+                 <input  type="checkbox" name="categorias" placeholder="categorias"  id="Electro"> Electro
+            <br>
+                <input  type="checkbox" name="categorias" placeholder="categorias"  id="Moda"> Moda
+            <br>
+                <input  type="checkbox" name="categorias" placeholder="categorias"  id="Hogar"> Hogar
+            <br>
+                <input  type="checkbox" name="categorias" placeholder="categorias"  id="Jugueteria"> Jugueteria
+            <br>
+                <input  type="checkbox" name="categorias" placeholder="categorias"  id="vidaSana"> Vida Sana
+            </fieldset>
+           <br>
+           <input  type="file" name="" placeholder="foto de usuario" >
+           <br>
+           <input  type="password" name="" placeholder="contraseña" >
+           <br>
+           <input  type="password" name="" placeholder="confirmar contraseña" >           
+           <br>
+           <button href="#"  class="reset" >Borrar</button>
+           <br>
+           <button href="/index" class="submit" type="submit">Enviar</button>
+        </div>
+
+    </form>
+    </main>
+     
 
     <my-footer></my-footer>
 </body>

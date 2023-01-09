@@ -1,0 +1,17 @@
+.main-register{
+    display: grid;
+    padding: 1em 1em;
+    align-items: center;
+    width: 100%;
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+}
+div .register{
+    display: grid;
+    justify-content: center;
+}
+.reset,
+.submit{
+    width: 100%;
+    border-radius: 2em;
+}

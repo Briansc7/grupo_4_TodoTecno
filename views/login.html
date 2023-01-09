@@ -20,21 +20,21 @@
 <body>
     <my-header></my-header>
 
-    <main>
+    <main class="main-login">
         <div class="global-login">
-        <form action="/" method="get">
+          <form action="/" method="get">
         
             <div class="login">
                 <h2>Clientes Registrados</h2>
                 <p>Si tiene una cuenta, inicie sesión con su dirección de correo electrónico</p>
-                <h5>Correo electronico<p>*</p></h5>
+                    <br>
+                    <br>
+                <h5>Correo electronico*</h5>
                 <input class="buttom" type="text" name="nombre de usuario" placeholder="nombre de usuario" required>
-                <br>
-                
-                <h5>Contraseña <p>*</p></h5>
-                <br>
-                <h5><p>Campos requeridos *</p></h5>
-                <br>
+                    <br>
+                    <br>
+                <h5>Contraseña*</h5>
+               
                 <input class="buttom" type="password" name="contraseña" placeholder="ingresa tu contraseña" required>
                 <br>
                 <div>
@@ -43,16 +43,18 @@
                     <br>
                      <a href="#" class="forget-pass" type="submit">¿Olvidaste tu contraseña?</a>
                 </div>
-                
             </div>
-        </form>
             <div class= "new-register">   
                 <h2>Nuevos Clientes</h2>        
                 
                 <p>Crear cuenta tiene muchos beneficion: Paga más rapido, puede guardar mas de una dirección, seguimiento de pedidos, descuentos exclusivos y mucho más.</p>
                 <button href="/register"    class="btn-register" type="submit">Crear Cuenta</button>
             </div>
+            <h5><p>Campos requeridos *</p></h5>
         </div>
+       
+        <br>
+
     </main>
 
     <my-footer></my-footer>
