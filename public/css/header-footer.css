@@ -274,19 +274,19 @@ footer{
     grid-area: contact;
 }
 
-.social-menu, .offices{
+.social-menu, .offices, .about-us, .contact{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     padding-bottom: 10px;
 }
 
-.offices{
+.offices, .about-us, .contact{
     flex-wrap: wrap;
 }
 
-.offices h2, .offices-list li{
+.offices h2, .offices-list li, .about-us h2, .about-us-list li, .contact h2, .contact-list li{
     width: 100%;
     text-align: center;
+    padding-bottom: 5px;
 }
