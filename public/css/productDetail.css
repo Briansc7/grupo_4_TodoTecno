@@ -41,7 +41,7 @@
     color:gray;
 }
 
-.picture{
+.picture, .prod-main-info{
     display: flex;
     justify-content: center;
 }
