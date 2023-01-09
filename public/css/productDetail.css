@@ -38,6 +38,9 @@
     gap: 10px;
     padding-left: 10px;
 }
+.nav-bar-item{
+    cursor: pointer;
+}
 .nav-bar-separator{
     color:gray;
 }
@@ -119,6 +122,9 @@
     content:url("/images/products/soporte-tv.png");
     width: 100px;
     mix-blend-mode: multiply;
+}
+.recomendation-1-pic, .recomendation-2-pic{
+    cursor: pointer;
 }
 
 .recomendations h5{
