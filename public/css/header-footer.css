@@ -58,8 +58,7 @@ header, footer {
 }
 
 .hamburger-button i{
-    background-color: black;
-    color: white;
+    color: black;
     display: flex;
     width: 50px;
     height: 50px;
