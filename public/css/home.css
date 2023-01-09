@@ -1,0 +1,35 @@
+
+main .products{
+    display: grid;
+    grid-template-columns: auto;
+    padding: 5px;
+
+}
+div article{
+    margin: 2px solid black
+}
+
+main section h3{
+    font-size: 24px;
+}
+
+.product_img{
+    width: 300px;
+    mix-blend-mode: multiply;
+}   
+.discount{
+    color: red;
+}
+
+
+
+
+@media (min-width: 769px) {
+
+    main .products{
+        grid-template-columns: auto auto auto auto;
+    }
+
+
+
+}
