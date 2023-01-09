@@ -42,7 +42,7 @@
     color:gray;
 }
 
-.picture, .prod-main-info{
+.picture, .prod-main-info, .send-info, .recomendations, .characteristics{
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -53,10 +53,10 @@
     mix-blend-mode: multiply; /*fondo blanco se hace transparente*/
 }
 
-.prod-main-info{
+.prod-main-info, .send-info{
     flex-wrap: wrap;
 }
-.prod-main-info h3, .prod-main-info label{
+.prod-main-info h3, .prod-main-info label, .send-info label{
     width: 100%;
     text-align: center;
     
@@ -64,7 +64,16 @@
 .prod-main-info .price{    
     color: green;
 }
-.prod-main-info label{
+.prod-main-info label, .send-info label{
     text-align: left;
     padding-left: 10vw;
+}
+.send-info{
+    border-top: 1px solid black;
+    padding-top: 10px;   
+    border-bottom:  1px solid black;
+    padding-bottom: 10px;
+}
+.send-info label a{
+    color: blue;
 }
