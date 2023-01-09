@@ -38,11 +38,14 @@
     gap: 10px;
     padding-left: 10px;
 }
+.nav-bar-item{
+    cursor: pointer;
+}
 .nav-bar-separator{
     color:gray;
 }
 
-.picture, .prod-main-info, .send-info, .recomendations, .characteristics{
+.picture, .prod-main-info, .send-info, .characteristics{
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -76,4 +79,70 @@
 }
 .send-info label a{
     color: blue;
+}
+
+.recomendations{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "recomend-title recomend-title"
+    "recomendation-1 recomendation-2";
+    align-items: center;
+    column-gap: auto;
+    row-gap: 10px;
+}
+.recomend-title{
+    grid-area: recomend-title;
+    text-align: center;
+}
+.recomendation-1{
+    grid-area: recomendation-1;
+}
+.recomendation-2{
+    grid-area: recomendation-2;
+}
+.recomendation-1, .recomendation-2{
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    width: 200px;
+    justify-self: center;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+.recomendation-1-pic{
+    content:url("/images/products/soundbar-nakamichi.jpg");
+    width: 100px;
+    mix-blend-mode: multiply;
+}
+.recomendation-2-pic{
+    content:url("/images/products/soporte-tv.png");
+    width: 100px;
+    mix-blend-mode: multiply;
+}
+.recomendation-1-pic, .recomendation-2-pic{
+    cursor: pointer;
+}
+
+.recomendations h5{
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid black;
+    padding-top: 10px;
+}
+
+.recomendations .recomend-price{
+    color: green;
+    text-align: center;
+}
+
+.characteristics{
+    flex-wrap: wrap;
+}
+.characteristics h3, .characteristics h4{
+    width: 100%;
+    text-align: center;
 }
