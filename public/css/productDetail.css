@@ -138,3 +138,11 @@
     color: green;
     text-align: center;
 }
+
+.characteristics{
+    flex-wrap: wrap;
+}
+.characteristics h3, .characteristics h4{
+    width: 100%;
+    text-align: center;
+}
