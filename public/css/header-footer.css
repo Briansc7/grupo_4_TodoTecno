@@ -231,7 +231,7 @@ header, footer {
 
     
 
-    @media (min-width: 600px) {
+    @media (min-width: 720px) {
         .search-bar-container form input {
             width: 50vw;
         }
@@ -244,4 +244,76 @@ header, footer {
         }
     }
 
+}
+
+/*Estilos del Footer*/
+
+footer{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "social"
+    "offices"
+    "about-us"
+    "contact";
+}
+
+.social{
+    grid-area: social;
+}
+
+.offices{
+    grid-area: offices;
+}
+
+.about-us{
+    grid-area: about-us;
+}
+
+.contact{
+    grid-area: contact;
+}
+
+.social-menu, .offices, .about-us, .contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.social-menu{
+    gap: 10px;
+}
+
+.offices, .about-us, .contact{
+    flex-wrap: wrap;
+}
+
+.offices h2, .offices-list li, .about-us h2, .about-us-list li, .contact h2, .contact-list li{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+@media (min-width: 361px){
+    .social-menu{
+        flex-wrap: wrap;
+    }
+
+    .social-menu .footer-logo-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+@media (min-width: 769px){
+    footer{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "social offices about-us contact";
+    }
+    
 }
