@@ -1,12 +1,7 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
 main{
-    display: flex;
-    align-items: center;
+    background-color: white;
+    display:grid;
+   justify-content: space-around;
 }
 
 .global-login{
@@ -14,21 +9,25 @@ main{
     padding: 0.6em 1em;
     align-items: center;
     width:450px;
+    border: solid black 2px;
 }
 main div .login{
+    display:grid;
     width: 100%;
     justify-content: center;
     align-items: center;
 }
 
-h2{
-   padding: 15px;
+h2 {
     border-bottom: 2px black;
-   width: 100%;
-   display: flex;
-   background-color: aqua;
-    justify-content: center;
-}
+    width: 100%;
+    display: grid;
+    background-color: white;
+    justify-items: center;
+    justify-content: start;
+    border-bottom: 2px solid black;
+    }
+
 main form div h5 p{
     color: red;
     display: flex; 
@@ -50,31 +49,28 @@ main form div h5{
     padding-top: 30px;
 }
 
+main .login .btn-submit{
+    background-color: white;
+    color: black;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+    padding:5px;
+    }
+
 main .login .btn-submit:hover{
     background-color: #0022AA;
     color: #fff;
 
 }
 
-main .login .btn-forget-pass{
-    display: flex;
-    margin: none ;
-}
-main .login .btn-forget-pass:hover{
+main .login .forget-pass:hover{
     color: #0022AA;
 }
-main .login .submit {
-    background-color: #ffffff;
-    border: 1px solid #000;
-    color: rgb(8, 8, 8);
-    padding: 2px;
-    align-items: center;
-    font-style: oblique;
-    transition: 450ms;
 
-}
-.buttom{
-    font-style: oblique;
-
-}
-
+main .btn-register{
+    background-color: white;
+    color: black;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+    padding:5px;
+    }
