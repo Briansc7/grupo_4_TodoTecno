@@ -274,9 +274,19 @@ footer{
     grid-area: contact;
 }
 
-.social-menu{
+.social-menu, .offices{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding-bottom: 10px;
+}
+
+.offices{
+    flex-wrap: wrap;
+}
+
+.offices h2, .offices-list li{
+    width: 100%;
+    text-align: center;
 }
