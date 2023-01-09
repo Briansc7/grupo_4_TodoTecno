@@ -231,7 +231,7 @@ header, footer {
 
     
 
-    @media (min-width: 600px) {
+    @media (min-width: 720px) {
         .search-bar-container form input {
             width: 50vw;
         }
@@ -281,6 +281,10 @@ footer{
     padding-bottom: 10px;
 }
 
+.social-menu{
+    gap: 10px;
+}
+
 .offices, .about-us, .contact{
     flex-wrap: wrap;
 }
@@ -289,4 +293,27 @@ footer{
     width: 100%;
     text-align: center;
     padding-bottom: 5px;
+}
+
+@media (min-width: 361px){
+    .social-menu{
+        flex-wrap: wrap;
+    }
+
+    .social-menu .footer-logo-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+@media (min-width: 769px){
+    footer{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "social offices about-us contact";
+    }
+    
 }
