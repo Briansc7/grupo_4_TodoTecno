@@ -35,5 +35,8 @@ Grupo Marquez: empresa Argentina con más de 150 tiendas en 10 provincias del pa
 
 Mercado Libre: Importante referente de precios para varios productos, abarcando los productos y clientes a los que se apunta. Si bien nuestra página no busca que los mismos usuarios puedan publicar sus porductos además de venderlos, la gran variedad de productos ofrecidos se organiza de forma similar a las páginas anteriormente mencionadas por lo que su diseño sirve de inspiración para nuestro sitio web. El Header se inspiró en parte de esta página.
 
+<h2>Tablero de Trabajo</h2>
 
+Se decidió utilizar Trello para organizar fácilmente las tareas a realizar por los miembros del equipo.
+Se puede acceder al tablero utilizado en el siguiente link: https://trello.com/b/v3UYoJE2/digitalhousegrupo4
 
