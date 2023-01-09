@@ -1,0 +1,42 @@
+.main-productDetail{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "nav-bar"
+    "picture"
+    "prod-main-info"
+    "send-info"
+    "recomendations"
+    "characteristics";
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-bar{
+    grid-area: nav-bar;
+}
+.picture{
+    grid-area: picture;
+}
+.prod-main-info{
+    grid-area: prod-main-info;
+}
+.send-info{
+    grid-area: send-info;
+}
+.recomendations{
+    grid-area: recomendations;
+}
+.characteristics{
+    grid-area: characteristics;
+}
+
+.nav-bar ul{
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    padding-left: 10px;
+}
+.nav-bar-separator{
+    color:gray;
+}
