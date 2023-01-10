@@ -289,7 +289,7 @@ footer{
     flex-wrap: wrap;
 }
 
-.offices h2, .offices-list li, .about-us h2, .about-us-list li, .contact h2, .contact-list li{
+.offices h2, .offices-list li, .about-us h2, .about-us-list li, .contact h2, .contact-list li, .copyright{
     width: 100%;
     text-align: center;
     padding-bottom: 5px;
