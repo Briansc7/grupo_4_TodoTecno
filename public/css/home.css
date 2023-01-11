@@ -29,6 +29,7 @@ main section h3{
     main .products{
         grid-template-columns: auto auto auto auto;
     }
+    
 
 
 
