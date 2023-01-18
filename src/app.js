@@ -5,7 +5,7 @@ const app = express();
 
 const PORT = 3000;
 
-const publicPath = path.resolve(__dirname, "./public");
+const publicPath = path.resolve(__dirname, "../public");
 app.use(express.static(publicPath));
 
 
