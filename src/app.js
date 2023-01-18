@@ -31,11 +31,11 @@ app.get("/login", (req, res) => {
 })
 
 app.get("/header", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/header.html"))
+    res.sendFile(path.resolve(__dirname, "./views/partials/header.html"))
 })
 
 app.get("/footer", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/footer.html"))
+    res.sendFile(path.resolve(__dirname, "./views/partials/footer.html"))
 })
 
 
