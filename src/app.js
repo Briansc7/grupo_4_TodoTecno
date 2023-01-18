@@ -1,0 +1,30 @@
+const express = require("express");
+const path = require("path");
+const mainRouter = require(path.resolve(__dirname, "./routes/main"));
+const productsRouter = require(path.resolve(__dirname, "./routes/products"));
+const usersRouter = require(path.resolve(__dirname, "./routes/users"));
+
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+app.set("view engine", "ejs"); //motor de renderizado ejs
+app.set("views", path.join(__dirname, "views"));
+const publicPath = path.resolve(__dirname, "../public");
+app.use(express.static(publicPath));
+
+
+app.get("/header", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./views/partials/header.html"))
+})
+
+app.get("/footer", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./views/partials/footer.html"))
+})
+
+
+app.use("/", mainRouter);
+app.use("/products", productsRouter);
+app.use("/users", usersRouter);
+
+app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
