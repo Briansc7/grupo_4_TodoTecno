@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/normalize.css">    
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/header-footer.css"> 
+    <link rel="stylesheet" href="/css/register.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
+    
+    <script type="module" src="/js/headerFooterLoader.js"></script>
+    
+</head>
+<body>
+    <my-header></my-header>
+
+    <main class="main-register"><form action="/" method="get">
+        <h2>Informacion personal</h2>
+        
+        <p>Introduzca su datos para crear una cuenta</p>
+        
+        <div class="register">
+            <br>
+           <input  type="text" name="" placeholder="Nombre y apellido" >
+           
+           <input  type="text" name="" placeholder="nombre de usuario" >
+           
+           <input  type="date" name="" placeholder="Fecha de nacimiento" >
+           
+           
+            <input  type="text" name="" placeholder="Domicilio de facturacion" >
+            
+            <input  type="text" name="" placeholder="codigo postal" >
+            
+            <input  type="text" name="" placeholder="localidad">
+            
+            <input  type="text" name="" placeholder="peovincia" >
+
+           
+            <fieldset class="comprarVender">
+                <legend>Elija el metodo de envio</legend>
+                <br>
+                <label for="metodoEnvio">
+                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Retirar en el local
+                 </label>
+                 <label for="metodoEnvio">
+                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Envio a domicilio
+                 </label>
+                 <label for="metodoEnvio">
+                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Retirar en punto de entrega
+                 </label>
+                </fieldset>
+
+            
+            <input  type="text" name="" placeholder="Domicilio de entrega" >
+            
+            <input  type="text" name="" placeholder="codigo postal" >
+            
+            <input  type="text" name="" placeholder="localidad">
+            
+            <input  type="text" name="" placeholder="peovincia" >
+            
+
+           
+           <input  type="password" name="" placeholder="contraseña" >
+           
+           <input  type="password" name="" placeholder="confirmar contraseña" >           
+           
+           <button href="#"  class="reset" >Borrar</button>
+           
+           <button href="/index" class="submit" type="submit">Enviar</button>
+        </div>
+
+    </form>
+    </main>
+     
+
+    <my-footer></my-footer>
+</body>
+</html>
