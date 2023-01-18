@@ -1,14 +1,9 @@
+
+
 .main-login{
-    display:grid;
-   justify-content: space-around;
-
-}
-
-.global-login{
     display: grid;
     padding: 1em 1em;
-    align-items: center;
-    width: 100%;
+
     border-top: solid black 2px;
     border-bottom: solid black 2px;
 }
@@ -19,13 +14,21 @@ main div .login{
     align-items: center;
     padding: 30px;
 }
+.button{
+    width: 100%;
+}
+.login{
+   padding: 10px
+}
 
-main div .new-register{
+
+
+ .new-register{
     display:grid;
     width: 100%;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 10px;
 
 }
 .new-register h2,
@@ -60,8 +63,7 @@ main form div h5{
 
 main .login .btn-submit{
     color: black;
-    border-bottom: 5px solid black;
-    border-right: 5px solid black;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.5);
     padding:5px;
     width: 100%;
     border-radius: 2em;
@@ -80,14 +82,15 @@ main .login .forget-pass:hover{
 main .btn-register{
     color: black;
     padding:5px;
-    border-bottom: 5px solid black;
-    border-right: 5px solid black;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.5);
     border-radius: 2em;
-    }
+    width: 100%;
+}
+
 
 
     @media (min-width: 769px) {
-        .global-login{
+        .main-login{
             display:grid;
             width: 100%;
             grid-template-columns: auto auto;
