@@ -1,24 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <%- include("../partials/head",{title: title, stylesheet: stylesheet}) %>
 
-    <link rel="stylesheet" href="/css/normalize.css">    
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/header-footer.css"> 
-    <link rel="stylesheet" href="/css/register.css">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
-    
-    <script type="module" src="/js/headerFooterLoader.js"></script>
-    
-</head>
 <body>
-    <my-header></my-header>
+    <%- include("../partials/header") %>
 
     <main class="main-register"><form action="/" method="get">
         <h2>Informacion personal</h2>
@@ -81,6 +66,6 @@
     </main>
      
 
-    <my-footer></my-footer>
+    <%- include("../partials/footer") %>
 </body>
 </html>
