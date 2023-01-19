@@ -8,7 +8,7 @@
 }
 
 .main-register h2{
-width: 100%;
+width: 100%; 
 display: grid;
 justify-items: center;
 justify-content: start;
@@ -52,3 +52,4 @@ main div .submit {
         }
 
 }
+

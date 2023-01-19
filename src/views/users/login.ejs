@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
     <%- include("../partials/head",{title: title, stylesheet: stylesheet}) %>
 
 <body>
+
     <%- include("../partials/header") %>
 
     <main class="main-login">
-        <div class="global-login">
+        
           <form action="/" method="get">
             <div class="login">
                 <h2>Clientes Registrados</h2>
                 <p>Si tiene una cuenta, inicie sesión con su dirección de correo electrónico</p>
                     <br>
-                    <br>
+            
                 <h5>Correo electronico*</h5>
-                <input class="buttom" type="text" name="nombre de usuario" placeholder="nombre de usuario" required>
+                <input class="button" type="text" name="nombre de usuario" placeholder="nombre de usuario" required>
                     <br>
                     <br>
                 <h5>Contraseña*</h5>
                
-                <input class="buttom" type="password" name="contraseña" placeholder="ingresa tu contraseña" required>
+                <input class="button" type="password" name="contraseña" placeholder="ingresa tu contraseña" required>
+             
+                <br>
                 <br>
                 <div>
                      <button href="/index"    class="btn-submit" type="submit">Iniciar sesion</button>
@@ -35,11 +38,13 @@
                 <h2>Nuevos Clientes</h2>        
                 
                 <p>Crear cuenta tiene muchos beneficion: Paga más rapido, puede guardar mas de una dirección, seguimiento de pedidos, descuentos exclusivos y mucho más.</p>
+                <br>
+                
                 <button href="/views/users/register"  class="btn-register" type="submit">Crear Cuenta</button>
             </div>
         </form>
             <h5><p>Campos requeridos *</p></h5>
-        </div>
+
        
        
         <br>
