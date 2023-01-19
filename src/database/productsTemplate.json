@@ -1,0 +1,13 @@
+[
+    {
+    "id" : 1,
+    "type": "Smart Tv",
+    "brand" : "Samsung",
+    "model" : "Neo Qled 8k Qn75qn800agczb Qled",
+    "artNumber": 990025707,
+    "price" : 1681980,
+    "discount%" : 10,
+    "isOnSale": "false",
+    "characteristics" : {"Sonido": {"Cantidad de parlantes": 8}, "Dimensiones": {"Ancho": "1668.3 mm", "Profundidad": "172.2 mm", "Peso": "32.1 kg"}, "Modelo y origen": {"Modelo": "QN75QN800A"}}
+    }
+]
