@@ -40,3 +40,39 @@ Mercado Libre: Importante referente de precios para varios productos, abarcando 
 Se decidió utilizar Trello para organizar fácilmente las tareas a realizar por los miembros del equipo.
 Se puede acceder al tablero utilizado en el siguiente link: https://trello.com/b/v3UYoJE2/digitalhousegrupo4
 
+<h2>Instrucciones</h2>
+
+Luego de clonar el repositorio, instalar las dependencias correspondientes ejecutando: 
+> npm install 
+
+La aplicación utiliza una base de datos basada en json, es necesario incializarla ejecutando:
+> npm run cdata
+
+Para levantar el servidor ejecutar el comando:
+> npm start
+
+<h2>Rutas</h2>
+
+Se puede comprobar el funcionamiento de la página visitando los siguientes links:
+
+Página principal:
+> http://localhost:3000/
+
+Login:
+> http://localhost:3000/users/login
+
+Registro: 
+> http://localhost:3000/users/register
+
+Detalle de producto:
+> http://localhost:3000/products/productDetail/1
+
+Carrito de compras:
+> http://localhost:3000/products/productCart
+
+Creación de productos:
+> http://localhost:3000/admin/productCreate
+
+Edición de productos:
+> http://localhost:3000/admin/productEdit
+
