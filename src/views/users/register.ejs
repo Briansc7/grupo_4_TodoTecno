@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head",{title: title, stylesheet: stylesheet}) %>
+
+<body>
+    <%- include("../partials/header") %>
+
+    <main class="main-register"><form action="/" method="get">
+        <h2>Informacion personal</h2>
+        
+        <p>Introduzca su datos para crear una cuenta</p>
+        
+        <div class="register">
+            <br>
+           <input  type="text" name="" placeholder="Nombre y apellido" >
+           
+           <input  type="text" name="" placeholder="nombre de usuario" >
+           
+           <input  type="date" name="" placeholder="Fecha de nacimiento" >
+           
+           
+            <input  type="text" name="" placeholder="Domicilio de facturacion" >
+            
+            <input  type="text" name="" placeholder="codigo postal" >
+            
+            <input  type="text" name="" placeholder="localidad">
+            
+            <input  type="text" name="" placeholder="peovincia" >
+
+           
+            <fieldset class="comprarVender">
+                <legend>Elija el metodo de envio</legend>
+                <br>
+                <label for="metodoEnvio">
+                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Retirar en el local
+                 </label>
+                 <label for="metodoEnvio">
+                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Envio a domicilio
+                 </label>
+                 <label for="metodoEnvio">
+                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Retirar en punto de entrega
+                 </label>
+                </fieldset>
+
+            
+            <input  type="text" name="" placeholder="Domicilio de entrega" >
+            
+            <input  type="text" name="" placeholder="codigo postal" >
+            
+            <input  type="text" name="" placeholder="localidad">
+            
+            <input  type="text" name="" placeholder="peovincia" >
+            
+
+           
+           <input  type="password" name="" placeholder="contraseña" >
+           
+           <input  type="password" name="" placeholder="confirmar contraseña" >           
+           
+           <button href="#"  class="reset" >Borrar</button>
+           
+           <button href="/index" class="submit" type="submit">Enviar</button>
+        </div>
+
+    </form>
+    </main>
+     
+
+    <%- include("../partials/footer") %>
+</body>
+</html>
