@@ -75,16 +75,16 @@ main .login .btn-submit{
     }
 
 main .login .btn-submit:hover{
-    background-color: rgba(138, 19, 170, 0.7);
+    background-color: rgb(156, 70, 236);
     color: #fff;
 }
 main .btn-register:hover{
-    background-color: rgba(138, 19, 170, 0.7);
+    background-color: rgb(156, 70, 236);
     color: #fff;
 }
 
 main .login .forget-pass:hover{
-    color: rgba(138, 19, 170, 0.7);
+    color: rgb(156, 70, 236);
 }
 
 main .btn-register{
