@@ -3,6 +3,7 @@ const path = require("path");
 const mainRouter = require(path.resolve(__dirname, "./routes/main"));
 const productsRouter = require(path.resolve(__dirname, "./routes/products"));
 const usersRouter = require(path.resolve(__dirname, "./routes/users"));
+const adminRouter = require(path.resolve(__dirname, "./routes/admin"));
 
 const app = express();
 
@@ -26,5 +27,6 @@ app.get("/footer", (req, res) => {
 app.use("/", mainRouter);
 app.use("/products", productsRouter);
 app.use("/users", usersRouter);
+app.use("/admin", adminRouter);
 
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));

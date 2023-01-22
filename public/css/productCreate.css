@@ -1,0 +1,42 @@
+.main-product-create form{
+    width: 100%;
+    display: grid;
+    justify-content: space-around;
+}
+
+.product-create{
+    width: 80%;
+    display: grid;
+    align-items: center;
+    padding: 10px;
+   
+}
+
+.product-create ul li {
+    padding: 5px 0px 5px 0px;
+}
+
+.product-create ul li input{
+width: 100%;
+}
+
+.product-create-btn{
+    display: grid;
+    grid-template-columns: auto;
+    width: 100%;
+    padding: 10px;
+}
+.product-create-btn button{
+    padding: 10px;
+    border-radius: 2em;
+}
+
+
+@media (min-width: 769px) {
+    .product-create{
+      width: 450px;
+    }
+  
+}
+
+
