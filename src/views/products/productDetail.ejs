@@ -22,7 +22,7 @@
             <img src="" alt="" class="product-picture">
         </section>
         <section class="prod-main-info">
-            <h3><%= type %> <%= brand %> <%= model %></h3>
+            <h3><%= category %> <%= brand %> <%= model %></h3>
             <label class="price"><h2>$ <%= Intl.NumberFormat('de-DE').format(price) %></h2></label>
             <label><a href="">Ver todos los medios de pago</a></label>
         </section>
@@ -48,7 +48,7 @@
         </section>
         <section class="characteristics">
             <h3 class="characteristics-title">Características Técnicas</h3>
-            <article tabindex="0">
+            <!-- <article tabindex="0">
                 <h4>Sonido</h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
                 <div class="info">Cantidad de Parlantes: 8</div>
             </article>
@@ -59,7 +59,19 @@
             <article tabindex="0">
                 <h4>Modelo y Origen</h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
                 <div class="info">Modelo: QN75QN800A</div>
-            </article>                     
+            </article>  -->
+            <% for (const [characteristicsType, characteristicsList] of Object.entries(characteristics)) { %>
+                <article tabindex="0">
+                    <h4><%= characteristicsType %></h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
+                    <div class="info">
+                    <% for (const [characteristicsSubType, characteristicsSubTypeValue] of Object.entries(characteristicsList)) { %>
+                        <%= characteristicsSubType %>: <%= characteristicsSubTypeValue %>
+                        <br>
+
+                    <% } %>
+                </div>
+                </article>
+            <%  } %>                   
         </section>
     </main>
 
