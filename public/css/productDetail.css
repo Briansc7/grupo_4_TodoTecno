@@ -42,7 +42,7 @@
     cursor: pointer;
 }
 .nav-bar-separator{
-    color:gray;
+    color:var(--gris);
 }
 
 .picture, .prod-main-info, .send-info, .characteristics{
@@ -65,7 +65,7 @@
     
 }
 .prod-main-info .price{    
-    color: green;
+    color: var(--verdeOscuro);
 }
 .prod-main-info label, .send-info label{
     text-align: left;
@@ -78,7 +78,7 @@
     padding-bottom: 10px;
 }
 .send-info label a{
-    color: blue;
+    color: var(--azul);
 }
 
 .recomendations{
@@ -135,7 +135,7 @@
 }
 
 .recomendations .recomend-price{
-    color: green;
+    color: var(--verdeOscuro);
     text-align: center;
 }
 

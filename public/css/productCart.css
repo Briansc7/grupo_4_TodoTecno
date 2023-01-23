@@ -36,7 +36,7 @@ img {
 .icons {
     grid-column: 6;
     font-size: 25px;
-    color: gray
+    color: var(--gris);
 } .icons:hover {
     color: red;
 }

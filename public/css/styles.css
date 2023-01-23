@@ -23,3 +23,11 @@ ul {
 main{
     margin-bottom: 10px;
 }
+
+:root{
+    --violeta: rgb(156, 70, 236);
+    --gris: rgb(168, 168, 168);
+    --botonesHover: var(--violeta);
+    --verdeOscuro: green;
+    --azul: blue;
+}
