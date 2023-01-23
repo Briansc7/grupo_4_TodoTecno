@@ -6,7 +6,12 @@
     <%- include("../partials/header") %>
 
     <main class="main-register"><form action="/" method="get">
-        <h2>Informacion personal</h2>
+      
+        <button href="#"  class="submit" type="" >Ingresa con Google</button>
+           
+        <button href="#"  class="submit" type="submit">Ingresa con Facebook</button>
+      
+      <h2>Informacion personal</h2>
         
         <p>Introduzca su datos para crear una cuenta</p>
         
@@ -28,17 +33,17 @@
             <input  type="text" name="" placeholder="peovincia" >
 
            
-            <fieldset class="comprarVender">
+            <fieldset class="select-shipping">
                 <legend>Elija el metodo de envio</legend>
-                <br>
-                <label for="metodoEnvio">
-                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Retirar en el local
+            
+                <label for="metodo-envio"><h5>Retirar en el local</h5>
+                    <input class="btn-envio" type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">
                  </label>
-                 <label for="metodoEnvio">
-                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Envio a domicilio
+                 <label for="metodo-envio"><h5>Envio a domicilio</h5>
+                    <input class="btn-envio"  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">
                  </label>
-                 <label for="metodoEnvio">
-                    <input  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">Retirar en punto de entrega
+                 <label for="metodo-envio"><h5>Retirar en punto de entrega</h5>
+                    <input class="btn-envio" type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">
                  </label>
                 </fieldset>
 
@@ -49,7 +54,7 @@
             
             <input  type="text" name="" placeholder="localidad">
             
-            <input  type="text" name="" placeholder="peovincia" >
+            <input  type="text" name="" placeholder="provincia" >
             
 
            
