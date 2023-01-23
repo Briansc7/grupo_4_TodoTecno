@@ -61,7 +61,7 @@ main .submit{
 
 main div .reset:hover, 
 main div .submit:hover {
-background-color: rgb(156, 70, 236);
+background-color: var(--botonesHover);
 color:white;
 }
 
