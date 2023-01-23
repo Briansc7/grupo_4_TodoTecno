@@ -17,6 +17,10 @@ main .register{
     grid-gap: 5px;
     max-width: 450px;
 }
+fieldset label{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 .main-register h2{
 width: 100%; 
@@ -32,20 +36,30 @@ main .register input{
     width: 100%;
 }
 
+main .register .btn-envio{
+    display: grid;
+    justify-content: right;
+    width: auto
+}
 
-.reset,
-.submit{
+main .register h5{
+    display: grid;
+    justify-content: left;
+    width: auto,
+}
+main .reset,
+main .submit{
     width: 100%;
     border-radius: 2em;
     grid-gap: 10px;
 }
 
-.comprarVender{
+.select-shipping{
     display: grid;
-    
+    grid-row-gap:5px;
 }
 
-main div .reset:hover,
+main div .reset:hover, 
 main div .submit:hover {
 background-color: var(--botonesHover);
 color:white;
@@ -59,6 +73,7 @@ main div .submit {
     width: 100%;
     border-radius: 2em;
 }
+
 
 
  @media (min-width: 769px) {
