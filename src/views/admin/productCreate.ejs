@@ -6,12 +6,12 @@
 <body>
     <%- include("../partials/header") %>
  
-<main class="main-product-create"><form action="/" method="get">
+<main class="main-product-create"><form action="/admin/productCreate" method="POST">
     
 <h1>Crear nuevo proucto</h1>
 
     <div class="product-create">
-        <h5>Ingresa el nombre del producto</h5>
+        <h5>Categoría del producto</h5>
         <input  type="text" name="" placeholder="ej: Smart TV" required>
         <h5>Marca</h5>
         <input  type="text" name="" placeholder="" required>
@@ -35,9 +35,9 @@
         <h5>Imagenes</h5>
         <input  type="file" name="" placeholder="ingresa hasta 10 imagenes" required>           
         <div class="product-create-btn">
-             <button href="/productCreate"  class="reset" type="reset">Reiniciar Campos</button>
+             <button class="reset" type="reset">Reiniciar Campos</button>
              <br>
-             <button href="/productCreate.ejs" class="submit" type="submit">Crear Producto</button>
+             <button class="submit" type="submit">Crear Producto</button>
             <br>
 
             

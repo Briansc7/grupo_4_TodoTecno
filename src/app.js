@@ -4,10 +4,14 @@ const mainRouter = require(path.resolve(__dirname, "./routes/main"));
 const productsRouter = require(path.resolve(__dirname, "./routes/products"));
 const usersRouter = require(path.resolve(__dirname, "./routes/users"));
 const adminRouter = require(path.resolve(__dirname, "./routes/admin"));
+const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method')); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 
 app.set("view engine", "ejs"); //motor de renderizado ejs
 app.set("views", path.join(__dirname, "views"));

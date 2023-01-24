@@ -6,7 +6,7 @@
 <body>
     <%- include("../partials/header") %>
  
-<main><form action="/" method="get">
+<main><form action="/admin/productEdit/<%= id %>?_method=PUT" method="POST">
     
 <h1>Modificar proucto</h1>
 
@@ -35,9 +35,10 @@
         <h5>Imagenes</h5>
         <input  type="file" name="" placeholder="ingresa hasta 10 imagenes" required>           
         <div>
-             <button href="/productCreate"  class="reset" type="reset">Reiniciar Campos</button>
-             <button href="/index.ejs" class="submit" type="submit">Guardar Cambios</button>
-             <button href="/index.ejs" class="submit" type="submit">Eliminar Producto</button>
+             <button class="reset" type="reset">Reiniciar Campos</button>
+             <button class="submit" type="submit">Guardar Cambios</button>
+             
+             
 
 
             
@@ -45,6 +46,9 @@
     </div>
 
 </form>
+<form action="/admin/productDelete/<%= id %>?_method=DELETE" method="POST">
+    <button class="submit" type="submit">Eliminar Producto</button>
+ </form>
 </main>
 
 
