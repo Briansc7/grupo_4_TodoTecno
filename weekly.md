@@ -54,4 +54,12 @@ Y por el momento no he encontrado ningún impedimento para hacer el trabajo.
 Yo solo estuve corrigiendo alineaciones en las vistas de login y register.
 Ahora voy a armar creación y edición de productos...
 
+<h3>Weekly 23/01/2023</h3>
+<h4>Brian:</h4>
+Desde el último daily estuve trabajando en la carga dinámica de la vista Product detail y en la estructura del json de productos para ver la estructura que vamos a usar para guardar los datos y también a partir de la cual vamos a leerlos. Pude terminar la carga dinámica de la misma a partir del json de productos, a excepción de la foto principal.
+
+En lo que voy a seguir trabajando es en agregar a la carga dinámica de la foto principal, tener una grilla con las demás fotos en miniatura a partir de las cuales se pueda cambiar la foto principal, y también quiero hacer que al tocar la foto principal, se pueda ver más grande en una vista que ocupe todo el viewport. Queda pendiente hacer la retro de este sprint y pasar a trello todas las tareas del sprint 4.
+
+Y tuve un impedimento que no me permitió avanzar en el proyecto tanto como quería. Tuve muy poco tiempo libre porque hasta el sábado me tocó trabajar, y el domingo que era mi día libre me enfermé. Ahora ya estoy mejor y hoy pude terminar lo que quería de la carga dinámica.
+
 
