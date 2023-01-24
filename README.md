@@ -74,5 +74,5 @@ Creación de productos:
 > http://localhost:3000/admin/productCreate
 
 Edición de productos:
-> http://localhost:3000/admin/productEdit
+> http://localhost:3000/admin/productEdit/1
 
