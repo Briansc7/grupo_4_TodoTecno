@@ -7,7 +7,7 @@
     "artNumber": 990025707,
     "price" : 1681980,
     "availability": 100,
-    "discount%" : 10,
+    "discount" : 10,
     "isOnSale": "false",
     "characteristics" : {"Sonido": {"Cantidad de parlantes": 8}, "Dimensiones": {"Ancho": "1668.3 mm", "Profundidad": "172.2 mm", "Peso": "32.1 kg"}, "Modelo y origen": {"Modelo": "QN75QN800A"}},
     "images": ["/images/products/neoQled8k-01.jpg","/images/products/neoQled8k-02.jpg","/images/products/neoQled8k-03.jpg", "/images/products/neoQled8k-04.jpg","/images/products/neoQled8k-05.jpg", "/images/products/neoQled8k-06.jpg","/images/products/neoQled8k-07.jpg", "/images/products/neoQled8k-08.jpg"]
