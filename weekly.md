@@ -56,7 +56,7 @@ Ahora voy a armar creación y edición de productos...
 
 <h3>Weekly 23/01/2023</h3>
 <h4>Brian:</h4>
-Desde el último daily estuve trabajando en la carga dinámica de la vista Product detail y en la estructura del json de productos para ver la estructura que vamos a usar para guardar los datos y también a partir de la cual vamos a leerlos. Pude terminar la carga dinámica de la misma a partir del json de productos, a excepción de la foto principal.
+Desde el último daily estuve trabajando en la carga dinámica de la vista Product detail y en la estructura del json de productos para ver la estructura que vamos a usar para guardar los datos y también a partir de la cual vamos a leerlos. Pude terminar la carga dinámica de la misma a partir del json de productos, a excepción de la foto principal. También ayudé a Martín a hacer el merge con todos los cambios de la estructura de carpetas y rutas, e implementé el merge por Santino en su rama.
 
 En lo que voy a seguir trabajando es en agregar a la carga dinámica de la foto principal, tener una grilla con las demás fotos en miniatura a partir de las cuales se pueda cambiar la foto principal, y también quiero hacer que al tocar la foto principal, se pueda ver más grande en una vista que ocupe todo el viewport. Queda pendiente hacer la retro de este sprint y pasar a trello todas las tareas del sprint 4.
 
