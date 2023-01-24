@@ -11,18 +11,18 @@
 <h1>Modificar proucto</h1>
 
     <div class="product-create">
-        <h5>Ingresa el nombre del producto</h5>
-        <input  type="text" name="" placeholder="ej: Smart TV" required>
+        <h5>Categoría del producto</h5>
+        <input  type="text" name="" placeholder="ej: Smart TV" required value="<%= category %>">
         <h5>Marca</h5>
-        <input  type="text" name="" placeholder="" required>
+        <input  type="text" name="" placeholder="" required value="<%= brand %>">
         <h5>Modelo</h5>
-        <input  type="text" name="" placeholder="" required >
+        <input  type="text" name="" placeholder="" required value="<%= model %>">
         <h5>Numero de articulo</h5>
-        <input  type="text" name="" placeholder="" required >
+        <input  type="text" name="" placeholder="" required value="<%= artNumber %>">
         <h5>Precio</h5>
-        <input  type="text" name="" placeholder="" required >
-        <h5>Descuento</h5>
-        <input  type="text" name="" placeholder="" required >
+        <input  type="text" name="" placeholder="" required value="<%= price %>">
+        <h5>Descuento [%]</h5>
+        <input  type="text" name="" placeholder="" required value="<%= discount %>">
         <ul><h5>Caracteristicas</h5>
             <li><input  type="text" name="" placeholder="Sonido" required ></li>
             <li><input  type="text" name="" placeholder="Dimensiones" required ></li>
@@ -35,9 +35,9 @@
         <h5>Imagenes</h5>
         <input  type="file" name="" placeholder="ingresa hasta 10 imagenes" required>           
         <div>
-             <button href="/productCreate"  class="reset" >Borrar cambios</button>
-             <button href="/index.ejs" class="submit" type="submit">Guardar producto</button>
-             <button href="/productCreate.ejs" class="submit" type="submit">Guardar y crear nuevo producto</button>
+             <button href="/productCreate"  class="reset" type="reset">Reiniciar Campos</button>
+             <button href="/index.ejs" class="submit" type="submit">Guardar Cambios</button>
+             <button href="/index.ejs" class="submit" type="submit">Eliminar Producto</button>
 
 
             
