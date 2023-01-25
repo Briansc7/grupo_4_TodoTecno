@@ -17,12 +17,19 @@ let usersData = JSON.parse(usersJsonRawData); //convierto json a objeto array*/
 
 let database = {
     productsData: productsData,
-    getProductById: getProductById
+    getProductById: getProductById,
+    deleteProductById: deleteProductById
     //usersData: usersData
 }
 
 function getProductById(id){
     return this.productsData.find(product=>product.id==id);
+}
+
+function deleteProductById(id){
+    this.productsData = this.productsData.filter(product=>product.id!=id);
+    let jsonRawData = JSON.stringify(this.productsData);
+    fs.writeFileSync(productsJsonPath,jsonRawData);
 }
 
 module.exports = database;

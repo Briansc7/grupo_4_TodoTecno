@@ -17,7 +17,10 @@ productEdit: (req, res) => res.render("./admin/productEdit", Object.assign({},pr
 
 productUpdate: (req, res) => res.send("producto actualizado"),
 
-productDestroy: (req, res) => res.send("producto eliminado"),
+productDestroy: (req, res) => {
+    database.deleteProductById(req.params.id);
+    res.send("producto eliminado");
+},
 
 
 
