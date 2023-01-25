@@ -7,13 +7,13 @@ const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/prod
 
 const adminController = {
 
-productCreate: (req, res) => res.render("./admin/productCreate", productCreateHeadData),
+productCreate: (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData}),
 
 productStore: (req, res) => res.send("producto creado"),
 
-productEdit: (req, res) => res.render("./admin/productEdit", Object.assign({},productEditHeadData,
-    database.productGetById(req.params.id)
-    )),
+productEdit: (req, res) => res.render("./admin/productEdit",
+    {head: productEditHeadData, product: database.productGetById(req.params.id)}
+    ),
 
 productUpdate: (req, res) => res.send("producto actualizado"),
 

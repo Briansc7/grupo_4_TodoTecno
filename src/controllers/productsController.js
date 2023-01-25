@@ -5,10 +5,11 @@ const productDetailHeadData = {title: "Detalle del Producto", stylesheet: "/css/
 const productCartHeadData = {title: "Carrito de Compras", stylesheet: "/css/productCart.css"};
 
 const productsController = {
-productDetail: (req, res) => res.render("./products/productDetail",Object.assign({},productDetailHeadData,
-    database.productGetById(req.params.id)
-    )),
-productCart: (req, res) => res.render("./products/productCart", productCartHeadData)
+productDetail: (req, res) => res.render("./products/productDetail",
+    {head: productDetailHeadData, product: database.productGetById(req.params.id)}
+    ),
+
+productCart: (req, res) => res.render("./products/productCart", {head: productCartHeadData})
 }
 
 
