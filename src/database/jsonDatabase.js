@@ -21,6 +21,7 @@ let database = {
     productDeleteById: productDeleteById,
     productGetNewId: productGetNewId,
     productCreate: productCreate,
+    productEdit: productEdit
     
     //usersData: usersData
 }
@@ -46,6 +47,13 @@ function productGetNewId(){
 function productCreate(product){
     product.id = this.productGetNewId();
     this.productsData.push(product);
+    writeJson(productsJsonPath, this.productsData);
+
+}
+
+function productEdit(productEdited){
+    let productToEdit = this.productGetById(productEdited.id);
+    productToEdit = productEdited;
     writeJson(productsJsonPath, this.productsData);
 
 }
