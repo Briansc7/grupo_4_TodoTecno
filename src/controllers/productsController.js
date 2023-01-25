@@ -6,7 +6,7 @@ const productCartHeadData = {title: "Carrito de Compras", stylesheet: "/css/prod
 
 const productsController = {
 productDetail: (req, res) => res.render("./products/productDetail",Object.assign({},productDetailHeadData,
-    database.getProductById(req.params.id)
+    database.productGetById(req.params.id)
     )),
 productCart: (req, res) => res.render("./products/productCart", productCartHeadData)
 }

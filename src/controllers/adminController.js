@@ -12,13 +12,13 @@ productCreate: (req, res) => res.render("./admin/productCreate", productCreateHe
 productStore: (req, res) => res.send("producto creado"),
 
 productEdit: (req, res) => res.render("./admin/productEdit", Object.assign({},productEditHeadData,
-    database.getProductById(req.params.id)
+    database.productGetById(req.params.id)
     )),
 
 productUpdate: (req, res) => res.send("producto actualizado"),
 
 productDestroy: (req, res) => {
-    database.deleteProductById(req.params.id);
+    database.productDeleteById(req.params.id);
     res.send("producto eliminado");
 },
 

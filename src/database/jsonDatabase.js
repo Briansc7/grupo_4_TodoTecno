@@ -17,19 +17,37 @@ let usersData = JSON.parse(usersJsonRawData); //convierto json a objeto array*/
 
 let database = {
     productsData: productsData,
-    getProductById: getProductById,
-    deleteProductById: deleteProductById
+    productGetById: productGetById,
+    productDeleteById: productDeleteById,
+    productGetNewId: productGetNewId,
+    productCreate: productCreate,
+    
     //usersData: usersData
 }
 
-function getProductById(id){
+function productGetById(id){
     return this.productsData.find(product=>product.id==id);
 }
 
-function deleteProductById(id){
+function productDeleteById(id){
     this.productsData = this.productsData.filter(product=>product.id!=id);
-    let jsonRawData = JSON.stringify(this.productsData);
-    fs.writeFileSync(productsJsonPath,jsonRawData);
+    writeJson(productsJsonPath, this.productsData);
+}
+
+function writeJson(destination, data) {
+    let jsonRawData = JSON.stringify(data);
+    fs.writeFileSync(destination, jsonRawData);
+}
+
+function productGetNewId(){
+    return Math.max(this.productsData.map(product=>product.id))+1;
+}
+
+function productCreate(product){
+    product.id = this.productGetNewId();
+    this.productsData.push(product);
+    writeJson(productsJsonPath, this.productsData);
+
 }
 
 module.exports = database;
