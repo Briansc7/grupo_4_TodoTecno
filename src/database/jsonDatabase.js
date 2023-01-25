@@ -49,11 +49,15 @@ function productCreate(product){
     this.productsData.push(product);
     writeJson(productsJsonPath, this.productsData);
 
+    return product.id;
+
 }
 
 function productEdit(productEdited){
     let productToEdit = this.productGetById(productEdited.id);
-    productToEdit = productEdited;
+    
+    Object.assign(productToEdit,productEdited);
+
     writeJson(productsJsonPath, this.productsData);
 
 }
