@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include("../partials/head",{title: title, stylesheet: stylesheet}) %>
+<%- include("../partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
 
 <body>
     <%- include("../partials/header") %>
@@ -22,8 +22,8 @@
             <img src="" alt="" class="product-picture">
         </section>
         <section class="prod-main-info">
-            <h3><%= category %> <%= brand %> <%= model %></h3>
-            <label class="price"><h2>$ <%= Intl.NumberFormat('de-DE').format(price) %></h2></label>
+            <h3><%= product.category %> <%= product.brand %> <%= product.model %></h3>
+            <label class="price"><h2>$ <%= Intl.NumberFormat('de-DE').format(product.price) %></h2></label>
             <label><a href="">Ver todos los medios de pago</a></label>
         </section>
         <section class="send-info">
@@ -60,7 +60,7 @@
                 <h4>Modelo y Origen</h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
                 <div class="info">Modelo: QN75QN800A</div>
             </article>  -->
-            <% for (const [characteristicsType, characteristicsList] of Object.entries(characteristics)) { %>
+            <% for (const [characteristicsType, characteristicsList] of Object.entries(product.characteristics)) { %>
                 <article tabindex="0">
                     <h4><%= characteristicsType %></h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
                     <div class="info">
