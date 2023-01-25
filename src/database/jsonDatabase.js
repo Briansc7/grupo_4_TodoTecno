@@ -8,7 +8,7 @@ const fs = require("fs");
 //Se obtienen los datos de los productos
 const productsJsonPath = path.resolve(__dirname,"./products.json");
 let productsJsonRawData = fs.readFileSync(productsJsonPath); //guardo contenido json en variable
-let producsData = JSON.parse(productsJsonRawData); //convierto json a objeto array
+let productsData = JSON.parse(productsJsonRawData); //convierto json a objeto array
 
 //Se obtienen los datos de los productos
 /*const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -16,8 +16,13 @@ let usersJsonRawData = fs.readFileSync(usersJsonPath); //guardo contenido json e
 let usersData = JSON.parse(usersJsonRawData); //convierto json a objeto array*/
 
 let database = {
-    producsData: producsData,
+    productsData: productsData,
+    getProductById: getProductById
     //usersData: usersData
+}
+
+function getProductById(id){
+    return this.productsData.find(product=>product.id==id);
 }
 
 module.exports = database;
