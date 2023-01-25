@@ -9,7 +9,27 @@ const adminController = {
 
 productCreate: (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData}),
 
-productStore: (req, res) => res.send("producto creado"),
+productStore: (req, res) => {
+    let newProduct = {
+        id: null,
+        category: req.body.category,
+        brand: req.body.brand,
+        model: req.body.model,
+        artNumber: req.body.artNumber,
+        price: req.body.price,
+        availability: req.body.availability,
+        discount: req.body.discount,
+        isOnSale: false,
+        characteristics: {
+            sonido: {"Cantidad de parlantes": 8}
+        },
+        images: []
+    };
+
+    database.productCreate(newProduct);
+
+    res.send("producto creado")
+},
 
 productEdit: (req, res) => res.render("./admin/productEdit",
     {head: productEditHeadData, product: database.productGetById(req.params.id)}
