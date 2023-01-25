@@ -1,5 +1,6 @@
 
 const path = require("path");
+
 const database = require(path.resolve(__dirname, "../database/jsonDatabase"));
 
 const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
@@ -26,9 +27,12 @@ productStore: (req, res) => {
         images: []
     };
 
-    database.productCreate(newProduct);
+    let newProductId = database.productCreate(newProduct);
 
-    res.send("producto creado")
+    //res.redirect("/products/productDetail/"+newProductId);
+
+    res.redirect("/");
+
 },
 
 productEdit: (req, res) => res.render("./admin/productEdit",
@@ -54,12 +58,12 @@ productUpdate: (req, res) => {
 
     database.productEdit(editedProduct);
 
-    res.send("producto actualizado");
+    res.redirect("/admin/productEdit/"+req.params.id);
 },
 
 productDestroy: (req, res) => {
     database.productDeleteById(req.params.id);
-    res.send("producto eliminado");
+    res.redirect("/");
 },
 
 

@@ -49,6 +49,8 @@ function productCreate(product){
     this.productsData.push(product);
     writeJson(productsJsonPath, this.productsData);
 
+    return product.id;
+
 }
 
 function productEdit(productEdited){
