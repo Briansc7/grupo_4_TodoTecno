@@ -53,7 +53,9 @@ function productCreate(product){
 
 function productEdit(productEdited){
     let productToEdit = this.productGetById(productEdited.id);
-    productToEdit = productEdited;
+    
+    Object.assign(productToEdit,productEdited);
+
     writeJson(productsJsonPath, this.productsData);
 
 }

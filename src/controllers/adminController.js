@@ -35,7 +35,27 @@ productEdit: (req, res) => res.render("./admin/productEdit",
     {head: productEditHeadData, product: database.productGetById(req.params.id)}
     ),
 
-productUpdate: (req, res) => res.send("producto actualizado"),
+productUpdate: (req, res) => {
+    let editedProduct = {
+        id: req.params.id,
+        category: req.body.category,
+        brand: req.body.brand,
+        model: req.body.model,
+        artNumber: req.body.artNumber,
+        price: req.body.price,
+        availability: req.body.availability,
+        discount: req.body.discount,
+        isOnSale: false,
+        characteristics: {
+            sonido: {"Cantidad de parlantes": 8}
+        },
+        images: []
+    };
+
+    database.productEdit(editedProduct);
+
+    res.send("producto actualizado");
+},
 
 productDestroy: (req, res) => {
     database.productDeleteById(req.params.id);
