@@ -36,12 +36,12 @@ function productDeleteById(id){
 }
 
 function writeJson(destination, data) {
-    let jsonRawData = JSON.stringify(data);
+    let jsonRawData = JSON.stringify(data, null, 2);
     fs.writeFileSync(destination, jsonRawData);
 }
 
 function productGetNewId(){
-    return Math.max(this.productsData.map(product=>product.id))+1;
+    return Math.max.apply(Math,this.productsData.map(product=>product.id))+1;
 }
 
 function productCreate(product){
