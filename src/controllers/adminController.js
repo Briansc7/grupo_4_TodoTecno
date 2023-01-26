@@ -16,10 +16,10 @@ productStore: (req, res) => {
         category: req.body.category,
         brand: req.body.brand,
         model: req.body.model,
-        artNumber: req.body.artNumber,
-        price: req.body.price,
-        availability: req.body.availability,
-        discount: req.body.discount,
+        artNumber: Number(req.body.artNumber),
+        price: Number(req.body.price),
+        availability: Number(req.body.availability),
+        discount: Number(req.body.discount),
         isOnSale: false,
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
@@ -29,9 +29,8 @@ productStore: (req, res) => {
 
     let newProductId = database.productCreate(newProduct);
 
-    //res.redirect("/products/productDetail/"+newProductId);
+    res.redirect("/products/productDetail/"+newProductId);
 
-    res.redirect("/");
 
 },
 
@@ -45,10 +44,10 @@ productUpdate: (req, res) => {
         category: req.body.category,
         brand: req.body.brand,
         model: req.body.model,
-        artNumber: req.body.artNumber,
-        price: req.body.price,
-        availability: req.body.availability,
-        discount: req.body.discount,
+        artNumber: Number(req.body.artNumber),
+        price: Number(req.body.price),
+        availability: Number(req.body.availability),
+        discount: Number(req.body.discount),
         isOnSale: false,
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
