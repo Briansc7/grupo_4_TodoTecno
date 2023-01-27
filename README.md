@@ -64,6 +64,9 @@ Login:
 Registro: 
 > http://localhost:3000/users/register
 
+Lista de producto:
+> http://localhost:3000/products/
+
 Detalle de producto:
 > http://localhost:3000/products/productDetail/1
 
