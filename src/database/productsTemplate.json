@@ -8,7 +8,9 @@
     "price" : 1681980,
     "availability": 100,
     "discount" : 10,
-    "isOnSale": "false",
+    "isOnSale": false,
+    "isNew": false,
+    "description": ["Samsung es reconocida a nivel mundial como una empresa líder en la industria tecnológica. Todos sus productos son diseñados con una calidad superior y pensados para contribuir a un futuro mejor. Por eso, va a hacer que disfrutes de una experiencia visual incomparable. Con el Smart TV QN75QN800A vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Descubrí la tecnología QLED Su pantalla con puntos cuánticos ofrece un volumen de color muy superior a cualquier LED del mercado, lo que significa que puede hacer que todos los colores del espectro disponible sean más brillantes sin perder saturación. Además, se distingue por ofrecer un mejor ángulo de visión sin perder calidad desde ninguna posición. Viví en 8K Con una resolución 4 veces más alta que el 4K, muestra una calidad de imagen más nítida y detallada que su antecesor. Esto se debe a que los pixeles son tan pequeñitos que no se pueden distinguir, ni siquiera desde un primer plano. Un sonido que te envuelve Vas a sentir que proviene desde todas las direcciones posibles, lo cual enriquece la percepción del mismo. Los diálogos de tus series de fin de semana o la música de tus cantantes preferidos van a cobrar otro significado. Más allá de ver televisión Su función Screen Share permite duplicar la pantalla de tu smartphone, tablet o PC para que aparezca en la TV. De esta forma vas a poder visualizar todo tipo de contenido: material audiovisual, documentos de trabajo, correos electrónicos y más. Conexión invisible Este modelo está pensado para que puedas despejar tu campo visual. El sector donde coloques el televisor se verá mucho más prolijo porque los cables estarán ocultos, ordenados y organizados, ¡vas a notar la diferencia!"],
     "characteristics" : {"Sonido": {"Cantidad de parlantes": 8}, "Dimensiones": {"Ancho": "1668.3 mm", "Profundidad": "172.2 mm", "Peso": "32.1 kg"}, "Modelo y origen": {"Modelo": "QN75QN800A"}},
     "images": [
         "neoQled8k-01.jpg",
@@ -20,5 +22,39 @@
         "neoQled8k-07.jpg",
         "neoQled8k-08.jpg"
       ]
-    }
+    },
+    {
+      "id" : 2,
+      "category": "Home Theater",
+      "brand" : "Nakamichi",
+      "model" : "SHOCKWAFE ULTRA 9.2",
+      "artNumber": 0,
+      "price" : 961949,
+      "availability": 20,
+      "discount" : 10,
+      "isOnSale": false,
+      "isNew": false,
+      "description": ["MARCA Nakamichi","MODELO SHOCKWAFE ULTRA 9.2","1 BARRA DE SONIDO DE 45\" Controlador de rango completo de 6 x 2.5 \"","2 X ALTAVOCES LATERALES SURROUND 1 controlador de rango completo de 3\" (cada uno)/1 tweeter de alta frecuencia de 1” (cada uno)","2 X ALTAVOCES SURROUND TRASEROS 1 controlador de rango completo de 3\" (cada uno)/1 tweeter de alta frecuencia de 1” (cada uno)","2 SUBWOOFERS INALÁMBRICOS 1 subwoofer de 10\" hacia abajo (cada uno)","CONTROLADORES DE ALTAVOCES TOTALES 18 conductores","CANALES DE AUDIO hasta 9.2.4","VOLUMEN 110dB SPL","POTENCIA MÁX TOTAL 1000W","RESPUESTA FRECUENTE 30Hz - 20kHz","PROCESADOR DE AUDIO Chipset Cirrus Logic de cuatro núcleos","INTERFAZ DE ENTRADA Y SALIDA Entrada HDMI, salida HDMI (ARC), entrada óptica, entrada coaxial, entrada analógica de 3,5 mm, USB tipo A","BLUETOOTH Versión 4.1 con aptX","ENTRADA DE ALIMENTACIÓN 100 - 240 V, 50/60 Hz (barra de sonido)/ 110 - 240 V, 50/60 Hz (altavoz de graves)","MEZCLA ASCENDENTE ENVOLVENTE Dolby Surround , DTS Neural:X"],
+      "characteristics" : {"Conectividad": {"Bluetooth": "Sí", "USB-A": "Sí", "Óptico": "Sí", "Jack 3.5 mm": "Sí", "Coaxial": "Sí", "HDMI": "Sí", "HDMI ARC": "Sí"}, "Parlantes": {"barra de sonido": 1, "altavoces laterales": 2, "altavoces traseros": 2, "subwoofer": 2}},
+      "images": [
+          "soundbar-nakamichi.jpg"
+        ]
+      },
+      {
+        "id" : 3,
+        "category": "Soportes TV",
+        "brand" : "Iofi",
+        "model" : "TVS-MOV-17-90",
+        "artNumber": 20064031,
+        "price" : 6959880,
+        "availability": 50,
+        "discount" : 16,
+        "isOnSale": true,
+        "isNew": true,
+        "description": ["DESCRIPCIÓN - Norma: vesa - Medida: 200 x 200 mm / 300 x 300 mm / 400 x 400 mm / 600 x 400 mm - Móvil: Si - Carga máxima: 65 Kg - Inclinación 15° - Giro: 60° Hacia ambos lados - Distancia a la pared: 69- 635 mm - Tipo de brazo: 6 brazos - Super resistente nivelando el peso en todos sus brazos - Kit de tornillos para instalación: Si"],
+        "characteristics" : {"Datos tecnicos": {"VESA": "75X75/100X100/200X200/400X400/600X400", "Pulgadas": "17 a 90\"", "Peso máximo": "65 Kg"}, "Modelo y origen": {"Modelo": "TVS-MOV-17-90"}},
+        "images": [
+            "soporte-tv.png"
+          ]
+        }
 ]
