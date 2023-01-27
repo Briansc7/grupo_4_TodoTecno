@@ -7,6 +7,7 @@
     <%- include("../partials/header") %>
 
     <main class="main-productDetail">
+        <% if(product) { %>
         <section class="nav-bar">
             <nav>
                 <ul>
@@ -46,20 +47,10 @@
                 <label for="" class="recomend-price">$54.999</label>
             </article>            
         </section>
+        <% if(product.characteristics) { %>
         <section class="characteristics">
             <h3 class="characteristics-title">Características Técnicas</h3>
-            <!-- <article tabindex="0">
-                <h4>Sonido</h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
-                <div class="info">Cantidad de Parlantes: 8</div>
-            </article>
-            <article tabindex="0">
-                <h4>Dimensiones</h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
-                <div class="info"><p>TBA</p><p>TBA</p><p>TBA</p><p>TBA</p><p>TBA</p></div>
-            </article>
-            <article tabindex="0">
-                <h4>Modelo y Origen</h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
-                <div class="info">Modelo: QN75QN800A</div>
-            </article>  -->
+            
             <% for (const [characteristicsType, characteristicsList] of Object.entries(product.characteristics)) { %>
                 <article tabindex="0">
                     <h4><%= characteristicsType %></h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
@@ -73,6 +64,10 @@
                 </article>
             <%  } %>                   
         </section>
+        <% } %>
+        <% }else { %>
+            <h2>No existe el producto</h2>
+        <% } %>
     </main>
 
     <%- include("../partials/footer") %>
