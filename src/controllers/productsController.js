@@ -12,7 +12,7 @@ productDetail: (req, res) => res.render("./products/productDetail",
 
 productCart: (req, res) => res.render("./products/productCart", {head: productCartHeadData}),
 
-productsList: (req, res) => res.render("./products/productsList", {head: productsListHeadData})
+productsList: (req, res) => res.render("./products/productsList", {head: productsListHeadData, products: database.productsData})
 }
 
 
