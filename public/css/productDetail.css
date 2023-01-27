@@ -51,7 +51,7 @@
     gap: 10px;
 }
 .product-picture{
-    content:url("/images/products/neoQled8k-01.jpg");
+    /*content:url("/images/products/neoQled8k-01.jpg");*/
     width: 300px;
     mix-blend-mode: multiply; /*fondo blanco se hace transparente*/
 }
