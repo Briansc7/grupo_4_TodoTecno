@@ -3,13 +3,16 @@ const database = require(path.resolve(__dirname, "../database/jsonDatabase"));
 
 const productDetailHeadData = {title: "Detalle del Producto", stylesheet: "/css/productDetail.css"};
 const productCartHeadData = {title: "Carrito de Compras", stylesheet: "/css/productCart.css"};
+const productsListHeadData = {title: "Productos", stylesheet: "/css/productsList.css"};
 
 const productsController = {
 productDetail: (req, res) => res.render("./products/productDetail",
     {head: productDetailHeadData, product: database.productGetById(req.params.id)}
     ),
 
-productCart: (req, res) => res.render("./products/productCart", {head: productCartHeadData})
+productCart: (req, res) => res.render("./products/productCart", {head: productCartHeadData}),
+
+productsList: (req, res) => res.render("./products/productsList", {head: productsListHeadData, products: database.productsData})
 }
 
 
