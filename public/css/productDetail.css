@@ -178,3 +178,23 @@
     visibility: hidden;
     opacity: 0;
 }
+
+/*botones*/
+
+  
+.buy-now-button, .action-button {
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    margin-top: 15px;
+    background-color: black;
+  }
+
+  
+
+ 
