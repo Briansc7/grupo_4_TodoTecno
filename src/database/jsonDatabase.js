@@ -21,7 +21,8 @@ let database = {
     productDeleteById: productDeleteById,
     productGetNewId: productGetNewId,
     productCreate: productCreate,
-    productEdit: productEdit
+    productEdit: productEdit,
+    productSearch: productSearch
     
     //usersData: usersData
 }
@@ -60,6 +61,18 @@ function productEdit(productEdited){
 
     writeJson(productsJsonPath, this.productsData);
 
+}
+
+function productSearch(keywords){
+    const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
+    let searchResults = this.productsData.filter(product => {
+        const category = product.category.toLowerCase();
+        const brand = product.brand.toLowerCase();
+        const model = product.model.toLowerCase();
+        const completeName = category+brand+model; //string unico con todos los campos a buscar
+        return keywordsLowerCase.some(keyword => completeName.includes(keyword)); //comprueba si encuentra al menos un keyword en el string
+    });
+    return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords
 }
 
 module.exports = database;
