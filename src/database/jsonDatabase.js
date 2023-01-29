@@ -22,7 +22,8 @@ let database = {
     productGetNewId: productGetNewId,
     productCreate: productCreate,
     productEdit: productEdit,
-    productSearch: productSearch
+    productSearch: productSearch,
+    getProductsFromRecomemndations: getProductsFromRecommendations
     
     //usersData: usersData
 }
@@ -73,6 +74,11 @@ function productSearch(keywords){
         return keywordsLowerCase.some(keyword => completeName.includes(keyword)); //comprueba si encuentra al menos un keyword en el string
     });
     return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords
+}
+
+function getProductsFromRecommendations(product){
+    //array de ids de recomendaciones -> array productos recomendados -> filtrado de valores invalidos como undefined
+    return product.recommendations.map(recomendationId => this.productGetById(recomendationId)).filter(value=>value);
 }
 
 module.exports = database;

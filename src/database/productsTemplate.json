@@ -21,7 +21,8 @@
         "neoQled8k-06.jpg",
         "neoQled8k-07.jpg",
         "neoQled8k-08.jpg"
-      ]
+      ],
+      "recommendations": [2, 3]
     },
     {
       "id" : 2,
@@ -38,7 +39,8 @@
       "characteristics" : {"Conectividad": {"Bluetooth": "Sí", "USB-A": "Sí", "Óptico": "Sí", "Jack 3.5 mm": "Sí", "Coaxial": "Sí", "HDMI": "Sí", "HDMI ARC": "Sí"}, "Parlantes": {"barra de sonido": 1, "altavoces laterales": 2, "altavoces traseros": 2, "subwoofer": 2}},
       "images": [
           "soundbar-nakamichi.jpg"
-        ]
+        ],
+      "recommendations": []
       },
       {
         "id" : 3,
@@ -55,6 +57,7 @@
         "characteristics" : {"Datos tecnicos": {"VESA": "75X75/100X100/200X200/400X400/600X400", "Pulgadas": "17 a 90\"", "Peso máximo": "65 Kg"}, "Modelo y origen": {"Modelo": "TVS-MOV-17-90"}},
         "images": [
             "soporte-tv.png"
-          ]
+          ],
+        "recommendations": []
         }
 ]
