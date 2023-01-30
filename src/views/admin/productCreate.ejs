@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include("../partials/head",{title: title, stylesheet: stylesheet}) %>
+<%- include("../partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
 
 <body>
     <%- include("../partials/header") %>
  
-<main class="main-product-create"><form action="/" method="get">
+<main class="main-product-create"><form action="/admin/productCreate" method="POST">
     
 <h1>Crear nuevo proucto</h1>
 
     <div class="product-create">
-        <h5>Ingresa tipo de producto</h5>
-        <input  type="text" name="" placeholder="ej: Smart TV" required>
+        <h5>Categoría del producto</h5>
+        <input  type="text" name="category" placeholder="ej: Smart TV" required>
         <h5>Marca</h5>
-        <input  type="text" name="" placeholder="" required>
+        <input  type="text" name="brand" placeholder="" required>
         <h5>Modelo</h5>
-        <input  type="text" name="" placeholder="" required >
+        <input  type="text" name="model" placeholder="" required >
         <h5>Numero de articulo</h5>
-        <input  type="text" name="" placeholder="" required >
+        <input  type="number" name="artNumber" placeholder="" required >
         <h5>Precio</h5>
-        <input  type="text" name="" placeholder="" required > 
+        <input  type="number" name="price" placeholder="" required >
+        <h5>Cantidad Disponible</h5>
+        <input  type="number" name="availability" placeholder="" required >
         <h5>Descuento</h5>
-        <input  type="text" name="" placeholder="" required >
-        <ul><h5>Caracteristicas</h5>
+        <input  type="number" name="discount" placeholder="" required >
+        <!-- <ul><h5>Caracteristicas</h5>
             <li><input  type="text" name="" placeholder="Sonido" required ></li>
             <li><input  type="text" name="" placeholder="Dimensiones" required ></li>
             <li><input  type="text" name="" placeholder="Modelo y Origen" required ></li>
@@ -33,13 +35,11 @@
         </ul>
        
         <h5>Imagenes</h5>
-        <input  type="file" name="" placeholder="ingresa hasta 10 imagenes" required>           
+        <input  type="file" name="" placeholder="ingresa hasta 10 imagenes" required>  -->          
         <div class="product-create-btn">
-             <button href="/productCreate"  class="reset" >Borrar cambios</button>
+             <button class="reset" type="reset">Reiniciar Campos</button>
              <br>
-             <button href="/index.ejs" class="submit" type="submit">Guardar producto</button>
-             <br>
-             <button href="/productCreate.ejs" class="submit" type="submit">Guardar y crear nuevo producto</button>
+             <button class="submit" type="submit">Crear Producto</button>
             <br>
 
             

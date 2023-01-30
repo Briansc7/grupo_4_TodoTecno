@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("./partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
+
+<body>
+    <%- include("./partials/header") %>
+
+    <main>
+        <div class="container products-wrapper">
+            <% if(products&&products[0]) { %>
+            <div class="row">
+                <div class="col-12 products-title-container">
+                    <h2 class="products-title">Resultados de la búsqueda:</h2>
+                </div>
+    
+                <% for(i=0; i<products.length; i++) { %>
+    
+                    <div class="col-12 col-sm-6 col-lg-3 product-container">
+                        <section class="product-box">
+                            <a href="/products/productDetail/<%= products[i].id %>">
+                                <figure class="product-box_image">
+                                    <img src="/images/products/<%= products[i].images[0] %>" alt="imagen de producto">
+                                </figure>
+                                <article class="product-box_data">
+                                    <h2>$<%= products[i].price %></h2>
+                                    <span><%= products[i].discount %>% OFF</span>
+                                    <p><%= products[i].category %> <%= products[i].brand %> <%= products[i].model %></p>
+                                </article>
+                            </a>
+                        </section>
+                    </div>
+    
+                <% } %>
+
+			<% } else { %>
+                <div class="col-12">
+                    <h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
+                </div>
+            <% } %>         
+                
+            </div>
+        </div>
+    </main>
+
+    <%- include("./partials/footer") %>
+</body>
+</html> 

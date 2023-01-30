@@ -64,6 +64,12 @@ Login:
 Registro: 
 > http://localhost:3000/users/register
 
+Búsqueda de productos (funciona con la barra de búsqueda):
+> http://localhost:3000/search?keywords=samsung
+
+Lista de producto:
+> http://localhost:3000/products/
+
 Detalle de producto:
 > http://localhost:3000/products/productDetail/1
 
@@ -74,5 +80,5 @@ Creación de productos:
 > http://localhost:3000/admin/productCreate
 
 Edición de productos:
-> http://localhost:3000/admin/productEdit
+> http://localhost:3000/admin/productEdit/1
 
