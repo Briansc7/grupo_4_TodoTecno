@@ -42,16 +42,15 @@
         <% if(recommendations[0]) { %>
         <section class="recomendations">
             <h3 class="recommend-title">Personas Interesadas en el producto también compraron</h3>
-            <article class="recommendation-item">
-                <img src="" alt="" class="recomendation-1-pic">
-                <h5>Barra de Sonido 9.2 Wireless Nakamichi Shockwafe Ultra 9.2 Dolby Atmos 1000w</h5>
-                <label for="" class="recomend-price">$961.949</label>
-            </article>
-            <article class="recommendation-item">
-                <img src="" alt="" class="recomendation-2-pic">
-                <h5>Soporte Para Tv Iofi Led Móvil Hasta 90 85 80 75 70 65 60 55 50</h5>
-                <label for="" class="recomend-price">$54.999</label>
-            </article>            
+
+            <% for(i=0;i<recommendations.length;i++) { %>
+                <article class="recommendation-item">
+                    <img src="/images/products/<%= recommendations[i].images[0] %>" alt="" class="recomendation-pic">
+                    <h5><%= recommendations[i].category %> <%= recommendations[i].brand %> <%= recommendations[i].model %></h5>
+                    <label for="" class="recomend-price">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].price) %></label>
+                </article>
+            <% } %> 
+                     
         </section>
         <% } %>
         <% if(product.characteristics) { %>

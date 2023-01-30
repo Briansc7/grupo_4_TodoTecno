@@ -110,17 +110,12 @@
     gap: 10px;
     padding-bottom: 10px;
 }
-.recomendation-1-pic{
-    content:url("/images/products/soundbar-nakamichi.jpg");
+.recomendation-pic{
     width: 100px;
     mix-blend-mode: multiply;
 }
-.recomendation-2-pic{
-    content:url("/images/products/soporte-tv.png");
-    width: 100px;
-    mix-blend-mode: multiply;
-}
-.recomendation-1-pic, .recomendation-2-pic{
+
+.recomendation-pic{
     cursor: pointer;
 }
 
