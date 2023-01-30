@@ -76,7 +76,7 @@ function productSearch(keywords){
     return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords
 }
 
-function getProductsFromRecommendationsByID(Productid){
+function getProductsFromRecommendationsByID(productId){
     //array de ids de recomendaciones -> array productos recomendados -> filtrado de valores invalidos como undefined
     return this.productGetById(productId).recommendations.map(recomendationId => this.productGetById(recomendationId)).filter(value=>value);
 }

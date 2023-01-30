@@ -7,7 +7,7 @@ const productsListHeadData = {title: "Productos", stylesheet: "/css/productsList
 
 const productsController = {
 productDetail: (req, res) => res.render("./products/productDetail",
-    {head: productDetailHeadData, product: database.productGetById(req.params.id)//, recommendations: database.getProductsFromRecommendationsByID(req.params.id)
+    {head: productDetailHeadData, product: database.productGetById(req.params.id), recommendations: database.getProductsFromRecommendationsByID(req.params.id)
 }),
 
 productCart: (req, res) => res.render("./products/productCart", {head: productCartHeadData}),
