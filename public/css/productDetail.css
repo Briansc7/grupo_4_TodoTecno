@@ -182,7 +182,7 @@
 /*botones*/
 
   
-.buy-now-button, .action-button {
+a.buy-now-button, a.action-button {
     border: none;
     border-radius: 8px;
     font-size: 1.2em;

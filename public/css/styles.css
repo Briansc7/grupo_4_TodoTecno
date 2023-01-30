@@ -14,10 +14,6 @@ a, a:visited, a:hover, a:active {
     color: inherit;
 }
 
-a.action-button{
-    color: white;
-}
-
 ul {
     list-style: none;
     margin: 0;
