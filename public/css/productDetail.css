@@ -8,7 +8,8 @@
     "prod-main-info"
     "send-info"
     "recomendations"
-    "characteristics";
+    "characteristics"
+    "buttons-section";
     gap: 10px;
     align-items: center;
 }
@@ -81,28 +82,24 @@
     color: var(--azul);
 }
 
+.buttons-section {
+    grid-area: buttons-section;
+}
+
 .recomendations{
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-    "recomend-title recomend-title"
-    "recomendation-1 recomendation-2";
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
     align-items: center;
-    column-gap: auto;
-    row-gap: 10px;
 }
-.recomend-title{
-    grid-area: recomend-title;
+.recommend-title{
+    grid-area: recommend-title;
     text-align: center;
+    width: 100%;
 }
-.recomendation-1{
-    grid-area: recomendation-1;
-}
-.recomendation-2{
-    grid-area: recomendation-2;
-}
-.recomendation-1, .recomendation-2{
+.recommendation-item{
     display: flex;
     justify-content: center;
     border: 1px solid black;
@@ -180,6 +177,8 @@
 }
 
 /*botones*/
+
+
 
   
 a.buy-now-button, a.action-button {
