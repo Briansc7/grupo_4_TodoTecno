@@ -12,17 +12,12 @@
         <input  type="number" name="availability" placeholder="" required value="<%= locals.product && product.availability %>">
         <h5>Descuento [%]</h5>
         <input  type="number" name="discount" placeholder="" required value="<%= locals.product && product.discount %>">
-        <!-- <ul><h5>Caracteristicas</h5>
-            <li><input  type="text" name="" placeholder="Sonido" required ></li>
-            <li><input  type="text" name="" placeholder="Dimensiones" required ></li>
-            <li><input  type="text" name="" placeholder="Modelo y Origen" required ></li>
-            <li><input  type="text" name="" placeholder="Color" required ></li>
-            <li><input  type="text" name="" placeholder="Resolucion" required ></li>
-            <li><input  type="text" name="" placeholder="Incluye" required ></li>
-        </ul>
-       
-        <h5>Imagenes</h5>
-        <input  type="file" name="" placeholder="ingresa hasta 10 imagenes" required>  -->          
+        <h5>Descuento habilitado: <input type="checkbox" name="isOnSale"></h5>        
+        <h5>Es nueva adquisición: <input type="checkbox" name="isNew"></h5>        
+        <h5>Descripción</h5>
+        <textarea name="description"></textarea>
+        
+        
         <div class="product-create-btn">
              <button class="reset" type="reset">Reiniciar Campos</button>
              <br>
