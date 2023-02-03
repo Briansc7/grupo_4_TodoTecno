@@ -12,10 +12,24 @@
         <input  type="number" name="availability" placeholder="" required value="<%= locals.product && product.availability %>">
         <h5>Descuento [%]</h5>
         <input  type="number" name="discount" placeholder="" required value="<%= locals.product && product.discount %>">
-        <h5>Descuento habilitado: <input type="checkbox" name="isOnSale"></h5>        
-        <h5>Es nueva adquisición: <input type="checkbox" name="isNew"></h5>        
+        <h5>Descuento habilitado: <input type="checkbox" name="isOnSale" 
+            <% if(locals.product && product.isOnSale){ %>
+                checked
+            <% } %>
+        ></h5>        
+        <h5>Es nueva adquisición: <input type="checkbox" name="isNew"
+            <% if(locals.product && product.isNew){ %>
+                checked
+            <% } %>
+        ></h5>      
         <h5>Descripción</h5>
-        <textarea name="description"></textarea>
+        <textarea name="description">
+            <% if(locals.product) { %>
+                <% for(i=0;i<product.description.length;i++) { %>
+                    <%= product.description[i] %>
+                <% } %>
+            <% } %>
+        </textarea>
         
         
         <div class="product-create-btn">
