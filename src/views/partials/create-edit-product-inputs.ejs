@@ -1,0 +1,44 @@
+<h5>Categoría del producto</h5>
+        <input  type="text" name="category" placeholder="ej: Smart TV" required value="<%= locals.product && product.category %>">
+        <h5>Marca</h5>
+        <input  type="text" name="brand" placeholder="" required value="<%= locals.product && product.brand %>">
+        <h5>Modelo</h5>
+        <input  type="text" name="model" placeholder="" required value="<%= locals.product && product.model %>">
+        <h5>Numero de articulo</h5>
+        <input  type="number" name="artNumber" placeholder="" required value="<%= locals.product && product.artNumber %>">
+        <h5>Precio</h5>
+        <input  type="number" name="price" placeholder="" required value="<%= locals.product && product.price %>">
+        <h5>Cantidad Disponible</h5>
+        <input  type="number" name="availability" placeholder="" required value="<%= locals.product && product.availability %>">
+        <h5>Descuento [%]</h5>
+        <input  type="number" name="discount" placeholder="" required value="<%= locals.product && product.discount %>">
+        <h5>Descuento habilitado: <input type="checkbox" name="isOnSale" 
+            <% if(locals.product && product.isOnSale){ %>
+                checked
+            <% } %>
+        ></h5>        
+        <h5>Es nueva adquisición: <input type="checkbox" name="isNew"
+            <% if(locals.product && product.isNew){ %>
+                checked
+            <% } %>
+        ></h5>      
+        <h5>Descripción</h5>
+        <textarea name="description">
+            <% if(locals.product) { %>
+                <% for(i=0;i<product.description.length;i++) { %>
+                    <%= product.description[i] %>
+                <% } %>
+            <% } %>
+        </textarea>
+        
+        
+        <div class="product-create-btn">
+             <button class="reset" type="reset">Reiniciar Campos</button>
+             <br>
+             <button class="submit" type="submit"><% if(!locals.product){%>
+                Crear Producto
+            <%}else{%>
+                Guardar Cambios
+            <%}%></button>
+            <br>            
+        </div>

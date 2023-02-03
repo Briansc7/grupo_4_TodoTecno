@@ -19,15 +19,6 @@ const publicPath = path.resolve(__dirname, "../public");
 app.use(express.static(publicPath));
 
 
-app.get("/header", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/partials/header.html"))
-})
-
-app.get("/footer", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/partials/footer.html"))
-})
-
-
 app.use("/", mainRouter);
 app.use("/products", productsRouter);
 app.use("/users", usersRouter);

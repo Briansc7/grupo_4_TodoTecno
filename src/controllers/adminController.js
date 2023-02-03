@@ -20,11 +20,14 @@ productStore: (req, res) => {
         price: Number(req.body.price),
         availability: Number(req.body.availability),
         discount: Number(req.body.discount),
-        isOnSale: false,
+        isOnSale: req.body.isOnSale=="on",
+        isNew: req.body.isNew=="on",
+        description: [req.body.description],
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
         },
-        images: []
+        images: [],
+        recommendations: []
     };
 
     let newProductId = database.productCreate(newProduct);
@@ -48,11 +51,12 @@ productUpdate: (req, res) => {
         price: Number(req.body.price),
         availability: Number(req.body.availability),
         discount: Number(req.body.discount),
-        isOnSale: false,
-        characteristics: {
-            sonido: {"Cantidad de parlantes": 8}
-        },
-        images: []
+        isOnSale: req.body.isOnSale=="on",
+        isNew: req.body.isNew=="on",
+        description: [req.body.description],
+        characteristics: database.productGetById(req.params.id).characteristics,
+        images: database.productGetById(req.params.id).images,
+        recommendations: database.productGetById(req.params.id).recommendations
     };
 
     database.productEdit(editedProduct);
