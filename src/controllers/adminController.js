@@ -20,8 +20,8 @@ productStore: (req, res) => {
         price: Number(req.body.price),
         availability: Number(req.body.availability),
         discount: Number(req.body.discount),
-        isOnSale: req.body.isOnSale,
-        isNew: req.body.isNew,
+        isOnSale: req.body.isOnSale=="on",
+        isNew: req.body.isNew=="on",
         description: [req.body.description],
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
@@ -51,8 +51,8 @@ productUpdate: (req, res) => {
         price: Number(req.body.price),
         availability: Number(req.body.availability),
         discount: Number(req.body.discount),
-        isOnSale: req.body.isOnSale,
-        isNew: req.body.isNew,
+        isOnSale: req.body.isOnSale=="on",
+        isNew: req.body.isNew=="on",
         description: [req.body.description],
         characteristics: database.productGetById(req.params.id).characteristics,
         images: database.productGetById(req.params.id).images,
