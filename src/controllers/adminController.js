@@ -20,7 +20,9 @@ productStore: (req, res) => {
         price: Number(req.body.price),
         availability: Number(req.body.availability),
         discount: Number(req.body.discount),
-        isOnSale: false,
+        isOnSale: req.body.isOnSale,
+        isNew: req.body.isNew,
+        description: req.body.description,
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
         },
@@ -48,11 +50,13 @@ productUpdate: (req, res) => {
         price: Number(req.body.price),
         availability: Number(req.body.availability),
         discount: Number(req.body.discount),
-        isOnSale: false,
+        isOnSale: req.body.isOnSale,
+        isNew: req.body.isNew,
+        description: req.body.description,
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
         },
-        images: []
+        images: database.productGetById(req.params.id).images
     };
 
     database.productEdit(editedProduct);
