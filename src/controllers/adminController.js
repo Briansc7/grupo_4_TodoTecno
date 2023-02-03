@@ -22,11 +22,12 @@ productStore: (req, res) => {
         discount: Number(req.body.discount),
         isOnSale: req.body.isOnSale,
         isNew: req.body.isNew,
-        description: req.body.description,
+        description: [req.body.description],
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
         },
-        images: []
+        images: [],
+        recommendations: []
     };
 
     let newProductId = database.productCreate(newProduct);
@@ -52,11 +53,10 @@ productUpdate: (req, res) => {
         discount: Number(req.body.discount),
         isOnSale: req.body.isOnSale,
         isNew: req.body.isNew,
-        description: req.body.description,
-        characteristics: {
-            sonido: {"Cantidad de parlantes": 8}
-        },
-        images: database.productGetById(req.params.id).images
+        description: [req.body.description],
+        characteristics: database.productGetById(req.params.id).characteristics,
+        images: database.productGetById(req.params.id).images,
+        recommendations: database.productGetById(req.params.id).recommendations
     };
 
     database.productEdit(editedProduct);
