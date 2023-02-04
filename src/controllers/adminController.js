@@ -11,6 +11,11 @@ const adminController = {
 productCreate: (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData}),
 
 productStore: (req, res) => {
+    let imagesUploaded = [];
+    req.files.forEach(img => {
+        imagesUploaded.push(img.filename);
+    });
+
     let newProduct = {
         id: null,
         category: req.body.category,
@@ -26,7 +31,7 @@ productStore: (req, res) => {
         characteristics: {
             sonido: {"Cantidad de parlantes": 8}
         },
-        images: [],
+        images: imagesUploaded,
         recommendations: []
     };
 
