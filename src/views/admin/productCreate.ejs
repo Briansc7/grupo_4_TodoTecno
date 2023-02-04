@@ -6,44 +6,12 @@
 <body>
     <%- include("../partials/header") %>
  
-<main class="main-product-create"><form action="/admin/productCreate" method="POST">
+<main class="main-product-create"><form action="/admin/productCreate" method="POST" enctype="multipart/form-data">
     
 <h1>Crear nuevo proucto</h1>
 
     <div class="product-create">
-        <h5>Categoría del producto</h5>
-        <input  type="text" name="category" placeholder="ej: Smart TV" required>
-        <h5>Marca</h5>
-        <input  type="text" name="brand" placeholder="" required>
-        <h5>Modelo</h5>
-        <input  type="text" name="model" placeholder="" required >
-        <h5>Numero de articulo</h5>
-        <input  type="number" name="artNumber" placeholder="" required >
-        <h5>Precio</h5>
-        <input  type="number" name="price" placeholder="" required >
-        <h5>Cantidad Disponible</h5>
-        <input  type="number" name="availability" placeholder="" required >
-        <h5>Descuento</h5>
-        <input  type="number" name="discount" placeholder="" required >
-        <!-- <ul><h5>Caracteristicas</h5>
-            <li><input  type="text" name="" placeholder="Sonido" required ></li>
-            <li><input  type="text" name="" placeholder="Dimensiones" required ></li>
-            <li><input  type="text" name="" placeholder="Modelo y Origen" required ></li>
-            <li><input  type="text" name="" placeholder="Color" required ></li>
-            <li><input  type="text" name="" placeholder="Resolucion" required ></li>
-            <li><input  type="text" name="" placeholder="Incluye" required ></li>
-        </ul>
-       
-        <h5>Imagenes</h5>
-        <input  type="file" name="" placeholder="ingresa hasta 10 imagenes" required>  -->          
-        <div class="product-create-btn">
-             <button class="reset" type="reset">Reiniciar Campos</button>
-             <br>
-             <button class="submit" type="submit">Crear Producto</button>
-            <br>
-
-            
-        </div>
+        <%- include("../partials/create-edit-product-inputs") %>        
     </div>
 
 </form>
