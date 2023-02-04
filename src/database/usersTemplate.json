@@ -8,15 +8,11 @@
 "password": "123asd",
 "address": "calle 1",
 "postalCode":"1448",
-"location":"",
-"province":"",
-"shippingMethod":"",
-"shippingAddress": "",
-"shippingPostalCode":"",
-"shippingLocation":"",
-"shippingProvince":"",
+"location":"la plata",
+"province":"buenos aires",
+"shippingMethod":"envio a domicilio",
 "image": [],
-"rol":""
+"rol":"usuario"
 
 }
 
