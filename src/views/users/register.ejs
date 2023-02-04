@@ -5,7 +5,8 @@
 <body>
     <%- include("../partials/header") %>
 
-    <main class="main-register"><form action="/" method="get">
+    <main class="main-register">
+        <form action="/users" method="POST">
       
         <button href="#"  class="submit" type="" >
             <img src="/public/images/logo-google.png" alt="">
@@ -24,7 +25,7 @@
             <h5>nombre de usuario</h5>
             <input  type="text" name="" placeholder="" >
             <h5>Fecha de nacimiento</h5>
-            <input  type="date" name="" placeholder="" >
+            <input  type="date" name="birthday" placeholder="" >
             <h5>Domicilio de facturacion</h5>
             <input  type="text" name="" placeholder="" >
             <h5>Codigo postal</h5>

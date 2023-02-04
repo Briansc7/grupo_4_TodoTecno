@@ -1,0 +1,23 @@
+[{
+"id": 1,
+"firstName": "fernando",
+"lastName": "perez",
+"userName": "ferpe",
+"birthday": "20001405",
+"email": "usuario@mail",
+"password": "123asd",
+"address": "calle 1",
+"postalCode":"1448",
+"location":"",
+"province":"",
+"shippingMethod":"",
+"shippingAddress": "",
+"shippingPostalCode":"",
+"shippingLocation":"",
+"shippingProvince":"",
+"image": [],
+"rol":""
+
+}
+
+]

@@ -5,8 +5,10 @@ const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};
 
 const usersController = {
 login: (req, res) => res.render("./users/login", {head: loginHeadData}),
-register: (req, res) => res.render("./users/register", {head: registerHeadData})
+register: (req, res) => res.render("./users/register", {head: registerHeadData}),
+createUser: (req, res)=> res.send(req.body.birthday)
 }
+
 
 
 module.exports = usersController;
