@@ -33,6 +33,21 @@ function productGetById(id){
 }
 
 function productDeleteById(id){
+
+    const images = this.productGetById(id).images;
+    const imagesFolder = path.resolve(__dirname, "../../public/images/products/");
+
+   
+    images.forEach(file => {
+        fs.unlink(path.join(imagesFolder, file), (err) => {
+            if (err)
+            throw err;
+            console.log(`Borrado archivo: ${file}`);
+        });
+    });
+    console.log("Borrado de imágenes completado");
+
+
     this.productsData = this.productsData.filter(product=>product.id!=id);
     writeJson(productsJsonPath, this.productsData);
 }
