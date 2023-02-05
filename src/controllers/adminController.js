@@ -28,9 +28,7 @@ productStore: (req, res) => {
         isOnSale: req.body.isOnSale=="on",
         isNew: req.body.isNew=="on",
         description: [req.body.description],
-        characteristics: {
-            sonido: {"Cantidad de parlantes": 8}
-        },
+        characteristics: {},
         images: imagesUploaded,
         recommendations: []
     };

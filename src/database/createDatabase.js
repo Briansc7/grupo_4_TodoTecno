@@ -24,7 +24,7 @@ function copyImagesFromTemplatesToProducts() {
     if (err)
       console.log(err);
     else {
-      console.log("Inicio de copia de imágenes de productos de carga inicial");
+      
       files.forEach(file => {
         fs.copyFile(path.join(srcFolderToCopy, file), path.join(destFolderToCopy, file), (err) => {
           if (err)
@@ -32,7 +32,7 @@ function copyImagesFromTemplatesToProducts() {
           console.log(`Copiado archivo ${file} de carpeta ${srcFolderToCopy} a carpeta ${destFolderToCopy}`);
         });
       });
-      console.log("Copiado de imágenes completado");
+      
     }
   });
 }
@@ -42,7 +42,7 @@ function deleteProductImages() {
     if (err)
       console.log(err);
     else {
-      console.log("Inicio de borrado de imagenes de productos para reinicio de base de datos. Espere por favor");
+      
 
       files.forEach(file => {
         fs.unlink(path.join(destFolderToCopy, file), (err) => {
@@ -51,7 +51,7 @@ function deleteProductImages() {
           console.log(`Borrado archivo: ${file}`);
         });
       });
-      console.log("Borrado de imágenes completado");
+      
     }
   });
 }
