@@ -2,3 +2,4 @@ node_modules
 *.json
 !*Template.json
 public/images/products/*
+!defaultProduct.jpg
