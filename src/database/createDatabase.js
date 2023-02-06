@@ -42,9 +42,13 @@ function deleteProductImages() {
     if (err)
       console.log(err);
     else {
+
+      const exceptionImg = "defaultProduct.png";
+
+      let filteredFiles = files.filter(img=>img!=exceptionImg);
       
 
-      files.forEach(file => {
+      filteredFiles.forEach(file => {
         fs.unlink(path.join(destFolderToCopy, file), (err) => {
           if (err)
             throw err;
