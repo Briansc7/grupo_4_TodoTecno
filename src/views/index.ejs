@@ -53,39 +53,17 @@
         <section class="highlighted-offers">
             <h3>Aprovecha las ofertas destacadas</h3>
             <br>
-            <div class="products">
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
+            <div class="products">                
+                <% for(i=0;i<productsOnSale.length;i++) { %>
+                    <article>
+                        <img src="images\products\<%= productsOnSale[i].images[0] %>" alt="<%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %>" class="product_img">
+                        <div class="main-article">
+                            <p class="price">$<%= productsOnSale[i].price %></p>
+                            <p class="discount"><%= productsOnSale[i].discount %>% OFF</p>
+                            <h4 class="description"><%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %></h4>
+                        </div>
+                    </article>
+                <% } %>
             </div>
         </section>
         <section class="new-arriwals">
@@ -93,39 +71,17 @@
             <br>
             <h3>Nuevos ingresos</h3>
             <br>
-            <div class="products">
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
-                <article>
-                    <img src="images\products\neoQled8k-01.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
-                    <div class="main-article">
-                        <p class="price">$1.681.980</p>
-                        <p class="discount">10% off</p>
-                        <h4 class="description">Neo Qled 8k Samsung.jpg"</h4>
-                    </div>
-                </article>
+            <div class="products">                
+                <% for(i=0;i<productsOnSale.length;i++) { %>
+                    <article>
+                        <img src="images\products\<%= productsNew[i].images[0] %>" alt="<%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %>" class="product_img">
+                        <div class="main-article">
+                            <p class="price">$<%= productsNew[i].price %></p>
+                            <p class="discount"><%= productsNew[i].discount %>% OFF</p>
+                            <h4 class="description"><%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %></h4>
+                        </div>
+                    </article>
+                <% } %>
             </div>
         </section>
     </main>
