@@ -23,7 +23,9 @@ let database = {
     productCreate: productCreate,
     productEdit: productEdit,
     productSearch: productSearch,
-    getProductsFromRecommendationsByID: getProductsFromRecommendationsByID
+    getProductsFromRecommendationsByID: getProductsFromRecommendationsByID,
+    productsThatAreNew: productsThatAreNew,
+    productsThatAreOnSale: productsThatAreOnSale
     
     //usersData: usersData
 }
@@ -94,6 +96,14 @@ function productSearch(keywords){
 function getProductsFromRecommendationsByID(productId){
     //array de ids de recomendaciones -> array productos recomendados -> filtrado de valores invalidos como undefined
     return this.productGetById(productId).recommendations.map(recomendationId => this.productGetById(recomendationId)).filter(value=>value);
+}
+
+function productsThatAreNew(){
+    return this.productsData.filter(prod=>prod.isNew);
+}
+
+function productsThatAreOnSale(){
+    return this.productsData.filter(prod=>prod.isOnSale);
 }
 
 module.exports = database;
