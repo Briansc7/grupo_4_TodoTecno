@@ -17,3 +17,21 @@ Con el propósito aprender de los problemas encontrados en los Sprint anteriores
 <h4>5) Dejar de hacer:</h4> Una de los principales problemas fue la falta de comunicación. Como consecuencia, por esperar a que se terminaran determinadas funcionalidades prioritarias aunque no hubiera respuestas sobre el avance de las mismas, no se pudo alcanzar todos los objetivos propuestos en el Sprint 2. Por consiguiente, en caso de falta de respuesta por parte de miembros del equipo, se va a dejar de esperar a que las funcionalidades que se autoasignaron sea completadas. Dichas tareas se van a distribuir entre los demás miembros. De esta manera, se espera detectar y solucionar los problemas de forma temprana, y completar la mayor cantidad posible de PBI aún ante la presencia de imprevistos que retrasen el desarrollo del proyecto.
 
 
+<h2>Retrospectiva Sprint 3 y 4</h2>
+
+Durante el desarrollo del Sprint 3 y 4 pudimos resolver algunos problemas en cuanto a la dinámica del equipo de trabajo.
+
+Con el propósito de aprender de los problemas encontrados en los Sprint anteriores y mejorar la dinámica del equipo de cara al próximo Sprint, a continuación, se detalla el resultado de la dinámica de estrella de mar.
+
+<h3>Comenzar a hacer, Hacer más, Continuar haciendo y Hacer menos</h3>
+
+<h4>1) Comenzar a hacer:</h4> Uno de los principales problemas encontrados en los sprint anteriores fue la falta o ausencia de comunicación por parte de algunos miembros del equipo, durante estos dos sprints la comunicación va en crecimiento.
+Si bien no se han realizado todas las reuniones en formato daily meeting propuestas las que pudimos concretar fueron positivas, por otra parte algo que se pudo detectar a pesar de la mejora en la comunicación es que algunos no estamos solicitando ayuda a tiempo para resolver problemas que aparecen, lo que hace más lentos los avances en el proyecto, por lo que pedir ayuda a tiempo es algo que deberíamos empezar a hacer.
+
+<h4>2) Hacer más:</h4> Durante los sprints anteriores quedó en evidencia que algunos miembros no le dedican suficientes horas semanales al proyecto, si bien se mejoró en este aspecto, aún no es suficiente para que el reparto de tareas sea más equilibrado. También se va a seguir aumentando la frecuencia de comunicación para agilizar aún más el desarrollo del proyecto.
+
+<h4>3) Continuar haciendo:</h4>La implementación de Trello sigue siendo la herramienta que ordena las tareas por lo que, mantenerla y e intentar mejorarla es lo que proponemos continuar haciendo.
+
+<h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, por el contrario hacer más es principal objetivo para el futuro.
+
+1<h4>5) Dejar de hacer:</h4> Creemos que no hay acciones que no le aporten valor al proyecto

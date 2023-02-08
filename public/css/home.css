@@ -3,8 +3,16 @@ main .products{
     display: grid;
     grid-template-columns: auto;
     padding: 5px;
-
 }
+
+main section .products{
+display: grid;
+justify-items: center;
+}
+.main-article{
+    padding: 15px;
+}
+
 div article{
     margin: 2px solid black
 }
@@ -60,17 +68,26 @@ main section h3{
 .img-banner img{
     width: 100%;
 }
+.products article :hover{
+    box-shadow: 2px 2px 2px 2px var(--gris);
+}
 
+@media (min-width: 390px) {
 
-
-
+    .product_img{
+        width: 40vw;
+    }
+    main .products{
+        grid-template-columns: auto auto;
+    }
+}
 @media (min-width: 769px) {
 
+    .product_img{
+        width: 22vw;
+    }
     main .products{
         grid-template-columns: auto auto auto auto;
     }
-    
-
-
 
 }
