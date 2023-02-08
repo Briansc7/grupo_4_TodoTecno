@@ -34,4 +34,4 @@ Si bien no se han realizado todas las reuniones en formato daily meeting propues
 
 <h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, por el contrario hacer más es principal objetivo para el futuro.
 
-1<h4>5) Dejar de hacer:</h4> Creemos que no hay acciones que no le aporten valor al proyecto
+<h4>5) Dejar de hacer:</h4> En esta etapa no hemos identificado acciones que perjudiquen al grupo o proyecto para dejar de hacer.
