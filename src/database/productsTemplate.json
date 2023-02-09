@@ -29,18 +29,18 @@
       "category": "Home Theater",
       "brand" : "Nakamichi",
       "model" : "SHOCKWAFE ULTRA 9.2",
-      "artNumber": 0,
+      "artNumber": 5484450,
       "price" : 961949,
       "availability": 20,
       "discount" : 10,
-      "isOnSale": false,
+      "isOnSale": true,
       "isNew": false,
       "description": ["MARCA Nakamichi","MODELO SHOCKWAFE ULTRA 9.2","1 BARRA DE SONIDO DE 45\" Controlador de rango completo de 6 x 2.5 \"","2 X ALTAVOCES LATERALES SURROUND 1 controlador de rango completo de 3\" (cada uno)/1 tweeter de alta frecuencia de 1” (cada uno)","2 X ALTAVOCES SURROUND TRASEROS 1 controlador de rango completo de 3\" (cada uno)/1 tweeter de alta frecuencia de 1” (cada uno)","2 SUBWOOFERS INALÁMBRICOS 1 subwoofer de 10\" hacia abajo (cada uno)","CONTROLADORES DE ALTAVOCES TOTALES 18 conductores","CANALES DE AUDIO hasta 9.2.4","VOLUMEN 110dB SPL","POTENCIA MÁX TOTAL 1000W","RESPUESTA FRECUENTE 30Hz - 20kHz","PROCESADOR DE AUDIO Chipset Cirrus Logic de cuatro núcleos","INTERFAZ DE ENTRADA Y SALIDA Entrada HDMI, salida HDMI (ARC), entrada óptica, entrada coaxial, entrada analógica de 3,5 mm, USB tipo A","BLUETOOTH Versión 4.1 con aptX","ENTRADA DE ALIMENTACIÓN 100 - 240 V, 50/60 Hz (barra de sonido)/ 110 - 240 V, 50/60 Hz (altavoz de graves)","MEZCLA ASCENDENTE ENVOLVENTE Dolby Surround , DTS Neural:X"],
       "characteristics" : {"Conectividad": {"Bluetooth": "Sí", "USB-A": "Sí", "Óptico": "Sí", "Jack 3.5 mm": "Sí", "Coaxial": "Sí", "HDMI": "Sí", "HDMI ARC": "Sí"}, "Parlantes": {"barra de sonido": 1, "altavoces laterales": 2, "altavoces traseros": 2, "subwoofer": 2}},
       "images": [
           "soundbar-nakamichi.jpg"
         ],
-      "recommendations": []
+      "recommendations": [1]
       },
       {
         "id" : 3,
@@ -58,6 +58,84 @@
         "images": [
             "soporte-tv.png"
           ],
-        "recommendations": []
-        }
+        "recommendations": [1]
+        },
+        {
+          "id" : 4 ,
+          "category": "Heladera",
+          "brand" : "Philco",
+          "model" : "94PHCAV052N",
+          "artNumber": 8458540,
+          "price" : 124999,
+          "availability": 20,
+          "discount" : 0,
+          "isOnSale": false,
+          "isNew": true,
+          "description": ["CAVA ELÉCTRICA PHILCO PHCAV052N 52 BOTELLAS - DISPLAY ELECTRÓNICO - CAPACIDAD: 52 BOTELLAS - IDEAL PARA ALMACENAMIENTO PROLONGADO - RANGO DE TEMPERATURA AJUSTABLE: 5 a 18°C - CONTROL DE VIBRACION GRACIAS A LOS ESTANTES DE MADERA - LUZ LED INTERIOR - SISTEMA DE ENFRIAMIENTO POR MOTOR COMPRESOR Y VENTILADOR INTERNO - SÚPER SILENCIOSO - MEDIDAS: 84 x 49,5 x 58 Cms - PESO: 38 KG "],
+          "characteristics" : {"Datos tecnicos":{"Capacidad":"52 botellas"}, "Dimensiones": {"Ancho": "490 mm", "Profundidad": "580 mm", "Altura":"840 mm", "Peso": "38 kg"}, "Modelo y origen": {"Modelo": "94PHCAV052N 52 Botellas"}},
+          "images": [
+            "cavaPhilco-01.jpg",
+            "cavaPhilco-02.jpg",
+            "cavaPhilco-03.jpg",
+            "cavaPhilco-04.jpg" 
+            ],
+            "recommendations": [5]
+          },
+          {
+            "id" : 5 ,
+            "category": "Pequeños Electrodomesticos",
+            "brand" : "Peabody",
+            "model" : "LN805R",
+            "artNumber": 5498445,
+            "price" : 15999,
+            "availability": 40,
+            "discount" : 35,
+            "isOnSale": true,
+            "isNew": false,
+            "description": [["- 800W de potencia - jarra de vidrio de 1,75 lt - 5 velocidades más función Pulse. - Cuchillas de acero inoxidable. - Jarra resistente a amplias gamas de temperatura. - Tapa con dosificador."]],
+            "characteristics" : {"Potencia": {"Potencia": "800W"}, "Dimensiones": {"Capacidad": "1.75 lt"}, "Modelo y origen": {"Modelo": "LN805R"}},
+            "images": [
+              "licuadoraPeabody-01.jpg",
+              "licuadoraPeabody-02.jpg",
+              "licuadoraPeabody-03.jpg",
+              "licuadoraPeabody-04.jpg"
+              ],
+              "recommendations": [4]
+            },
+            {
+              "id" : 6 ,
+              "category": "",
+              "brand" : "",
+              "model" : "",
+              "artNumber": 0,
+              "price" : 0,
+              "availability": 0,
+              "discount" : 0,
+              "isOnSale": false,
+              "isNew": false,
+              "description": [],
+              "characteristics" : {"Sonido": {"Cantidad de parlantes": 8}, "Dimensiones": {"Ancho": "1668.3 mm", "Profundidad": "172.2 mm", "Peso": "32.1 kg"}, "Modelo y origen": {"Modelo": "QN75QN800A"}},
+              "images": [
+                 
+                ],
+                "recommendations": []
+              },
+              {
+                "id" : 4 ,
+                "category": "",
+                "brand" : "",
+                "model" : "",
+                "artNumber": 0,
+                "price" : 0,
+                "availability": 0,
+                "discount" : 0,
+                "isOnSale": false,
+                "isNew": false,
+                "description": [],
+                "characteristics" : {"Sonido": {"Cantidad de parlantes": 8}, "Dimensiones": {"Ancho": "1668.3 mm", "Profundidad": "172.2 mm", "Peso": "32.1 kg"}, "Modelo y origen": {"Modelo": "QN75QN800A"}},
+                "images": [
+                   
+                  ],
+                  "recommendations": []
+                }
 ]
