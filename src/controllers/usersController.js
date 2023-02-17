@@ -6,7 +6,8 @@ const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};
 const usersController = {
 login: (req, res) => res.render("./users/login", {head: loginHeadData}),
 register: (req, res) => res.render("./users/register", {head: registerHeadData}),
-createUser: (req, res)=> res.send(req.body.birthday)
+createUser: (req, res)=> res.send(req.body.birthday),
+loginSubmit: (req, res) => res.send("Enviado login")
 }
 
 
