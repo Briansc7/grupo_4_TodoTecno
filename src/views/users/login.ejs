@@ -19,14 +19,16 @@
                     <br>
             
                 <h5>Correo electronico*</h5>
-                <input class="button" type="email" name="email" placeholder="usuario@email.com" required>
+                <input class="button" type="email" name="email" placeholder="usuario@email.com">
                     <br>
+                    <span><%= locals.errors && errors.email ? errors.email.msg : null %></span>
                     <br>
                 <h5>Contraseña*</h5>
                
-                <input class="button" type="password" name="password" placeholder="Ingresa tu contraseña" required>
+                <input class="button" type="password" name="password" placeholder="Ingresa tu contraseña">
              
                 <br>
+                <span><%= locals.errors && errors.password ? errors.password.msg : null %></span>
                 <br>
                 <div>
                      <button  class="btn-submit" type="submit">Iniciar sesion</button>
