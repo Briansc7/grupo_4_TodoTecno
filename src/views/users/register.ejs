@@ -20,7 +20,10 @@
         
         <div class="register">
             <br>
-            <h5>Nombre y apellido</h5>
+            <h5>Email</h5>            
+            <input  type="email" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
+            <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
+            <!-- <h5>Nombre y apellido</h5>
             <input  type="text" name="" placeholder="" >
             <h5>nombre de usuario</h5>
             <input  type="text" name="" placeholder="" >
@@ -48,7 +51,7 @@
                  <label for="metodo-envio"><h5>Retirar en punto de entrega</h5>
                     <input class="btn-envio" type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">
                  </label>
-                </fieldset>
+                </fieldset> -->
 
             <!-- <h5>Domicilio de entrega</h5>
             <input  type="text" name="" placeholder="">
@@ -59,13 +62,13 @@
             <h5>Provincia</h5>
             <input  type="text" name="" placeholder=""> -->
             <h5>Contraseña</h5>
-            <input  type="password" name="" placeholder="" >
+            <input  type="password" name="password" placeholder="" >
+            <span class="errors"><%= locals.errors && errors.password ? errors.password.msg : null %></span>
             <h5>Confirmar contraseña</h5>
-            <input  type="password" name="" placeholder="" >           
-           
-           <button href="#"  class="reset" >Borrar</button>
-           
-           <button href="/index" class="submit" type="submit">Enviar</button>
+            <input  type="password" name="passwordRepeat" placeholder="" > 
+            <span class="errors"><%= locals.errors && errors.passwordRepeat ? errors.passwordRepeat.msg : null %></span>          
+                      
+           <button class="submit" type="submit">Enviar</button>
         </div>
 
     </form>

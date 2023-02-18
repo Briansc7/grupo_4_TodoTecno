@@ -7,7 +7,21 @@ const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};
 const usersController = {
 login: (req, res) => res.render("./users/login", {head: loginHeadData}),
 register: (req, res) => res.render("./users/register", {head: registerHeadData}),
-createUser: (req, res)=> res.send(req.body.birthday),
+createUser: (req, res)=> {
+    const errors = validationResult(req);
+    
+    if(errors.isEmpty()){
+        res.redirect("/");
+    }
+
+    const old = {
+        email: req.body.email
+    };
+
+    console.log(errors);
+
+    return res.render("./users/register", {errors: errors.mapped(), old: old, head: registerHeadData});
+},
 loginSubmit: (req, res) => {
     const errors = validationResult(req);
     
