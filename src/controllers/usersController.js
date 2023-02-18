@@ -15,7 +15,11 @@ loginSubmit: (req, res) => {
         res.redirect("/");
     }
 
-    return res.render("./users/login", {errors: errors.mapped(), head: loginHeadData});
+    const old = {
+        email: req.body.email
+    };
+
+    return res.render("./users/login", {errors: errors.mapped(), old: old, head: loginHeadData});
 }
 }
 

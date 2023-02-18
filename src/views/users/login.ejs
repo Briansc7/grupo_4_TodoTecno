@@ -19,7 +19,7 @@
                     <br>
             
                 <h5>Correo electronico*</h5>
-                <input class="button" type="email" name="email" placeholder="usuario@email.com">
+                <input class="button" type="email" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
                     <br>
                     <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
                     <br>
