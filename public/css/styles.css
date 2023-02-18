@@ -24,6 +24,10 @@ main{
     margin-bottom: 10px;
 }
 
+.errors{
+    color: red;
+}
+
 :root{
     --violeta: rgb(156, 70, 236);
     --gris: rgb(168, 168, 168);
