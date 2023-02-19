@@ -19,13 +19,17 @@
         <p>Introduzca su datos para crear una cuenta</p>
         
         <div class="register">
-            <br>
+            <br>            
+            <h5>Nombre</h5>
+            <input  type="text" name="firstName" placeholder="" value="<%= locals.old && locals.old.firstName %>">
+            <span class="errors"><%= locals.errors && errors.firstName ? errors.firstName.msg : null %></span>
+            <h5>Apellido</h5>
+            <input  type="text" name="lastName" placeholder="" value="<%= locals.old && locals.old.lastName %>">
+            <span class="errors"><%= locals.errors && errors.lastName ? errors.lastName.msg : null %></span>
             <h5>Email</h5>            
-            <input  type="email" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
+            <input  type="text" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
             <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
-            <!-- <h5>Nombre y apellido</h5>
-            <input  type="text" name="" placeholder="" >
-            <h5>nombre de usuario</h5>
+            <!-- <h5>nombre de usuario</h5>
             <input  type="text" name="" placeholder="" >
             <h5>Fecha de nacimiento</h5>
             <input  type="date" name="birthday" placeholder="" >
