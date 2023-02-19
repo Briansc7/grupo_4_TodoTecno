@@ -14,9 +14,7 @@ createUser: (req, res)=> {
         res.redirect("/");
     }
 
-    const old = {
-        email: req.body.email
-    };
+    const old = req.body;
 
     console.log(errors);
 
