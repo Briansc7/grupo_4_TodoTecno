@@ -13,14 +13,15 @@ let usersData = JSON.parse(usersJsonRawData); //convierto json a objeto array
 let usersDatabase = {
     usersData: usersData,
     userRegister: userRegister,
-    userGetNewId: userGetNewId
+    userGetNewId: userGetNewId,
+    emailExist: emailExist
 };
 
 function userRegister(userBody){
 
-    if(emailExist(userBody.email)){
+    if(this.emailExist(userBody.email)){
         console.log("Email ya existe");
-        return -1;
+        return -1; //no se registra si el email ya fue registrado por otro usuario
     }
 
     const newId = this.userGetNewId();
@@ -57,7 +58,7 @@ function userGetNewId(){
 }
 
 function emailExist(email){
-    return false;
+    return this.usersData.find(user=>user.email==email);
 }
 
 

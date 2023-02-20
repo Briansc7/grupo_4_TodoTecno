@@ -12,13 +12,14 @@ createUser: (req, res)=> {
     const errors = validationResult(req);
     
     if(errors.isEmpty()){
-        if(usersDatabase.userRegister(req.body) == -1){
-            errors.push({
+        if(usersDatabase.userRegister(req.body) == -1){ //se procede a registrar al usuario
+            //No se pudo registrar porque ya existe un usuario con ese email
+            errors.errors = [{
                 value: "",
                 msg: "Ya existe un usuario registrado con este email",
                 param: "email",
                 location: "body"
-            });
+            }];
 
             const old = req.body;
         
@@ -26,9 +27,11 @@ createUser: (req, res)=> {
 
         };
 
-
+        // El registro fue exitoso
         res.redirect("/");
     }
+
+    //Hubo errores en el formato en el que se ingresaron los datos de registro
 
     const old = req.body;
 
