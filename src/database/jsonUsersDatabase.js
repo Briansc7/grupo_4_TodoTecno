@@ -16,16 +16,29 @@ let usersDatabase = {
     userGetNewId: userGetNewId
 };
 
-function userRegister(user){
+function userRegister(userBody){
 
-    if(emailExist(user.email)){
+    if(emailExist(userBody.email)){
         console.log("Email ya existe");
         return -1;
     }
 
     const newId = this.userGetNewId();
 
-    user.id = newId;
+    const user = {
+        id: newId,
+        email: userBody.email,
+        firstName: userBody.firstName,
+        lastName: userBody.lastName,
+        password: userBody.password,
+        birthday: null,
+        address: null,
+        postalCode: null,
+        location: null,
+        province: null,
+        image: [],
+        role: "user"
+    }
 
     this.usersData.push(user);
 
@@ -41,6 +54,10 @@ function writeJson(destination, data) {
 
 function userGetNewId(){
     return Math.max.apply(Math,this.usersData.map(user=>user.id))+1;
+}
+
+function emailExist(email){
+    return false;
 }
 
 
