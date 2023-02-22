@@ -12,24 +12,26 @@
            
         <button href="#"  class="submit" type="submit">Ingresa con Facebook</button>
       
-          <form class="form-login" action="/" method="get">
+          <form class="form-login" action="/users/login" method="POST">
             <div class="login">
                 <h2>Clientes Registrados</h2>
                 <p>Si tiene una cuenta, inicie sesión con su dirección de correo electrónico</p>
                     <br>
             
                 <h5>Correo electronico*</h5>
-                <input class="button" type="text" name="nombre de usuario" placeholder="nombre de usuario" required>
+                <input class="button" type="email" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
                     <br>
+                    <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
                     <br>
                 <h5>Contraseña*</h5>
                
-                <input class="button" type="password" name="contraseña" placeholder="ingresa tu contraseña" required>
+                <input class="button" type="password" name="password" placeholder="Ingresa tu contraseña">
              
                 <br>
+                <span class="errors"><%= locals.errors && errors.password ? errors.password.msg : null %></span>
                 <br>
                 <div>
-                     <button href="/index"    class="btn-submit" type="submit">Iniciar sesion</button>
+                     <button  class="btn-submit" type="submit">Iniciar sesion</button>
                     <br>
                     <br>
                      <a href="#" class="forget-pass" type="submit">¿Olvidaste tu contraseña?</a>
