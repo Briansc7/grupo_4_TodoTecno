@@ -82,3 +82,16 @@ Creación de productos:
 Edición de productos:
 > http://localhost:3000/admin/productEdit/1
 
+
+<h2>Usuarios</h2>
+
+Para las pruebas se proveen dos usuarios predefinidos.
+Los datos de inicio de sesión son:
+
+Email: admin@todotecno.com
+Contraseña: administrador
+Rol: admin.
+
+Email: usuario@email.com
+Contraseña: usuario1
+Rol: user.

@@ -4,6 +4,7 @@ Manejador de Tablas Json. Esta lógica también podría ir en el controlador
 
 const path = require("path");
 const fs = require("fs");
+const bcrypt = require("bcryptjs");
 
 //Se obtienen los datos de los usuarios
 const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -31,7 +32,7 @@ function userRegister(userBody){
         email: userBody.email,
         firstName: userBody.firstName,
         lastName: userBody.lastName,
-        password: userBody.password,
+        password: bcrypt.hashSync(userBody.password, 10),
         birthday: null,
         address: null,
         postalCode: null,
