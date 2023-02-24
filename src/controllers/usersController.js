@@ -43,7 +43,20 @@ loginSubmit: (req, res) => {
     const errors = validationResult(req);
     
     if(errors.isEmpty()){
-        res.redirect("/");
+
+        if(usersDatabase.checkPassword(req.body.email, req.body.password)){
+            res.redirect("/");
+        }
+        else{
+            errors.errors = [{
+                value: "",
+                msg: "Email o contraseña inválido",
+                param: "email",
+                location: "body"
+            }];
+        }
+
+        
     }
 
     const old = {
