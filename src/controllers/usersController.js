@@ -45,6 +45,10 @@ loginSubmit: (req, res) => {
     if(errors.isEmpty()){
 
         if(usersDatabase.checkPassword(req.body.email, req.body.password)){
+            const name = usersDatabase.userGetName(req.body.email);
+            req.session.user = {
+                name: name
+            };
             res.redirect("/");
         }
         else{

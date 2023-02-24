@@ -16,7 +16,8 @@ let usersDatabase = {
     userRegister: userRegister,
     userGetNewId: userGetNewId,
     emailExist: emailExist,
-    checkPassword: checkPassword
+    checkPassword: checkPassword,
+    userGetName: userGetName
 };
 
 function userRegister(userBody){
@@ -74,5 +75,14 @@ function checkPassword(email, password){
 
 }
 
+function userGetName(email){
+    let userFound = this.emailExist(email);
+
+    if(!userFound){
+        return null;
+    }
+
+    return userFound.firstName;
+}
 
 module.exports = usersDatabase;
