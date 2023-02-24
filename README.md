@@ -12,8 +12,6 @@ Cattaneo, Santino
 
 Leguiza, Martin Leandro
 
-Paradiso, Matias
-
 Samudio Cáceres, Brian:
 Ingeniero en Sistemas e Ingeniero en Electrónica, egresado de UTN FRBA.
 
