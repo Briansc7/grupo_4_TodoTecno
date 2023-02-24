@@ -15,7 +15,8 @@ let usersDatabase = {
     usersData: usersData,
     userRegister: userRegister,
     userGetNewId: userGetNewId,
-    emailExist: emailExist
+    emailExist: emailExist,
+    checkPassword: checkPassword
 };
 
 function userRegister(userBody){
@@ -60,6 +61,17 @@ function userGetNewId(){
 
 function emailExist(email){
     return this.usersData.find(user=>user.email==email);
+}
+
+function checkPassword(email, password){
+    let userFound = this.emailExist(email);
+
+    if(!userFound){
+        return false;
+    }
+
+    return bcrypt.compareSync(password, userFound.password);
+
 }
 
 
