@@ -72,15 +72,19 @@ main .login .btn-submit{
     padding:5px;
     width: 100%;
     border-radius: 2em;
+    background-color: white;
     }
 
 main .login .btn-submit:hover{
-    background-color: var(--botonesHover);
+    background-color: #000;
     color: #fff;
 }
 main .btn-register:hover{
-    background-color: var(--botonesHover);
+    background-color: #000;
     color: #fff;
+} .btn-register {
+    background-color: white;
+    margin-top: 10px;
 }
 
 main .login .forget-pass:hover{
