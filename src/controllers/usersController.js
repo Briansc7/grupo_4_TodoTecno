@@ -49,6 +49,11 @@ loginSubmit: (req, res) => {
             req.session.user = {
                 name: name
             };
+
+            if(req.body.rememberUser == "on"){
+                res.cookie("name", name, {maxAge: 9999999});
+            }
+
             res.redirect("/");
         }
         else{
