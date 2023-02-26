@@ -63,6 +63,7 @@ main div .reset:hover,
 main div .submit:hover {
 background-color: var(--botonesHover);
 color:white;
+cursor: pointer;
 }
 
 main div .reset,
