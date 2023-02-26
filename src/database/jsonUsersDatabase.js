@@ -4,6 +4,7 @@ Manejador de Tablas Json. Esta lógica también podría ir en el controlador
 
 const path = require("path");
 const fs = require("fs");
+const bcrypt = require("bcryptjs");
 
 //Se obtienen los datos de los usuarios
 const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -14,7 +15,9 @@ let usersDatabase = {
     usersData: usersData,
     userRegister: userRegister,
     userGetNewId: userGetNewId,
-    emailExist: emailExist
+    emailExist: emailExist,
+    checkPassword: checkPassword,
+    userGetName: userGetName
 };
 
 function userRegister(userBody){
@@ -31,7 +34,7 @@ function userRegister(userBody){
         email: userBody.email,
         firstName: userBody.firstName,
         lastName: userBody.lastName,
-        password: userBody.password,
+        password: bcrypt.hashSync(userBody.password, 10),
         birthday: null,
         address: null,
         postalCode: null,
@@ -61,5 +64,25 @@ function emailExist(email){
     return this.usersData.find(user=>user.email==email);
 }
 
+function checkPassword(email, password){
+    let userFound = this.emailExist(email);
+
+    if(!userFound){
+        return false;
+    }
+
+    return bcrypt.compareSync(password, userFound.password);
+
+}
+
+function userGetName(email){
+    let userFound = this.emailExist(email);
+
+    if(!userFound){
+        return null;
+    }
+
+    return userFound.firstName;
+}
 
 module.exports = usersDatabase;
