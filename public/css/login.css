@@ -1,139 +1,92 @@
 
-
 .main-login{
     display: grid;
     padding: 1em 1em;
-
+    justify-content: center;
     border-top: solid black 2px;
     border-bottom: solid black 2px;
+   
 }
 main div .login{
     display:grid;
-    width: 100%;
     justify-content: center;
     align-items: center;
     padding: 30px;
 }
+
+.main-login form{
+    display: grid;
+    grid-gap: 5px;
+    max-width: 450px;
+}
+
 .button{
     width: 100%;
 }
 .login{
    padding: 10px;
-   max-width: 450px;
 }
-
-.form-login{
-    display: grid;
-    justify-content: center;
-    }
-
-
  .new-register{
     display:grid;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
     padding: 10px;
     max-width: 450px;
-}
+  
+  }
+
 .new-register h2,
 .login h2 {
     width: 100%;
-    display: grid;
-    justify-items: center;
-    justify-content: start;
     border-bottom: 2px solid black;
     }
 
-
-
-main div .pass{
-width: auto;
-}
-
-main div h5 p{
-    color: red;
-    display: flex; 
-    font-style: italic;
-    font-size: 14px;
-    padding-left: 30px;
-    padding-top: 20px;
-    width: 100%;
-}
-main form div h5{
-    display: grid;
-    align-items: center;
-    
-} 
-
 main .login .btn-submit{
-    color: black;
-    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.5);
-    padding:5px;
     width: 100%;
-    border-radius: 2em;
-    background-color: white;
     }
 
-main .login .btn-submit:hover{
-    background-color: #000;
-    color: #fff;
-}
+main .login .btn-submit:hover,
 main .btn-register:hover{
-    background-color: #000;
+    background-color:var(--botonesHover);
     color: #fff;
-} .btn-register {
-    background-color: white;
-    margin-top: 10px;
-}
-
-main .login .forget-pass:hover{
-    color: var(--botonesHover);
-}
-
-main .btn-register{
-    color: black;
-    padding:5px;
-    box-shadow: 5px 5px 0px 0px rgb(0, 0, 0, 0.5);
-    border-radius: 2em;
-    width: 100%;
 }
 
  .required-fields {
- display: grid;
-    justify-content: center;
+    display: grid;
+    justify-content:start;
     color: red;
-}
-
-.required-fields p{
-   
-  width: 450px;
-  padding: 10px
+    padding-left: 15px;
+    max-width: 450px;
 }
 
 
-
-    @media (min-width: 769px) {
-        .main-login{
-            display:grid;
-            width: 100%;
-            grid-template-columns: auto auto;
-            align-content: space-around;
-            align-items: start;
-        }
-        main div .login{
-            display:grid;
-            width: 50%;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        main div .new-register{
-            padding-top: 30px;
-            display:grid;
-            width: 50%;
-            justify-content: center;
-            align-items: center;
-        }
-        
+@media (min-width: 769px) {
+    .main-login {
+      display: grid;
+      height: 100vh;
+      
     }
+    
+    .form-login {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-self: start;
+    }
+    
+    .new-login {
+      grid-template-columns: 1fr;
+      justify-self: end;
+    }
+
+    .new-register{
+        display:grid;
+        padding: 10px;
+        max-width: 450px;
+        max-height: 200px;
+       
+      }
+      .required-fields{
+        display: grid;
+        align-items: center;
+
+      }
+  }
+    

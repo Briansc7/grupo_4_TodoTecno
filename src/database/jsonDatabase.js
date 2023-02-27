@@ -99,7 +99,7 @@ function getProductsFromRecommendationsByID(productId){
 }
 
 function productsThatAreNew(){
-    return this.productsData.filter(prod=>prod.isNew);
+    return this.productsData.filter(prod=>prod.isNew); 
 }
 
 function productsThatAreOnSale(){
