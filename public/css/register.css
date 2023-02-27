@@ -10,6 +10,7 @@
 main .register{
     display: grid;
     grid-gap: 5px;
+    align-items: center;
 }
 
 .main-register form{

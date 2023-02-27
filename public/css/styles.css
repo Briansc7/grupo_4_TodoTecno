@@ -28,10 +28,50 @@ main{
     color: red;
 }
 
+.btn-facebook i {
+    font-size: 1.5em;
+    color: #4267B2;
+  }
+
+.btn-google svg {
+     width: 22px;
+     height: 22px;
+    }
+      
+.btn-google p,    
+.btn-facebook p,
+.btn-register p,
+.btn-submit p {
+     margin: 0;
+     font-size: 14px;
+     font-weight: bold;
+      }
+.btn-google,
+.btn-facebook,
+.btn-register,
+.btn-submit{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 30px;
+     border : solid black 2px;
+     border-radius: 2em;
+     cursor: pointer;
+     margin-top: 10px;
+     grid-gap: 10px;
+     background-color: white;
+     color: black;
+     padding: 5px;
+     box-shadow: 5px 5px 0px 0px rgb(0 0 0 / 50%);
+     max-width: 450px;
+
+}
+
+
 :root{
     --violeta: rgb(156, 70, 236);
     --gris: rgb(168, 168, 168);
-    --botonesHover: var(--violeta);
+    --botonesHover: rgb(0,0,0);
     --verdeOscuro: green;
     --azul: blue;
 }
