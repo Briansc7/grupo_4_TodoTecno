@@ -4,6 +4,7 @@ const usersDatabase = require(path.resolve(__dirname, "../database/jsonUsersData
 
 const loginHeadData = {title: "Login", stylesheet: "/css/login.css"};
 const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};
+const profileHeadData = {title: "Perfil", stylesheet: "/css/profile.css"};
 
 const usersController = {
 login: (req, res) => res.render("./users/login", {head: loginHeadData}),
@@ -73,6 +74,9 @@ loginSubmit: (req, res) => {
     };
 
     return res.render("./users/login", {errors: errors.mapped(), old: old, head: loginHeadData});
+},
+profile: (req, res) => {
+    return res.render("./users/profile", {head: profileHeadData});
 }
 }
 

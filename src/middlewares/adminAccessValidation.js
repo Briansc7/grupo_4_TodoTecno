@@ -1,3 +1,4 @@
+// Middleware para restringir el acceso a determinadas rutas solamente para los usuarios de rol administrador
 const createError = require('http-errors');
 
 module.exports = (req, res, next) => {
