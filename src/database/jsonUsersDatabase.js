@@ -17,7 +17,8 @@ let usersDatabase = {
     userGetNewId: userGetNewId,
     emailExist: emailExist,
     checkPassword: checkPassword,
-    userGetName: userGetName
+    userGetName: userGetName,
+    userGetToken: userGetToken
 };
 
 function userRegister(userBody){
@@ -83,6 +84,18 @@ function userGetName(email){
     }
 
     return userFound.firstName;
+}
+
+function userGetToken(email){
+    let userFound = this.emailExist(email);
+
+    if(!userFound){
+        return null;
+    }
+
+    //Se genera un token que va a tener los permisos de administrador o de usuario
+    //En un futuro se va a delegar la tarea a un servidor de authenticación 
+    return bcrypt.hashSync(userFound.role+"Token", 10);
 }
 
 module.exports = usersDatabase;

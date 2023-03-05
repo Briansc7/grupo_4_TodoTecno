@@ -47,12 +47,15 @@ loginSubmit: (req, res) => {
 
         if(usersDatabase.checkPassword(req.body.email, req.body.password)){
             const name = usersDatabase.userGetName(req.body.email);
+            const token = usersDatabase.userGetToken(req.body.email);
             req.session.user = {
-                name: name
+                name: name,
+                token: token
             };
 
             if(req.body.rememberUser == "on"){
                 res.cookie("name", name, {maxAge: 9999999});
+                res.cookie("token", token, {maxAge: 9999999});
             }
 
             res.redirect("/");
