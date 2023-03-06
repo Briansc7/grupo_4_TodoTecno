@@ -58,7 +58,7 @@ loginSubmit: (req, res) => {
                 res.cookie("token", token, {maxAge: 9999999});
             }
 
-            res.redirect("/");
+            return res.redirect("/");
         }
         else{
             errors.errors = [{
@@ -80,6 +80,14 @@ loginSubmit: (req, res) => {
 },
 profile: (req, res) => {
     return res.render("./users/profile", {head: profileHeadData});
+},
+logout: (req, res) => {
+    //borro de la sesion y de las cookies los datos del usuario
+    req.session.user = null;
+    res.clearCookie("name");
+    res.clearCookie("token");
+
+    return res.redirect("/");
 }
 }
 
