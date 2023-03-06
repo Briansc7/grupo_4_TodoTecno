@@ -13,4 +13,6 @@ usersRouter.get("/profile", registeredUsersOnlyAccessValidation, usersController
 usersRouter.post("/", registerFormatValidation, usersController.createUser);
 usersRouter.post("/login", loginFormatValidation, usersController.loginSubmit);
 
+usersRouter.post("/logout", usersController.logout);
+
 module.exports = usersRouter;
