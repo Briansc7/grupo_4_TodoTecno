@@ -32,6 +32,9 @@ img {
 .text-downCart {
     text-align: center;
 }
+.text-downCart {
+    font-weight: 500;
+}
 
 .icons {
     grid-column: 6;
@@ -39,4 +42,21 @@ img {
     color: var(--gris);
 } .icons:hover {
     color: red;
+}
+
+.buttton-check-cart {
+    display: block;
+    margin: auto;
+    font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 15%;
+  box-shadow: 5px 5px 0px 0px rgb(0, 0, 0, 0.5);
+  margin-bottom: 15px;
+  margin-top: 15px;
+} .buttton-check-cart:hover {
+    background-color: green;
+    color: white;
+}
+
+@media (min-width: 769px) {
 }
