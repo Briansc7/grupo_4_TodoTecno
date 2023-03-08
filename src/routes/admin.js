@@ -25,13 +25,15 @@ adminRouter.put("/productEdit/:id", adminAccessValidation, adminController.produ
 adminRouter.delete('/productDelete/:id', adminAccessValidation, adminController.productDestroy); 
 
 //Rutas para CRUD de usuarios
-adminRouter.get('/userCreate', adminAccessValidation, adminController.userCreate); 
-adminRouter.post('/userCreate', adminAccessValidation, adminController.userStore); 
+adminRouter.get('/users', adminAccessValidation, adminController.usersList); 
 
-adminRouter.get("/userEdit/:id", adminAccessValidation, adminController.userEdit);
-adminRouter.put("/userEdit/:id", adminAccessValidation, adminController.userUpdate);
+adminRouter.get('/users/add', adminAccessValidation, adminController.usersAdd); 
+adminRouter.post('/users/create', adminAccessValidation, adminController.usersCreate); 
 
-adminRouter.delete('/userDelete/:id', adminAccessValidation, adminController.userDestroy); 
+adminRouter.get("/users/edit/:id", adminAccessValidation, adminController.usersEdit);
+adminRouter.put("/users/update/:id", adminAccessValidation, adminController.usersUpdate);
+
+adminRouter.delete('/users/delete/:id', adminAccessValidation, adminController.usersDestroy); 
 
 
 
