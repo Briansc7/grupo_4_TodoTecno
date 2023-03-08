@@ -100,11 +100,14 @@ Creación de productos:
 Edición de productos:
 > http://localhost:3000/admin/productEdit/1
 
+Listado de Usuarios existentes:
+> http://localhost:3000/admin/users
+
 Creación de Usuarios:
-> http://localhost:3000/admin/userCreate
+> http://localhost:3000/admin/users/add
 
 Edición de Usuarios:
-> http://localhost:3000/admin/userEdit/1
+> http://localhost:3000/admin/users/edit/1
 
 
 <h2>Usuarios</h2>
