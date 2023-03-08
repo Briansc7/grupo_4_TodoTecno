@@ -2,6 +2,7 @@
 const path = require("path");
 
 const database = require(path.resolve(__dirname, "../database/jsonDatabase"));
+const usersDatabase = require(path.resolve(__dirname, "../database/jsonUsersDatabase"));
 
 const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
 const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
@@ -86,7 +87,13 @@ usersList: (req, res) => {
 },
 
 usersCreate: (req, res) => {
-
+    /*let newUser = {
+        id: null,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    };*/
 },
 
 usersEdit: (req, res) => {

@@ -3,3 +3,5 @@ node_modules
 !*Template.json
 public/images/products/*
 !defaultProduct.png
+public/images/users/*
+!defaultUser.png
