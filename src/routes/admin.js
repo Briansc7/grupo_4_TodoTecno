@@ -13,7 +13,11 @@ cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
     } 
 });
 
+
+
 let upload = multer({ storage: storage });
+
+
 
 //Rutas para CRUD de productos 
 adminRouter.get("/productCreate", adminAccessValidation, adminController.productCreate);
