@@ -53,14 +53,9 @@ Para levantar el servidor ejecutar el comando:
 
 Se puede comprobar el funcionamiento de la página visitando los siguientes links:
 
+<h3>Rutas accesibles por cualquiera:</h3>
 Página principal:
 > http://localhost:3000/
-
-Login:
-> http://localhost:3000/users/login
-
-Registro: 
-> http://localhost:3000/users/register
 
 Búsqueda de productos (funciona con la barra de búsqueda):
 > http://localhost:3000/search?keywords=samsung
@@ -73,7 +68,23 @@ Detalle de producto:
 
 Carrito de compras:
 > http://localhost:3000/products/productCart
+Se permite agregar productos al carrito antes de hacer login para mejorar la experiencia del usuario.
 
+<h3>Rutas accesibles solamente por visitantes:</h3>
+Hacen redirect a /users/profile si el usuario ya está logueado.
+Login:
+> http://localhost:3000/users/login
+
+Registro: 
+> http://localhost:3000/users/register
+
+<h3>Rutas accesibles solamente por usuarios logueados:</h3>
+Hacen redirect a /users/login si el usuario no está logueado.
+Perfil: 
+> http://localhost:3000/users/profile
+
+<h3>Rutas accesibles solamente por usuarios logueados y con rol administrador:</h3>
+Devuelven eror 404 si el usuario no está logueado y si no tiene rol administrador.
 Creación de productos:
 > http://localhost:3000/admin/productCreate
 
