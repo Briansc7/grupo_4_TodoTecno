@@ -15,7 +15,7 @@ cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
 
 let upload = multer({ storage: storage });
 
- 
+//Rutas para CRUD de productos 
 adminRouter.get("/productCreate", adminAccessValidation, adminController.productCreate);
 adminRouter.post('/productCreate', adminAccessValidation, upload.array("images"), adminController.productStore); 
 
@@ -23,6 +23,15 @@ adminRouter.get("/productEdit/:id", adminAccessValidation, adminController.produ
 adminRouter.put("/productEdit/:id", adminAccessValidation, adminController.productUpdate);
 
 adminRouter.delete('/productDelete/:id', adminAccessValidation, adminController.productDestroy); 
+
+//Rutas para CRUD de usuarios
+adminRouter.get('/userCreate', adminAccessValidation, adminController.userCreate); 
+adminRouter.post('/userCreate', adminAccessValidation, adminController.userStore); 
+
+adminRouter.get("/userEdit/:id", adminAccessValidation, adminController.userEdit);
+adminRouter.put("/userEdit/:id", adminAccessValidation, adminController.userUpdate);
+
+adminRouter.delete('/userDelete/:id', adminAccessValidation, adminController.userDestroy); 
 
 
 

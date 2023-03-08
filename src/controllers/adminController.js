@@ -6,6 +6,9 @@ const database = require(path.resolve(__dirname, "../database/jsonDatabase"));
 const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
 const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
 
+const userCreateHeadData = {title: "Crear Nuevo Usuario", stylesheet: "/css/userCreate.css"};
+const userEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/userEdit.css"};
+
 const adminController = {
 
 productCreate: (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData}),
@@ -72,7 +75,27 @@ productDestroy: (req, res) => {
     res.redirect("/");
 },
 
+userCreate: (req, res) => {
+    res.render("./admin/userCreate", {head: userCreateHeadData})
+},
 
+userStore: (req, res) => {
+
+},
+
+userEdit: (req, res) => {
+    res.render("./admin/userEdit",
+    {head: userEditHeadData}
+    )
+},
+
+userUpdate: (req, res) => {
+
+},
+
+userDestroy: (req, res) => {
+
+},
 
 }
 

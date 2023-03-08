@@ -32,4 +32,6 @@ app.use("/products", productsRouter);
 app.use("/users", usersRouter);
 app.use("/admin", adminRouter);
 
+app.use((req,res,next)=>res.status(404).render("not-found"));
+
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
