@@ -84,6 +84,9 @@
 
 .buttons-section {
     grid-area: buttons-section;
+    display: block;
+    margin: auto;
+
 }
 
 .recomendations{

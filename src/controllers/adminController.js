@@ -2,9 +2,15 @@
 const path = require("path");
 
 const database = require(path.resolve(__dirname, "../database/jsonDatabase"));
+const usersDatabase = require(path.resolve(__dirname, "../database/jsonUsersDatabase"));
 
 const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
 const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
+
+const usersAddHeadData = {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"};
+const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersEdit.css"};
+
+const usersListHeadData = {title: "Listado de Usuarios", stylesheet: "/css/usersList.css"};
 
 const adminController = {
 
@@ -72,7 +78,37 @@ productDestroy: (req, res) => {
     res.redirect("/");
 },
 
+usersAdd: (req, res) => {
+    res.render("./admin/usersAdd", {head: usersAddHeadData})
+},
 
+usersList: (req, res) => {
+    res.render("./admin/usersList", {head: usersListHeadData})
+},
+
+usersCreate: (req, res) => {
+    /*let newUser = {
+        id: null,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    };*/
+},
+
+usersEdit: (req, res) => {
+    res.render("./admin/usersEdit",
+    {head: usersEditHeadData}
+    )
+},
+
+usersUpdate: (req, res) => {
+
+},
+
+usersDestroy: (req, res) => {
+
+},
 
 }
 

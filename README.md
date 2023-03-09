@@ -43,7 +43,7 @@ Se puede acceder al tablero utilizado en el siguiente link: https://trello.com/b
 Luego de clonar el repositorio, instalar las dependencias correspondientes ejecutando: 
 > npm install 
 
-La aplicación utiliza una base de datos basada en json, es necesario incializarla ejecutando:
+La aplicación utiliza una base de datos basada en json, es necesario inicializarla ejecutando:
 > npm run cdata
 
 Para levantar el servidor ejecutar el comando:
@@ -54,6 +54,7 @@ Para levantar el servidor ejecutar el comando:
 Se puede comprobar el funcionamiento de la página visitando los siguientes links:
 
 <h3>Rutas accesibles por cualquiera:</h3>
+
 Página principal:
 > http://localhost:3000/
 
@@ -67,11 +68,15 @@ Detalle de producto:
 > http://localhost:3000/products/productDetail/1
 
 Carrito de compras:
-> http://localhost:3000/products/productCart
+
 Se permite agregar productos al carrito antes de hacer login para mejorar la experiencia del usuario.
 
+> http://localhost:3000/products/productCart
+
 <h3>Rutas accesibles solamente por visitantes:</h3>
+
 Hacen redirect a /users/profile si el usuario ya está logueado.
+
 Login:
 > http://localhost:3000/users/login
 
@@ -79,17 +84,30 @@ Registro:
 > http://localhost:3000/users/register
 
 <h3>Rutas accesibles solamente por usuarios logueados:</h3>
+
 Hacen redirect a /users/login si el usuario no está logueado.
+
 Perfil: 
 > http://localhost:3000/users/profile
 
 <h3>Rutas accesibles solamente por usuarios logueados y con rol administrador:</h3>
-Devuelven eror 404 si el usuario no está logueado y si no tiene rol administrador.
+
+Devuelven error 404 si el usuario no está logueado y si no tiene rol administrador.
+
 Creación de productos:
 > http://localhost:3000/admin/productCreate
 
 Edición de productos:
 > http://localhost:3000/admin/productEdit/1
+
+Listado de Usuarios existentes:
+> http://localhost:3000/admin/users
+
+Creación de Usuarios:
+> http://localhost:3000/admin/users/add
+
+Edición de Usuarios:
+> http://localhost:3000/admin/users/edit/1
 
 
 <h2>Usuarios</h2>
