@@ -13,7 +13,7 @@ createUser: (req, res)=> {
     const errors = validationResult(req);
     
     if(errors.isEmpty()){
-        if(usersDatabase.userRegister(req.body, req.files) == -1){ //se procede a registrar al usuario
+        if(usersDatabase.userRegister(req.body, req.file) == -1){ //se procede a registrar al usuario
             //No se pudo registrar porque ya existe un usuario con ese email
             errors.errors = [{
                 value: "",
