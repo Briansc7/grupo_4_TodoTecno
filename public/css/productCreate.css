@@ -12,13 +12,8 @@
    
 }
 
-.product-create ul li {
-    padding: 5px 0px 5px 0px;
-}
 
-.product-create ul li input{
-width: 100%;
-}
+
 
 .product-create-btn{
     display: grid;
