@@ -1,47 +1,57 @@
-<h5>Categoría del producto</h5>
-        <input  type="text" name="category" placeholder="ej: Smart TV" required value="<%= locals.product && product.category %>">
-        <h5>Marca</h5>
-        <input  type="text" name="brand" placeholder="" required value="<%= locals.product && product.brand %>">
-        <h5>Modelo</h5>
-        <input  type="text" name="model" placeholder="" required value="<%= locals.product && product.model %>">
-        <h5>Numero de articulo</h5>
-        <input  type="number" name="artNumber" placeholder="" required value="<%= locals.product && product.artNumber %>">
-        <h5>Precio</h5>
-        <input  type="number" name="price" placeholder="" required value="<%= locals.product && product.price %>">
-        <h5>Cantidad Disponible</h5>
-        <input  type="number" name="availability" placeholder="" required value="<%= locals.product && product.availability %>">
-        <h5>Descuento [%]</h5>
-        <input  type="number" name="discount" placeholder="" required value="<%= locals.product && product.discount %>">
-        <h5>Descuento habilitado: <input type="checkbox" name="isOnSale" 
+    <div class="input-section"><h5>Categoría del producto</h5>
+        <input class="input" type="text" name="category" placeholder="ej: Smart TV" required value="<%= locals.product && product.category %>">
+    </div>   
+    <div class="input-section"><h5>Marca</h5>
+        <input class="input" type="text" name="brand" placeholder="" required value="<%= locals.product && product.brand %>">
+    </div>   
+    <div class="input-section"><h5>Modelo</h5>
+        <input class="input" type="text" name="model" placeholder="" required value="<%= locals.product && product.model %>">
+    </div>
+    <div class="input-section"><h5>Numero de articulo</h5>
+       <input class="input" type="number" name="artNumber" placeholder="" required value="<%= locals.product && product.artNumber %>">
+    </div>
+    <div class="input-section"><h5>Precio</h5>
+        <input class="input" type="number" name="price" placeholder="" required value="<%= locals.product && product.price %>">
+    </div>    
+    <div class="input-section"><h5>Cantidad Disponible</h5>
+        <input class="input" type="number" name="availability" placeholder="" required value="<%= locals.product && product.availability %>">
+    </div>    
+    <div class="input-section"><h5>Descuento [%]</h5>
+        <input class="input" type="number" name="discount" placeholder="" required value="<%= locals.product && product.discount %>">
+    </div>
+        <br>
+        <h5>Descuento habilitado: <input  type="checkbox" name="isOnSale" 
             <% if(locals.product && product.isOnSale){ %>
                 checked
             <% } %>
-        ></h5>        
+        </h5>        
+        <br>
         <h5>Es nueva adquisición: <input type="checkbox" name="isNew"
             <% if(locals.product && product.isNew){ %>
                 checked
             <% } %>
-        ></h5>      
-        <h5>Descripción</h5>
-        <textarea name="description">
+        </h5>
+        <br>      
+    <div class="input-section"><h5>Descripción</h5>
+        <textarea class="input" name="description">
             <% if(locals.product) { %>
                 <% for(i=0;i<product.description.length;i++) { %>
                     <%= product.description[i] %>
                 <% } %>
             <% } %>
         </textarea>
-
+    </div>
         <% if (!locals.product) { %>
 
             <label for="images" class="form-label">Imágenes:</label>
-			<input type="file" id="image" name="images" required multiple>
+			<input class="input"type="file" id="image" name="images" required multiple>
 
         <% } %>        
         
         <div class="product-create-btn">
-             <button class="reset" type="reset">Reiniciar Campos</button>
+             <button class="btn-reset" type="reset">Reiniciar Campos</button>
              <br>
-             <button class="submit" type="submit"><% if(!locals.product){%>
+             <button class="btn-submit" type="submit"><% if(!locals.product){%>
                 Crear Producto
             <%}else{%>
                 Guardar Cambios

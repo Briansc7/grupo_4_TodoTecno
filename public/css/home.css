@@ -1,33 +1,8 @@
 
-main .products{
-    display: grid;
-    grid-template-columns: auto;
-    padding: 5px;
-}
-
-main section .products{
-display: grid;
-justify-items: center;
-}
-.main-article{
-    padding: 15px;
-}
-
-div article{
-    margin: 2px solid black
-}
-
-main section h3{
+h3{
     font-size: 24px;
 }
 
-.product_img{
-    width: 300px;
-    mix-blend-mode: multiply;
-}   
-.discount{
-    color: red;
-}
 
 .categories {
     display: grid;
@@ -68,26 +43,91 @@ main section h3{
 .img-banner img{
     width: 100%;
 }
-.products article :hover{
+
+/*seccion filtros*/
+
+.filters{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+/*secciones de productos*/
+
+.highlighted-offers,
+.new-arriwals{
+    display: grid;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.products{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(95%, 1fr));
+    align-items: center;
+    gap: 10px;
+}
+
+
+.product_img {
+    width: 100%;
+    mix-blend-mode: multiply;
+}
+.main-article{
+    padding: 15px;
+}
+
+.home-image{
+    padding: 10px;
+}
+
+.discount{
+    color: red;
+}
+
+.cont-product {
+    background-color: white;
+    max-height: 450px;
+}
+
+.cont-product article:hover{
     box-shadow: 2px 2px 2px 2px var(--gris);
 }
 
+
+
+
+
 @media (min-width: 390px) {
 
-    .product_img{
-        width: 40vw;
-    }
-    main .products{
-        grid-template-columns: auto auto;
-    }
+      .products{
+            grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+        }
+    
+        .products {
+            width: 95%; /* ajusta al ancho deseado */
+        }
+        .cont-product{
+            min-height: 315px;
+            max-width: 412px;
+        }
+
+    .filters {
+        flex-wrap: nowrap;
+        width: 50%;
+}
 }
 @media (min-width: 769px) {
+   
+    .products {
+            grid-template-columns: repeat(auto-fit, minmax(22%, 1fr)); /* ajusta al ancho deseado */
+        }
 
-    .product_img{
-        width: 22vw;
-    }
-    main .products{
-        grid-template-columns: auto auto auto auto;
+      .filters > * {
+        width: 50%;
     }
 
 }
+

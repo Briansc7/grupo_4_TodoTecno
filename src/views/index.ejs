@@ -1,92 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <%- include("./partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
+        <%- include("./partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
 
-<body>
-    <%- include("./partials/header") %>
-    <main>
-        <section class="banner">
-            <div class="img-banner">
-                <img src="images\banner.webp" alt="">
-            </div>
-            <div class="text-banner">
-                <ul class="list-banner">
-                    <li class="one-text"><i class="fa-regular fa-credit-card icon-banner"></i> Paga con credito y debito</li>
-                    <li class="two-text"><i class="fa-solid fa-percent icon-banner"></i> Descuentos imperdibles</li>
-                    <li class="three-text"><i class="fa-solid fa-truck-fast icon-banner"></i> Envio a todo el pais y retiro gratis</li>
-                </ul>
+    <body>
+        <%- include("./partials/header") %>
+        <main>
+            <section class="banner">
+                <div class="img-banner">
+                    <img src="images\banner.webp" alt="">
+                </div>
+                <div class="text-banner">
+                    <ul class="list-banner">
+                        <li class="one-text"><i class="fa-regular fa-credit-card icon-banner"></i> Paga con credito y debito</li>
+                        <li class="two-text"><i class="fa-solid fa-percent icon-banner"></i> Descuentos imperdibles</li>
+                        <li class="three-text"><i class="fa-solid fa-truck-fast icon-banner"></i> Envio a todo el pais y retiro gratis</li>
+                    </ul>
+                </div>
+            </section>
+        <section class="categories">
+            <div class="sub-categories televisores">
+                <div class="div-image-categorie">
+                    <img src="images\productsTemplate\tv-smart-product.png" alt="" class="image-c">
+                </div>
+                    <p>Televisores</p>
+                </div>
+                <div class="sub-categories celulares">
+                    <div class="div-image-categorie">
+                    <img src="images\productsTemplate\iphone-x-product.png" alt="" class="image-c">
+                    </div>
+                    <p>Celulares</p>
+                </div>
+                <div class="sub-categories computadoras">
+                    <div class="div-image-categorie">
+                    <img src="images\productsTemplate\notebook-product.png" alt="" class="image-c">
+                    </div>
+                    <p>Computadoras</p>
+                </div>
+                <div class="sub-categories consolas">
+                    <div class="div-image-categorie">
+                    <img src="images\productsTemplate\play-5-product.png" alt="" class="image-c">
+                    </div>
+                    <p>Consolas y mas</p>
+                </div>
+                <div class="sub-categories climatizacion">
+                    <div class="div-image-categorie">
+                    <img src="images\productsTemplate\aire-acondicionado-product.png" alt="" class="image-c">
+                    </div>
+                    <p>Climatizacion</p>
             </div>
         </section>
-    <section class="categories">
-         <div class="sub-categories televisores">
-            <div class="div-image-categorie">
-                <img src="images\productsTemplate\tv-smart-product.png" alt="" class="image-c">
-            </div>
-                <p>Televisores</p>
-            </div>
-            <div class="sub-categories celulares">
-                <div class="div-image-categorie">
-                <img src="images\productsTemplate\iphone-x-product.png" alt="" class="image-c">
-                </div>
-                <p>Celulares</p>
-            </div>
-            <div class="sub-categories computadoras">
-                <div class="div-image-categorie">
-                <img src="images\productsTemplate\notebook-product.png" alt="" class="image-c">
-                </div>
-                <p>Computadoras</p>
-            </div>
-            <div class="sub-categories consolas">
-                <div class="div-image-categorie">
-                <img src="images\productsTemplate\play-5-product.png" alt="" class="image-c">
-                </div>
-                <p>Consolas y mas</p>
-            </div>
-            <div class="sub-categories climatizacion">
-                <div class="div-image-categorie">
-                <img src="images\productsTemplate\aire-acondicionado-product.png" alt="" class="image-c">
-                </div>
-                <p>Climatizacion</p>
-        </div>
-    </section>
-        <section class="highlighted-offers">
-            <h3>Aprovecha las ofertas destacadas</h3>
-            <br> 
-            <div class="products">                
-                <% for(i=0;i<productsOnSale.length;i++) { %>
-                    <article>
-                        <img src="images\products\<%= productsOnSale[i].images[0] %>" alt="<%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %>" class="product_img">
-                        <div class="main-article">
-                            <p class="price">$<%= productsOnSale[i].price %></p>
-                            <p class="discount"><%= productsOnSale[i].discount %>% OFF</p>
-                            <h4 class="description"><%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %></h4>
+    <div class="filters"> <section>
+            <h4>Categoría</h4>
+            <form>
+                <label for="category"></label>
+                <select id="category" name="category">
+                    <option value="televisores">Televisores</option>
+                    <option value="celulares">Celulares</option>
+                    <option value="computadoras">Computadoras</option>
+                    <option value="consolas">Consolas y más</option>
+                    <option value="climatizacion">Climatización</option>
+                </select>
+                <button type="submit">Filtrar</button>
+            </form>
+        </section>
+        <section>
+            <h4>Prrecio</h4>
+            <label for="filtro"></label>
+    <input type="range" id="filtro" name="filtro" min="0" max="2000000">
+        </section>
+    </div>
+            <section class="highlighted-offers">
+                <h3>Aprovecha las ofertas destacadas</h3>
+                <br> 
+                <div class="products">                
+                    <% for(i=0;i<productsOnSale.length;i++) { %>
+                       <div class="cont-product">
+                        <article>
+                            <div class="home-image">
+                            <img src="images\products\<%= productsOnSale[i].images[0] %>" alt="<%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %>" class="product_img">
                         </div>
-                    </article>
-                <% } %>
-            </div>
-        </section>
-        <section class="new-arriwals">
-            <br>
-            <br>
-            <h3>Nuevos ingresos</h3>
-            <br>
-            <div class="products">                
-                <% for(i=0;i<productsNew.length;i++) { %>
-                    <article>
-                        <img src="images\products\<%= productsNew[i].images[0] %>" alt="<%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %>" class="product_img">
-                        <div class="main-article">
-                            <p class="price">$<%= productsNew[i].price %></p>
-                            <p class="discount"><%= productsNew[i].discount %>% OFF</p>
-                            <h4 class="description"><%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %></h4>
-                        </div>
-                    </article>
-                <% } %>
-            </div>
-        </section>
-    </main>
-    
+                            <div class="main-article">
+                                <p class="price">$<%= productsOnSale[i].price %></p>
+                                <p class="discount"><%= productsOnSale[i].discount %>% OFF</p>
+                                <h4 class="description"><%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %></h4>
+                            </div>
+                        </article>
+                    </div>
+                    <% } %>
+                </div>
+            </section>
+            <section class="new-arriwals">
+                <br>
+                <br>
+                <h3>Nuevos ingresos</h3>
+                <br>
+                <div class="products">                
+                    <% for(i=0;i<productsNew.length;i++) { %>
+                    <div class="cont-product">
+                        <article>
+                            <div class="home-image">
+                            <img src="images\products\<%= productsNew[i].images[0] %>" alt="<%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %>" class="product_img">
+                            </div>
+                            <div class="main-article">
+                                <p class="price">$<%= productsNew[i].price %></p>
+                                <p class="discount"><%= productsNew[i].discount %>% OFF</p>
+                                <h4 class="description"><%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %></h4>
+                            </div>
+                        </article>
+                    </div>
+                    <% } %>
+                </div>
+            </section>
+        </main>
+        
 
-    <%- include("./partials/footer") %>
-</body>
-</html> 
+        <%- include("./partials/footer") %>
+    </body>
+    </html> 

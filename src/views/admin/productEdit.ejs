@@ -6,7 +6,7 @@
 <body>
     <%- include("../partials/header") %>
  
-<main>
+<main class=" main-create">
 <% if(product) { %>
 <form action="/admin/productEdit/<%= product.id %>?_method=PUT" method="POST">
     
