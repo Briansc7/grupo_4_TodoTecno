@@ -36,8 +36,10 @@
         </section>
         <section class="buttons-section">
             <a href="#" class="buy-now-button">COMPRAR AHORA</a>
-			<hr>
+			
+            <% if(locals.isAdmin&&isAdmin){ %>
 			<a href="/admin/productEdit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
+            <% } %>
         </section>
         <% if(recommendations[0]) { %>
         <section class="recomendations">
