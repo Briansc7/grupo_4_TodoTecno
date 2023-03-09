@@ -90,3 +90,6 @@ main .btn-register:hover{
       }
   }
     
+  .input{
+    width: 100%;
+  }
