@@ -10,6 +10,10 @@ const jsonMetaDataArray = [
   {
     templateFile: "usersTemplate.json",
     mainFile: "users.json"
+  },
+  {
+    templateFile: "authenticationTokensTemplate.json",
+    mainFile: "authenticationTokens.json"
   }
 ];
 
