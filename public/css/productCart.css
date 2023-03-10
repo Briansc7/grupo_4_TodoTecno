@@ -220,11 +220,23 @@
   
   .qty-btn.plus {
     margin-left: 5px;
+    margin-right: 5px;
+    background-color: #e6e6e6;
+    border-radius: 35%;
+    padding: 5px 5px;
+  } .qty-btn.plus:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
   
   .qty-btn.minus {
     margin-right: 5px;
+    background-color: #e6e6e6;
+    border-radius: 35%;
+    padding: 5px 5px;
+  } .qty-btn.minus:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
+  
   
   input[type="number"] {
     width: 50px;
