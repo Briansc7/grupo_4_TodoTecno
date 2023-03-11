@@ -1,7 +1,11 @@
 //Middleware para que restringir el acceso a determinadas rutas solamente para usuarios NO registrados (visitantes)
+
+const path = require("path");
+let authTokenUtilities = require(path.resolve(__dirname,"../database/authTokenUtilities"));
+
 module.exports = (req, res, next) => {
     
-    if(isUserRegistered(req, res)){
+    if(authTokenUtilities.isUserRegistered(req)){
         console.log("redirect a profile");
         res.redirect("/users/profile");
     }else{
@@ -10,11 +14,3 @@ module.exports = (req, res, next) => {
 
     
 };
-
-function isUserRegistered(req, res){
-    //si existe obtengo el token de las cookies o de la sesión
-    const token =  (req.session.user && req.session.user.token) || (req.cookies && req.cookies.token);
-    //si el token es distinto de indefinido, entonces equivale a true para la evaluación
-    //entonces al existir un token el usuario está registrado y no es un visitante.
-    return token != undefined;
-}
