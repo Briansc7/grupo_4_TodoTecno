@@ -5,3 +5,4 @@ public/images/products/*
 !defaultProduct.png
 public/images/users/*
 !defaultUser.png
+test/
