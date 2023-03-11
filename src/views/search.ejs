@@ -10,21 +10,21 @@
         
         <div class="container products-wrapper">
             <% if(products&&products[0]) { %>
-                <div class="col-12 products-title-container">
+                <div class="col-12-products-title-container">
                     <h2 class="products-title">Resultados de la búsqueda:</h2>
                 </div>
                 <div class="row">    
                 <% for(i=0; i<products.length; i++) { %>
     
                     <div class="product-container_search">
-                                                   <a href="/products/productDetail/<%= products[i].id %>" class = "product-search">
+                                                   
                                 <img src="/images/products/<%= products[i].images[0] %>" alt="imagen de producto" class="product-search_img">
                                 <article class="product-search_data">
-                                    <p>$<%= products[i].price %></p>
-                                    <p><%= products[i].discount %>% OFF</p>
-                                    <h4><%= products[i].category %> <%= products[i].brand %> <%= products[i].model %></h4>
+                                    <p class="price">$<%= products[i].price %></p>
+                                    <p class="discount"><%= products[i].discount %>% OFF</p>
+                                    <h4 class="description"><%= products[i].category %> <%= products[i].brand %> <%= products[i].model %></h4>
                                 </article>
-                            </a>
+                           
                     </div>
     
                 <% } %>

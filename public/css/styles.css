@@ -49,7 +49,8 @@ main{
 .btn-google,
 .btn-facebook,
 .btn-register,
-.btn-submit{
+.btn-submit,
+.btn-reset{
      display: flex;
      align-items: center;
      justify-content: center;
@@ -64,8 +65,29 @@ main{
      padding: 5px;
      box-shadow: 5px 5px 0px 0px rgb(0 0 0 / 50%);
      max-width: 450px;
-
 }
+
+.input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border : solid black 2px;
+    border-radius: 2em;
+    cursor: pointer;
+    margin-top: 10px;
+    grid-gap: 10px;
+    background-color: white;
+    color: black;
+    padding: 5px;
+   
+}
+
+.input-section{
+display:grid;
+padding: 5px;
+max-width: 450px;
+}
+
 
 
 :root{

@@ -21,7 +21,7 @@ usersRouter.get("/login", visitorsOnlyAccessValidation, usersController.login);
 usersRouter.get("/register", visitorsOnlyAccessValidation, usersController.register);
 usersRouter.get("/profile", registeredUsersOnlyAccessValidation, usersController.profile);
 
-usersRouter.post("/", uploadAvatar.array("avatarFiles"), registerFormatValidation, usersController.createUser);
+usersRouter.post("/", uploadAvatar.single("avatar"), registerFormatValidation, usersController.createUser);
 usersRouter.post("/login", loginFormatValidation, usersController.loginSubmit);
 
 usersRouter.post("/logout", usersController.logout);
