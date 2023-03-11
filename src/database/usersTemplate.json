@@ -10,7 +10,7 @@
     "postalCode": null,
     "location": null,
     "province": null,
-    "image": [],
+    "image": "adminAvatar",
     "role":"admin"
 },
 {
@@ -24,7 +24,7 @@
     "postalCode":"1448",
     "location":"la plata",
     "province":"buenos aires",
-    "image": [],
+    "image": null,
     "role":"user"
 }
 ]

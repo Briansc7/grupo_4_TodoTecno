@@ -21,17 +21,13 @@ let usersDatabase = {
     userGetToken: userGetToken
 };
 
-function userRegister(userBody, avatarFiles){
+function userRegister(userBody, avatar){
 
     if(this.emailExist(userBody.email)){
         console.log("Email ya existe");
         return -1; //no se registra si el email ya fue registrado por otro usuario
     }
 
-    let imagesUploaded = [];
-    avatarFiles.forEach(img => {
-        imagesUploaded.push(img.filename);
-    });
 
     const newId = this.userGetNewId();
 
@@ -46,7 +42,7 @@ function userRegister(userBody, avatarFiles){
         postalCode: null,
         location: null,
         province: null,
-        image: imagesUploaded,
+        image: avatar?avatar.filename:null,
         role: "user"
     }
 
