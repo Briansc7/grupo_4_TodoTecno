@@ -17,14 +17,14 @@
                 <% for(i=0; i<products.length; i++) { %>
     
                     <div class="product-container_search">
-                                                   
+                            <a href="/products/productDetail/<%=products[i].id%>" class= "product-search">                 
                                 <img src="/images/products/<%= products[i].images[0] %>" alt="imagen de producto" class="product-search_img">
                                 <article class="product-search_data">
                                     <p class="price">$<%= products[i].price %></p>
                                     <p class="discount"><%= products[i].discount %>% OFF</p>
                                     <h4 class="description"><%= products[i].category %> <%= products[i].brand %> <%= products[i].model %></h4>
                                 </article>
-                           
+                            </a>  
                     </div>
     
                 <% } %>

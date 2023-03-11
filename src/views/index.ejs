@@ -50,32 +50,16 @@
                     <p>Climatizacion</p>
             </div>
         </section>
-    <div class="filters"> <section>
-            <h4>Categoría</h4>
-            <form>
-                <label for="category"></label>
-                <select id="category" name="category">
-                    <option value="televisores">Televisores</option>
-                    <option value="celulares">Celulares</option>
-                    <option value="computadoras">Computadoras</option>
-                    <option value="consolas">Consolas y más</option>
-                    <option value="climatizacion">Climatización</option>
-                </select>
-                <button type="submit">Filtrar</button>
-            </form>
-        </section>
-        <section>
-            <h4>Prrecio</h4>
-            <label for="filtro"></label>
-    <input type="range" id="filtro" name="filtro" min="0" max="2000000">
-        </section>
-    </div>
+   
             <section class="highlighted-offers">
                 <h3>Aprovecha las ofertas destacadas</h3>
                 <br> 
-                <div class="products">                
+                  
+                <div class="products">
+                               
                     <% for(i=0;i<productsOnSale.length;i++) { %>
                        <div class="cont-product">
+                    <a href="/products/productDetail/<%=productsOnSale[i].id%>" class= "product-search">
                         <article>
                             <div class="home-image">
                             <img src="images\products\<%= productsOnSale[i].images[0] %>" alt="<%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %>" class="product_img">
@@ -86,9 +70,12 @@
                                 <h4 class="description"><%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %></h4>
                             </div>
                         </article>
+                    </a>  
                     </div>
                     <% } %>
+              
                 </div>
+           
             </section>
             <section class="new-arriwals">
                 <br>
@@ -98,6 +85,7 @@
                 <div class="products">                
                     <% for(i=0;i<productsNew.length;i++) { %>
                     <div class="cont-product">
+                        <a href="/products/productDetail/<%=productsNew[i].id%>" class= "product-search">
                         <article>
                             <div class="home-image">
                             <img src="images\products\<%= productsNew[i].images[0] %>" alt="<%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %>" class="product_img">
@@ -108,6 +96,7 @@
                                 <h4 class="description"><%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %></h4>
                             </div>
                         </article>
+                    </a>
                     </div>
                     <% } %>
                 </div>

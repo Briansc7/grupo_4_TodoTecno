@@ -21,7 +21,9 @@ ul {
 }
 
 main{
+    display: inline-block;
     margin-bottom: 10px;
+    align-content: center;
 }
 
 .errors{
