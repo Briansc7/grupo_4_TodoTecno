@@ -48,14 +48,17 @@ loginSubmit: (req, res) => {
         if(usersDatabase.checkPassword(req.body.email, req.body.password)){
             const name = usersDatabase.userGetName(req.body.email);
             const token = usersDatabase.userGetToken(req.body.email);
+            const userId = usersDatabase.userGetUserId(req.body.email);
             req.session.user = {
                 name: name,
-                token: token
+                token: token,
+                userId: userId
             };
 
             if(req.body.rememberUser == "on"){
                 res.cookie("name", name, {maxAge: 9999999});
                 res.cookie("token", token, {maxAge: 9999999});
+                res.cookie("userId", userId, {maxAge: 9999999});
             }
 
             return res.redirect("/");
@@ -86,6 +89,7 @@ logout: (req, res) => {
     req.session.user = null;
     res.clearCookie("name");
     res.clearCookie("token");
+    res.clearCookie("userId");
 
     return res.redirect("/");
 }

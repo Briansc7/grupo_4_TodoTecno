@@ -18,7 +18,8 @@ let usersDatabase = {
     emailExist: emailExist,
     checkPassword: checkPassword,
     userGetName: userGetName,
-    userGetToken: userGetToken
+    userGetToken: userGetToken,
+    userGetUserId: userGetUserId
 };
 
 function userRegister(userBody, avatar){
@@ -97,6 +98,16 @@ function userGetToken(email){
     //Se genera un token que va a tener los permisos de administrador o de usuario
     //En un futuro se va a delegar la tarea a un servidor de authenticación 
     return bcrypt.hashSync(userFound.role+"Token", 10);
+}
+
+function userGetUserId(email){
+    let userFound = this.emailExist(email);
+
+    if(!userFound){
+        return null;
+    }
+
+    return userFound.id;
 }
 
 module.exports = usersDatabase;
