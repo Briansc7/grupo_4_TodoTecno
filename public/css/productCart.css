@@ -1,62 +1,303 @@
-article {
-    padding: 15px 0;
-    border-bottom: 1px solid black; 
-    display: grid;
-}
-
-.titleCart {
-    border-bottom: 1px solid black;
+/* Estilos para el contenedor principal */
+.div-cart {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilos para el título del carrito */
+  .titleCart {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    text-shadow: 1px 1px 0px #fff;
+  }
+  
+  /* Estilos para cada producto en el carrito */
+  .product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+  }
+  
+  .img-productCart {
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+  }
+  
+  .textProduct {
+    flex-grow: 1;
+  }
+  
+  .titleProduct {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .priceProduct {
+    font-size: 20px;
+    color: #666;
+  }
+  
+  /* Estilos para el botón de eliminar producto */
+  .icons {
+    font-size: 24px;
+    color: #ff5722;
+    cursor: pointer;
+  }
+  
+  .icons:hover {
+    color: #ff784e;
+  }
+  
+  /* Estilos para la sección del total y botón de pagar */
+  .text-downCart {
     font-size: 20px;
     font-weight: bold;
-    padding: 15px 0px;
-}
-
-.up-productsCart {
-    margin: 10px 0;
-}
-
-img {
-    padding: 15px 0px;
-    grid-column: 1;
-}
-
-img {
-    width: 100px;
-}
-
-.textProduct {
-    grid-column: 4;
-}
-
-.titleCart,
-.text-downCart {
-    text-align: center;
-}
-.text-downCart {
-    font-weight: 500;
-}
-
-.icons {
-    grid-column: 6;
-    font-size: 25px;
-    color: var(--gris);
-} .icons:hover {
-    color: red;
-}
-
-.buttton-check-cart {
-    display: block;
-    margin: auto;
-    font-size: 20px;
-  padding: 10px 20px;
-  border-radius: 15%;
-  box-shadow: 5px 5px 0px 0px rgb(0, 0, 0, 0.5);
-  margin-bottom: 15px;
-  margin-top: 15px;
-} .buttton-check-cart:hover {
-    background-color: green;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .buttton-check-cart {
+    background-color: #ff9800;
     color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 1px 1px 0px #ffcc80;
+  }
+  
+  .buttton-check-cart:hover {
+    background-color: #ffc107;
+  }
+
+  /* Estilos para el contenedor principal */
+.div-cart {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media only screen and (max-width: 768px) {
+    /* Estilos para el contenedor principal en dispositivos móviles */
+    .div-cart {
+      max-width: 100%;
+      padding: 10px;
+    }
+    
+    /* Estilos para el título del carrito en dispositivos móviles */
+    .titleCart {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    /* Estilos para cada producto en el carrito en dispositivos móviles */
+    .product {
+      flex-wrap: wrap;
+    }
+    
+    .img-productCart {
+      width: 100%;
+      max-width: 120px;
+      height: auto;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    
+    .textProduct {
+      width: 100%;
+      margin-left: 10px;
+    }
+    
+    .titleProduct {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    
+    .priceProduct {
+      font-size: 16px;
+    }
+    
+    /* Estilos para la sección del total y botón de pagar en dispositivos móviles */
+    .text-downCart {
+      font-size: 16px;
+    }
+    
+    .buttton-check-cart {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+  }
+
+  .quantity-input-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-input-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .quantity-input-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .quantity-input-btn:hover {
+    background-color: #f3f3f3;
+  }
+  
+  .quantity-input-btn:active {
+    background-color: #e1e1e1;
+  }
+  
+  .quantity-input-btn i {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .product-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .product-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .qty-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #777777;
+    cursor: pointer;
+  }
+  
+  .qty-btn:focus {
+    outline: none;
+  }
+  
+  .qty-btn.plus {
+    margin-left: 5px;
+  }
+  
+  .qty-btn.minus {
+    margin-right: 5px;
+  }
+  
+  input[type="number"] {
+    width: 50px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #333333;
+    font-weight: bold;
+  }
+
+  .removeProduct {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ccc;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .removeProduct:hover {
+    color: #f00;
+  }
+
+  /* Webkit (Chrome, Safari, Opera) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-@media (min-width: 769px) {
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
+
+input[type="number"]::-moz-number-spin-box {
+  display: none;
+}
+
+.discount-code {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .discount-code label {
+    margin-right: 1rem;
+  }
+  
+  .discount-code input[type="text"] {
+    width: 50%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .discount-code-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .discount-code-btn:hover {
+    background-color: #3e8e41;
+  }
+  
+  
+  
+  
