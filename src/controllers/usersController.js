@@ -82,7 +82,22 @@ loginSubmit: (req, res) => {
     return res.render("./users/login", {errors: errors.mapped(), old: old, head: loginHeadData});
 },
 profile: (req, res) => {
-    return res.render("./users/profile", {head: profileHeadData});
+    const userId = (req.cookies && req.cookies.userId) || (req.session.user && req.session.user.userId);
+    const user = usersDatabase.userFindById(userId);
+    return res.render("./users/profile", {
+        userInfo: {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            birthday: user.birthday,
+            address: user.address,
+            postalCode: user.postalCode,
+            location: user.location,
+            province: user.province,
+            image: user.image
+        }, 
+        head: profileHeadData
+    });
 },
 logout: (req, res) => {
     //borro de la sesion y de las cookies los datos del usuario

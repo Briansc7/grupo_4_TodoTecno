@@ -1,0 +1,9 @@
+.profile-avatar-container{
+    width: 150px;
+    height: 150px;
+}
+
+.profile-avatar-img{
+    width: 100%;
+    mix-blend-mode: multiply;
+}
