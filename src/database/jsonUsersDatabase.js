@@ -5,6 +5,7 @@ Manejador de Tablas Json. Esta lógica también podría ir en el controlador
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcryptjs");
+const authTokenUtilities = require(path.resolve(__dirname,"../database/authTokenUtilities"));
 
 //Se obtienen los datos de los usuarios
 const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -97,7 +98,12 @@ function userGetToken(email){
 
     //Se genera un token que va a tener los permisos de administrador o de usuario
     //En un futuro se va a delegar la tarea a un servidor de authenticación 
-    return bcrypt.hashSync(userFound.role+"Token", 10);
+    return authTokenUtilities.generateToken(
+        {
+            id: userFound.id,
+            role: userFound.role
+        }
+    );
 }
 
 function userGetUserId(email){
