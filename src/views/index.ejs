@@ -83,6 +83,7 @@
                             <div class="main-article">
                                 <p class="price">$<%= productsOnSale[i].price %></p>
                                 <p class="discount"><%= productsOnSale[i].discount %>% OFF</p>
+                                <p class="price-discount"><p><%= productsNew[i].price - (productsNew[i].price * (productsNew[i].discount/100)) %></p>
                                 <h4 class="description"><%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %></h4>
                             </div>
                         </article>
@@ -105,6 +106,7 @@
                             <div class="main-article">
                                 <p class="price">$<%= productsNew[i].price %></p>
                                 <p class="discount"><%= productsNew[i].discount %>% OFF</p>
+                                <p class="price-discount"><p><%= productsNew[i].price - (productsNew[i].price * (productsNew[i].discount/100)) %></p>
                                 <h4 class="description"><%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %></h4>
                             </div>
                         </article>
