@@ -35,3 +35,19 @@ Si bien no se han realizado todas las reuniones en formato daily meeting propues
 <h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, por el contrario hacer más es principal objetivo para el futuro.
 
 <h4>5) Dejar de hacer:</h4> En esta etapa no hemos identificado acciones que perjudiquen al grupo o proyecto para dejar de hacer.
+
+<h2>Retrospectiva Sprint 5</h2>
+
+Durante el desarrollo del Sprint 5 se dividieron las tareas en backend y frontend según la afinidad que presentaron los integrantes del equipo.
+
+<h3>Comenzar a hacer, Hacer más, Continuar haciendo y Hacer menos</h3>
+
+<h4>1) Comenzar a hacer:</h4> La comunicación con los miembros del equipo aún no es lo suficientemente fluida. Se apunta a comenzar a hacer nuevamente las reuniones semanales del avance del proyecto. Actualmente se informa de manera asincrónica los avances de cada uno de los miembros en el proyecto.
+
+<h4>2) Hacer más:</h4> Si bien la distribución de las tareas aún no es lo suficientemente equitativa entre los miembros del equipo, hay más proactividad respecto a los sprints anteriores. Idealmente hay que aumentar dicha proactividad para lograr completar las tereas pendientes.
+
+<h4>3) Continuar haciendo:</h4>La implementación de Trello sigue siendo la herramienta que ordena las tareas por lo que, mantenerla y e intentar mejorarla es lo que proponemos continuar haciendo.
+
+<h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, por el contrario hacer más es principal objetivo para el futuro.
+
+<h4>5) Dejar de hacer:</h4> En esta etapa no hemos identificado acciones que perjudiquen al grupo o proyecto para dejar de hacer.

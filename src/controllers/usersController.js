@@ -1,6 +1,6 @@
 const path = require("path");
 const { validationResult } = require("express-validator");
-const usersDatabase = require(path.resolve(__dirname, "../database/jsonUsersDatabase"));
+const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
 
 const loginHeadData = {title: "Login", stylesheet: "/css/login.css"};
 const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};
@@ -48,14 +48,17 @@ loginSubmit: (req, res) => {
         if(usersDatabase.checkPassword(req.body.email, req.body.password)){
             const name = usersDatabase.userGetName(req.body.email);
             const token = usersDatabase.userGetToken(req.body.email);
+            const userId = usersDatabase.userGetUserId(req.body.email);
             req.session.user = {
                 name: name,
-                token: token
+                token: token,
+                userId: userId
             };
 
             if(req.body.rememberUser == "on"){
                 res.cookie("name", name, {maxAge: 9999999});
                 res.cookie("token", token, {maxAge: 9999999});
+                res.cookie("userId", userId, {maxAge: 9999999});
             }
 
             return res.redirect("/");
@@ -79,13 +82,29 @@ loginSubmit: (req, res) => {
     return res.render("./users/login", {errors: errors.mapped(), old: old, head: loginHeadData});
 },
 profile: (req, res) => {
-    return res.render("./users/profile", {head: profileHeadData});
+    const userId = (req.cookies && req.cookies.userId) || (req.session.user && req.session.user.userId);
+    const user = usersDatabase.userFindById(userId);
+    return res.render("./users/profile", {
+        userInfo: {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            birthday: user.birthday,
+            address: user.address,
+            postalCode: user.postalCode,
+            location: user.location,
+            province: user.province,
+            image: user.image
+        }, 
+        head: profileHeadData
+    });
 },
 logout: (req, res) => {
     //borro de la sesion y de las cookies los datos del usuario
     req.session.user = null;
     res.clearCookie("name");
     res.clearCookie("token");
+    res.clearCookie("userId");
 
     return res.redirect("/");
 }

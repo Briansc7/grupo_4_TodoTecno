@@ -11,33 +11,73 @@
             </div>
             <div class="up-productsCart">
                 <article class="product">
-                    <img src="../images/ipadApple.jpg" alt="" class="img-productCart">
-                    <div class="textProduct">
-                    <p class="titleProduct">Ipad Apple</p>
-                    <p class="priceProduct">$150.000</p>
-                </div><!-- <button> --><i class="fa-solid fa-trash-can icons"></i><!-- </button> -->
-                </article>
+                    <div class="product-info">
+                      <img src="../images/ipadApple.jpg" alt="" class="img-productCart">
+                      <div class="textProduct">
+                        <p class="titleProduct">Ipad Apple</p>
+                        <p class="priceProduct">$150.000</p>
+                      </div>
+                    </div>
+                    <div class="product-actions">
+                      <div class="quantity">
+                        <button class="qty-btn minus"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" value="1" min="1" max="10" readonly>
+                        <button class="qty-btn plus"><i class="fa-solid fa-plus"></i></button>
+                      </div>
+                      <button class="delete-btn"><i class="removeProduct fa-solid fa-trash-can"></i></button>
+                    </div>
+                  </article>
+                  
                 <article class="product">
-                    <img src="../images/ipadApple.jpg" alt="" class="img-productCart">
-                    <div class="textProduct">
-                    <p class="titleProduct">Ipad Apple</p>
-                    <p class="priceProduct">$150.000</p>
-                </div><!-- <button> --><i class="fa-solid fa-trash-can icons"></i><!-- </button> -->
-                </article>
+                    <div class="product-info">
+                      <img src="../images/ipadApple.jpg" alt="" class="img-productCart">
+                      <div class="textProduct">
+                        <p class="titleProduct">Ipad Apple</p>
+                        <p class="priceProduct">$150.000</p>
+                      </div>
+                    </div>
+                    <div class="product-actions">
+                      <div class="quantity">
+                        <button class="qty-btn minus"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" value="1" min="1" max="10" readonly>
+                        <button class="qty-btn plus"><i class="fa-solid fa-plus"></i></button>
+                      </div>
+                      <button class="delete-btn"><i class="removeProduct fa-solid fa-trash-can"></i></button>
+                    </div>
+                  </article>
+                  
                 <article class="product">
-                    <img src="../images/ipadApple.jpg" alt="" class="img-productCart">
-                    <div class="textProduct">
-                    <p class="titleProduct">Ipad Apple</p>
-                    <p class="priceProduct">$150.000</p>
-                 </div><!-- <button> --><i class="fa-solid fa-trash-can icons"></i><!-- </button> -->
-                </article>
+                    <div class="product-info">
+                      <img src="../images/ipadApple.jpg" alt="" class="img-productCart">
+                      <div class="textProduct">
+                        <p class="titleProduct">Ipad Apple</p>
+                        <p class="priceProduct">$150.000</p>
+                      </div>
+                    </div>
+                    <div class="product-actions">
+                      <div class="quantity">
+                        <button class="qty-btn minus"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" value="1" min="1" max="10" readonly>
+                        <button class="qty-btn plus"><i class="fa-solid fa-plus"></i></button>
+                      </div>
+                      <button class="delete-btn"><i class="removeProduct fa-solid fa-trash-can"></i></button>
+                    </div>
+                  </article>
+                  
             </div>
-            <div class="div-cart down-productsCart">
+            <div class="div-cart">
                 <p class="text-downCart">Total: $#####</p>
                 <p class="text-downCart">Descuento: $###</p>
+                <div class="discount-code">
+                    <label for="discount-code">Código de descuento:</label>
+                    <input type="text" id="discount-code" name="discount-code">
+                    <button class="discount-code-btn">Aplicar</button>
+                  </div>
                 <button class="buttton-check-cart" >PAGAR <i class="fa-solid fa-check-to-slot"></i></button>
             </div>
         </section>
+
+
     <%- include("../partials/footer") %>
 </body>
 </html>

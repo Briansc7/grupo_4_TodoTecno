@@ -9,11 +9,27 @@
 
     <main>
         
-        <h2>Próximamente</h2>
-        <br>
         <form action="/users/logout" method="POST">
             <button type="submit">Cerrar Sesión</button>
         </form>
+        <br>
+        <section class="profile-avatar-container">
+            <img src="/images/users/<%= userInfo.image?userInfo.image:"defaultUser.png" %>" alt="" class="profile-avatar-img">
+        </section>
+        <section>
+            <p>Nombre: <%= userInfo.firstName %></p>
+            <p>Apellido: <%= userInfo.lastName %></p>
+            <p>Email: <%= userInfo.email %></p>
+            <p>Cumpleaños: <%= userInfo.birthday?userInfo.birthday:"Sin especificar" %></p>
+            <p>Dirección: <%= userInfo.address?userInfo.address:"Sin especificar" %></p>
+            <p>Código Postal: <%= userInfo.postalCode?userInfo.postalCode:"Sin especificar" %></p>
+            <p>Localidad: <%= userInfo.location?userInfo.location:"Sin especificar" %></p>
+            <p>Provincia: <%= userInfo.province?userInfo.province:"Sin especificar" %></p>
+        </section>
+        <button id="edit-profile-btn">Editar Perfil</button>
+        
+
+
 
     </main>
 

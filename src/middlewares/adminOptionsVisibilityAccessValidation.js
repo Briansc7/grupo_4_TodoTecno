@@ -1,5 +1,5 @@
 const path = require("path");
-let authTokenUtilities = require(path.resolve(__dirname,"../database/authTokenUtilities"));
+let authTokenUtilities = require(path.resolve(__dirname,"../legacyDatabase/authTokenUtilities"));
 
 module.exports = (req, res, next) => {
     
