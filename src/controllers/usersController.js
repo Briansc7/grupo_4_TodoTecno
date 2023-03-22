@@ -1,6 +1,6 @@
 const path = require("path");
 const { validationResult } = require("express-validator");
-const usersDatabase = require(path.resolve(__dirname, "../database/jsonUsersDatabase"));
+const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
 
 const loginHeadData = {title: "Login", stylesheet: "/css/login.css"};
 const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};

@@ -1,8 +1,8 @@
 
 const path = require("path");
 
-const database = require(path.resolve(__dirname, "../database/jsonDatabase"));
-const usersDatabase = require(path.resolve(__dirname, "../database/jsonUsersDatabase"));
+const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
+const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
 
 const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
 const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
