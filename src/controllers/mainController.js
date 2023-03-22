@@ -1,5 +1,5 @@
 const path = require("path");
-const database = require(path.resolve(__dirname, "../database/jsonDatabase"));
+const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
 
 const indexHeadData = {title: "Home", stylesheet: "/css/home.css"};
 const searchHeadData = {title: "Búsqueda", stylesheet: "/css/search.css"};

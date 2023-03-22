@@ -5,7 +5,7 @@ Manejador de Tablas Json. Esta lógica también podría ir en el controlador
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcryptjs");
-const authTokenUtilities = require(path.resolve(__dirname,"../database/authTokenUtilities"));
+const authTokenUtilities = require(path.resolve(__dirname,"../legacyDatabase/authTokenUtilities"));
 
 //Se obtienen los datos de los usuarios
 const usersJsonPath = path.resolve(__dirname,"./users.json");
