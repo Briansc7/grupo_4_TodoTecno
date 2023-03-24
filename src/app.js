@@ -7,7 +7,8 @@ const adminRouter = require(path.resolve(__dirname, "./routes/admin"));
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 const session = require("express-session");
 const cookieParser = require('cookie-parser');
-const makeUserSessionVisibleToAllViews = require(path.resolve(__dirname, "./middlewares/makeUserSessionVisibleToAllViews"))
+const makeUserSessionVisibleToAllViews = require(path.resolve(__dirname, "./middlewares/makeUserSessionVisibleToAllViews"));
+require("dotenv").config(); //Para poder usar variables de entorno
 
 
 const app = express();
