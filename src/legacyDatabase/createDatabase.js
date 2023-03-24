@@ -34,7 +34,11 @@ Promise.resolve(createJsonDatabase(jsonMetaDataArray)).then(
 ).then(
   // copiado de fotos desde users templates a users para la carga de productos iniciales
   result => copyImagesFromTemplatesToProducts(usersSrcFolderToCopy, usersDestFolderToCopy)
-).catch(
+).then(
+  // copiado de template de variables de entorno
+  result => copyEnvTemplateToEnvFile()
+)
+.catch(
   error => console.log(error)
 );
 
@@ -91,3 +95,10 @@ function createJsonDatabase(jsonMetaDataArray) {
   }
 }
 
+function copyEnvTemplateToEnvFile(){
+  fs.copyFile(path.resolve(__dirname, "../../.envTemplate"), path.resolve(__dirname, "../../.env"), (err) => {
+    if (err)
+      throw err;
+    console.log("Copiado de .envTemplate a .env");
+  });
+}

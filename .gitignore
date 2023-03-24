@@ -6,3 +6,4 @@ public/images/products/*
 public/images/users/*
 !defaultUser.png
 test/
+.env
