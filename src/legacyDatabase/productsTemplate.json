@@ -101,41 +101,5 @@
               "licuadoraPeabody-04.jpg"
               ],
               "recommendations": [4]
-            },
-            {
-              "id" : 6 ,
-              "category": "",
-              "brand" : "",
-              "model" : "",
-              "artNumber": 0,
-              "price" : 0,
-              "availability": 0,
-              "discount" : 0,
-              "isOnSale": false,
-              "isNew": false,
-              "description": [],
-              "characteristics" : {"Sonido": {"Cantidad de parlantes": 8}, "Dimensiones": {"Ancho": "1668.3 mm", "Profundidad": "172.2 mm", "Peso": "32.1 kg"}, "Modelo y origen": {"Modelo": "QN75QN800A"}},
-              "images": [
-                 
-                ],
-                "recommendations": []
-              },
-              {
-                "id" : 4 ,
-                "category": "",
-                "brand" : "",
-                "model" : "",
-                "artNumber": 0,
-                "price" : 0,
-                "availability": 0,
-                "discount" : 0,
-                "isOnSale": false,
-                "isNew": false,
-                "description": [],
-                "characteristics" : {"Sonido": {"Cantidad de parlantes": 8}, "Dimensiones": {"Ancho": "1668.3 mm", "Profundidad": "172.2 mm", "Peso": "32.1 kg"}, "Modelo y origen": {"Modelo": "QN75QN800A"}},
-                "images": [
-                   
-                  ],
-                  "recommendations": []
-                }
+            }
 ]
