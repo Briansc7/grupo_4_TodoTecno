@@ -73,7 +73,7 @@ set @Philco = LAST_INSERT_ID();
 insert into brands set name="Peabody";
 set @Peabody = LAST_INSERT_ID();
 
-/* Productos iniciales de prueba, imagenes */
+/* Productos iniciales de prueba, con relacion a imagenes y caractetisticas*/
 insert into products (subCategoryId, brandId, model, artNumber, price, discount,
 isOnSale, isNew, description) values (
 @tv_video_tv,
@@ -86,6 +86,18 @@ insert into productimages (fileName, productId) values
 ("neoQled8k-01.jpg", @productId), ("neoQled8k-02.jpg", @productId), ("neoQled8k-03.jpg", @productId),
 ("neoQled8k-04.jpg", @productId), ("neoQled8k-05.jpg", @productId), ("neoQled8k-06.jpg", @productId),
 ("neoQled8k-07.jpg", @productId), ("neoQled8k-08.jpg", @productId);
+insert into characteristics (name, productId) values
+("Sonido", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Cantidad de parlantes", "8", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Dimensiones", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Ancho", "1668.3 mm", LAST_INSERT_ID()), ("Profundidad", "172.2 mm", LAST_INSERT_ID()), ("Peso", "32.1 kg", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Modelo y origen", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Modelo", "QN75QN800A", LAST_INSERT_ID());
 
 insert into products (subCategoryId, brandId, model, artNumber, price, discount,
 isOnSale, isNew, description) values (
@@ -112,6 +124,18 @@ MEZCLA ASCENDENTE ENVOLVENTE Dolby Surround , DTS Neural:X"
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("soundbar-nakamichi.jpg", @productId);
+insert into characteristics (name, productId) values
+("Conectividad", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Bluetooth", "Sí", LAST_INSERT_ID()), ("USB-A", "Sí", LAST_INSERT_ID()), ("Óptico", "Sí", LAST_INSERT_ID()), ("Jack 3.5 mm", "Sí", LAST_INSERT_ID()),
+("Coaxial", "Sí", LAST_INSERT_ID()), ("HDMI", "Sí", LAST_INSERT_ID()), ("HDMI ARC", "Sí", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Parlantes", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("barra de sonido", "1", LAST_INSERT_ID()), 
+("altavoces laterales", "2", LAST_INSERT_ID()), 
+("altavoces traseros", "2", LAST_INSERT_ID()), 
+("subwoofer", "2", LAST_INSERT_ID());
 
 insert into products (subCategoryId, brandId, model, artNumber, price, discount,
 isOnSale, isNew, description) values (
@@ -123,6 +147,16 @@ isOnSale, isNew, description) values (
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("soporte-tv.png", @productId);
+insert into characteristics (name, productId) values
+("Datos tecnicos", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("VESA", "75X75/100X100/200X200/400X400/600X400", LAST_INSERT_ID()), 
+("Pulgadas", '17 a 90"', LAST_INSERT_ID()), 
+("Peso máximo", "65 Kg", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Modelo y origen", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Modelo", "TVS-MOV-17-90", LAST_INSERT_ID());
 
 insert into products (subCategoryId, brandId, model, artNumber, price, discount,
 isOnSale, isNew, description) values (
@@ -134,6 +168,18 @@ isOnSale, isNew, description) values (
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("cavaPhilco-01.jpg", @productId), ("cavaPhilco-02.jpg", @productId), ("cavaPhilco-03.jpg", @productId), ("cavaPhilco-04.jpg", @productId);
+insert into characteristics (name, productId) values
+("Datos tecnicos", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Capacidad", "52 botellas", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Dimensiones", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Ancho", "490 mm", LAST_INSERT_ID()), ("Profundidad", "580 mm", LAST_INSERT_ID()), ("Altura", "840 mm", LAST_INSERT_ID()), ("Peso", "38 kg", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Modelo y origen", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Modelo", "94PHCAV052N 52 Botellas", LAST_INSERT_ID());
 
 insert into products (subCategoryId, brandId, model, artNumber, price, discount,
 isOnSale, isNew, description) values (
@@ -151,6 +197,19 @@ Es apta para moler hielo en segundos y preparar smoothies refrescantes en los d�
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("licuadoraPeabody-01.jpg", @productId), ("licuadoraPeabody-02.jpg", @productId), ("licuadoraPeabody-03.jpg", @productId), ("licuadoraPeabody-04.jpg", @productId);
+insert into characteristics (name, productId) values
+("Potencia", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Potencia", "800W", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Dimensiones", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Capacidad", "1.75 lt", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Modelo y origen", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Modelo", "LN805R", LAST_INSERT_ID());
+
 
 /* Relaciones entre productos con cantidad de veces que fueron comprados juntos*/
 insert into boughttogether (product1, product2, timesBoughtTogether) values
