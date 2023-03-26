@@ -211,7 +211,10 @@ insert into subcharacteristics (name, value, characteristicId) values
 ("Modelo", "LN805R", LAST_INSERT_ID());
 
 
-/* Relaciones entre productos con cantidad de veces que fueron comprados juntos*/
+/* Relaciones entre productos con cantidad de veces que fueron comprados juntos
+Como es el script de carga de datos inicial, no van a existir problemas de concurrencia.
+Por lo tanto el id de los productos creados va a respetar el orden en que fueron insertados en este script.
+Por simplicidad se ingresa directamente el id de productos sin variables ni selects.*/
 insert into boughttogether (product1, product2, timesBoughtTogether) values
 ("1","2", "10"), ("1","3", "50"), 
 ("2","1", "10"),
@@ -219,3 +222,61 @@ insert into boughttogether (product1, product2, timesBoughtTogether) values
 ("4","5", "1"),
 ("5","4", "1");
 
+/*Sucursales*/
+
+insert into stores (name, address, location, phone, description, shoppingHours) values
+("Todo Tecno CABA", "Av. Corrientes 1107", "CABA", "011 4381-7777", 
+"Sucursal principal de Todo Tecno.
+Ven a visitarnos!",
+"Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
+set @sucursalCABA = LAST_INSERT_ID();
+insert into stores (name, address, location, phone, description, shoppingHours) values
+("Todo Tecno Pilar", "Av. V. Castro 907", "Pilar", "011 2342-7777", 
+"Sucursal Todo Tecno de Pilar.
+Ven a visitarnos!",
+"Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
+set @sucursalPilar = LAST_INSERT_ID();
+insert into stores (name, address, location, phone, description, shoppingHours) values
+("Todo Tecno Palermo", "Av. Santa Fé 4500", "Palermo", "011 4772-9999", 
+"Sucursal Todo Tecno de Palermo.
+Ven a visitarnos!",
+"Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
+set @sucursalPalermo = LAST_INSERT_ID();
+insert into stores (name, address, location, phone, description, shoppingHours) values
+("Todo Tecno Unicenter", "Paraná 3745", "Martínez", "011 4733-1111", 
+"Sucursal Todo Tecno en Unicenter.
+Ven a visitarnos!",
+"Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
+set @sucursalUnicenter = LAST_INSERT_ID();
+
+/* Estado de los productos en stock */
+insert into statusstock set name = "Disponible en tienda";
+set @stockAvailable = LAST_INSERT_ID();
+insert into statusstock set name = "En espera para ser retirado";
+set @stockToPickUp = LAST_INSERT_ID();
+insert into statusstock set name = "En espera para envío";
+set @stockToBeDelivered = LAST_INSERT_ID();
+insert into statusstock set name = "En reparto";
+set @stockInDelivery = LAST_INSERT_ID();
+insert into statusstock set name = "Entregado";
+set @stockDelivered = LAST_INSERT_ID();
+insert into statusstock set name = "Retirado";
+set @stockPickedUp = LAST_INSERT_ID();
+
+/* Stock disponible de los productos en cada tienda*/
+insert into stock (productId, storeId, quantity, statusId) values
+(1, @sucursalCABA, 5, @stockAvailable),
+(1, @sucursalPilar, 1, @stockAvailable),
+(1, @sucursalUnicenter, 3, @stockAvailable),
+(2, @sucursalCABA, 10, @stockAvailable),
+(2, @sucursalPilar, 10, @stockAvailable),
+(2, @sucursalPalermo, 15, @stockAvailable),
+(2, @sucursalUnicenter, 5, @stockAvailable),
+(3, @sucursalCABA, 20, @stockAvailable),
+(3, @sucursalPilar, 15, @stockAvailable),
+(3, @sucursalPalermo, 5, @stockAvailable),
+(3, @sucursalUnicenter, 10, @stockAvailable),
+(4, @sucursalCABA, 3, @stockAvailable),
+(4, @sucursalPilar, 5, @stockAvailable),
+(4, @sucursalUnicenter, 1, @stockAvailable),
+(5, @sucursalCABA, 10, @stockAvailable);
