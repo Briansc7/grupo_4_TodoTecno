@@ -14,6 +14,7 @@ insert into users (firstName, lastName, email, password, roleId, birthday, addre
 "$2a$10$uaRb9LVNYGna6XKP7hEIJ.QF7NJQKROAsweUnDQ.AHQPcWCkrJh36",@user_role_id ,
 "2000-05-14", "calle 1", "1448", "la plata", "buenos aires"
 );
+set @user2 = LAST_INSERT_ID();
 
 /*Categorías de productos y subcategorias*/
 insert into categories (name) values ("Tv y Video");
@@ -78,9 +79,10 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @tv_video_tv,
 @Samsung,
-"Neo Qled 8k Qn75qn800agczb Qled", "990025707", "1681980", "10", "1", "1", 
+"Neo Qled 8k Qn75qn800agczb Qled", 990025707, 1681980, 10, 1, 1, 
 "Samsung es reconocida a nivel mundial como una empresa líder en la industria tecnológica. Todos sus productos son diseñados con una calidad superior y pensados para contribuir a un futuro mejor. Por eso, va a hacer que disfrutes de una experiencia visual incomparable. Con el Smart TV QN75QN800A vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Descubrí la tecnología QLED Su pantalla con puntos cuánticos ofrece un volumen de color muy superior a cualquier LED del mercado, lo que significa que puede hacer que todos los colores del espectro disponible sean más brillantes sin perder saturación. Además, se distingue por ofrecer un mejor ángulo de visión sin perder calidad desde ninguna posición. Viví en 8K Con una resolución 4 veces más alta que el 4K, muestra una calidad de imagen más nítida y detallada que su antecesor. Esto se debe a que los pixeles son tan pequeñitos que no se pueden distinguir, ni siquiera desde un primer plano. Un sonido que te envuelve Vas a sentir que proviene desde todas las direcciones posibles, lo cual enriquece la percepción del mismo. Los diálogos de tus series de fin de semana o la música de tus cantantes preferidos van a cobrar otro significado. Más allá de ver televisión Su función Screen Share permite duplicar la pantalla de tu smartphone, tablet o PC para que aparezca en la TV. De esta forma vas a poder visualizar todo tipo de contenido: material audiovisual, documentos de trabajo, correos electrónicos y más. Conexión invisible Este modelo está pensado para que puedas despejar tu campo visual. El sector donde coloques el televisor se verá mucho más prolijo porque los cables estarán ocultos, ordenados y organizados, ¡vas a notar la diferencia!"
 );
+set @SmartTvSamsung = LAST_INSERT_ID();
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("neoQled8k-01.jpg", @productId), ("neoQled8k-02.jpg", @productId), ("neoQled8k-03.jpg", @productId),
@@ -103,7 +105,7 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @audio_HomeTheater,
 @Nakamichi,
-"SHOCKWAFE ULTRA 9.2 220v", "5484450", "961949", "10", "0", "1",
+"SHOCKWAFE ULTRA 9.2 220v", 5484450, 961949, 10, 0, 1,
 "MARCA Nakamichi
 MODELO SHOCKWAFE ULTRA 9.2
 1 BARRA DE SONIDO DE 45\" Controlador de rango completo de 6 x 2.5 \"
@@ -121,6 +123,7 @@ BLUETOOTH Versión 4.1 con aptX
 ENTRADA DE ALIMENTACIÓN 100 - 240 V, 50/60 Hz (barra de sonido)/ 110 - 240 V, 50/60 Hz (altavoz de graves)
 MEZCLA ASCENDENTE ENVOLVENTE Dolby Surround , DTS Neural:X"
 );
+set @HomeTheaterNakamichi = LAST_INSERT_ID();
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("soundbar-nakamichi.jpg", @productId);
@@ -141,9 +144,10 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @tv_video_accesorios,
 @Iofi,
-"TVS-MOV-17-905586", "20064031", "6959880", "16", "1", "1",
+"TVS-MOV-17-905586", 20064031, 16999, 16, 1, 1,
 "DESCRIPCIÓN - Norma: vesa - Medida: 200 x 200 mm / 300 x 300 mm / 400 x 400 mm / 600 x 400 mm - Móvil: Si - Carga máxima: 65 Kg - Inclinación 15° - Giro: 60° Hacia ambos lados - Distancia a la pared: 69- 635 mm - Tipo de brazo: 6 brazos - Super resistente nivelando el peso en todos sus brazos - Kit de tornillos para instalación: Si"
 );
+set @SoporteTVIofi = LAST_INSERT_ID();
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("soporte-tv.png", @productId);
@@ -162,9 +166,10 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @ExhibidorasCavas,
 @Philco,
-"220V rgh94PHCAV052N hrf", "8458540", "124999", "3", "1", "1",
+"220V rgh94PHCAV052N hrf", 8458540, 124999, 3, 1, 1,
 "CAVA ELÉCTRICA PHILCO PHCAV052N 52 BOTELLAS - DISPLAY ELECTRÓNICO - CAPACIDAD: 52 BOTELLAS - IDEAL PARA ALMACENAMIENTO PROLONGADO - RANGO DE TEMPERATURA AJUSTABLE: 5 a 18°C - CONTROL DE VIBRACION GRACIAS A LOS ESTANTES DE MADERA - LUZ LED INTERIOR - SISTEMA DE ENFRIAMIENTO POR MOTOR COMPRESOR Y VENTILADOR INTERNO - SÚPER SILENCIOSO - MEDIDAS: 84 x 49,5 x 58 Cms - PESO: 38 KG "
 );
+set @CavaPhilco = LAST_INSERT_ID();
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("cavaPhilco-01.jpg", @productId), ("cavaPhilco-02.jpg", @productId), ("cavaPhilco-03.jpg", @productId), ("cavaPhilco-04.jpg", @productId);
@@ -185,7 +190,7 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @pequenios_electro_Cocina,
 @Peabody,
-"LN805R  220v rojo 254849", "5498445", "15999", "35", "1", "0", 
+"LN805R  220v rojo 254849", 5498445, 15999, 35, 1, 0, 
 "Un electrodoméstico infaltable en tu casa. La licuadora Peabody PE-LN805 te va a ayudar a obtener resultados increíbles en todo lo que prepares, ya sea que quieras disfrutar de una bebida bien fría, de salsas y sopas, o de postres deliciosos. ¡Tenela siempre a mano!
 
 Práctica y segura
@@ -194,6 +199,7 @@ Su función pulsar te permite poner en marcha el producto de forma intermitente 
 Todo lo que más te gusta
 Es apta para moler hielo en segundos y preparar smoothies refrescantes en los días de calor. Además, podés hacer tus propios tragos de coctelería en casa sin necesidad de ir a un bar. Ahora el bartender ¡sos vos!"
 );
+set @LicuadoraPeabody = LAST_INSERT_ID();
 set @productId = LAST_INSERT_ID();
 insert into productimages (fileName, productId) values
 ("licuadoraPeabody-01.jpg", @productId), ("licuadoraPeabody-02.jpg", @productId), ("licuadoraPeabody-03.jpg", @productId), ("licuadoraPeabody-04.jpg", @productId);
@@ -211,16 +217,13 @@ insert into subcharacteristics (name, value, characteristicId) values
 ("Modelo", "LN805R", LAST_INSERT_ID());
 
 
-/* Relaciones entre productos con cantidad de veces que fueron comprados juntos
-Como es el script de carga de datos inicial, no van a existir problemas de concurrencia.
-Por lo tanto el id de los productos creados va a respetar el orden en que fueron insertados en este script.
-Por simplicidad se ingresa directamente el id de productos sin variables ni selects.*/
+/* Relaciones entre productos con cantidad de veces que fueron comprados juntos*/
 insert into boughttogether (product1, product2, timesBoughtTogether) values
-("1","2", "10"), ("1","3", "50"), 
-("2","1", "10"),
-("3","1", "50"),
-("4","5", "1"),
-("5","4", "1");
+(@SmartTvSamsung, @HomeTheaterNakamichi, 10), (@SmartTvSamsung, @SoporteTVIofi, 50), 
+(@HomeTheaterNakamichi, @SmartTvSamsung, 10),
+(@SoporteTVIofi, @SmartTvSamsung, 50),
+(@CavaPhilco, @LicuadoraPeabody, 1),
+(@LicuadoraPeabody, @CavaPhilco, 1);
 
 /*Sucursales*/
 
@@ -265,40 +268,40 @@ set @stockPickedUp = LAST_INSERT_ID();
 
 /* Stock disponible de los productos en cada tienda*/
 insert into stock (productId, storeId, quantity, statusId) values
-(1, @sucursalCABA, 5, @stockAvailable),
-(1, @sucursalPilar, 1, @stockAvailable),
-(1, @sucursalUnicenter, 3, @stockAvailable),
-(2, @sucursalCABA, 10, @stockAvailable),
-(2, @sucursalPilar, 10, @stockAvailable),
-(2, @sucursalPalermo, 15, @stockAvailable),
-(2, @sucursalUnicenter, 5, @stockAvailable),
-(3, @sucursalCABA, 20, @stockAvailable),
-(3, @sucursalPilar, 15, @stockAvailable),
-(3, @sucursalPalermo, 5, @stockAvailable),
-(3, @sucursalUnicenter, 10, @stockAvailable),
-(4, @sucursalCABA, 3, @stockAvailable),
-(4, @sucursalPilar, 5, @stockAvailable),
-(4, @sucursalUnicenter, 1, @stockAvailable),
-(5, @sucursalCABA, 10, @stockAvailable);
+(@SmartTvSamsung, @sucursalCABA, 5, @stockAvailable),
+(@SmartTvSamsung, @sucursalPilar, 1, @stockAvailable),
+(@SmartTvSamsung, @sucursalUnicenter, 3, @stockAvailable),
+(@HomeTheaterNakamichi, @sucursalCABA, 10, @stockAvailable),
+(@HomeTheaterNakamichi, @sucursalPilar, 10, @stockAvailable),
+(@HomeTheaterNakamichi, @sucursalPalermo, 15, @stockAvailable),
+(@HomeTheaterNakamichi, @sucursalUnicenter, 5, @stockAvailable),
+(@SoporteTVIofi, @sucursalCABA, 20, @stockAvailable),
+(@SoporteTVIofi, @sucursalPilar, 15, @stockAvailable),
+(@SoporteTVIofi, @sucursalPalermo, 5, @stockAvailable),
+(@SoporteTVIofi, @sucursalUnicenter, 10, @stockAvailable),
+(@CavaPhilco, @sucursalCABA, 3, @stockAvailable),
+(@CavaPhilco, @sucursalPilar, 5, @stockAvailable),
+(@CavaPhilco, @sucursalUnicenter, 1, @stockAvailable),
+(@LicuadoraPeabody, @sucursalCABA, 10, @stockAvailable);
 
 /*Métodos de Pago y opciones de cuotas con interés*/
 insert into interestoptions (installmentsQuantity, interestPorcentage) values
-("3", "0");
+(3, 0);
 set @tresCuotasSinInteres = LAST_INSERT_ID();
 insert into interestoptions (installmentsQuantity, interestPorcentage) values
-("3", "5");
+(3, 5);
 set @tresCuotas5porcInt = LAST_INSERT_ID();
 insert into interestoptions (installmentsQuantity, interestPorcentage) values
-("6", "10");
+(6, 10);
 set @seisCuotas10porcInt = LAST_INSERT_ID();
 insert into interestoptions (installmentsQuantity, interestPorcentage) values
-("6", "0");
+(6, 0);
 set @seisCuotasSinInteres = LAST_INSERT_ID();
 insert into interestoptions (installmentsQuantity, interestPorcentage) values
-("12", "12");
+(12, 12);
 set @doceCuotas12porcInt = LAST_INSERT_ID();
 insert into interestoptions (installmentsQuantity, interestPorcentage) values
-("12", "0");
+(12, 0);
 set @doceCuotasSinInteres = LAST_INSERT_ID();
 
 insert into paymentmethods (name, interestOption) values 
@@ -306,6 +309,7 @@ insert into paymentmethods (name, interestOption) values
 ("Tarjeta de Crédito Santander - 6 Cuotas sin interés", @seisCuotasSinInteres),
 ("Tarjeta de Crédito Santander - 12 Cuotas", @doceCuotas12porcInt);
 insert into paymentmethods set name = "Tarjeta de Débito Santander";
+set @pagoDebitoSantander = LAST_INSERT_ID();
 
 insert into paymentmethods (name, interestOption) values 
 ("Tarjeta de Crédito BBVA - 3 Cuotas", @tresCuotas5porcInt),
@@ -315,17 +319,72 @@ insert into paymentmethods set name = "Tarjeta de Débito BBVA";
 
 /*Cupones de descuento*/
 insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue, maxUsesPerUser, maxUsesTotal) values
-("BlackFriday 2023","BlackF23", "2023-03-24", "2023-03-26", "10", "3000", "1000", "1", "2000");
+("BlackFriday 2023","BlackF23", "2023-03-24", "2023-03-26", 10, 3000, 1000, 1, 2000);
 set @cuponBlackFriday = LAST_INSERT_ID();
 
 insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue, maxUsesPerUser, maxUsesTotal) values
-("Aniversario 2023","ANIVERSARIO", "2023-07-07", "2023-07-07", "25", "3500", "2500", "1", "3000");
+("Aniversario 2023","ANIVERSARIO", "2023-07-07", "2023-07-07", 25, 3500, 2500, 1, 3000);
 set @cuponAniversario = LAST_INSERT_ID();
 
 insert into discountcupons (name, cuponCode, discountPorcentage, minPurchaseRequired, maxDiscountValue, maxUsesPerUser) values
-("Primera compra","Bienvenido", "10", "1000", "4000", "1");
+("Primera compra","Bienvenido", 10, 1000, 4000, 1);
 set @cuponPrimeraCompra = LAST_INSERT_ID();
 
+/*Estados de ventas*/
+insert into statussales set name = "En espera para ser retirado";
+set @saleToPickUp = LAST_INSERT_ID();
+insert into statussales set name = "En espera para envío";
+set @saleToBeDelivered = LAST_INSERT_ID();
+insert into statussales set name = "En reparto";
+set @saleInDelivery = LAST_INSERT_ID();
+insert into statussales set name = "Entregado";
+set @saleDelivered = LAST_INSERT_ID();
+insert into statussales set name = "Retirado";
+set @salePickedUp = LAST_INSERT_ID();
+
+/*Ventas, detalles de ventas y uso de cupón*/
+/*Se crea un registro base de la venta total*/
+insert into sales (userId, discountCuponId, date, storeId, paymentMethodId, isPickup, statusId) values 
+(@user2, @cuponPrimeraCompra, "2023-03-24", @sucursalCABA, @pagoDebitoSantander, 1, @salePickedUp);
+set @sale = LAST_INSERT_ID();
+/*Se carga en detalle de ventas cada uno de los productos que corresponden a la venta*/
+insert into detailsales (saleId, productId, quantity, unitPrice, discountPorc) values
+(@sale, @SmartTvSamsung, 1, 
+(select price from products where id = @SmartTvSamsung),
+(select if(
+(select isOnSale from products where id = @SmartTvSamsung) = 1, /*Si está en oferta obtengo el descuento, sino el descuento es 0*/
+(select discountPorc from products where id = @SmartTvSamsung),
+0))
+);
+insert into detailsales (saleId, productId, quantity, unitPrice, discountPorc) values
+(@sale, @HomeTheaterNakamichi, 1, 
+(select price from products where id = @HomeTheaterNakamichi),
+(select if(
+(select isOnSale from products where id = @HomeTheaterNakamichi) = 1, /*Si está en oferta obtengo el descuento, sino el descuento es 0*/
+(select discountPorc from products where id = @HomeTheaterNakamichi),
+0))
+);
+insert into detailsales (saleId, productId, quantity, unitPrice, discountPorc) values
+(@sale, @SoporteTVIofi, 1, 
+(select price from products where id = @SoporteTVIofi),
+(select if(
+(select isOnSale from products where id = @SoporteTVIofi) = 1, /*Si está en oferta obtengo el descuento, sino el descuento es 0*/
+(select discountPorc from products where id = @SoporteTVIofi),
+0))
+);
+/*Se actualiza la venta con el valor total de los productos*/
+update sales set chargeProducts = 
+(select sum(chargeTotal) from detailsales where saleId = @sale)
+where id = @sale;
+/*Se Carga el valor total descontado por el cupon teniendo en cuenta el valor maximo de descuento*/
+update sales set discountCuponAmount = least(
+(select chargeProducts from sales where id = @sale) * (select discountPorcentage from discountcupons where id = @cuponPrimeraCompra)/100,
+(select maxDiscountValue from discountcupons where id = @cuponPrimeraCompra)
+)
+where id = @sale;
+/*Se carga el uso del cupon por el usuario*/
+insert into cuponsusedbyusers (userId, cuponId, usesCount) values
+(@user2, @cuponPrimeraCompra, 1);
 
 
 
