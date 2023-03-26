@@ -314,13 +314,17 @@ insert into paymentmethods (name, interestOption) values
 insert into paymentmethods set name = "Tarjeta de Débito BBVA";
 
 /*Cupones de descuento*/
-insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue) values
-("BlackFriday 2023","BlackF23", "2023-03-24", "2023-03-26", "10", "3000", "1000");
+insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue, maxUsesPerUser, maxUsesTotal) values
+("BlackFriday 2023","BlackF23", "2023-03-24", "2023-03-26", "10", "3000", "1000", "1", "2000");
 set @cuponBlackFriday = LAST_INSERT_ID();
 
-insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue) values
-("Aniversario 2023","ANIVERSARIO", "2023-07-07", "2023-07-07", "25", "3500", "2500");
+insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue, maxUsesPerUser, maxUsesTotal) values
+("Aniversario 2023","ANIVERSARIO", "2023-07-07", "2023-07-07", "25", "3500", "2500", "1", "3000");
 set @cuponAniversario = LAST_INSERT_ID();
+
+insert into discountcupons (name, cuponCode, discountPorcentage, minPurchaseRequired, maxDiscountValue, maxUsesPerUser) values
+("Primera compra","Bienvenido", "10", "1000", "4000", "1");
+set @cuponPrimeraCompra = LAST_INSERT_ID();
 
 
 
