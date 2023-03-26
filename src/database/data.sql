@@ -74,7 +74,7 @@ insert into brands set name="Peabody";
 set @Peabody = LAST_INSERT_ID();
 
 /* Productos iniciales de prueba, con relacion a imagenes y caractetisticas*/
-insert into products (subCategoryId, brandId, model, artNumber, price, discount,
+insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
 isOnSale, isNew, description) values (
 @tv_video_tv,
 @Samsung,
@@ -99,7 +99,7 @@ insert into characteristics (name, productId) values
 insert into subcharacteristics (name, value, characteristicId) values
 ("Modelo", "QN75QN800A", LAST_INSERT_ID());
 
-insert into products (subCategoryId, brandId, model, artNumber, price, discount,
+insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
 isOnSale, isNew, description) values (
 @audio_HomeTheater,
 @Nakamichi,
@@ -137,7 +137,7 @@ insert into subcharacteristics (name, value, characteristicId) values
 ("altavoces traseros", "2", LAST_INSERT_ID()), 
 ("subwoofer", "2", LAST_INSERT_ID());
 
-insert into products (subCategoryId, brandId, model, artNumber, price, discount,
+insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
 isOnSale, isNew, description) values (
 @tv_video_accesorios,
 @Iofi,
@@ -158,7 +158,7 @@ insert into characteristics (name, productId) values
 insert into subcharacteristics (name, value, characteristicId) values
 ("Modelo", "TVS-MOV-17-90", LAST_INSERT_ID());
 
-insert into products (subCategoryId, brandId, model, artNumber, price, discount,
+insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
 isOnSale, isNew, description) values (
 @ExhibidorasCavas,
 @Philco,
@@ -181,7 +181,7 @@ insert into characteristics (name, productId) values
 insert into subcharacteristics (name, value, characteristicId) values
 ("Modelo", "94PHCAV052N 52 Botellas", LAST_INSERT_ID());
 
-insert into products (subCategoryId, brandId, model, artNumber, price, discount,
+insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
 isOnSale, isNew, description) values (
 @pequenios_electro_Cocina,
 @Peabody,
