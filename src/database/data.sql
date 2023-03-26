@@ -312,3 +312,16 @@ insert into paymentmethods (name, interestOption) values
 ("Tarjeta de Crédito BBVA - 6 Cuotas", @seisCuotas10porcInt),
 ("Tarjeta de Crédito BBVA - 12 Cuotas", @doceCuotas12porcInt);
 insert into paymentmethods set name = "Tarjeta de Débito BBVA";
+
+/*Cupones de descuento*/
+insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue) values
+("BlackFriday 2023","BlackF23", "2023-03-24", "2023-03-26", "10", "3000", "1000");
+set @cuponBlackFriday = LAST_INSERT_ID();
+
+insert into discountcupons (name, cuponCode, startDate, endDate, discountPorcentage, minPurchaseRequired, maxDiscountValue) values
+("Aniversario 2023","ANIVERSARIO", "2023-07-07", "2023-07-07", "25", "3500", "2500");
+set @cuponAniversario = LAST_INSERT_ID();
+
+
+
+
