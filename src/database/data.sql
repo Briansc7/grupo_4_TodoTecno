@@ -280,3 +280,35 @@ insert into stock (productId, storeId, quantity, statusId) values
 (4, @sucursalPilar, 5, @stockAvailable),
 (4, @sucursalUnicenter, 1, @stockAvailable),
 (5, @sucursalCABA, 10, @stockAvailable);
+
+/*Métodos de Pago y opciones de cuotas con interés*/
+insert into interestoptions (installmentsQuantity, interestPorcentage) values
+("3", "0");
+set @tresCuotasSinInteres = LAST_INSERT_ID();
+insert into interestoptions (installmentsQuantity, interestPorcentage) values
+("3", "5");
+set @tresCuotas5porcInt = LAST_INSERT_ID();
+insert into interestoptions (installmentsQuantity, interestPorcentage) values
+("6", "10");
+set @seisCuotas10porcInt = LAST_INSERT_ID();
+insert into interestoptions (installmentsQuantity, interestPorcentage) values
+("6", "0");
+set @seisCuotasSinInteres = LAST_INSERT_ID();
+insert into interestoptions (installmentsQuantity, interestPorcentage) values
+("12", "12");
+set @doceCuotas12porcInt = LAST_INSERT_ID();
+insert into interestoptions (installmentsQuantity, interestPorcentage) values
+("12", "0");
+set @doceCuotasSinInteres = LAST_INSERT_ID();
+
+insert into paymentmethods (name, interestOption) values 
+("Tarjeta de Crédito Santander - 3 Cuotas sin interés", @tresCuotasSinInteres),
+("Tarjeta de Crédito Santander - 6 Cuotas sin interés", @seisCuotasSinInteres),
+("Tarjeta de Crédito Santander - 12 Cuotas", @doceCuotas12porcInt);
+insert into paymentmethods set name = "Tarjeta de Débito Santander";
+
+insert into paymentmethods (name, interestOption) values 
+("Tarjeta de Crédito BBVA - 3 Cuotas", @tresCuotas5porcInt),
+("Tarjeta de Crédito BBVA - 6 Cuotas", @seisCuotas10porcInt),
+("Tarjeta de Crédito BBVA - 12 Cuotas", @doceCuotas12porcInt);
+insert into paymentmethods set name = "Tarjeta de Débito BBVA";
