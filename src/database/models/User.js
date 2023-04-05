@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
         email: {
             type: dataTypes.STRING(45),
             allowNull: false,
-            unique: true // TODO ver si se llama asi la propiedad
+            unique: true
         },
         password: {
             type: dataTypes.STRING(60),
@@ -28,13 +28,13 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DATEONLY
         },
         address: {
-            type: dataTypes.STRING // TODO ver si se llama asi la propiedad
+            type: dataTypes.TEXT
         },
         zipcode: {
             type: dataTypes.STRING(8)
         },
         location: {
-            type: dataTypes.STRING // TODO ver si se llama asi la propiedad
+            type: dataTypes.TEXT
         },
         province: {
             type: dataTypes.STRING(45)

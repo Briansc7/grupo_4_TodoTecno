@@ -21,25 +21,25 @@ module.exports = (sequelize, dataTypes) => {
         },
         artNumber: {
             type: dataTypes.BIGINT().UNSIGNED,
-            unique: true //TODO check
+            unique: true
         },
         price: {
             type: dataTypes.DECIMAL(10,2).UNSIGNED,
             allowNull: false
         },
         discountPorc: {
-            type: dataTypes.BOLEAN().UNSIGNED //TODO check
+            type: dataTypes.TINYINT.UNSIGNED
         },
         isOnSale: {
-            type: dataTypes.BOLEAN().UNSIGNED,
+            type: dataTypes.BOLEAN.UNSIGNED,
             allowNull: false
         },
         isNew: {
-            type: dataTypes.BOLEAN().UNSIGNED,
+            type: dataTypes.BOLEAN.UNSIGNED,
             allowNull: false
         },
         description: {
-            type: dataTypes.STRING()
+            type: dataTypes.TEXT
         }
         
     };
