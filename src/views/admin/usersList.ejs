@@ -7,7 +7,33 @@
     <%- include("../partials/header") %>
  
 <main>
-<h2>Próximamente</h2>
+<h1>Base de Datos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nombre</td>
+      <td>Apellido</td>
+      <td>email@gmail.com</td>
+      <td>Rol</td>
+      <td class="actions">
+        <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="delete"><i class="fa-solid fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="actions">
+  <button class="create">Crear Usuario <i class="fa-solid fa-plus"></i></button>
+</div>
 </main>
 
 
