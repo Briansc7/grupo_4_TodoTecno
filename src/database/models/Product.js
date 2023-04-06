@@ -75,6 +75,11 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "subCategoryId"
         });
 
+        Product.hasMany(models.Characteristic, {
+            as: "characteristics",
+            foreignKey: "productId"
+        });
+
         //TODO mas relaciones
 
         
