@@ -70,6 +70,11 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "product2"
         });
 
+        Product.belongsTo(models.SubCategory, {
+            as: "subCategory",
+            foreignKey: "subCategoryId"
+        });
+
         //TODO mas relaciones
 
         
