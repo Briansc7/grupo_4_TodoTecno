@@ -58,6 +58,11 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "productId"
         });
 
+        Product.belongsTo(models.Brand, {
+            as: "brand",
+            foreignKey: "brandId"
+        });
+
         //TODO mas relaciones
 
         
