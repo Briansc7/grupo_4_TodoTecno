@@ -53,7 +53,7 @@ module.exports = (sequelize, dataTypes) => {
 
 
     Product.associate = models => {
-        Product.hasMany(models.productImage, {
+        Product.hasMany(models.ProductImage, {
             as: "productImages",
             foreignKey: "productId"
         });
@@ -61,6 +61,15 @@ module.exports = (sequelize, dataTypes) => {
         Product.belongsTo(models.Brand, {
             as: "brand",
             foreignKey: "brandId"
+        });
+
+        Product.hasMany(models.BougthtTogether, {
+            as: "product1BougthtTogethers",
+            foreignKey: "product1"
+        });
+        Product.hasMany(models.BougthtTogether, {
+            as: "product2BougthtTogethers",
+            foreignKey: "product2"
         });
 
         //TODO mas relaciones
