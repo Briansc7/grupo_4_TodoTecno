@@ -22,9 +22,8 @@ module.exports = (sequelize, dataTypes) => {
     };
     let config = {
         timestamps: true,
-        //createdAt: true,
-        //updatedAt: true,
-        //deletedAt: true
+        paranoid: true,
+        freezeTableName: true //You can stop the auto-pluralization performed by Sequelize using the freezeTableName: true option. This way, Sequelize will infer the table name to be equal to the model name, without any modifications
     }
     const BoughtTogether = sequelize.define(alias, cols, config); 
 
