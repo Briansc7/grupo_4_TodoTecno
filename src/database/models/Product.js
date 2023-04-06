@@ -20,7 +20,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         artNumber: {
-            type: dataTypes.BIGINT().UNSIGNED,
+            type: dataTypes.BIGINT.UNSIGNED,
             unique: true
         },
         price: {
@@ -58,8 +58,10 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "productId"
         });
 
+        //TODO mas relaciones
+
         
     };
  
-    return Product
+    return Product;
 };
