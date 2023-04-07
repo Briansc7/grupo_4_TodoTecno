@@ -17,15 +17,18 @@ module.exports = (sequelize, dataTypes) => {
         },
         quantity: {
             type: dataTypes.MEDIUMINT.UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         unitPrice: {
             type: dataTypes.DECIMAL(10,2).UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         discountPorc: {
             type: dataTypes.TINYINT.UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         chargeTotal: { //columna autogenerada por la BD
             type: 'quantity*unitprice*(100 - discountporc)/100',

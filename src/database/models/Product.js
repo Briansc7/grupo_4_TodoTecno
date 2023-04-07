@@ -28,15 +28,18 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         discountPorc: {
-            type: dataTypes.TINYINT.UNSIGNED
+            type: dataTypes.TINYINT.UNSIGNED,
+            defaultValue: 0
         },
         isOnSale: {
             type: dataTypes.BOLEAN.UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         isNew: {
             type: dataTypes.BOLEAN.UNSIGNED,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 1
         },
         description: {
             type: dataTypes.TEXT
