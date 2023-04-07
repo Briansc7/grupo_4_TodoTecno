@@ -80,6 +80,11 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "productId"
         });
 
+        Product.hasMany(models.Stock, {
+            as: "stock",
+            foreignKey: "productId"
+        });
+
         //TODO mas relaciones
 
         
