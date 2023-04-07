@@ -81,6 +81,10 @@ module.exports = (sequelize, dataTypes) => {
             as: "paymentMethod",
             foreignKey: "paymentMethodId"
         });
+        Sale.belongsTo(models.DiscountCupon, {
+            as: "discountCupon",
+            foreignKey: "discountCuponId"
+        });
     };
  
     return Sale;
