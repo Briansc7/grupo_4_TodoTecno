@@ -77,6 +77,10 @@ module.exports = (sequelize, dataTypes) => {
             as: "status",
             foreignKey: "statusId"
         });
+        Sale.belongsTo(models.PaymentMethod, {
+            as: "paymentMethod",
+            foreignKey: "paymentMethodId"
+        });
     };
  
     return Sale;

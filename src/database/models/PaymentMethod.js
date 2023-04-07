@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'StatusSale';
+    let alias = 'PaymentMethod';
     let cols = {
         id: {
             type: dataTypes.BIGINT(10).UNSIGNED,
@@ -8,23 +8,26 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true
         },
         name: {
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(60),
             allowNull: false
+        },
+        interestOption: { //puede no tenerlo y ser null
+            type: dataTypes.BIGINT(10).UNSIGNED
         }
     };
     let config = {
         timestamps: true,
         paranoid: true
     }
-    const StatusSale = sequelize.define(alias, cols, config); 
+    const PaymentMethod = sequelize.define(alias, cols, config); 
 
 
-    StatusSale.associate = models => {
-        StatusSale.hasMany(models.Sale, {
+    PaymentMethod.associate = models => {
+        PaymentMethod.hasMany(models.Sale, {
             as: "sales",
-            foreignKey: "statusId"
+            foreignKey: "paymentMethodId"
         });
     };
  
-    return StatusSale;
+    return PaymentMethod;
 };
