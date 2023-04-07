@@ -74,6 +74,18 @@ module.exports = (sequelize, dataTypes) => {
             as: "sales",
             foreignKey: "userId"
         });
+
+        User.hasMany(models.CuponsUsedByUser, {
+            as: "cuponsUsedByUsers",
+            foreignKey: "userId"
+        });
+
+        User.belongsToMany(models.DiscountCupon, {
+            as: "discountCupons",
+            through: 'CuponsUsedByUser',
+            foreignKey: 'userId',
+            otherKey: 'cuponId'
+        });
     };
  
     return User;
