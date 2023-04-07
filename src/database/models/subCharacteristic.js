@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Characteristic';
+    let alias = 'SubCharacteristic';
     let cols = {
         id: {
             type: dataTypes.BIGINT(10).UNSIGNED,
@@ -20,20 +20,17 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: true,
         paranoid: true 
     }
-    const Characteristic = sequelize.define(alias, cols, config); 
+    const SubCharacteristic = sequelize.define(alias, cols, config); 
 
 
-    Characteristic.associate = models => {
-        Characteristic.belongsTo(models.Product, {
-            as: "product",
-            foreignKey: "productId"
-        });
-
-        Characteristic.hasMany(models.SubCharacteristic, {
-            as: "subCharacteristics",
+    SubCharacteristic.associate = models => {
+        SubCharacteristic.belongsTo(models.Characteristic, {
+            as: "characteristic",
             foreignKey: "characteristicId"
         });
+
+        
     };
  
-    return Characteristic;
+    return SubCharacteristic;
 };
