@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
+    "username": process.env.DbDevUsername || "root",
+    "password": process.env.DbDevPassword  || null,
     "database": "todo_tecno",
     "host": "127.0.0.1",
     "dialect": "mysql"
