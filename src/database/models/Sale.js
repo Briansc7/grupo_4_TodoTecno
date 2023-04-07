@@ -73,6 +73,10 @@ module.exports = (sequelize, dataTypes) => {
             as: "detailSales",
             foreignKey: "saleId"
         });
+        Sale.belongsTo(models.StatusSale, {
+            as: "status",
+            foreignKey: "statusId"
+        });
     };
  
     return Sale;
