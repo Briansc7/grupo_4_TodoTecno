@@ -31,8 +31,8 @@ module.exports = (sequelize, dataTypes) => {
             type: 'quantity*unitprice*(100 - discountporc)/100',
             set() {
               throw new Error('chargeTotal es de solo lectura')
-            },
-          },
+            }
+        }
     };
     let config = {
         timestamps: true,
