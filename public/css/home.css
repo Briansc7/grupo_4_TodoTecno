@@ -11,6 +11,8 @@ h3{
     grid-template-areas: 
     "televisores celulares computadoras consolas climatizacion";
     justify-items: center;
+    overflow: auto hidden;
+
 } .categories p {
     text-align: center;
     cursor: pointer;
@@ -126,7 +128,7 @@ article{
 @media (min-width: 769px) {
    
     .products {
-            grid-template-columns: repeat(auto-fit, minmax(22%, 1fr)); /* ajusta al ancho deseado */
+            grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
         }
 
       .filters > * {
