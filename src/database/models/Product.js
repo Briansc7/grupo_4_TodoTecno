@@ -32,12 +32,12 @@ module.exports = (sequelize, dataTypes) => {
             defaultValue: 0
         },
         isOnSale: {
-            type: dataTypes.BOLEAN.UNSIGNED,
+            type: dataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: 0
         },
         isNew: {
-            type: dataTypes.BOLEAN.UNSIGNED,
+            type: dataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: 1
         },
@@ -64,12 +64,12 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "brandId"
         });
 
-        Product.hasMany(models.BougthtTogether, {
-            as: "product1BougthtTogethers",
+        Product.hasMany(models.BoughtTogether, {
+            as: "product1BoughtTogethers",
             foreignKey: "product1"
         });
-        Product.hasMany(models.BougthtTogether, {
-            as: "product2BougthtTogethers",
+        Product.hasMany(models.BoughtTogether, {
+            as: "product2BoughtTogethers",
             foreignKey: "product2"
         });
 

@@ -52,7 +52,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         isPickup: {
-            type: dataTypes.BOLEAN.UNSIGNED,
+            type: dataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: 1
         },

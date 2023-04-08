@@ -16,7 +16,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         timesBoughtTogether: {
-            type: dataTypes.INT.UNSIGNED,
+            type: dataTypes.BIGINT.UNSIGNED,
             allowNull: false
         }
     };
@@ -30,12 +30,12 @@ module.exports = (sequelize, dataTypes) => {
 
     BoughtTogether.associate = models => {
         BoughtTogether.belongsTo(models.Product, {
-            as: "product1",
+            as: "productA",
             foreignKey: "product1"
         });
 
         BoughtTogether.belongsTo(models.Product, {
-            as: "product2",
+            as: "productB",
             foreignKey: "product2"
         });
     };
