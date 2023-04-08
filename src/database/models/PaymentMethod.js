@@ -28,7 +28,7 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "paymentMethodId"
         });
         PaymentMethod.belongsTo(models.InterestOption, {
-            as: "interestOption",
+            as: "paymentInterestOption",
             foreignKey: "interestOption"
         });
     };

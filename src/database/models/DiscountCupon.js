@@ -38,10 +38,10 @@ module.exports = (sequelize, dataTypes) => {
             defaultValue: 1
         },
         maxUsesTotal: {
-            type: dataTypes.INT.UNSIGNED
+            type: dataTypes.BIGINT.UNSIGNED
         },
         usesCount: {
-            type: dataTypes.INT.UNSIGNED,
+            type: dataTypes.BIGINT.UNSIGNED,
             allowNull: false,
             defaultValue: 0
         },
@@ -59,7 +59,7 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: "discountCuponId"
         });
         DiscountCupon.hasMany(models.CuponsUsedByUser, {
-            as: "cuponsUsedByUsers",
+            as: "cuponsUsedByUsersFromDiscountCupon",
             foreignKey: "cuponId"
         });
         DiscountCupon.belongsToMany(models.User, {

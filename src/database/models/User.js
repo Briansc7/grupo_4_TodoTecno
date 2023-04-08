@@ -76,7 +76,7 @@ module.exports = (sequelize, dataTypes) => {
         });
 
         User.hasMany(models.CuponsUsedByUser, {
-            as: "cuponsUsedByUsers",
+            as: "cuponsUsedByUsersFromUser",
             foreignKey: "userId"
         });
 

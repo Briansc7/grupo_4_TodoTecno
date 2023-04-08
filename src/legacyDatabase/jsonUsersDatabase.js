@@ -12,6 +12,14 @@ const usersJsonPath = path.resolve(__dirname,"./users.json");
 let usersJsonRawData = fs.readFileSync(usersJsonPath); //guardo contenido json en variable
 let usersData = JSON.parse(usersJsonRawData); //convierto json a objeto array
 
+//agregado uso de BD mysql
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
+
+const Users = db.User;
+const Roles = db.Role;
+
 let usersDatabase = {
     usersData: usersData,
     userRegister: userRegister,
@@ -54,6 +62,30 @@ function userRegister(userBody, avatar){
     writeJson(usersJsonPath, this.usersData);
 
     return user.id;
+
+    /*if(this.userFindByEmail(userBody.email)){
+        console.log("Email ya existe");
+        return -1; //no se registra si el email ya fue registrado por otro usuario
+    }
+
+    console.log(await Roles.findAll());
+
+    console.log(await Roles.findAll({where: {name: "user"}}));
+
+    let userRoleId = await Roles.findAll({where: {name: "user"}})[0].id;
+
+    const user = {
+        email: userBody.email,
+        firstName: userBody.firstName,
+        lastName: userBody.lastName,
+        password: bcrypt.hashSync(userBody.password, 10),
+        image: avatar?avatar.filename:null,
+        role: userRoleId
+    };
+
+    let newUserId = await Users.create(user);
+
+    return newUserId;*/
 }
 
 function writeJson(destination, data) {
@@ -67,6 +99,9 @@ function userGetNewId(){
 
 function userFindByEmail(email){
     return this.usersData.find(user=>user.email==email);
+    /* return Users.findAll({
+        where: {email: email}
+    })[0]; */
 }
 
 function checkPassword(email, password){
