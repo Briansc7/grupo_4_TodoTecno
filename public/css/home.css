@@ -3,7 +3,11 @@ h3{
     font-size: 24px;
 }
 
-
+.sub-categories{
+    
+    width: auto;
+    height: auto;
+}
 .categories {
     display: grid;
     padding: 0.6em 1em;
@@ -12,7 +16,7 @@ h3{
     "televisores celulares computadoras consolas climatizacion";
     justify-items: center;
     overflow: auto hidden;
-
+}
 
 .categories p {
     text-align: center;
