@@ -19,8 +19,3 @@ main,
 main button{
     width: 100%;
 }
-
-.btn-profile:hover{
-    background-color:var(--botonesHover);
-    color: #fff;
-}

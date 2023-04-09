@@ -1,8 +1,15 @@
+
+
 .main-product-create form{
     width: 100%;
     display: grid;
-    justify-content: space-around;
+    justify-content: center;
 }
+
+.main-product-create form h1{
+   padding-left: 15px;
+}
+
 
 .product-create{
     width: 80%;
@@ -11,15 +18,18 @@
     padding: 10px;
    
 }
-
-
-
+.create-edite-img{
+    padding: 5px;
+}
+#image{
+    width: 100%;
+}
 
 .product-create-btn{
     display: grid;
     grid-template-columns: auto;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
 }
 .product-create-btn button{
     padding: 10px;

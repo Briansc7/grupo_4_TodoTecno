@@ -60,12 +60,6 @@ main .submit{
     grid-row-gap:5px;
 }
 
-main div .reset:hover, 
-main div .submit:hover {
-background-color: var(--botonesHover);
-color:white;
-cursor: pointer;
-}
 
 main div .reset,
 main div .submit {

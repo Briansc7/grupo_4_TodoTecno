@@ -35,11 +35,7 @@ main .login .btn-submit{
     width: 100%;
     }
 
-main .login .btn-submit:hover,
-main .btn-register:hover{
-    background-color:var(--botonesHover);
-    color: #fff;
-}
+
 
  .required-fields {
     display: grid;
