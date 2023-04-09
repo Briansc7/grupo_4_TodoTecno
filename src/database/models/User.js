@@ -30,7 +30,7 @@ module.exports = (sequelize, dataTypes) => {
         address: {
             type: dataTypes.TEXT
         },
-        zipcode: {
+        zipCode: {
             type: dataTypes.STRING(8)
         },
         location: {

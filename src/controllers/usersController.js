@@ -84,6 +84,7 @@ loginSubmit: async (req, res) => {
 profile: async (req, res) => {
     const userId = (req.cookies && req.cookies.userId) || (req.session.user && req.session.user.userId);
     const user = await usersDatabase.userFindById(userId);
+
     return res.render("./users/profile", {
         userInfo: {
             firstName: user.firstName,
