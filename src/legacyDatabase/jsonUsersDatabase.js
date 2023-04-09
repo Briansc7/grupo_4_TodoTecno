@@ -32,9 +32,9 @@ let usersDatabase = {
     userFindById: userFindById
 };
 
-function userRegister(userBody, avatar){
+async function userRegister(userBody, avatar){
 
-    if(this.userFindByEmail(userBody.email)){
+    /* if(this.userFindByEmail(userBody.email)){
         console.log("Email ya existe");
         return -1; //no se registra si el email ya fue registrado por otro usuario
     }
@@ -61,18 +61,21 @@ function userRegister(userBody, avatar){
 
     writeJson(usersJsonPath, this.usersData);
 
-    return user.id;
+    return user.id; */
 
-    /*if(this.userFindByEmail(userBody.email)){
+    if(await this.userFindByEmail(userBody.email)){
         console.log("Email ya existe");
         return -1; //no se registra si el email ya fue registrado por otro usuario
     }
 
-    console.log(await Roles.findAll());
+    let userRoleId = await Roles.findAll({where: {name: "user"}});
 
-    console.log(await Roles.findAll({where: {name: "user"}}));
+    if(!userRoleId){
+        console.log("Rol no encontrado");
+        return -2;
+    }
 
-    let userRoleId = await Roles.findAll({where: {name: "user"}})[0].id;
+    userRoleId = userRoleId[0].id;
 
     const user = {
         email: userBody.email,
@@ -80,12 +83,12 @@ function userRegister(userBody, avatar){
         lastName: userBody.lastName,
         password: bcrypt.hashSync(userBody.password, 10),
         image: avatar?avatar.filename:null,
-        role: userRoleId
+        roleId: userRoleId
     };
 
     let newUserId = await Users.create(user);
 
-    return newUserId;*/
+    return newUserId;
 }
 
 function writeJson(destination, data) {
@@ -97,11 +100,13 @@ function userGetNewId(){
     return Math.max.apply(Math,this.usersData.map(user=>user.id))+1;
 }
 
-function userFindByEmail(email){
-    return this.usersData.find(user=>user.email==email);
-    /* return Users.findAll({
+async function userFindByEmail(email){
+    //return this.usersData.find(user=>user.email==email);
+    let userFound = await Users.findAll({
         where: {email: email}
-    })[0]; */
+    });  
+    
+    return userFound?userFound[0]:null;
 }
 
 function checkPassword(email, password){
