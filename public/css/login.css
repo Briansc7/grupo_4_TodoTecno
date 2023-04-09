@@ -1,34 +1,26 @@
 
 .main-login{
+
     display: grid;
     padding: 1em 1em;
     justify-content: center;
     border-top: solid black 2px;
     border-bottom: solid black 2px;
-   
+
 }
-main div .login{
-    display:grid;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-}
+
 
 .main-login form{
     display: grid;
-    grid-gap: 5px;
     max-width: 450px;
 }
 
 .button{
     width: 100%;
 }
-.login{
-   padding: 10px;
-}
+
  .new-register{
     display:grid;
-    padding: 10px;
     max-width: 450px;
   
   }
@@ -43,11 +35,7 @@ main .login .btn-submit{
     width: 100%;
     }
 
-main .login .btn-submit:hover,
-main .btn-register:hover{
-    background-color:var(--botonesHover);
-    color: #fff;
-}
+
 
  .required-fields {
     display: grid;

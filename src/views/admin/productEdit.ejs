@@ -17,8 +17,8 @@
     </div>
 
 </form>
-<form action="/admin/productDelete/<%= product.id %>?_method=DELETE" method="POST">
-    <button class="submit" type="submit">Eliminar Producto</button>
+<form class="form-delete" action="/admin/productDelete/<%= product.id %>?_method=DELETE" method="POST">
+    <button class="btn-delete" type="submit">Eliminar Producto</button>
  </form>
  <% }else { %>
     <h2>No existe el producto</h2>
