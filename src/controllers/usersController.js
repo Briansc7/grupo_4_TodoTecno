@@ -40,15 +40,15 @@ createUser: (req, res)=> {
 
     return res.render("./users/register", {errors: errors.mapped(), old: old, head: registerHeadData});
 },
-loginSubmit: (req, res) => {
+loginSubmit: async (req, res) => {
     const errors = validationResult(req);
     
     if(errors.isEmpty()){
 
-        if(usersDatabase.checkPassword(req.body.email, req.body.password)){
-            const name = usersDatabase.userGetName(req.body.email);
-            const token = usersDatabase.userGetToken(req.body.email);
-            const userId = usersDatabase.userGetUserId(req.body.email);
+        if(await usersDatabase.checkPassword(req.body.email, req.body.password)){
+            const name = await usersDatabase.userGetName(req.body.email);
+            const token = await usersDatabase.userGetToken(req.body.email);
+            const userId = await usersDatabase.userGetUserId(req.body.email);
             req.session.user = {
                 name: name,
                 token: token,

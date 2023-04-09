@@ -109,8 +109,8 @@ async function userFindByEmail(email){
     return userFound?userFound[0]:null;
 }
 
-function checkPassword(email, password){
-    let userFound = this.userFindByEmail(email);
+async function checkPassword(email, password){
+    let userFound = await this.userFindByEmail(email);
 
     if(!userFound){
         return false;
@@ -120,8 +120,8 @@ function checkPassword(email, password){
 
 }
 
-function userGetName(email){
-    let userFound = this.userFindByEmail(email);
+async function userGetName(email){
+    let userFound = await this.userFindByEmail(email);
 
     if(!userFound){
         return null;
@@ -130,8 +130,8 @@ function userGetName(email){
     return userFound.firstName;
 }
 
-function userGetToken(email){
-    let userFound = this.userFindByEmail(email);
+async function userGetToken(email){
+    let userFound = await this.userFindByEmail(email);
 
     if(!userFound){
         return null;
@@ -147,8 +147,8 @@ function userGetToken(email){
     );
 }
 
-function userGetUserId(email){
-    let userFound = this.userFindByEmail(email);
+async function userGetUserId(email){
+    let userFound = await this.userFindByEmail(email);
 
     if(!userFound){
         return null;
@@ -157,8 +157,12 @@ function userGetUserId(email){
     return userFound.id;
 }
 
-function userFindById(id){
-    return this.usersData.find(user=>user.id==id);
+async function userFindById(id){
+    //return this.usersData.find(user=>user.id==id);
+
+    let userFound = await Users.findByPk(id);
+
+    return userFound;
 }
 
 module.exports = usersDatabase;
