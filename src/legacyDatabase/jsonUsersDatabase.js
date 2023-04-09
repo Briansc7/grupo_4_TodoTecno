@@ -137,12 +137,19 @@ async function userGetToken(email){
         return null;
     }
 
+    let userRole = await Roles.findByPk(userFound.roleId);
+
+    if(!userRole){
+        console.log("Rol no encontrado");
+        return -2;
+    }
+
     //Se genera un token que va a tener los permisos de administrador o de usuario
     //En un futuro se va a delegar la tarea a un servidor de authenticación 
     return authTokenUtilities.generateToken(
         {
             id: userFound.id,
-            role: userFound.role
+            role: userRole.name
         }
     );
 }

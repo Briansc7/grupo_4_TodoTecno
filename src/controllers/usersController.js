@@ -81,9 +81,9 @@ loginSubmit: async (req, res) => {
 
     return res.render("./users/login", {errors: errors.mapped(), old: old, head: loginHeadData});
 },
-profile: (req, res) => {
+profile: async (req, res) => {
     const userId = (req.cookies && req.cookies.userId) || (req.session.user && req.session.user.userId);
-    const user = usersDatabase.userFindById(userId);
+    const user = await usersDatabase.userFindById(userId);
     return res.render("./users/profile", {
         userInfo: {
             firstName: user.firstName,
@@ -91,7 +91,7 @@ profile: (req, res) => {
             email: user.email,
             birthday: user.birthday,
             address: user.address,
-            postalCode: user.postalCode,
+            postalCode: user.zipCode,
             location: user.location,
             province: user.province,
             image: user.image
