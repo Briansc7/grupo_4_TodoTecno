@@ -10,6 +10,13 @@ const productsJsonPath = path.resolve(__dirname,"./products.json");
 let productsJsonRawData = fs.readFileSync(productsJsonPath); //guardo contenido json en variable
 let productsData = JSON.parse(productsJsonRawData); //convierto json a objeto array
 
+//agregado uso de BD mysql
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
+
+const Products = db.Product;
+
 //Se obtienen los datos de los productos
 /*const usersJsonPath = path.resolve(__dirname,"./users.json");
 let usersJsonRawData = fs.readFileSync(usersJsonPath); //guardo contenido json en variable
@@ -30,8 +37,12 @@ let database = {
     //usersData: usersData
 }
 
-function productGetById(id){
-    return this.productsData.find(product=>product.id==id);
+async function productGetById(id){
+    //return this.productsData.find(product=>product.id==id);
+
+    let product = await Products.findByPk(id);
+
+    return product;
 }
 
 function productDeleteById(id){
@@ -98,12 +109,16 @@ function getProductsFromRecommendationsByID(productId){
     return this.productGetById(productId).recommendations.map(recomendationId => this.productGetById(recomendationId)).filter(value=>value);
 }
 
-function productsThatAreNew(){
-    return this.productsData.filter(prod=>prod.isNew); 
+async function productsThatAreNew(){
+    //return this.productsData.filter(prod=>prod.isNew); 
+    let products = await Products.findAll({where: {isNew: 1}, include: ["productImages"]});
+    return products;
 }
 
-function productsThatAreOnSale(){
-    return this.productsData.filter(prod=>prod.isOnSale);
+async function productsThatAreOnSale(){
+    //return this.productsData.filter(prod=>prod.isOnSale);
+    let products = await Products.findAll({where: {isOnSale: 1}, include: ["productImages"]});
+    return products;
 }
 
 module.exports = database;

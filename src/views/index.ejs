@@ -62,7 +62,7 @@
                     <a href="/products/productDetail/<%=productsOnSale[i].id%>" class= "product-search">
                         <article>
                             <div class="home-image">
-                            <img src="images\products\<%= productsOnSale[i].images[0] %>" alt="<%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %>" class="product_img">
+                            <img src="images\products\<%= productsOnSale[i].productImages[0].fileName %>" alt="<%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %>" class="product_img">
                         </div>
                             <div class="main-article">
                                 <p class="price">$<%= productsOnSale[i].price %></p>
@@ -89,7 +89,7 @@
                         <a href="/products/productDetail/<%=productsNew[i].id%>" class= "product-search">
                         <article>
                             <div class="home-image">
-                            <img src="images\products\<%= productsNew[i].images[0] %>" alt="<%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %>" class="product_img">
+                            <img src="images\products\<%= productsNew[i].productImages[0].fileName %>" alt="<%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %>" class="product_img">
                             </div>
                             <div class="main-article">
                                 <p class="price">$<%= productsNew[i].price %></p>
