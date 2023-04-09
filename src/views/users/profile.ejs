@@ -9,14 +9,14 @@
 
     <main>
         
-        <form action="/users/logout" method="POST">
-            <button type="submit">Cerrar Sesión</button>
+        <form class="btnlogout" action="/users/logout" method="POST">
+            <button class="btn-profile" type="submit">Cerrar Sesión</button>
         </form>
         <br>
         <section class="profile-avatar-container">
             <img src="/images/users/<%= userInfo.image?userInfo.image:"defaultUser.png" %>" alt="" class="profile-avatar-img">
         </section>
-        <section>
+        <section class="personal-infomation">
             <p>Nombre: <%= userInfo.firstName %></p>
             <p>Apellido: <%= userInfo.lastName %></p>
             <p>Email: <%= userInfo.email %></p>
@@ -26,11 +26,8 @@
             <p>Localidad: <%= userInfo.location?userInfo.location:"Sin especificar" %></p>
             <p>Provincia: <%= userInfo.province?userInfo.province:"Sin especificar" %></p>
         </section>
-        <button id="edit-profile-btn">Editar Perfil</button>
+        <button class="btn-profile" id="edit-profile-btn">Editar Perfil</button>
         
-
-
-
     </main>
 
     <%- include("../partials/footer") %>

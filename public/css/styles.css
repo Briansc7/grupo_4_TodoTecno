@@ -24,6 +24,7 @@ main{
    
     margin-bottom: 10px;
     align-content: center;
+
 }
 
 .errors{
@@ -48,6 +49,8 @@ main{
      font-size: 14px;
      font-weight: bold;
       }
+
+.btn-profile,
 .btn-google,
 .btn-facebook,
 .btn-register,
