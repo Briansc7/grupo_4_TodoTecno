@@ -42,7 +42,7 @@ productStore: async (req, res) => {
 
     let newProduct = {
         subCategoryId: 1,
-        brandId: 1,
+        brandId: req.body.brand,
         model: req.body.model,
         artNumber: Number(req.body.artNumber),
         price: Number(req.body.price),
@@ -75,7 +75,7 @@ productUpdate: async (req, res) => {
     let editedProduct = {
         //id: req.params.id,
         //category: req.body.category,
-        //brand: req.body.brand,
+        brandId: req.body.brand,
         model: req.body.model,
         artNumber: Number(req.body.artNumber),
         price: Number(req.body.price),
