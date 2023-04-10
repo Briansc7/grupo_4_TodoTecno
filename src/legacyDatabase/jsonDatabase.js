@@ -19,6 +19,7 @@ const Products = db.Product;
 const ProductImages = db.ProductImage;
 const RelatedProducts = db.BoughtTogether;
 const Characteristic = db.Characteristic;
+const Brands = db.Brand;
 
 //Se obtienen los datos de los productos
 /*const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -38,7 +39,8 @@ let database = {
     productsThatAreNew: productsThatAreNew,
     productsThatAreOnSale: productsThatAreOnSale,
     productDetailGetById: productDetailGetById,
-    getAllProducts: getAllProducts
+    getAllProducts: getAllProducts,
+    getAllBrands: getAllBrands
     
     //usersData: usersData
 }
@@ -163,6 +165,11 @@ async function productsThatAreOnSale(){
 async function getAllProducts(){
     let products = await Products.findAll({include: ["productImages"]});
     return products;
+}
+
+async function getAllBrands(){
+    let brands = await Brands.findAll();
+    return brands;
 }
 
 module.exports = database;
