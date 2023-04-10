@@ -11,8 +11,12 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(45),
             allowNull: false
         },
-        productId: {
+        characteristicId: {
             type: dataTypes.BIGINT(10).UNSIGNED,
+            allowNull: false
+        },
+        value: {
+            type: dataTypes.STRING(45),
             allowNull: false
         }
     };
