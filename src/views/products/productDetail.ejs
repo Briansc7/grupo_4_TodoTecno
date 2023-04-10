@@ -59,12 +59,12 @@
         <section class="characteristics">
             <h3 class="characteristics-title">Características Técnicas</h3>
             
-            <% for (const [characteristicsType, characteristicsList] of Object.entries(product.characteristics)) { %>
+            <% for (const {name, subCharacteristics} of product.characteristics) { %>
                 <article tabindex="0">
-                    <h4><%= characteristicsType %></h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
+                    <h4><%= name %></h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
                     <div class="info">
-                    <% for (const [characteristicsSubType, characteristicsSubTypeValue] of Object.entries(characteristicsList)) { %>
-                        <%= characteristicsSubType %>: <%= characteristicsSubTypeValue %>
+                    <% for (const {name, value} of subCharacteristics) { %>
+                        <%= name %>: <%= value %>
                         <br>
 
                     <% } %>

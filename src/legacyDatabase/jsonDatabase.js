@@ -17,6 +17,7 @@ const { Op } = require("sequelize");
 
 const Products = db.Product;
 const RelatedProducts = db.BoughtTogether;
+const Characteristic = db.Characteristic;
 
 //Se obtienen los datos de los productos
 /*const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -50,7 +51,9 @@ async function productGetById(id){
 async function productDetailGetById(id){
     //return this.productsData.find(product=>product.id==id);
 
-    let product = await Products.findByPk(id, {include: ["productImages", "brand"]});
+    let product = await Products.findByPk(id, {include: ["productImages", "brand", 
+        {model: Characteristic, as: "characteristics",
+            include:["subCharacteristics"]}]});
 
     return product;
 }
