@@ -4,6 +4,7 @@ const mainRouter = require(path.resolve(__dirname, "./routes/main"));
 const productsRouter = require(path.resolve(__dirname, "./routes/products"));
 const usersRouter = require(path.resolve(__dirname, "./routes/users"));
 const adminRouter = require(path.resolve(__dirname, "./routes/admin"));
+const categorySubCategoryAPIRouter = require(path.resolve(__dirname, "./routes/api/categorySubCategory"));
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 const session = require("express-session");
 const cookieParser = require('cookie-parser');
@@ -32,6 +33,8 @@ app.use("/", mainRouter);
 app.use("/products", productsRouter);
 app.use("/users", usersRouter);
 app.use("/admin", adminRouter);
+
+app.use("/api/categorySubCategory",categorySubCategoryAPIRouter);
 
 app.use((req,res,next)=>res.status(404).render("not-found"));
 
