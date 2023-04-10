@@ -93,8 +93,8 @@ productUpdate: (req, res) => {
     res.redirect("/admin/productEdit/"+req.params.id);
 },
 
-productDestroy: (req, res) => {
-    database.productDeleteById(req.params.id);
+productDestroy: async (req, res) => {
+    await database.productDeleteById(req.params.id);
     res.redirect("/");
 },
 

@@ -61,24 +61,28 @@ async function productDetailGetById(id){
     return product;
 }
 
-function productDeleteById(id){
+async function productDeleteById(id){
 
-    const images = this.productGetById(id).images;
+    const images = await ProductImages.findAll({where: {productId: id}});
     const imagesFolder = path.resolve(__dirname, "../../public/images/products/");
 
    
     images.forEach(file => {
-        fs.unlink(path.join(imagesFolder, file), (err) => {
+        fs.unlink(path.join(imagesFolder, file.fileName), (err) => {
             if (err)
             throw err;
-            console.log(`Borrado archivo: ${file}`);
+            console.log(`Borrado archivo: ${file.fileName}`);
         });
     });
     console.log("Borrado de imágenes completado");
 
 
-    this.productsData = this.productsData.filter(product=>product.id!=id);
-    writeJson(productsJsonPath, this.productsData);
+    //this.productsData = this.productsData.filter(product=>product.id!=id);
+    //writeJson(productsJsonPath, this.productsData);
+
+    await ProductImages.destroy({where: {productId: id}});
+    await Products.destroy({where: {id}});
+
 }
 
 function writeJson(destination, data) {
