@@ -114,12 +114,14 @@ async function AddProductImages(productId, images){
     
 }
 
-function productEdit(productEdited){
-    let productToEdit = this.productGetById(productEdited.id);
+async function productEdit(id, productEdited){
+    /* let productToEdit = this.productGetById(productEdited.id);
     
     Object.assign(productToEdit,productEdited);
 
-    writeJson(productsJsonPath, this.productsData);
+    writeJson(productsJsonPath, this.productsData); */
+
+    await Products.update(productEdited, {where: {id}});
 
 }
 

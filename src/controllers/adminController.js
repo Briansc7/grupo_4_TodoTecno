@@ -70,25 +70,25 @@ productEdit: async (req, res) => res.render("./admin/productEdit",
     {head: productEditHeadData, product: await database.productDetailGetById(req.params.id)}
     ),
 
-productUpdate: (req, res) => {
+productUpdate: async (req, res) => {
     let editedProduct = {
-        id: req.params.id,
-        category: req.body.category,
-        brand: req.body.brand,
+        //id: req.params.id,
+        //category: req.body.category,
+        //brand: req.body.brand,
         model: req.body.model,
         artNumber: Number(req.body.artNumber),
         price: Number(req.body.price),
-        availability: Number(req.body.availability),
-        discount: Number(req.body.discount),
-        isOnSale: req.body.isOnSale=="on",
-        isNew: req.body.isNew=="on",
-        description: [req.body.description],
-        characteristics: database.productGetById(req.params.id).characteristics,
-        images: database.productGetById(req.params.id).images,
-        recommendations: database.productGetById(req.params.id).recommendations
+        //availability: Number(req.body.availability),
+        discountPorc: Number(req.body.discount),
+        isOnSale: req.body.isOnSale=="on"?1:0,
+        isNew: req.body.isNew=="on"?1:0,
+        description: req.body.description,
+        //characteristics: database.productGetById(req.params.id).characteristics,
+        //images: database.productGetById(req.params.id).images,
+        //recommendations: database.productGetById(req.params.id).recommendations
     };
 
-    database.productEdit(editedProduct);
+    await database.productEdit(req.params.id, editedProduct);
 
     res.redirect("/admin/productEdit/"+req.params.id);
 },
