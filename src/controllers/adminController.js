@@ -15,7 +15,7 @@ const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/use
 
 const adminController = {
 
-productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, brands: await database.getAllBrands()}),
+productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, brands: await database.getAllBrands(), categories: await database.getAllCategories()}),
 
 productStore: async (req, res) => {
     let imagesUploaded = [];

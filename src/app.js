@@ -10,7 +10,7 @@ const session = require("express-session");
 const cookieParser = require('cookie-parser');
 const makeUserSessionVisibleToAllViews = require(path.resolve(__dirname, "./middlewares/makeUserSessionVisibleToAllViews"));
 require("dotenv").config(); //Para poder usar variables de entorno
-
+const cors = require("cors");
 
 const app = express();
 
@@ -28,6 +28,7 @@ app.use(express.static(publicPath));
 
 app.use(makeUserSessionVisibleToAllViews);
 
+app.use(cors());
 
 app.use("/", mainRouter);
 app.use("/products", productsRouter);

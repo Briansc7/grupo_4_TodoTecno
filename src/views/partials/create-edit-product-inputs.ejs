@@ -1,6 +1,16 @@
     <div class="input-section"><h5>Categoría del producto</h5>
-        <input class="input" type="text" name="category" placeholder="ej: Smart TV" required value="<%= locals.product && product.category %>">
-    </div>   
+        <select class="input" name="category" required>
+            <option value="" class= "choose-option" disabled <%= !locals.subcategory?"selected":""%>>Selecciona una Categoría</option>
+            <% locals.categories.forEach(category => { %>
+                <option value="<%= category.id %>" <%= category.id == (locals.subcategory?.category.id)?"selected":""%>><%= category.name %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="input-section"><h5>SubCategoría del producto</h5>
+        <select class="input" name="subcategory" required>
+            <option value="" class= "choose-option" disabled <%= !locals.subcategory?"selected":""%>>Selecciona una SubCategoría</option>            
+        </select>
+    </div>    
     <div class="input-section"><h5>Marca</h5>
         <select class="input" name="brand" required>
             <option value="" disabled <%= !locals.product?"selected":""%>>Selecciona una marca</option>
