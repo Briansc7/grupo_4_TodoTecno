@@ -118,13 +118,7 @@ usersDetail: async (req, res) =>{
 },
 
 usersCreate: (req, res) => {
-    /*let newUser = {
-        id: null,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-    };*/
+    
 },
 
 usersEdit: (req, res) => {
