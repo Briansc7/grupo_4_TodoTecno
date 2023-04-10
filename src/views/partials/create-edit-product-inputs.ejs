@@ -34,11 +34,7 @@
         <br>      
     <div class="input-section"><h5>Descripción</h5>
         <textarea class="input" name="description">
-            <% if(locals.product) { %>
-                <% for(i=0;i<product.description.length;i++) { %>
-                    <%= product.description[i] %>
-                <% } %>
-            <% } %>
+            <%= product.description %>
         </textarea>
     </div>
         <% if (!locals.product) { %>
