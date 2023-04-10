@@ -16,6 +16,7 @@ const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 
 const Products = db.Product;
+const ProductImages = db.ProductImage;
 const RelatedProducts = db.BoughtTogether;
 const Characteristic = db.Characteristic;
 
@@ -30,6 +31,7 @@ let database = {
     productDeleteById: productDeleteById,
     productGetNewId: productGetNewId,
     productCreate: productCreate,
+    AddProductImages: AddProductImages,
     productEdit: productEdit,
     productSearch: productSearch,
     getProductsFromRecommendationsByID: getProductsFromRecommendationsByID,
@@ -88,13 +90,24 @@ function productGetNewId(){
     return Math.max.apply(Math,this.productsData.map(product=>product.id))+1;
 }
 
-function productCreate(product){
-    product.id = this.productGetNewId();
+async function productCreate(product){
+    /*product.id = this.productGetNewId();
     this.productsData.push(product);
     writeJson(productsJsonPath, this.productsData);
 
-    return product.id;
+    return product.id;*/
 
+    let newProduct = await Products.create(product);
+    return newProduct;
+
+}
+
+async function AddProductImages(productId, images){
+
+    for (const fileName of images){
+        await ProductImages.create({fileName, productId})
+    }
+    
 }
 
 function productEdit(productEdited){

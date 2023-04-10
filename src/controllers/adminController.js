@@ -16,13 +16,13 @@ const adminController = {
 
 productCreate: (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData}),
 
-productStore: (req, res) => {
+productStore: async (req, res) => {
     let imagesUploaded = [];
     req.files.forEach(img => {
         imagesUploaded.push(img.filename);
     });
 
-    let newProduct = {
+    /*let newProduct = {
         id: null,
         category: req.body.category,
         brand: req.body.brand,
@@ -37,11 +37,29 @@ productStore: (req, res) => {
         characteristics: {},
         images: imagesUploaded,
         recommendations: []
+    };*/
+
+    let newProduct = {
+        subCategoryId: 1,
+        brandId: 1,
+        model: req.body.model,
+        artNumber: Number(req.body.artNumber),
+        price: Number(req.body.price),
+        //availability: Number(req.body.availability),
+        discountPorc: Number(req.body.discount),
+        isOnSale: req.body.isOnSale=="on"?1:0,
+        isNew: req.body.isNew=="on"?1:0,
+        description: req.body.description,
+        characteristics: {},
+        //images: imagesUploaded,
+        //recommendations: []
     };
 
-    let newProductId = database.productCreate(newProduct);
+    let createdProduct = await database.productCreate(newProduct);
 
-    res.redirect("/products/productDetail/"+newProductId);
+    await database.AddProductImages(createdProduct.id, imagesUploaded);
+
+    res.redirect("/products/productDetail/"+createdProduct.id);
 
 
 },
