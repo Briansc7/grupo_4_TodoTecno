@@ -55,6 +55,8 @@ productStore: async (req, res) => {
         //recommendations: []
     };
 
+    //TODO hacer selectores para poder elegir la categoria, subcategoria y marca
+
     let createdProduct = await database.productCreate(newProduct);
 
     await database.AddProductImages(createdProduct.id, imagesUploaded);
@@ -64,8 +66,8 @@ productStore: async (req, res) => {
 
 },
 
-productEdit: (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: database.productGetById(req.params.id)}
+productEdit: async (req, res) => res.render("./admin/productEdit",
+    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id)}
     ),
 
 productUpdate: (req, res) => {
@@ -91,8 +93,8 @@ productUpdate: (req, res) => {
     res.redirect("/admin/productEdit/"+req.params.id);
 },
 
-productDestroy: (req, res) => {
-    database.productDeleteById(req.params.id);
+productDestroy: async (req, res) => {
+    await database.productDeleteById(req.params.id);
     res.redirect("/");
 },
 
