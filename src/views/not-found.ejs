@@ -2,13 +2,65 @@
 <html lang="en">
 
 <%- include("./partials/head",{title: "Página no encontrada", stylesheet: "not-found.css"}) %>
+<style>
+    /* Estilos para el cuerpo */
+main {
+    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+/* Estilos para el mensaje de error */
+.error-message {
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.error-message h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    transition: all 1.5s;
+} .error-message h1:hover {
+    text-decoration: underline red;
+}
+
+.error-message p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.error-message a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.error-message a:hover {
+    background-color: #0069d9;
+}
+
+</style>
 <body>
     <%- include("./partials/header") %>
  
 <main>
-  
-<h1>Error 404: La ruta a la que intentas acceder no existe</h1>    
+    <img src="/public/images/not-found/not-found-404.avif" alt="">
+    <div class="error-message">
+        
+        <h1>Error 404</h1>
+        <p>Lo sentimos, la página que buscas no ha sido encontrada.</p>
+        <a href="/">Volver a la página principal</a>
+    </div>    
 
 </main>
 
