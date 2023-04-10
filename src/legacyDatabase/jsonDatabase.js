@@ -16,6 +16,7 @@ const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 
 const Products = db.Product;
+const RelatedProducts = db.BoughtTogether;
 
 //Se obtienen los datos de los productos
 /*const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -32,7 +33,8 @@ let database = {
     productSearch: productSearch,
     getProductsFromRecommendationsByID: getProductsFromRecommendationsByID,
     productsThatAreNew: productsThatAreNew,
-    productsThatAreOnSale: productsThatAreOnSale
+    productsThatAreOnSale: productsThatAreOnSale,
+    productDetailGetById: productDetailGetById
     
     //usersData: usersData
 }
@@ -41,6 +43,14 @@ async function productGetById(id){
     //return this.productsData.find(product=>product.id==id);
 
     let product = await Products.findByPk(id);
+
+    return product;
+}
+
+async function productDetailGetById(id){
+    //return this.productsData.find(product=>product.id==id);
+
+    let product = await Products.findByPk(id, {include: ["productImages", "brand"]});
 
     return product;
 }
@@ -104,9 +114,15 @@ function productSearch(keywords){
     return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords
 }
 
-function getProductsFromRecommendationsByID(productId){
+async function getProductsFromRecommendationsByID(productId){
     //array de ids de recomendaciones -> array productos recomendados -> filtrado de valores invalidos como undefined
-    return this.productGetById(productId).recommendations.map(recomendationId => this.productGetById(recomendationId)).filter(value=>value);
+    //return this.productGetById(productId).recommendations.map(recomendationId => this.productGetById(recomendationId)).filter(value=>value);
+    let recommendations = await RelatedProducts.findAll({where: {product1: productId}, 
+        include: [{model: Products, as:"productB", //forma de encadenar varios includes
+        include: ["productImages"]  //include en productos
+    }]});
+
+    return recommendations;
 }
 
 async function productsThatAreNew(){
