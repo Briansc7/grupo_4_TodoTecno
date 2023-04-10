@@ -16,13 +16,13 @@ const adminController = {
 
 productCreate: (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData}),
 
-productStore: (req, res) => {
+productStore: async (req, res) => {
     let imagesUploaded = [];
     req.files.forEach(img => {
         imagesUploaded.push(img.filename);
     });
 
-    let newProduct = {
+    /*let newProduct = {
         id: null,
         category: req.body.category,
         brand: req.body.brand,
@@ -37,17 +37,37 @@ productStore: (req, res) => {
         characteristics: {},
         images: imagesUploaded,
         recommendations: []
+    };*/
+
+    let newProduct = {
+        subCategoryId: 1,
+        brandId: 1,
+        model: req.body.model,
+        artNumber: Number(req.body.artNumber),
+        price: Number(req.body.price),
+        //availability: Number(req.body.availability),
+        discountPorc: Number(req.body.discount),
+        isOnSale: req.body.isOnSale=="on"?1:0,
+        isNew: req.body.isNew=="on"?1:0,
+        description: req.body.description,
+        characteristics: {},
+        //images: imagesUploaded,
+        //recommendations: []
     };
 
-    let newProductId = database.productCreate(newProduct);
+    //TODO hacer selectores para poder elegir la categoria, subcategoria y marca
 
-    res.redirect("/products/productDetail/"+newProductId);
+    let createdProduct = await database.productCreate(newProduct);
+
+    await database.AddProductImages(createdProduct.id, imagesUploaded);
+
+    res.redirect("/products/productDetail/"+createdProduct.id);
 
 
 },
 
-productEdit: (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: database.productGetById(req.params.id)}
+productEdit: async (req, res) => res.render("./admin/productEdit",
+    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id)}
     ),
 
 productUpdate: (req, res) => {
@@ -73,8 +93,8 @@ productUpdate: (req, res) => {
     res.redirect("/admin/productEdit/"+req.params.id);
 },
 
-productDestroy: (req, res) => {
-    database.productDeleteById(req.params.id);
+productDestroy: async (req, res) => {
+    await database.productDeleteById(req.params.id);
     res.redirect("/");
 },
 

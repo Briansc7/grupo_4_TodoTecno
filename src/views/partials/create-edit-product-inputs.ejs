@@ -2,7 +2,7 @@
         <input class="input" type="text" name="category" placeholder="ej: Smart TV" required value="<%= locals.product && product.category %>">
     </div>   
     <div class="input-section"><h5>Marca</h5>
-        <input class="input" type="text" name="brand" placeholder="" required value="<%= locals.product && product.brand %>">
+        <input class="input" type="text" name="brand" placeholder="" required value="<%= locals.product && product.brand.name %>">
     </div>   
     <div class="input-section"><h5>Modelo</h5>
         <input class="input" type="text" name="model" placeholder="" required value="<%= locals.product && product.model %>">
@@ -17,7 +17,7 @@
         <input class="input" type="number" name="availability" placeholder="" required value="<%= locals.product && product.availability %>">
     </div>    
     <div class="input-section"><h5>Descuento [%]</h5>
-        <input class="input" type="number" name="discount" placeholder="" required value="<%= locals.product && product.discount %>">
+        <input class="input" type="number" name="discount" placeholder="" required value="<%= locals.product && product.discountPorc %>">
     </div>
         <br>
         <h5>Descuento habilitado: <input  type="checkbox" name="isOnSale" 

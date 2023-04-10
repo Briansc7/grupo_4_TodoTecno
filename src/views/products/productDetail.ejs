@@ -20,10 +20,10 @@
             </nav>
         </section>
         <section class="picture">
-            <img src="/images/products/<%= product.images[0] %>" alt="" class="product-picture">
+            <img src="/images/products/<%= product.productImages[0].fileName %>" alt="" class="product-picture">
         </section>
         <section class="prod-main-info">
-            <h3><%= product.category %> <%= product.brand %> <%= product.model %></h3>
+            <h3><%= product.category %> <%= product.brand.name %> <%= product.model %></h3>
             <label class="price"><h2>$ <%= Intl.NumberFormat('de-DE').format(product.price) %></h2></label>
             <label><a href="">Ver todos los medios de pago</a></label>
         </section>
@@ -47,9 +47,9 @@
 
             <% for(i=0;i<recommendations.length;i++) { %>
                 <article class="recommendation-item">
-                    <img src="/images/products/<%= recommendations[i].images[0] %>" alt="" class="recomendation-pic">
-                    <h5><%= recommendations[i].category %> <%= recommendations[i].brand %> <%= recommendations[i].model %></h5>
-                    <label for="" class="recomend-price">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].price) %></label>
+                    <img src="/images/products/<%= recommendations[i].productB.productImages[0].fileName %>" alt="" class="recomendation-pic">
+                    <h5><%= recommendations[i].category %> <%= recommendations[i].productB.brand %> <%= recommendations[i].productB.model %></h5>
+                    <label for="" class="recomend-price">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].productB.price) %></label>
                 </article>
             <% } %> 
                      
@@ -59,12 +59,12 @@
         <section class="characteristics">
             <h3 class="characteristics-title">Características Técnicas</h3>
             
-            <% for (const [characteristicsType, characteristicsList] of Object.entries(product.characteristics)) { %>
+            <% for (const {name, subCharacteristics} of product.characteristics) { %>
                 <article tabindex="0">
-                    <h4><%= characteristicsType %></h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
+                    <h4><%= name %></h4><div class="drop-button"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-up"></i></div>
                     <div class="info">
-                    <% for (const [characteristicsSubType, characteristicsSubTypeValue] of Object.entries(characteristicsList)) { %>
-                        <%= characteristicsSubType %>: <%= characteristicsSubTypeValue %>
+                    <% for (const {name, value} of subCharacteristics) { %>
+                        <%= name %>: <%= value %>
                         <br>
 
                     <% } %>
