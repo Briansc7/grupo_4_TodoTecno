@@ -30,7 +30,7 @@ let usersDatabase = {
     userGetToken: userGetToken,
     userGetUserId: userGetUserId,
     userFindById: userFindById,
-    getAllUsers:getAllUsers
+    getAllUsers: getAllUsers
 };
 
 async function userRegister(userBody, avatar){
@@ -172,8 +172,9 @@ async function userFindById(id){
 
     return userFound;
 }
+
 async function getAllUsers(){
-    let users = await Users.findAll();
+    let users = await Users.findAll({include: ["role"]});
     return users;
 }
 
