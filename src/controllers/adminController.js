@@ -118,14 +118,35 @@ usersDetail: async (req, res) =>{
 },
 
 usersCreate: (req, res) => {
-    
+    database.User.create({
+        firstName: req.body.firstName,
+        lastName: req.body.firstName,
+        email:req.body.email,
+        password:req.body.password,
+        birthday:req.body.birthday,
+        address:req.body.address,
+        zipCode:req.body.zipCode,
+        location:req.body.location,
+        province:req.body.province
+    })
+    res.redirect("")
 },
 
-usersEdit: (req, res) => {
-    return res.render("./admin/usersEdit",
-    {head: usersEditHeadData}
-    )
-},
+usersEdit:  async(req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await usersDatabase.userFindById(userId);
+
+        return res.render("./admin/usersEdit", {
+            head: usersEditHeadData,
+            user: user
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+}
+,
 
 usersUpdate: (req, res) => {
 
