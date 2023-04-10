@@ -35,7 +35,8 @@ let database = {
     getProductsFromRecommendationsByID: getProductsFromRecommendationsByID,
     productsThatAreNew: productsThatAreNew,
     productsThatAreOnSale: productsThatAreOnSale,
-    productDetailGetById: productDetailGetById
+    productDetailGetById: productDetailGetById,
+    getAllProducts: getAllProducts
     
     //usersData: usersData
 }
@@ -137,6 +138,11 @@ async function productsThatAreNew(){
 async function productsThatAreOnSale(){
     //return this.productsData.filter(prod=>prod.isOnSale);
     let products = await Products.findAll({where: {isOnSale: 1}, include: ["productImages"]});
+    return products;
+}
+
+async function getAllProducts(){
+    let products = await Products.findAll({include: ["productImages"]});
     return products;
 }
 
