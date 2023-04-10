@@ -2,7 +2,11 @@
         <input class="input" type="text" name="category" placeholder="ej: Smart TV" required value="<%= locals.product && product.category %>">
     </div>   
     <div class="input-section"><h5>Marca</h5>
-        <input class="input" type="text" name="brand" placeholder="" required value="<%= locals.product && product.brand.name %>">
+        <select class="input" name="brand" required>
+            <% locals.brands.forEach(brand => { %>
+                <option value="<%= brand.id %>" <%= brand.id == product.brand.id?"selected":""%>><%= brand.name %></option>
+            <% }) %>
+        </select>
     </div>   
     <div class="input-section"><h5>Modelo</h5>
         <input class="input" type="text" name="model" placeholder="" required value="<%= locals.product && product.model %>">
