@@ -42,13 +42,14 @@
         </textarea>
     </div>
         <% if (!locals.product) { %>
-
+        
             <label for="images" class="form-label">Imágenes:</label>
+        <div class="create-edite-img">
 			<input class="input"type="file" id="image" name="images" required multiple>
-
+        </div>
         <% } %>        
         
-        <div class="product-create-btn">
+        <div class="product-create-btn product-edit-btn">
              <button class="btn-reset" type="reset">Reiniciar Campos</button>
              <br>
              <button class="btn-submit" type="submit"><% if(!locals.product){%>

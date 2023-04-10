@@ -3,7 +3,11 @@ h3{
     font-size: 24px;
 }
 
-
+.sub-categories{
+    
+    width: auto;
+    height: auto;
+}
 .categories {
     display: grid;
     padding: 0.6em 1em;
@@ -11,7 +15,10 @@ h3{
     grid-template-areas: 
     "televisores celulares computadoras consolas climatizacion";
     justify-items: center;
-} .categories p {
+    overflow: auto hidden;
+}
+
+.categories p {
     text-align: center;
     cursor: pointer;
     padding: 5px 0px;
@@ -124,9 +131,10 @@ article{
 }
 }
 @media (min-width: 769px) {
-   
+    .categories {grid-template-columns: 1 2 3 4 5;
+    }
     .products {
-            grid-template-columns: repeat(auto-fit, minmax(22%, 1fr)); /* ajusta al ancho deseado */
+            grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
         }
 
       .filters > * {

@@ -1,3 +1,11 @@
+main,
+.personal-infomation{
+    display: grid;
+    gap: 3px;
+    justify-items: center;
+    justify-content: center;
+}
+
 .profile-avatar-container{
     width: 150px;
     height: 150px;
@@ -6,4 +14,8 @@
 .profile-avatar-img{
     width: 100%;
     mix-blend-mode: multiply;
+}
+.btnlogout,
+main button{
+    width: 100%;
 }

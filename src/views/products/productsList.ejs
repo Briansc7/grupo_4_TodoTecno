@@ -4,82 +4,76 @@
     <%- include("../partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
 
 <body>
-    <%- include("../partials/header") %>
-
-    <main class="productList-main">
-       
-            <div class="filters"> <section>
-                <div class="grid-area aggregations">
-                    <h2 class="title">Filtrar por</h2>
-                    <ul class="filter-list">
-                      <li class="filter-item">
-                        <a href="#" class="filter-link"><h5>Categoria</h5></a>
-                        <ul class="sub-filter-list">
-                          <li class="sub-filter-item"><a href="#">Split</a></li>
-                          <li class="sub-filter-item"><a href="#">Portátil</a></li>
-                          <li class="sub-filter-item"><a href="#">Ventana</a></li>
-                        </ul>
-                      </li>
-                      <li class="filter-item">
-                        <a href="#" class="filter-link"><h5>Marca</h5></a>
-                        <ul class="sub-filter-list">
-                          <li class="sub-filter-item"><a href="#">LG</a></li>
-                          <li class="sub-filter-item"><a href="#">Samsung</a></li>
-                          <li class="sub-filter-item"><a href="#">Philco</a></li>
-                        </ul>
-                      </li>
-                      <li class="filter-item">
-                        <a href="#" class="filter-link"><h5>Modelo</h5></a>
-                        <ul class="sub-filter-list">
-                          <li class="sub-filter-item"><a href="#">1</a></li>
-                          <li class="sub-filter-item"><a href="#">2</a></li>
-                          <li class="sub-filter-item"><a href="#">3</a></li>
-                        </ul>
-                      </li>
-                      <li class="filter-item">
-                        <a href="#" class="filter-link"><h5>Precio</h5></a>
-                        <ul class="sub-filter-list">
-                          <li class="sub-filter-item"><a href="#">Hasta $10.000</a></li>
-                          <li class="sub-filter-item"><a href="#">$10.000 a $20.000</a></li>
-                          <li class="sub-filter-item"><a href="#">$20.000 a $30.000</a></li>
-                          <li class="sub-filter-item"><a href="#">$30.000 a $40.000</a></li>
-                          <li class="sub-filter-item"><a href="#">Más de $40.000</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                </div>
-            </div>
-        
-        <div class="container-products">
-		
-            <div class="row">
-                <div class="">
-                    <h2 class="products-title">Todos los productos:</h2>
-                </div>
-    
+  <%- include("../partials/header") %>
+  <main class="productList-main">
+ 
+      <div class="filters"> <section>
+        <div class="grid-area-aggregations">
+            <h2 class="title">Filtrar por</h2>
+            <ul class="filter-list">
+              <a href="#" class="filter-link"><h3>Categoria</h3></a>
                 <% for(i=0; i<products.length; i++) { %>
-    
-                    <div class="col-12 col-sm-6 col-lg-3 product-container">
+                  <li class="filter-item">
+                     <ul class="sub-filter-list">
+                          <li class="sub-filter-item"><a href="#"><%= products[i].category %></a></li>
+                     </ul>
+                  </li>
+                <% } %>   
+              <a href="#" class="filter-link"><h3>Marca</h3></a>
+              <% for(i=0; i<products.length; i++) { %>
+                <li class="filter-item">
+                   <ul class="sub-filter-list">
+                        <li class="sub-filter-item"><a href="#"><%= products[i].brand %></a></li>
+                   </ul>
+                </li>
+              <% } %> 
+              
+                <a href="#" class="filter-link"><h3>Modelo</h3></a>
+                <% for(i=0; i<products.length; i++) { %>
+                  <li class="filter-item">
+                     <ul class="sub-filter-list">
+                          <li class="sub-filter-item"><a href="#"><%= products[i].model %></a></li>
+                     </ul>
+                  </li>
+                <% } %> 
+              
+                <a href="#" class="filter-link"><h3>Ofertas</h3></a>
+                <% for(i=0; i<products.length; i++) { %>
+                  <li class="filter-item">
+                     <ul class="sub-filter-list">
+                          <li class="sub-filter-item"><a href="#"><%= products[i].productsOnSale %></a></li>
+                     </ul>
+                  </li>
+                <% } %> 
+            </ul>
+        </div>
+      </div>
+    <div class ="products-box">
+        <div class="">
+        <h2 class="products-title">Todos los productos:</h2>
+        </div>
+        <div class="container-products">
+        <div class="products">
+                
+                <% for(i=0; i<products.length; i++) { %>
+                    <div class="cont-product">
                         <section class="product-box">
                             <a href="/products/productDetail/<%= products[i].id %>">
-                                <figure class="product-box_image">
-                                    <img src="/images/products/<%= products[i].productImages[0].fileName %>" alt="imagen de producto">
-                                </figure>
-                                <article class="product-box_data">
-                                    <h2>$<%= products[i].price %></h2>
-                                    <span class="discount"><%= products[i].discount %>% OFF</span>
-                                    <p><%= products[i].category %> <%= products[i].brand %> <%= products[i].model %></p>
-                                </article>
+                                <div class="home-image">
+                                    <img src="/images/products/<%= products[i].productImages[0].fileName %>" alt="imagen de producto" class="product_img">
+                                  </div>
+                                  <div class="main-article">
+                                    <p class="price">$<%= products[i].price %></p>
+                                    <p class="discount"><%= products[i].discountPorc %>% OFF</p>
+                                    <h4 class="description"><%= products[i].category %> <%= products[i].brand %> <%= products[i].model %></p>
                             </a>
                         </section>
                     </div>
-    
                 <% } %>           
-                
-            </div>
         </div>
-    </main>
+    </div>
+  </main>
 
-    <%- include("../partials/footer") %>
+  <%- include("../partials/footer") %>
 </body>
 </html> 
