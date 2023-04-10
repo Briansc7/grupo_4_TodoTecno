@@ -6,13 +6,13 @@ const productCartHeadData = {title: "Carrito de Compras", stylesheet: "/css/prod
 const productsListHeadData = {title: "Productos", stylesheet: "/css/productsList.css"};
 
 const productsController = {
-productDetail: (req, res) => res.render("./products/productDetail",
-    {head: productDetailHeadData, product: database.productGetById(req.params.id), recommendations: database.getProductsFromRecommendationsByID(req.params.id)
+productDetail: async (req, res) => res.render("./products/productDetail",
+    {head: productDetailHeadData, product: await database.productDetailGetById(req.params.id), recommendations: await database.getProductsFromRecommendationsByID(req.params.id)
 }),
 
 productCart: (req, res) => res.render("./products/productCart", {head: productCartHeadData}),
 
-productsList: (req, res) => res.render("./products/productsList", {head: productsListHeadData, products: database.productsData})
+productsList: async (req, res) => res.render("./products/productsList", {head: productsListHeadData, products: await database.getAllProducts()})
 }
 
 

@@ -53,3 +53,7 @@ body {
     cursor: pointer;
     margin-right: 10px;
 }
+.btnlogout,
+main button{
+    width: 100%;
+}

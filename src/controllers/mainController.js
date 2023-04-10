@@ -5,7 +5,7 @@ const indexHeadData = {title: "Home", stylesheet: "/css/home.css"};
 const searchHeadData = {title: "Búsqueda", stylesheet: "/css/search.css"};
 
 const mainController = {
-home: (req, res) => res.render("index", {head: indexHeadData, productsNew: database.productsThatAreNew(), productsOnSale: database.productsThatAreOnSale()}),
+home: async (req, res) => res.render("index", {head: indexHeadData, productsNew: await database.productsThatAreNew(), productsOnSale: await database.productsThatAreOnSale()}),
 
 search: (req, res) => {    
     let results = database.productSearch(req.query.keywords);

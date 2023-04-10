@@ -11,6 +11,7 @@
 <table>
   <thead>
     <tr>
+      
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Email</th>
@@ -19,23 +20,25 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Nombre</td>
-      <td>Apellido</td>
-      <td>email@gmail.com</td>
-      <td>Rol</td>
-      <td class="actions">
-        <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button class="delete"><i class="fa-solid fa-trash"></i></button>
-      </td>
-    </tr>
+    <% users.forEach(user=>{ %>
+      <tr>
+        <td><%= user.firstName %></td>
+        <td><%= user.lastName %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role.name %></td>
+        <td class="actions">
+          
+          <a href="/admin/users/edit/<%= users[i].id %>"><button class="edit" > <i class="fa-solid fa-pen-to-square"></i></button></a>
+          <button class="delete"><i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+    <% }) %>    
   </tbody>
 </table>
 <div class="actions">
-  <button class="create">Crear Usuario <i class="fa-solid fa-plus"></i></button>
+  <button class="create"> <a href="/admin/users/add">  Crear Usuario</a> <i class="fa-solid fa-plus"></i></button>
 </div>
 </main>
-
 
     <%- include("../partials/footer") %>
 </body>
