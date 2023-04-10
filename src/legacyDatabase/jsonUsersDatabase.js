@@ -29,7 +29,8 @@ let usersDatabase = {
     userGetName: userGetName,
     userGetToken: userGetToken,
     userGetUserId: userGetUserId,
-    userFindById: userFindById
+    userFindById: userFindById,
+    getAllUsers:getAllUsers
 };
 
 async function userRegister(userBody, avatar){
@@ -170,6 +171,10 @@ async function userFindById(id){
     let userFound = await Users.findByPk(id);
 
     return userFound;
+}
+async function getAllUsers(){
+    let users = await Users.findAll();
+    return users;
 }
 
 module.exports = usersDatabase;

@@ -98,22 +98,22 @@ productDestroy: async (req, res) => {
     res.redirect("/");
 },
 
-usersAdd: (req, res) => {
+
+
+
+
+
+
+usersAdd: async (req, res) => {
     res.render("./admin/usersAdd", {head: usersAddHeadData})
 },
 
-usersList: (req, res) => {
-    res.render("./admin/usersList", {head: usersListHeadData})
+usersList: async (req, res) => {
+    res.render("./admin/usersList", {head: usersListHeadData, users: await usersDatabase.getAllUsers() })
 },
 
 usersCreate: (req, res) => {
-    /*let newUser = {
-        id: null,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-    };*/
+    
 },
 
 usersEdit: (req, res) => {
