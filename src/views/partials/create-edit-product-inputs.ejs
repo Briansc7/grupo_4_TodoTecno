@@ -2,13 +2,16 @@
         <select class="input" name="category" required>
             <option value="" class= "choose-option" disabled <%= !locals.selectedCategoryId?"selected":""%>>Selecciona una Categoría</option>
             <% locals.categories.forEach(category => { %>
-                <option value="<%= category.id %>" <%= category.id == (locals.selectedCategoryId??null)?"selected":""%>><%= category.name %></option>
+                <option value="<%= category.id %>" <%= category.id == (locals.selectedCategory?.id)?"selected":""%>><%= category.name %></option>
             <% }) %>
         </select>
     </div>
     <div class="input-section"><h5>SubCategoría del producto</h5>
         <select class="input" name="subCategory" required>
-            <option value="" class= "choose-option" disabled <%= !locals.subcategory?"selected":""%>>Selecciona una SubCategoría</option>            
+            <option value="" class= "choose-option" disabled <%= !locals.product?"selected":""%>>Selecciona una SubCategoría</option>
+            <% locals.selectedCategory?.subCategories.forEach(subCategory => { %>
+                <option value="<%= subCategory.id %>" <%= subCategory.id == (locals.product?.subCategory.id)?"selected":""%>><%= subCategory.name %></option>
+            <% }) %>            
         </select>
     </div>    
     <div class="input-section"><h5>Marca</h5>

@@ -43,7 +43,7 @@ let database = {
     getAllProducts: getAllProducts,
     getAllBrands: getAllBrands,
     getAllCategories: getAllCategories,
-    getSelectedCategoryId: getSelectedCategoryId
+    getSelectedCategory: getSelectedCategory
 }
 
 async function productGetById(id){
@@ -57,7 +57,7 @@ async function productGetById(id){
 async function productDetailGetById(id){
     //return this.productsData.find(product=>product.id==id);
 
-    let product = await Products.findByPk(id, {include: ["productImages", "brand", 
+    let product = await Products.findByPk(id, {include: ["productImages", "brand", "subCategory",
         {model: Characteristic, as: "characteristics",
             include:["subCharacteristics"]}]});
 
@@ -178,10 +178,11 @@ async function getAllCategories(){
     return categories;
 }
 
-async function getSelectedCategoryId(productId){
+async function getSelectedCategory(productId){
     let product = await Products.findByPk(productId,{include:["subCategory"]});
     let categoryId = product.subCategory.categoryId;
-    return categoryId;
+    let Category = await Categories.findByPk(categoryId,{include:["subCategories"]});
+    return Category;
 }
 
 module.exports = database;
