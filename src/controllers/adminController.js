@@ -41,7 +41,7 @@ productStore: async (req, res) => {
     };*/
 
     let newProduct = {
-        subCategoryId: 1,
+        subCategoryId: req.body.subCategory,
         brandId: req.body.brand,
         model: req.body.model,
         artNumber: Number(req.body.artNumber),

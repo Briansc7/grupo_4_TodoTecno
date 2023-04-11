@@ -2,7 +2,7 @@ window.onload = async () => {
     //const defaultOptionSubcategory = document.querySelector("select[name='subcategory'] option.choose-option");
     //defaultOptionSubcategory.appendS
     
-    const subCategorySelector = document.querySelector("select[name='subcategory']");
+    const subCategorySelector = document.querySelector("select[name='subCategory']");
     const categorySelector = document.querySelector("select[name='category']");
     
     categorySelector.addEventListener("change", async function(e){
