@@ -101,8 +101,8 @@ async function productEdit(id, productEdited){
 
 }
 
-function productSearch(keywords){
-    const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
+async function productSearch(keywords){
+    /*const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
     let searchResults = this.productsData.filter(product => {
         const category = product.category.toLowerCase();
         const brand = product.brand.toLowerCase();
@@ -110,7 +110,23 @@ function productSearch(keywords){
         const completeName = category+brand+model; //string unico con todos los campos a buscar
         return keywordsLowerCase.some(keyword => completeName.includes(keyword)); //comprueba si encuentra al menos un keyword en el string
     });
-    return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords
+    return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords*/
+
+    const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
+
+    let searchConditions = [];
+
+    keywordsLowerCase.forEach(keyword=>{
+        searchConditions.push(
+            {
+                model: {[Op.like]: "%"+keyword+"%"}
+            }
+        )
+    });
+
+    let searchResults = await Products.findAll({where: {[Op.or]:searchConditions}, include: ["productImages"]});
+
+    return searchResults;
 }
 
 async function getProductsFromRecommendationsByID(productId){
