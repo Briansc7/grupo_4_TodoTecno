@@ -108,22 +108,29 @@ async function productSearch(keywords){
 
     let searchConditions = [];
 
+    /*creo un array de condiciones de busqueda para usarlas en una consulta tipo OR
+    Se ingresa una condición de búsqueda por cada keyword y por cada campo que se va a evaluar*/
+
     keywordsLowerCase.forEach(keyword=>{
         searchConditions.push(
             {
-                model: {[Op.like]: "%"+keyword+"%"}
+                model: {[Op.like]: "%"+keyword+"%"} //para búsqueda por modelo del producto
             },
             {
-                "$brand.name$": {[Op.like]: "%"+keyword+"%"}
+                "$brand.name$": {[Op.like]: "%"+keyword+"%"} //para búsqueda por nombre de la marca del producto
             },
             {
-                "$subCategory.name$": {[Op.like]: "%"+keyword+"%"}
+                "$subCategory.name$": {[Op.like]: "%"+keyword+"%"} //para búsqueda por nombre de la subcategoría del producto
+            },
+            {
+                "$subCategory.category.name$": {[Op.like]: "%"+keyword+"%"} //para búsqueda por nombre de la categoría del producto
             }
         ); 
     });
 
+    //Se incluye en la búsqueda las relaciones a tablas marcas, categorias y subcategorias para poder usarlos en los parámetros de búsqueda
     let searchResults = await Products.findAll({where: {[Op.or]:searchConditions}, include: ["productImages", 
-    {model: Brands, as: "brand"}, {model: SubCategories, as: "subCategory"}]});
+    {model: Brands, as: "brand"}, {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]}]});
 
     return searchResults;
 }
