@@ -114,17 +114,25 @@ async function productSearch(keywords){
 
     const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
 
-    let searchConditions = [];
+    let modelSearchConditions = [];
+    let nameSearchConditions = [];
 
     keywordsLowerCase.forEach(keyword=>{
-        searchConditions.push(
+        modelSearchConditions.push(
             {
                 model: {[Op.like]: "%"+keyword+"%"}
             }
         )
+
+         modelSearchConditions.push(
+            {
+                "$brand.name$": {[Op.like]: "%"+keyword+"%"}
+            }
+        ) 
     });
 
-    let searchResults = await Products.findAll({where: {[Op.or]:searchConditions}, include: ["productImages"]});
+    let searchResults = await Products.findAll({where: {[Op.or]:modelSearchConditions}, include: ["productImages", 
+    {model: Brands, as: "brand"}]});
 
     return searchResults;
 }
