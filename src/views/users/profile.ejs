@@ -9,8 +9,8 @@
 
     <main>
         
-        <form class="btnlogout" action="/users/logout" method="POST">
-            <button class="btn-profile" type="submit">Cerrar Sesión</button>
+        <form action="/users/logout" method="POST">
+            <button type="submit">Cerrar Sesión</button>
         </form>
         <br>
         <section class="profile-avatar-container">
@@ -27,6 +27,9 @@
             <p>Provincia: <%= userInfo.province?userInfo.province:"Sin especificar" %></p>
         </section>
         <button class="btn-profile" id="edit-profile-btn">Editar Perfil</button>
+        <form action="/users/logout" method="POST">
+            <button type="submit">Cerrar Sesión</button>
+        </form>
         
     </main>
 
