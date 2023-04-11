@@ -181,7 +181,7 @@ async function getAllCategories(){
 async function getSelectedCategory(productId){
     let product = await Products.findByPk(productId,{include:["subCategory"]});
     let categoryId = product.subCategory.categoryId;
-    let Category = await Categories.findByPk(categoryId,{include:["subCategories"]});
+    let Category = await Categories.findByPk(categoryId,{include:["subCategories","brandsOfCategory"]});
     return Category;
 }
 
