@@ -145,12 +145,12 @@ async function getProductsFromRecommendationsByID(productId){
 }
 
 async function productsThatAreNew(){ 
-    let products = await Products.findAll({where: {isNew: 1}, include: ["productImages"]});
+    let products = await Products.findAll({where: {isNew: 1}, include: ["productImages","subCategory","brand"]});
     return products;
 }
 
 async function productsThatAreOnSale(){
-    let products = await Products.findAll({where: {isOnSale: 1}, include: ["productImages"]});
+    let products = await Products.findAll({where: {isOnSale: 1}, include: ["productImages","subCategory","brand"]});
     return products;
 }
 
