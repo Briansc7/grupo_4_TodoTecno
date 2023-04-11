@@ -68,7 +68,7 @@ productStore: async (req, res) => {
 },
 
 productEdit: async (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), brands: await database.getAllBrands()}
+    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), brands: await database.getAllBrands(), categories: await database.getAllCategories(), selectedCategoryId: await database.getSelectedCategoryId(req.params.id)}
     ),
 
 productUpdate: async (req, res) => {
