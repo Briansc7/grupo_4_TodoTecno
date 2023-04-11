@@ -9,6 +9,7 @@ const SubCategories = db.SubCategory;
 
 const categorySubCategoryAPIController = {
     getAllCategories: async (req, res) => {
+        
         let allCategories = await Categories.findAll({include: ["subCategories"]});
         let response = {
             meta: {
@@ -21,7 +22,8 @@ const categorySubCategoryAPIController = {
         return res.json(response);
     },
     getAllSubCategories: async (req, res) => {
-        let allSubCategories = await SubCategories.findAll({include: ["category"]});
+        let categoryId = req.query.categoryId;
+        let allSubCategories = await SubCategories.findAll({include: ["category"], where: {categoryId}});
         let response = {
             meta: {
                 status : 200,
