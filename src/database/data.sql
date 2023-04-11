@@ -74,6 +74,24 @@ set @Philco = LAST_INSERT_ID();
 insert into brands set name="Peabody";
 set @Peabody = LAST_INSERT_ID();
 
+/*Marcas de cada categoría de productos*/
+insert into brandsOfCategories (brandId, categoryId) values
+(@Samsung, @category_tv_video),
+(@Samsung, @category_audio),
+(@Samsung, @category_heladeras_freezers_cavas),
+(@Samsung, @category_pequenios_electro),
+
+(@Nakamichi, @category_audio),
+
+(@Iofi, @category_tv_video),
+
+(@Philco, @category_tv_video),
+(@Philco, @category_audio),
+(@Philco, @category_heladeras_freezers_cavas),
+(@Philco, @category_pequenios_electro),
+
+(@Peabody, @category_pequenios_electro);
+
 /* Productos iniciales de prueba, con relacion a imagenes y caractetisticas*/
 insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
 isOnSale, isNew, description) values (

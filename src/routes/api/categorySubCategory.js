@@ -7,4 +7,6 @@ router.get('/categories', categorySubCategoryAPIController.getAllCategories);
 
 router.get('/subcategories', categorySubCategoryAPIController.getAllSubCategories);
 
+router.get('/brands', categorySubCategoryAPIController.getAllBrands);
+
 module.exports = router;
