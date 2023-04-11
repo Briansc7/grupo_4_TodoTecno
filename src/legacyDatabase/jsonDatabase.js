@@ -21,6 +21,7 @@ const RelatedProducts = db.BoughtTogether;
 const Characteristic = db.Characteristic;
 const Brands = db.Brand;
 const Categories = db.Category;
+const SubCategories = db.SubCategory;
 
 
 let database = {
@@ -102,37 +103,27 @@ async function productEdit(id, productEdited){
 }
 
 async function productSearch(keywords){
-    /*const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
-    let searchResults = this.productsData.filter(product => {
-        const category = product.category.toLowerCase();
-        const brand = product.brand.toLowerCase();
-        const model = product.model.toLowerCase();
-        const completeName = category+brand+model; //string unico con todos los campos a buscar
-        return keywordsLowerCase.some(keyword => completeName.includes(keyword)); //comprueba si encuentra al menos un keyword en el string
-    });
-    return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords*/
 
     const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
 
-    let modelSearchConditions = [];
-    let nameSearchConditions = [];
+    let searchConditions = [];
 
     keywordsLowerCase.forEach(keyword=>{
-        modelSearchConditions.push(
+        searchConditions.push(
             {
                 model: {[Op.like]: "%"+keyword+"%"}
-            }
-        )
-
-         modelSearchConditions.push(
+            },
             {
                 "$brand.name$": {[Op.like]: "%"+keyword+"%"}
+            },
+            {
+                "$subCategory.name$": {[Op.like]: "%"+keyword+"%"}
             }
-        ) 
+        ); 
     });
 
-    let searchResults = await Products.findAll({where: {[Op.or]:modelSearchConditions}, include: ["productImages", 
-    {model: Brands, as: "brand"}]});
+    let searchResults = await Products.findAll({where: {[Op.or]:searchConditions}, include: ["productImages", 
+    {model: Brands, as: "brand"}, {model: SubCategories, as: "subCategory"}]});
 
     return searchResults;
 }
