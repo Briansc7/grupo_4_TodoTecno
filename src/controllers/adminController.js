@@ -15,7 +15,7 @@ const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/use
 
 const adminController = {
 
-productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, brands: await database.getAllBrands()}),
+productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, brands: await database.getAllBrands(), categories: await database.getAllCategories()}),
 
 productStore: async (req, res) => {
     let imagesUploaded = [];
@@ -41,7 +41,7 @@ productStore: async (req, res) => {
     };*/
 
     let newProduct = {
-        subCategoryId: 1,
+        subCategoryId: req.body.subCategory,
         brandId: req.body.brand,
         model: req.body.model,
         artNumber: Number(req.body.artNumber),
@@ -68,7 +68,7 @@ productStore: async (req, res) => {
 },
 
 productEdit: async (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), brands: await database.getAllBrands()}
+    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), brands: await database.getAllBrands(), categories: await database.getAllCategories(), selectedCategory: await database.getSelectedCategory(req.params.id)}
     ),
 
 productUpdate: async (req, res) => {

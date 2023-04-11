@@ -20,6 +20,7 @@ const ProductImages = db.ProductImage;
 const RelatedProducts = db.BoughtTogether;
 const Characteristic = db.Characteristic;
 const Brands = db.Brand;
+const Categories = db.Category;
 
 //Se obtienen los datos de los productos
 /*const usersJsonPath = path.resolve(__dirname,"./users.json");
@@ -40,9 +41,9 @@ let database = {
     productsThatAreOnSale: productsThatAreOnSale,
     productDetailGetById: productDetailGetById,
     getAllProducts: getAllProducts,
-    getAllBrands: getAllBrands
-    
-    //usersData: usersData
+    getAllBrands: getAllBrands,
+    getAllCategories: getAllCategories,
+    getSelectedCategory: getSelectedCategory
 }
 
 async function productGetById(id){
@@ -56,7 +57,7 @@ async function productGetById(id){
 async function productDetailGetById(id){
     //return this.productsData.find(product=>product.id==id);
 
-    let product = await Products.findByPk(id, {include: ["productImages", "brand", 
+    let product = await Products.findByPk(id, {include: ["productImages", "brand", "subCategory",
         {model: Characteristic, as: "characteristics",
             include:["subCharacteristics"]}]});
 
@@ -170,6 +171,18 @@ async function getAllProducts(){
 async function getAllBrands(){
     let brands = await Brands.findAll();
     return brands;
+}
+
+async function getAllCategories(){
+    let categories = await Categories.findAll();
+    return categories;
+}
+
+async function getSelectedCategory(productId){
+    let product = await Products.findByPk(productId,{include:["subCategory"]});
+    let categoryId = product.subCategory.categoryId;
+    let Category = await Categories.findByPk(categoryId,{include:["subCategories"]});
+    return Category;
 }
 
 module.exports = database;
