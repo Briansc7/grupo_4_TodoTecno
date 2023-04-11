@@ -67,8 +67,8 @@
                             <div class="main-article">
                                 <p class="price">$<%= productsOnSale[i].price %></p>
                                 <p class="discount"><%= productsOnSale[i].discountPorc %>% OFF</p>
-                                <p class="price-discount"><p><%= productsNew[i].price - (productsNew[i].price * (productsNew[i].discountPorc/100)) %></p>
-                                <h4 class="description"><%= productsOnSale[i].category %> <%= productsOnSale[i].brand %> <%= productsOnSale[i].model %></h4>
+                                <p class="price-discount"><p><%= productsOnSale[i].price - (productsOnSale[i].price * (productsOnSale[i].discountPorc/100)) %></p>
+                                <h4 class="description">[<%= productsOnSale[i].subCategory.name %>] <%= productsOnSale[i].brand.name %> <%= productsOnSale[i].model %></h4>
                             </div>
                         </article>
                     </a>  
@@ -95,7 +95,7 @@
                                 <p class="price">$<%= productsNew[i].price %></p>
                                 <p class="discount"><%= productsNew[i].discountPorc %>% OFF</p>
                                 <p class="price-discount"><p><%= productsNew[i].price - (productsNew[i].price * (productsNew[i].discountPorc/100)) %></p>
-                                <h4 class="description"><%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %></h4>
+                                <h4 class="description">[<%= productsNew[i].subCategory.name %>] <%= productsNew[i].brand.name %> <%= productsNew[i].model %></h4>
                             </div>
                         </article>
                     </a>

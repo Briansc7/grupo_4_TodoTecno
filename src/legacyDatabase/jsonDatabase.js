@@ -21,6 +21,7 @@ const RelatedProducts = db.BoughtTogether;
 const Characteristic = db.Characteristic;
 const Brands = db.Brand;
 const Categories = db.Category;
+const SubCategories = db.SubCategory;
 
 
 let database = {
@@ -101,16 +102,37 @@ async function productEdit(id, productEdited){
 
 }
 
-function productSearch(keywords){
+async function productSearch(keywords){
+
     const keywordsLowerCase = keywords.toLowerCase().split(" "); //array de keywords en miniscula
-    let searchResults = this.productsData.filter(product => {
-        const category = product.category.toLowerCase();
-        const brand = product.brand.toLowerCase();
-        const model = product.model.toLowerCase();
-        const completeName = category+brand+model; //string unico con todos los campos a buscar
-        return keywordsLowerCase.some(keyword => completeName.includes(keyword)); //comprueba si encuentra al menos un keyword en el string
+
+    let searchConditions = [];
+
+    /*creo un array de condiciones de busqueda para usarlas en una consulta tipo OR
+    Se ingresa una condición de búsqueda por cada keyword y por cada campo que se va a evaluar*/
+
+    keywordsLowerCase.forEach(keyword=>{
+        searchConditions.push(
+            {
+                model: {[Op.like]: "%"+keyword+"%"} //para búsqueda por modelo del producto
+            },
+            {
+                "$brand.name$": {[Op.like]: "%"+keyword+"%"} //para búsqueda por nombre de la marca del producto
+            },
+            {
+                "$subCategory.name$": {[Op.like]: "%"+keyword+"%"} //para búsqueda por nombre de la subcategoría del producto
+            },
+            {
+                "$subCategory.category.name$": {[Op.like]: "%"+keyword+"%"} //para búsqueda por nombre de la categoría del producto
+            }
+        ); 
     });
-    return searchResults; //array de productos filtrados que cumplen con almenos uno de los keywords
+
+    //Se incluye en la búsqueda las relaciones a tablas marcas, categorias y subcategorias para poder usarlos en los parámetros de búsqueda
+    let searchResults = await Products.findAll({where: {[Op.or]:searchConditions}, include: ["productImages", 
+    {model: Brands, as: "brand"}, {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]}]});
+
+    return searchResults;
 }
 
 async function getProductsFromRecommendationsByID(productId){
@@ -123,12 +145,12 @@ async function getProductsFromRecommendationsByID(productId){
 }
 
 async function productsThatAreNew(){ 
-    let products = await Products.findAll({where: {isNew: 1}, include: ["productImages"]});
+    let products = await Products.findAll({where: {isNew: 1}, include: ["productImages","subCategory","brand"]});
     return products;
 }
 
 async function productsThatAreOnSale(){
-    let products = await Products.findAll({where: {isOnSale: 1}, include: ["productImages"]});
+    let products = await Products.findAll({where: {isOnSale: 1}, include: ["productImages","subCategory","brand"]});
     return products;
 }
 
