@@ -15,7 +15,7 @@ const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/use
 
 const adminController = {
 
-productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, /*brands: await database.getAllBrands(),*/ categories: await database.getAllCategories()}),
+productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories()}),
 
 productStore: async (req, res) => {
     let imagesUploaded = [];
@@ -23,40 +23,17 @@ productStore: async (req, res) => {
         imagesUploaded.push(img.filename);
     });
 
-    /*let newProduct = {
-        id: null,
-        category: req.body.category,
-        brand: req.body.brand,
-        model: req.body.model,
-        artNumber: Number(req.body.artNumber),
-        price: Number(req.body.price),
-        availability: Number(req.body.availability),
-        discount: Number(req.body.discount),
-        isOnSale: req.body.isOnSale=="on",
-        isNew: req.body.isNew=="on",
-        description: [req.body.description],
-        characteristics: {},
-        images: imagesUploaded,
-        recommendations: []
-    };*/
-
     let newProduct = {
         subCategoryId: req.body.subCategory,
         brandId: req.body.brand,
         model: req.body.model,
         artNumber: Number(req.body.artNumber),
         price: Number(req.body.price),
-        //availability: Number(req.body.availability),
         discountPorc: Number(req.body.discount),
         isOnSale: req.body.isOnSale=="on"?1:0,
         isNew: req.body.isNew=="on"?1:0,
-        description: req.body.description,
-        characteristics: {},
-        //images: imagesUploaded,
-        //recommendations: []
+        description: req.body.description
     };
-
-    //TODO hacer selectores para poder elegir la categoria, subcategoria y marca
 
     let createdProduct = await database.productCreate(newProduct);
 
@@ -68,25 +45,19 @@ productStore: async (req, res) => {
 },
 
 productEdit: async (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), brands: await database.getAllBrands(), categories: await database.getAllCategories(), selectedCategory: await database.getSelectedCategory(req.params.id)}
+    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), categories: await database.getAllCategories(), selectedCategory: await database.getSelectedCategory(req.params.id)}
     ),
 
 productUpdate: async (req, res) => {
     let editedProduct = {
-        //id: req.params.id,
-        //category: req.body.category,
         brandId: req.body.brand,
         model: req.body.model,
         artNumber: Number(req.body.artNumber),
         price: Number(req.body.price),
-        //availability: Number(req.body.availability),
         discountPorc: Number(req.body.discount),
         isOnSale: req.body.isOnSale=="on"?1:0,
         isNew: req.body.isNew=="on"?1:0,
-        description: req.body.description,
-        //characteristics: database.productGetById(req.params.id).characteristics,
-        //images: database.productGetById(req.params.id).images,
-        //recommendations: database.productGetById(req.params.id).recommendations
+        description: req.body.description
     };
 
     await database.productEdit(req.params.id, editedProduct);

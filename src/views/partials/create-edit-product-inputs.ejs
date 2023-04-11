@@ -16,7 +16,7 @@
     </div>    
     <div class="input-section"><h5>Marca</h5>
         <select class="input" name="brand" required>
-            <option value="" disabled <%= !locals.product?"selected":""%>>Selecciona una marca</option>
+            <option value="" disabled <%= !locals.product?"selected":""%>>Selecciona una Marca</option>
             <% locals.selectedCategory?.brandsOfCategory.forEach(brand => { %>
                 <option value="<%= brand.id %>" <%= brand.id == (locals.product?.brandId)?"selected":""%>><%= brand.name %></option>
             <% }) %> 

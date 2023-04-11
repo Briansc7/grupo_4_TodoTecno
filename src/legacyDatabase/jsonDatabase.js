@@ -22,13 +22,8 @@ const Characteristic = db.Characteristic;
 const Brands = db.Brand;
 const Categories = db.Category;
 
-//Se obtienen los datos de los productos
-/*const usersJsonPath = path.resolve(__dirname,"./users.json");
-let usersJsonRawData = fs.readFileSync(usersJsonPath); //guardo contenido json en variable
-let usersData = JSON.parse(usersJsonRawData); //convierto json a objeto array*/
 
 let database = {
-    productsData: productsData,
     productGetById: productGetById,
     productDeleteById: productDeleteById,
     productGetNewId: productGetNewId,
@@ -47,16 +42,12 @@ let database = {
 }
 
 async function productGetById(id){
-    //return this.productsData.find(product=>product.id==id);
-
     let product = await Products.findByPk(id);
 
     return product;
 }
 
 async function productDetailGetById(id){
-    //return this.productsData.find(product=>product.id==id);
-
     let product = await Products.findByPk(id, {include: ["productImages", "brand", "subCategory",
         {model: Characteristic, as: "characteristics",
             include:["subCharacteristics"]}]});
@@ -79,30 +70,17 @@ async function productDeleteById(id){
     });
     console.log("Borrado de imágenes completado");
 
-
-    //this.productsData = this.productsData.filter(product=>product.id!=id);
-    //writeJson(productsJsonPath, this.productsData);
-
     await ProductImages.destroy({where: {productId: id}});
     await Products.destroy({where: {id}});
 
 }
 
-function writeJson(destination, data) {
-    let jsonRawData = JSON.stringify(data, null, 2);
-    fs.writeFileSync(destination, jsonRawData);
-}
 
 function productGetNewId(){
     return Math.max.apply(Math,this.productsData.map(product=>product.id))+1;
 }
 
 async function productCreate(product){
-    /*product.id = this.productGetNewId();
-    this.productsData.push(product);
-    writeJson(productsJsonPath, this.productsData);
-
-    return product.id;*/
 
     let newProduct = await Products.create(product);
     return newProduct;
@@ -118,11 +96,6 @@ async function AddProductImages(productId, images){
 }
 
 async function productEdit(id, productEdited){
-    /* let productToEdit = this.productGetById(productEdited.id);
-    
-    Object.assign(productToEdit,productEdited);
-
-    writeJson(productsJsonPath, this.productsData); */
 
     await Products.update(productEdited, {where: {id}});
 
@@ -141,9 +114,7 @@ function productSearch(keywords){
 }
 
 async function getProductsFromRecommendationsByID(productId){
-    //array de ids de recomendaciones -> array productos recomendados -> filtrado de valores invalidos como undefined
-    //return this.productGetById(productId).recommendations.map(recomendationId => this.productGetById(recomendationId)).filter(value=>value);
-    let recommendations = await RelatedProducts.findAll({where: {product1: productId}, 
+     let recommendations = await RelatedProducts.findAll({where: {product1: productId}, 
         include: [{model: Products, as:"productB", //forma de encadenar varios includes
         include: ["productImages"]  //include en productos
     }]});
@@ -151,14 +122,12 @@ async function getProductsFromRecommendationsByID(productId){
     return recommendations;
 }
 
-async function productsThatAreNew(){
-    //return this.productsData.filter(prod=>prod.isNew); 
+async function productsThatAreNew(){ 
     let products = await Products.findAll({where: {isNew: 1}, include: ["productImages"]});
     return products;
 }
 
 async function productsThatAreOnSale(){
-    //return this.productsData.filter(prod=>prod.isOnSale);
     let products = await Products.findAll({where: {isOnSale: 1}, include: ["productImages"]});
     return products;
 }
