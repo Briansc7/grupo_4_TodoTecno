@@ -92,7 +92,7 @@ usersDetail: async (req, res) =>{
 usersCreate: async(req, res) => {
         let newUser={
         firstName: req.body.firstName,
-        lastName: req.body.firstName,
+        lastName: req.body.lastName,
         email:req.body.email,
         password:bcrypt.hashSync(req.body.password, 10),
         birthday:req.body.birthday,
@@ -100,7 +100,7 @@ usersCreate: async(req, res) => {
         zipCode:req.body.zipCode,
         location:req.body.location,
         province:req.body.province,
-        roleId:2 //req.body.roleId
+        roleId: req.body.roleId
     };
     await usersDatabase.userCreate(newUser);
 
