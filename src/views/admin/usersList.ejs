@@ -29,7 +29,10 @@
         <td class="actions">
           
           <a href="/admin/users/edit/:<%= user.id %>"><button class="edit" > <i class="fa-solid fa-pen-to-square"></i></button></a>
-          <button class="delete"><i class="fa-solid fa-trash"></i></button>
+          
+          <form class="form-delete" action="/admin/users/delete/<%= users.id %>?_method=DELETE" method="POST">
+            <button class="delete"><i class="fa-solid fa-trash"></i></button>
+         </form>
         </td>
       </tr>
     <% }) %>    

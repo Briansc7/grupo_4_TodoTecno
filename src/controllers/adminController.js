@@ -1,5 +1,6 @@
 
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
 const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
@@ -117,19 +118,22 @@ usersDetail: async (req, res) =>{
     return res.render("./admin/usersDetail", {head: usersDetailHeadData, user});
 },
 
-usersCreate: (req, res) => {
-    database.User.create({
+usersCreate: async(req, res) => {
+        let newUser={
         firstName: req.body.firstName,
         lastName: req.body.firstName,
         email:req.body.email,
-        password:req.body.password,
+        password:bcrypt.hashSync(req.body.password, 10),
         birthday:req.body.birthday,
         address:req.body.address,
         zipCode:req.body.zipCode,
         location:req.body.location,
-        province:req.body.province
-    })
-    res.redirect("")
+        province:req.body.province,
+        roleId:2 //req.body.roleId
+    };
+    await usersDatabase.userCreate(newUser);
+
+    return res.redirect("/admin/users");
 },
 
 usersEdit:  async(req, res) => {
@@ -148,12 +152,27 @@ usersEdit:  async(req, res) => {
 }
 ,
 
-usersUpdate: (req, res) => {
+usersUpdate:async (req, res) => {
+    let editedUser={
+        firstName: req.body.firstName,
+        lastName: req.body.firstName,
+        email:req.body.email,
+        password:bcrypt.hashSync(req.body.password, 10),
+        birthday:req.body.birthday,
+        address:req.body.address,
+        zipCode:req.body.zipCode,
+        location:req.body.location,
+        province:req.body.province,
+        roleId:2 //req.body.roleId
+    };
+    await usersDatabase.usersUpdate(editedUser);
 
+    return res.redirect("/admin/users");
 },
 
-usersDestroy: (req, res) => {
-
+usersDestroy: async (req, res) => {
+    await database.userDeleteById(req.params.id);
+    return res.redirect("/admin/users");
 },
 
 }

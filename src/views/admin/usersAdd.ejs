@@ -11,7 +11,7 @@
     
 <h1>Crear nuevo usuario</h1>
 
- <form action="" method="POST">
+ <form action="/admin/users/create" method="POST">
     <div>
         <label for="">Nombre</label>
         <input class="input" type="text" name="firstName">
@@ -43,6 +43,10 @@
     <div>
         <label for="">Provincia</label>
         <input class="input" type="text" name="province">
+    </div>
+    <div>
+        <label for="">Contraseña</label>
+        <input class="input" type="password" name="password">
     </div>
     <div class="product-create-btn product-edit-btn">
         <button class="btn-reset" type="reset">Reiniciar Campos</button>

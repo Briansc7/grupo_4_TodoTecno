@@ -20,6 +20,7 @@ const { Op } = require("sequelize");
 const Users = db.User;
 const Roles = db.Role;
 
+
 let usersDatabase = {
     usersData: usersData,
     userRegister: userRegister,
@@ -30,7 +31,10 @@ let usersDatabase = {
     userGetToken: userGetToken,
     userGetUserId: userGetUserId,
     userFindById: userFindById,
-    getAllUsers: getAllUsers
+    getAllUsers: getAllUsers,
+    userCreate:userCreate,
+    userDeleteById:userDeleteById    
+
 };
 
 async function userRegister(userBody, avatar){
@@ -178,4 +182,13 @@ async function getAllUsers(){
     return users;
 }
 
+async function userCreate(userInfo){
+    let newUser = await Users.create(userInfo)
+    return newUser
+}
+
+async function userDeleteById(id){
+
+    await Users.destroy({where: {id}});
+};
 module.exports = usersDatabase;
