@@ -17,6 +17,15 @@ cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
 
 let upload = multer({ storage: storage });
 
+let storageAvatar = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, "./public/images/users"),
+    filename: function(req, file, cb){
+cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+    } 
+});
+
+let uploadAvatar = multer({ storage: storageAvatar });
+
 
 
 //Rutas para CRUD de productos 
@@ -32,7 +41,7 @@ adminRouter.delete('/productDelete/:id', adminAccessValidation, adminController.
 adminRouter.get('/users', adminAccessValidation, adminController.usersList); 
 
 adminRouter.get('/users/add', adminAccessValidation, adminController.usersAdd); 
-adminRouter.post('/users/create', adminAccessValidation, adminController.usersCreate); 
+adminRouter.post('/users/create', adminAccessValidation, uploadAvatar.single("avatar"), adminController.usersCreate); 
 
 adminRouter.get("/users/edit/:id", adminAccessValidation, adminController.usersEdit);
 adminRouter.put("/users/update/:id", adminAccessValidation, adminController.usersUpdate);
