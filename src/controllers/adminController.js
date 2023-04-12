@@ -1,5 +1,6 @@
 
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
 const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
@@ -88,22 +89,61 @@ usersDetail: async (req, res) =>{
     return res.render("./admin/usersDetail", {head: usersDetailHeadData, user});
 },
 
-usersCreate: (req, res) => {
-    
+usersCreate: async(req, res) => {
+        let newUser={
+        firstName: req.body.firstName,
+        lastName: req.body.firstName,
+        email:req.body.email,
+        password:bcrypt.hashSync(req.body.password, 10),
+        birthday:req.body.birthday,
+        address:req.body.address,
+        zipCode:req.body.zipCode,
+        location:req.body.location,
+        province:req.body.province,
+        roleId:2 //req.body.roleId
+    };
+    await usersDatabase.userCreate(newUser);
+
+    return res.redirect("/admin/users");
 },
 
-usersEdit: (req, res) => {
-    return res.render("./admin/usersEdit",
-    {head: usersEditHeadData}
-    )
+usersEdit:  async(req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await usersDatabase.userFindById(userId);
+
+        return res.render("./admin/usersEdit", {
+            head: usersEditHeadData,
+            user: user
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+}
+,
+
+usersUpdate:async (req, res) => {
+    let editedUser={
+        firstName: req.body.firstName,
+        lastName: req.body.firstName,
+        email:req.body.email,
+        password:bcrypt.hashSync(req.body.password, 10),
+        birthday:req.body.birthday,
+        address:req.body.address,
+        zipCode:req.body.zipCode,
+        location:req.body.location,
+        province:req.body.province,
+        roleId:2 //req.body.roleId
+    };
+    await usersDatabase.usersUpdate(editedUser);
+
+    return res.redirect("/admin/users");
 },
 
-usersUpdate: (req, res) => {
-
-},
-
-usersDestroy: (req, res) => {
-
+usersDestroy: async (req, res) => {
+    await database.userDeleteById(req.params.id);
+    return res.redirect("/admin/users");
 },
 
 }
