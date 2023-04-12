@@ -7,8 +7,8 @@ const searchHeadData = {title: "Búsqueda", stylesheet: "/css/search.css"};
 const mainController = {
 home: async (req, res) => res.render("index", {head: indexHeadData, productsNew: await database.productsThatAreNew(), productsOnSale: await database.productsThatAreOnSale()}),
 
-search: (req, res) => {    
-    let results = database.productSearch(req.query.keywords);
+search: async (req, res) => {    
+    let results = await database.productSearch(req.query.keywords);
 
     res.render("search", {head: searchHeadData, products: results});
 }

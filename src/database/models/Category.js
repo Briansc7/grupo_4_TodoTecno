@@ -24,7 +24,21 @@ module.exports = (sequelize, dataTypes) => {
             as: "subCategories",
             foreignKey: "categoryId"
         });
+
+        Category.hasMany(models.BrandsOfCategories, {
+            as: "brandsOfCategoriesFromCategory",
+            foreignKey: "categoryId"
+        });
+
+        Category.belongsToMany(models.Brand, {
+            as: "brandsOfCategory",
+            through: 'brandsOfCategories',
+            foreignKey: 'categoryId',
+            otherKey: 'brandId'
+        });
     };
+
+        
  
     return Category;
 };

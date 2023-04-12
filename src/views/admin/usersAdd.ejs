@@ -6,59 +6,33 @@
 <body>
     <%- include("../partials/header") %>
  
-<main>
-
+<main class="main-user-create">
+    <div>
+        <form class="form-container" action="/admin/userCreate" method="POST" enctype="multipart/form-data">
     
-<h1>Crear nuevo usuario</h1>
+        <h1>Crear nuevo usuario</h1>
 
- <form action="/admin/users/create" method="POST">
-    <div>
-        <label for="">Nombre</label>
-        <input class="input" type="text" name="firstName">
-    </div>
-    <div>
-        <label for="">apellido</label>
-        <input class="input" type="text" name="lastName">
-    </div>
-    <div>
-        <label for="">Email</label>
-        <input class="input" type="email" name="email">
-    </div>
-    <div>
-        <label for="">Cumpleaños</label>
-        <input class="input" type="date" name="birthday">
-    </div>
-    <div>
-        <label for="">Dirección</label>
-        <input class="input" type="text" name="address">
-    </div>
-    <div>
-        <label for="">Código Postal</label>
-        <input class="input" type="text" name="zipCode">
-    </div>
-    <div>
-        <label for="">Localidad</label>
-        <input class="input" type="text" name="location">
-    </div>
-    <div>
-        <label for="">Provincia</label>
-        <input class="input" type="text" name="province">
-    </div>
-    <div>
-        <label for="">Contraseña</label>
-        <input class="input" type="password" name="password">
-    </div>
-    <div class="product-create-btn product-edit-btn">
-        <button class="btn-reset" type="reset">Reiniciar Campos</button>
-        <br>
-        <button class="btn-submit" type="submit">
-           Crear Usuario
-      </button>
-       <br>            
-   </div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="text" id="correo" name="correo" value="" required>
+
+        <label for="rol">Rol:</label>
+        <select id="rol" name="rol" required>
+            <option value="">Seleccione un Rol</option>
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+        </select>
+
+        <button type="submit">Crear</button>
 
 
- </form>
+        </form>
+    </div>
 </main>
 
 
