@@ -6,15 +6,14 @@
 <body>
     <%- include("../partials/header") %>
  
-<main>
-    <p>Nombre: </p>
-    <p>Apellido:</p>
-    <p>Email:</p>
-    <p>Cumpleaños:</p>
-    <p>Dirección:</p>
-    <p>Código Postal: </p>
-    <p>Localidad:</p>
-    <p>Provincia:</p>
+<main class="main-user-create">
+    <form class="form-container" action="/admin/users/update/<%= user.id %>?_method=PUT" method="POST">
+    
+        <h1>Editar Usuario</h1>
+
+        <%- include("../partials/create-edit-user-inputs") %>  
+
+        <button type="submit">Actualizar</button>
 </main>
 
 

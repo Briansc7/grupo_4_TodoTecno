@@ -28,9 +28,9 @@
         <td><%= user.role.name %></td>
         <td class="actions">
           
-          <a href="/admin/users/edit/:<%= user.id %>"><button class="edit" > <i class="fa-solid fa-pen-to-square"></i></button></a>
+          <a href="/admin/users/edit/<%= user.id %>"><button class="edit" > <i class="fa-solid fa-pen-to-square"></i></button></a>
           
-          <form class="form-delete" action="/admin/users/delete/<%= users.id %>?_method=DELETE" method="POST">
+          <form class="form-delete" action="/admin/users/delete/<%= user.id %>?_method=DELETE" method="POST">
             <button class="delete"><i class="fa-solid fa-trash"></i></button>
          </form>
         </td>

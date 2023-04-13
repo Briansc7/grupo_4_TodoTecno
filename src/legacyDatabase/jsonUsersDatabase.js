@@ -33,7 +33,8 @@ let usersDatabase = {
     userFindById: userFindById,
     getAllUsers: getAllUsers,
     userCreate:userCreate,
-    userDeleteById:userDeleteById    
+    userDeleteById:userDeleteById,
+    userUpdate: userUpdate    
 
 };
 
@@ -190,5 +191,10 @@ async function userCreate(userInfo){
 async function userDeleteById(id){
 
     await Users.destroy({where: {id}});
+};
+
+async function userUpdate(id, userInfo){
+
+    await Users.update(userInfo,{where: {id}});
 };
 module.exports = usersDatabase;

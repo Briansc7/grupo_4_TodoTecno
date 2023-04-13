@@ -9,7 +9,7 @@ const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/produc
 const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
 
 const usersAddHeadData = {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"};
-const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersEdit.css"};
+const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersAdd.css"};
 
 const usersListHeadData = {title: "Listado de Usuarios", stylesheet: "/css/usersList.css"};
 const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/usersDetail.css"};
@@ -78,6 +78,8 @@ usersAdd: (req, res) => {
 usersList: async (req, res) => {
     let users = await usersDatabase.getAllUsers();
 
+    console.log(users);
+
     return res.render("./admin/usersList", {head: usersListHeadData, users})
 },
 
@@ -124,25 +126,32 @@ usersEdit:  async(req, res) => {
 ,
 
 usersUpdate:async (req, res) => {
-    let editedUser={
-        firstName: req.body.firstName,
-        lastName: req.body.firstName,
-        email:req.body.email,
-        password:bcrypt.hashSync(req.body.password, 10),
-        birthday:req.body.birthday,
-        address:req.body.address,
-        zipCode:req.body.zipCode,
-        location:req.body.location,
-        province:req.body.province,
-        roleId:2 //req.body.roleId
-    };
-    await usersDatabase.usersUpdate(editedUser);
+    let id = req.params.id;
+
+    /*Solamente se van a mandar al update los campos que no están vacíos*/
+    let editedUser={};  //aca se van a cargar los inputs para el update
+    Object.entries(req.body).forEach(entry => { //se iteran los campos del objeto req.body
+        const [property, value] = entry;      //se separa en clave valor
+    
+        if(value&&value!=""){
+            let updatedValue = value;
+
+            if(property=="password"){ //si el input leido es password, se tiene que encriptar
+                updatedValue = bcrypt.hashSync(updatedValue, 10);
+            }
+            
+            editedUser[property] = updatedValue; //se almacena el input que se va a actualizar el valor
+        }
+
+    });
+    
+    await usersDatabase.userUpdate(id, editedUser);
 
     return res.redirect("/admin/users");
 },
 
 usersDestroy: async (req, res) => {
-    await database.userDeleteById(req.params.id);
+    await usersDatabase.userDeleteById(req.params.id);
     return res.redirect("/admin/users");
 },
 
