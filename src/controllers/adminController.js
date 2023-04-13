@@ -126,18 +126,19 @@ usersEdit:  async(req, res) => {
 usersUpdate:async (req, res) => {
     let id = req.params.id;
 
-    let editedUser={};
-    Object.entries(req.body).forEach(entry => {
-        const [property, value] = entry;      
+    /*Solamente se van a mandar al update los campos que no están vacíos*/
+    let editedUser={};  //aca se van a cargar los inputs para el update
+    Object.entries(req.body).forEach(entry => { //se iteran los campos del objeto req.body
+        const [property, value] = entry;      //se separa en clave valor
     
         if(value&&value!=""){
             let updatedValue = value;
 
-            if(property=="password"){
+            if(property=="password"){ //si el input leido es password, se tiene que encriptar
                 updatedValue = bcrypt.hashSync(updatedValue, 10);
             }
             
-            editedUser[property] = updatedValue;
+            editedUser[property] = updatedValue; //se almacena el input que se va a actualizar el valor
         }
 
     });
