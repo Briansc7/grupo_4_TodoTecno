@@ -16,3 +16,17 @@ Almacena los tipos (categorías) de productos existentes. Además de existir sub
 <h2>Stock:</h2>
 Se almacena la cantidad de stock disponible de cada producto. A su vez se almacena el estado de dicho producto en una tabla externa llamanda <b>statusStock</b>.
 El producto físico puede no estar solamente disponible para su compra, sino que tambié puede estar reservado debido a que fue comprado y sólo debe ser retirado por el usuario de forma presencial, también puede estar en espera de ser entregado, estar en reparto, o ya haber sido entregado o retirado. Entonces el stock de un mismo producto puede ser almacenado varias veces, cada una por cada tipo de estado. A su vez un producto puede tener solamente stock en algunas sucursales.
+
+<h2>Stores:</h2>
+Almacena los datos de las sucursales como por ejemplo su dirección y el horario de atención del mismo.
+
+<h2>Sales:</h2>
+Almacena los datos globales de una venta como por ejemplo en qué sucursal se realizó la venta y el monto total de la misma. Como una venta puede tener varios productos, y un producto puede estar presente en muchas ventas, se utiliza la tabla intermedia <h2>DetailSales</h2> y gracias a la misma se puede terminar conociendo los productos que componen una misma venta.
+A su vez, una venta puede tener un estado asociado como por ejemplo "En espera para ser retirado". Dicho dato se almacena en la tabla <b>statusSales</b>.
+
+<h2>PaymentMethods</h2>
+Almacena los tipos de pagos a elegir. Una venta tiene un tipo de pago asociado. A su vez, según el financiamiento, un tipo de pago puede tener un porcentaje de interés y una determinada cantidad de cuotas. Dichos datos se almacenan en la tabla <b>Interesoptions</b>
+
+<h2>DiscountCupons</h2>
+Almacena los cupones de descuento que se pueden utilizar a comprar productos.Dichos cupones pueden estar asociados o no a una venta dependiendo de si se utilizó el cupon al comprar los productos. A su vez es necesario almacenar quienes utilizaron los cupones y para poder aplicar límites en cuanto a la reutilización de dichos cupones. Dicho datos se almacena en la tabla intermedia <b>cuponsUsedByUsers</b>
+
