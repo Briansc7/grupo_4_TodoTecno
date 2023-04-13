@@ -9,7 +9,7 @@ const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/produc
 const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
 
 const usersAddHeadData = {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"};
-const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersEdit.css"};
+const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersAdd.css"};
 
 const usersListHeadData = {title: "Listado de Usuarios", stylesheet: "/css/usersList.css"};
 const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/usersDetail.css"};

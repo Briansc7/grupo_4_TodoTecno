@@ -1,33 +1,33 @@
 <label for="nombre">Nombre:</label>
-<input type="text" id="nombre" name="firstName" required>
+<input type="text" id="nombre" name="firstName" value= "<%= locals.user && user.firstName %>" required>
 
 <label for="apellido">Apellido:</label>
-<input type="text" id="apellido" name="lastName" required>
+<input type="text" id="apellido" name="lastName" value= "<%= locals.user && user.lastName %>" required>
 
 <label for="correo">Correo electrónico:</label>
-<input type="text" id="correo" name="email" value="" required>
+<input type="text" id="correo" name="email" value="" value= "<%= locals.user && user.email %>" required>
 
 <label for="password">Contraseña:</label>
 <input type="password" id="password" name="password" value="" required>
 
 <label for="birthday">Fecha de Nacimiento:</label>
-<input type="date" id="birthday" name="birthday" value="">
+<input type="date" id="birthday" name="birthday" value= "<%= locals.user && user.birthday?.slice(10,2) %>">
 
 <label for="address">Dirección:</label>
-<input type="text" id="address" name="address" value="">
+<input type="text" id="address" name="address" value= "<%= locals.user && user.address %>">
 
 <label for="zipCode">Código Postal:</label>
-<input type="text" id="zipCode" name="zipCode" value="">
+<input type="text" id="zipCode" name="zipCode" value= "<%= locals.user && user.zipCode %>">
 
 <label for="location">Localidad:</label>
-<input type="text" id="location" name="location" value="">
+<input type="text" id="location" name="location" value= "<%= locals.user && user.location %>">
 
 <label for="province">Provincia:</label>
-<input type="text" id="province" name="province" value="">
+<input type="text" id="province" name="province" value= "<%= locals.user && user.province %>">
 
 <label for="roleId">Rol:</label>
 <select id="roleId" name="roleId" required>
-    <option value="">Seleccione un Rol</option>
-    <option value="1">Admin</option>
-    <option value="2">User</option>
+    <option value="" disabled <%= !locals.user?"selected":""%>>Seleccione un Rol</option>
+    <option value="1" <%= 1 == (locals.user?.roleId)?"selected":""%>>Admin</option>
+    <option value="2" <%= 2 == (locals.user?.roleId)?"selected":""%>>User</option>
 </select>
