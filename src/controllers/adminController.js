@@ -78,6 +78,8 @@ usersAdd: (req, res) => {
 usersList: async (req, res) => {
     let users = await usersDatabase.getAllUsers();
 
+    console.log(users);
+
     return res.render("./admin/usersList", {head: usersListHeadData, users})
 },
 
@@ -149,7 +151,7 @@ usersUpdate:async (req, res) => {
 },
 
 usersDestroy: async (req, res) => {
-    await database.userDeleteById(req.params.id);
+    await usersDatabase.userDeleteById(req.params.id);
     return res.redirect("/admin/users");
 },
 
