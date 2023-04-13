@@ -124,19 +124,25 @@ usersEdit:  async(req, res) => {
 ,
 
 usersUpdate:async (req, res) => {
-    let editedUser={
-        firstName: req.body.firstName,
-        lastName: req.body.firstName,
-        email:req.body.email,
-        password:bcrypt.hashSync(req.body.password, 10),
-        birthday:req.body.birthday,
-        address:req.body.address,
-        zipCode:req.body.zipCode,
-        location:req.body.location,
-        province:req.body.province,
-        roleId:2 //req.body.roleId
-    };
-    await usersDatabase.usersUpdate(editedUser);
+    let id = req.params.id;
+
+    let editedUser={};
+    Object.entries(req.body).forEach(entry => {
+        const [property, value] = entry;      
+    
+        if(value&&value!=""){
+            let updatedValue = value;
+
+            if(property=="password"){
+                updatedValue = bcrypt.hashSync(updatedValue, 10);
+            }
+            
+            editedUser[property] = updatedValue;
+        }
+
+    });
+    
+    await usersDatabase.userUpdate(id, editedUser);
 
     return res.redirect("/admin/users");
 },
