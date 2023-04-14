@@ -1,14 +1,10 @@
 /*
-Manejador de Tablas Json. Esta lógica también podría ir en el controlador
+Manejador de Bases de Datos relacionadas con los productos
+TODO renombrar porque ya no se usa json
 */ 
 
 const path = require("path");
 const fs = require("fs");
-
-//Se obtienen los datos de los productos
-const productsJsonPath = path.resolve(__dirname,"./products.json");
-let productsJsonRawData = fs.readFileSync(productsJsonPath); //guardo contenido json en variable
-let productsData = JSON.parse(productsJsonRawData); //convierto json a objeto array
 
 //agregado uso de BD mysql
 const db = require('../database/models');
