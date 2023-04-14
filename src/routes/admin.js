@@ -43,6 +43,8 @@ adminRouter.get('/users', adminAccessValidation, adminController.usersList);
 adminRouter.get('/users/add', adminAccessValidation, adminController.usersAdd); 
 adminRouter.post('/users/create', adminAccessValidation, uploadAvatar.single("avatar"), adminController.usersCreate); 
 
+adminRouter.get('/users/detail/:id', adminAccessValidation, adminController.usersDetail); 
+
 adminRouter.get("/users/edit/:id", adminAccessValidation, adminController.usersEdit);
 adminRouter.put("/users/update/:id", adminAccessValidation, adminController.usersUpdate);
 

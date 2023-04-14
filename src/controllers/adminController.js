@@ -86,9 +86,11 @@ usersList: async (req, res) => {
 usersDetail: async (req, res) =>{
     let id = req.params.id;
 
-    let user = await usersDatabase.getUserByPk(id);
+    let user = await usersDatabase.userFindById(id);
 
-    return res.render("./admin/usersDetail", {head: usersDetailHeadData, user});
+    user.id = id;
+
+    return res.render("./admin/usersDetail", {head: usersDetailHeadData, userInfo: user});
 },
 
 usersCreate: async(req, res) => {
