@@ -5,7 +5,7 @@ const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUse
 const loginHeadData = {title: "Login", stylesheet: "/css/login.css"};
 const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};
 const profileHeadData = {title: "Perfil", stylesheet: "/css/profile.css"};
-const editProfileHeadData = {title: "Editar Perfil", stylesheet: "/css/editProfile.css"};
+const editProfileHeadData = {title: "Editar Perfil", stylesheet: "/css/usersAdd.css"};
 
 const usersController = {
 login: (req, res) => res.render("./users/login", {head: loginHeadData}),
