@@ -25,9 +25,3 @@
 <label for="province">Provincia:</label>
 <input type="text" id="province" name="province" value= "<%= locals.user && user.province %>">
 
-<label for="roleId">Rol:</label>
-<select id="roleId" name="roleId" required>
-    <option value="" disabled <%= !locals.user?"selected":""%>>Seleccione un Rol</option>
-    <option value="1" <%= 1 == (locals.user?.roleId)?"selected":""%>>Admin</option>
-    <option value="2" <%= 2 == (locals.user?.roleId)?"selected":""%>>User</option>
-</select>

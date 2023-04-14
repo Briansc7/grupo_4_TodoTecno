@@ -9,7 +9,7 @@
 
     <main>
         <%- include("../partials/user-info") %>
-        <button class="btn-profile" id="edit-profile-btn">Editar Perfil</button>
+        <a href="/users/edit-profile"><button class="btn-profile" id="edit-profile-btn">Editar Perfil</button></a>
         <form action="/users/logout" method="POST">
             <button type="submit">Cerrar Sesión</button>
         </form>

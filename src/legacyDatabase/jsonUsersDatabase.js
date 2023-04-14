@@ -64,11 +64,6 @@ async function userRegister(userBody, avatar){
     return newUserId;
 }
 
-function writeJson(destination, data) {
-    let jsonRawData = JSON.stringify(data, null, 2);
-    fs.writeFileSync(destination, jsonRawData);
-}
-
 function userGetNewId(){
     return Math.max.apply(Math,this.usersData.map(user=>user.id))+1;
 }
