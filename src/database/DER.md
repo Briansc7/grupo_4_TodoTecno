@@ -10,6 +10,9 @@ Almacena los datos de los productos. Ya que un producto puede tener más de una 
 A su vez un producto tiene asociada una marca, la cual se almacena en la tabla <b>Brands</b>. Entre la información relevante de un producto, se encuentran las características y subcaracterísticas del mismo, las cuales se guardas en las tablas <b>Characteristics</b> y <b>SubCharacteristics</b>. Por ejemplo una características de un televisor podría ser Dimensiones y las subcaracterísticas de dicha características podrían ser ancho, profundidad y peso.
 Para tener una mejor organización de los productos, los mismos tienen asociado una subcategoría, la cual pertenece a una categoría de mayor jerarquía. Por ejemplo, la subcategoría "Tv" que pertenece a una categoría más general llamada "Tv y Video". Estos se almacenan en las tablas <b>Subcategories</b> y <b>Categories</b>.
 
+<h2>BoughtTogether:</h2>
+Almacena pares de productos que fueron comprados juntos con la cantidad de veces que se compraron juntos en la misma compra. Dicha tabla se utiliza para sugerir otros productos en la vista de detalle de un producto.
+
 <h2>Categories:</h2>
 Almacena los tipos (categorías) de productos existentes. Además de existir subcategorías que dependen jerárquicamente de una categoría, las marcas también se asocian a una categoría. Lo cual nos permite a la hora de querer elegir una marca en un formulario, la misma tenga sentido para el tipo de producto a crear o editar. Como una categoría puede tener muchas marcas, pero a su vez una marca puede estar presente en distintos tipos de productos, dicha relación muchos a muchos se resuelve con la tabla intermedia <b>brandsOfCategories</b>
 

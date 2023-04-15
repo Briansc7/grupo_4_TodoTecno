@@ -43,8 +43,19 @@ Se puede acceder al tablero utilizado en el siguiente link: https://trello.com/b
 Luego de clonar el repositorio, instalar las dependencias correspondientes ejecutando: 
 > npm install 
 
-La aplicación utiliza una base de datos basada en json, es necesario inicializarla ejecutando:
+Cargar las imágenes de los productos precargados y crear archivo .env con el siguiente comando:
 > npm run cdata
+
+Editar el archivo .env ubicado en la raíz del proyecto con el usuario y contraseña correspondiente a la base de datos mysql.
+Por defecto considera que el usuario es root y no posee contraseña.
+
+Importar la estructura de la base de datos a partir del archivo estruture.sql ubicado en /src/database.
+
+Realizar la carga inicial de la base de datos ejecutando el script data.sql ubicado en /src/database.
+
+En la carpeta /src/database se puede ver el DER de la base de datos consultando el archivo DER.pdf. Además se incluyó una explicación del DER en el archivo DER.md.
+
+En caso de que hayan futuros cambios en el repositorio en cuanto a la estructura y/o datos precargado en la base de datos, es necesario volver a ejecutar los pasos anteriores desde la ejecución del comando npm run cdata.
 
 Para levantar el servidor ejecutar el comando:
 > npm start
@@ -90,6 +101,9 @@ Hacen redirect a /users/login si el usuario no está logueado.
 Perfil: 
 > http://localhost:3000/users/profile
 
+Edición de Perfil: 
+> http://localhost:3000/users/edit-profile
+
 <h3>Rutas accesibles solamente por usuarios logueados y con rol administrador:</h3>
 
 Devuelven error 404 si el usuario no está logueado y si no tiene rol administrador.
@@ -100,20 +114,26 @@ Creación de productos:
 Edición de productos:
 > http://localhost:3000/admin/productEdit/1
 
+Detalle de producto (es igual a la vista que pueden acceder los visitantes pero se incluye un botón para editar el producto:
+> http://localhost:3000/products/productDetail/1
+
 Listado de Usuarios existentes:
 > http://localhost:3000/admin/users
 
 Creación de Usuarios:
 > http://localhost:3000/admin/users/add
 
-Edición de Usuarios:
+Edición de Usuario:
 > http://localhost:3000/admin/users/edit/1
+
+Detalles del Usuario:
+> http://localhost:3000/admin/users/detail/1
 
 
 <h2>Usuarios</h2>
 
 Para las pruebas se proveen dos usuarios predefinidos.
-Los datos de inicio de sesión son:
+Las credenciales de inicio de sesión son:
 
 Email: admin@todotecno.com
 Contraseña: administrador
