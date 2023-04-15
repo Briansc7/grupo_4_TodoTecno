@@ -29,43 +29,7 @@
             <span class="errors"><%= locals.errors && errors.lastName ? errors.lastName.msg : null %></span>
             <h5>Email</h5>            
             <input class="input"  type="text" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
-            <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
-            <!-- <h5>nombre de usuario</h5>
-            <input  type="text" name="" placeholder="" >
-            <h5>Fecha de nacimiento</h5>
-            <input  type="date" name="birthday" placeholder="" >
-            <h5>Domicilio de facturacion</h5>
-            <input  type="text" name="" placeholder="" >
-            <h5>Codigo postal</h5>
-            <input  type="text" name="" placeholder="" >
-            <h5>Localidad</h5>
-            <input  type="text" name="" placeholder="">
-            <h5>Provincia</h5>
-            <input  type="text" name="" placeholder="">
-
-           
-            <fieldset class="select-shipping">
-                <legend>Elija el metodo de envio</legend>
-            
-                <label for="metodo-envio"><h5>Retirar en el local</h5>
-                    <input class="btn-envio" type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">
-                 </label>
-                 <label for="metodo-envio"><h5>Envio a domicilio</h5>
-                    <input class="btn-envio"  type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">
-                 </label>
-                 <label for="metodo-envio"><h5>Retirar en punto de entrega</h5>
-                    <input class="btn-envio" type="radio" name="metodoEnvio" placeholder="seleccion del metodo de envio" required id="metodoEnvio">
-                 </label>
-                </fieldset> -->
-
-            <!-- <h5>Domicilio de entrega</h5>
-            <input  type="text" name="" placeholder="">
-            <h5>Codigo postal</h5>
-            <input  type="text" name="" placeholder="">
-            <h5>Localidad</h5>
-            <input  type="text" name="" placeholder="">
-            <h5>Provincia</h5>
-            <input  type="text" name="" placeholder=""> -->
+            <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>            
             <h5>Contraseña</h5>
             <input class="input"  type="password" name="password" placeholder="" >
             <span class="errors"><%= locals.errors && errors.password ? errors.password.msg : null %></span>
@@ -73,8 +37,7 @@
             <input class="input"  type="password" name="passwordRepeat" placeholder="" > 
             <span class="errors"><%= locals.errors && errors.passwordRepeat ? errors.passwordRepeat.msg : null %></span>
             
-            <label for="avatar" class="form-label">Imágenes:</label>
-			<input class="input"  type="file" id="avatar" name="avatar">
+            <%- include("../partials/input-avatar") %>
                       
            <button class="btn-submit" type="submit"><p>Enviar</p></button>
         </div>
