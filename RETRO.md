@@ -54,7 +54,8 @@ Durante el desarrollo del Sprint 5 se dividieron las tareas en backend y fronten
 
 <h2>Retrospectiva Sprint 6</h2>
 
-Durante el desarrollo del Sprint 6 se continuó en la división de tareas anterior, pero debido a inconvenientes que generaron un atraso considerable en el desarrollo de las tareas, se reasignaron tareas entre los miembros con mayor tiempo disponible para trabajar en el proyecto. Sin embargo, debido a la menor experiencia de algunos miembros para realizar dichas tareas, el progreso del sprint se vió afectado. No se logró completar todos los objetivos propuestos en el tiempo establecido.
+Durante el desarrollo del Sprint 6 se continuó en la división de tareas anterior, pero debido a inconvenientes que generaron un atraso considerable en el desarrollo de las tareas, se reasignaron tareas entre los miembros con mayor tiempo disponible para trabajar en el proyecto. Sin embargo, debido a la menor experiencia de algunos miembros para realizar dichas tareas, el progreso del sprint se vió afectado. Es por ello que no se logró completar todos los objetivos propuestos en el tiempo establecido. Pero se estima que dicho retraso no va a afectar la finalización del proyecto, ya que en entregas anteriores se lograron completar algunos de los objetivos propuestos para el Sprint 7.
+
 
 <h3>Comenzar a hacer, Hacer más, Continuar haciendo y Hacer menos</h3>
 
