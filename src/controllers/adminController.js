@@ -123,6 +123,8 @@ usersDetail: async (req, res) =>{
 
 usersCreate: async(req, res) => {
     try {
+        let avatar = req.file
+
         let newUser={
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -133,6 +135,7 @@ usersCreate: async(req, res) => {
             zipCode:req.body.zipCode,
             location:req.body.location,
             province:req.body.province,
+            image: avatar?avatar.filename:null,
             roleId: req.body.roleId
         };
         await usersDatabase.userCreate(newUser);
