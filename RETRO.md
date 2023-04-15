@@ -51,3 +51,19 @@ Durante el desarrollo del Sprint 5 se dividieron las tareas en backend y fronten
 <h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, por el contrario hacer más es principal objetivo para el futuro.
 
 <h4>5) Dejar de hacer:</h4> En esta etapa no hemos identificado acciones que perjudiquen al grupo o proyecto para dejar de hacer.
+
+<h2>Retrospectiva Sprint 6</h2>
+
+Durante el desarrollo del Sprint 6 se continuó en la división de tareas anterior, pero debido a inconvenientes que generaron un atraso considerable en el desarrollo de las tareas, se reasignaron tareas entre los miembros con mayor tiempo disponible para trabajar en el proyecto. Sin embargo, debido a la menor experiencia de algunos miembros para realizar dichas tareas, el progreso del sprint se vió afectado. No se logró completar todos los objetivos propuestos en el tiempo establecido.
+
+<h3>Comenzar a hacer, Hacer más, Continuar haciendo y Hacer menos</h3>
+
+<h4>1) Comenzar a hacer:</h4> El retraso del sprint se debió en parte a la falta de experiencia de algunos miembros en las tareas para las que no estaban trabajando. Por lo que se propone delegar algunas de dichas tareas entre dichos miembros o realizar una explicación detallada de la implementación realizada. De esta forma se espera que dichos miembros estén mejor preparados para afrontar dicho tipo de tareas en caso de que ocurra otro inconveniente y se requiera nuevamente su participación en dicho tipo de tareas.
+
+<h4>2) Hacer más:</h4> El uso de trello es fundamental para determinar el estado del sprint, las tareas a realizar y la asignación de tareas. Pero no es usado de forma activa por algunos miembros del grupo. Se propone usar más trello para una mejor organización del proyecto.
+
+<h4>3) Continuar haciendo:</h4> El desarrollo del proyecto ha requerido investigar exhaustivamente para poder implementar las funcionalidades necesarias ya que algunas configuraciones e implementaciones particulares no se incluyen en las clases del curso.
+
+<h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, por el contrario hacer más es principal objetivo para el futuro.
+
+<h4>5) Dejar de hacer:</h4> En esta etapa no hemos identificado acciones que perjudiquen al grupo o proyecto para dejar de hacer.
