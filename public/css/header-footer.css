@@ -44,6 +44,11 @@ header, footer {
 .header-logo {
     content:url("/images/logo-mobile.png");
     width: 50px;
+    transition: all 0.5s ease;
+}
+
+.header-logo:hover {
+    transform: rotate( -3deg );
 }
 
 .search-bar-container form {

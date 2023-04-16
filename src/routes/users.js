@@ -20,6 +20,9 @@ let uploadAvatar = multer({ storage: storageAvatar });
 usersRouter.get("/login", visitorsOnlyAccessValidation, usersController.login);
 usersRouter.get("/register", visitorsOnlyAccessValidation, usersController.register);
 usersRouter.get("/profile", registeredUsersOnlyAccessValidation, usersController.profile);
+usersRouter.get("/edit-profile", registeredUsersOnlyAccessValidation, usersController.editProfile);
+
+usersRouter.put("/update-profile", registeredUsersOnlyAccessValidation, usersController.updateProfile);
 
 usersRouter.post("/", uploadAvatar.single("avatar"), registerFormatValidation, usersController.createUser);
 usersRouter.post("/login", loginFormatValidation, usersController.loginSubmit);

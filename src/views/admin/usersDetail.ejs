@@ -9,10 +9,11 @@
 
     <main>
         <%- include("../partials/user-info") %>
-        <a href="/users/edit-profile"><button class="btn-profile" id="edit-profile-btn">Editar Perfil</button></a>
-        <form action="/users/logout" method="POST">
-            <button type="submit">Cerrar Sesión</button>
-        </form>
+
+        <a href="/admin/users/edit/<%= userInfo.id %>"><button class="edit" >Editar</button></a>
+        <form class="form-delete" action="/admin/users/delete/<%= userInfo.id %>?_method=DELETE" method="POST">
+            <button class="delete">Eliminar</button>
+         </form>
         
     </main>
 

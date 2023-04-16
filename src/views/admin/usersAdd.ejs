@@ -8,28 +8,14 @@
  
 <main class="main-user-create">
     <div>
-        <form class="form-container" action="/admin/users" method="POST" enctype="multipart/form-data">
+        <form class="form-container" action="/admin/users/create" method="POST" enctype="multipart/form-data">
     
         <h1>Crear nuevo usuario</h1>
 
-        <label for="first-name">Nombre:</label>
-        <input type="text" id="first-name" name="first-name" required>
+        <%- include("../partials/create-edit-user-inputs") %>  
+        <%- include("../partials/roleId-selector") %>
 
-        <label for="last-name">Apellido:</label>
-        <input type="text" id="last-name" name="last-name"required>
-
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" value="" required>
-
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" value="" required>
-
-        <label for="rol">Rol:</label>
-        <select id="rol" name="rol" required>
-            <option value="">Seleccione un Rol</option>
-            <option value="Admin">Admin</option>
-            <option value="User">User</option>
-        </select>
+        <%- include("../partials/input-avatar") %>
 
         <button type="submit">Crear</button>
 
