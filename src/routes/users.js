@@ -3,8 +3,9 @@ const path = require("path");
 const usersRouter =  express.Router();
 const usersController = require("../controllers/usersController");
 const multer = require("multer");
-const loginFormatValidation = require("../middlewares/loginFormatValidation");
-const registerFormatValidation = require("../middlewares/registerFormatValidation");
+const fieldsValidator = require("../middlewares/fieldsValidator");
+const loginFormatValidation = fieldsValidator.loginFormatValidation;
+const registerFormatValidation = fieldsValidator.registerFormatValidation;
 const registeredUsersOnlyAccessValidation = require("../middlewares/registeredUsersOnlyAccessValidation");
 const visitorsOnlyAccessValidation = require("../middlewares/visitorsOnlyAccessValidation");
 
