@@ -5,6 +5,7 @@
                 <option value="<%= category.id %>" <%= category.id == (locals.selectedCategory?.id)?"selected":""%>><%= category.name %></option>
             <% }) %>
         </select>
+        <span class="errors"><%= locals.errors && errors.category ? errors.category.msg : null %></span>
     </div>
     <div class="input-section"><h5>SubCategoría del producto</h5>
         <select class="input" name="subCategory" required>
@@ -13,6 +14,7 @@
                 <option value="<%= subCategory.id %>" <%= subCategory.id == (locals.product?.subCategory.id)?"selected":""%>><%= subCategory.name %></option>
             <% }) %>            
         </select>
+        <span class="errors"><%= locals.errors && errors.subCategory ? errors.subCategory.msg : null %></span>
     </div>    
     <div class="input-section"><h5>Marca</h5>
         <select class="input" name="brand" required>
@@ -21,36 +23,44 @@
                 <option value="<%= brand.id %>" <%= brand.id == (locals.product?.brandId)?"selected":""%>><%= brand.name %></option>
             <% }) %> 
         </select>
+        <span class="errors"><%= locals.errors && errors.brand ? errors.brand.msg : null %></span>
     </div>   
     <div class="input-section"><h5>Modelo</h5>
         <input class="input" type="text" name="model" placeholder="" required value="<%= locals.product && product.model %>">
+        <span class="errors"><%= locals.errors && errors.model ? errors.model.msg : null %></span>
     </div>
     <div class="input-section"><h5>Numero de articulo</h5>
        <input class="input" type="number" name="artNumber" placeholder="" required value="<%= locals.product && product.artNumber %>">
+       <span class="errors"><%= locals.errors && errors.artNumber ? errors.artNumber.msg : null %></span>
     </div>
     <div class="input-section"><h5>Precio</h5>
         <input class="input" type="number" name="price" placeholder="" required value="<%= locals.product && product.price %>">
+        <span class="errors"><%= locals.errors && errors.price ? errors.price.msg : null %></span>
     </div>   
     <div class="input-section"><h5>Descuento [%]</h5>
         <input class="input" type="number" name="discount" placeholder="" required value="<%= locals.product && product.discountPorc %>">
+        <span class="errors"><%= locals.errors && errors.discount ? errors.discount.msg : null %></span>
     </div>
         <br>
         <h5>Descuento habilitado: <input  type="checkbox" name="isOnSale" 
             <% if(locals.product && product.isOnSale){ %>
                 checked
             <% } %>
-        </h5>        
+        </h5>
+        <span class="errors"><%= locals.errors && errors.isOnSale ? errors.isOnSale.msg : null %></span>        
         <br>
         <h5>Es nueva adquisición: <input type="checkbox" name="isNew"
             <% if(locals.product && product.isNew){ %>
                 checked
             <% } %>
         </h5>
+        <span class="errors"><%= locals.errors && errors.isNew ? errors.isNew.msg : null %></span>
         <br>      
     <div class="input-section"><h5>Descripción</h5>
         <textarea class="input" name="description">
             <%= locals.product?.description %>
         </textarea>
+        <span class="errors"><%= locals.errors && errors.description ? errors.description.msg : null %></span>
     </div>
         <% if (!locals.product) { %>
         
@@ -58,6 +68,7 @@
         <div class="create-edite-img">
 			<input class="input"type="file" id="image" name="images" required multiple>
         </div>
+        <span class="errors"><%= locals.errors && errors.images ? errors.images.msg : null %></span>
         <% } %>        
         
         <div class="product-create-btn product-edit-btn">
