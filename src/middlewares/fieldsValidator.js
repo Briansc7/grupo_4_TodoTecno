@@ -15,7 +15,7 @@ let validations = {
     .isAlpha('es-ES', {ignore: ' '}).withMessage("El apellido no puede tener números ni caracteres especiales").bail()
     .isLength({max: 30}).withMessage("El apellido no puede superar los 30 caracteres"), 
 
-    validatePasswordRepeat: body("passwordRepeat").notEmpty().withMessage("Debe volver a escribir la contraseña").bail()
+    validatePasswordRepeat: body("passwordRepeat").notEmpty().withMessage("Debe repetir la contraseña").bail()
     .custom((value,{req, loc, path}) => {
         if (value !== req.body.password) {
             // throw error if passwords do not match
@@ -23,10 +23,30 @@ let validations = {
         } else {
             return value;
         }        
-    })
+    }),
+
+    validateProductModel: body("model").notEmpty().withMessage("No ingresó el modelo del producto").bail()
+    .isAlphanumeric().withMessage("El modelo sólo puede tener letras y números"),
+
+    validateProductArtNumber: body("artNumber").isNumeric().withMessage("Debe ingresar un número en el número de artículo").bail(),
+
+    validateProductPrice: body("price").isNumeric().withMessage("Debe ingresar un número en el precio del producto").bail(),
+
+    validateProductDiscountPorc: body("discount").isNumeric().withMessage("Debe ingresar un número en el Porcentaje de descuento").bail(),
+
+    userBirthday: body("birthday"),
+
+    userAddress: body("address"),
+
+    userZipCode: body("zipCode"),    
+
+    userLocation: body("location"),
+
+    userProvince: body("province")
+
 };
 
-module.exports = {
+let fieldsValidator = {
     loginFormatValidation: [
         validations.validateEmailFormat,
         validations.validatePasswordFormat
@@ -38,5 +58,28 @@ module.exports = {
         validations.validateEmailFormat,
         validations.validatePasswordFormat,
         validations.validatePasswordRepeat
-    ]
+    ],
+
+    productFormatValidation: [
+        validations.validateProductModel,
+        validations.validateProductArtNumber,
+        validations.validateProductPrice,
+        validations.validateProductDiscountPorc
+    ],
+
+    userFormatValidation: []
 };
+
+/* Validaciones que requieren que fieldsValidator esté inicializado*/
+fieldsValidator.userFormatValidation = [
+    ...fieldsValidator.registerFormatValidation,
+    validations.userBirthday,
+    validations.userAddress,
+    validations.userZipCode,        
+    validations.userLocation,
+    validations.userProvince
+]
+
+
+
+module.exports = fieldsValidator;
