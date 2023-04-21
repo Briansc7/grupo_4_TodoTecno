@@ -23,19 +23,19 @@
             <br>            
             <h5>Nombre</h5>
             <input class="input" type="text" name="firstName" placeholder="" value="<%= locals.old && locals.old.firstName %>">
-            <span class="errors"><%= locals.errors && errors.firstName ? errors.firstName.msg : null %></span>
+            <span class="errors" name="firstName"><%= locals.errors && errors.firstName ? errors.firstName.msg : null %></span>
             <h5>Apellido</h5>
             <input class="input"  type="text" name="lastName" placeholder="" value="<%= locals.old && locals.old.lastName %>">
-            <span class="errors"><%= locals.errors && errors.lastName ? errors.lastName.msg : null %></span>
+            <span class="errors" name="lastName"><%= locals.errors && errors.lastName ? errors.lastName.msg : null %></span>
             <h5>Email</h5>            
             <input class="input"  type="text" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
-            <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>            
+            <span class="errors" name="email"><%= locals.errors && errors.email ? errors.email.msg : null %></span>            
             <h5>Contraseña</h5>
             <input class="input"  type="password" name="password" placeholder="" >
-            <span class="errors"><%= locals.errors && errors.password ? errors.password.msg : null %></span>
+            <span class="errors" name="password"><%= locals.errors && errors.password ? errors.password.msg : null %></span>
             <h5>Confirmar contraseña</h5>
             <input class="input"  type="password" name="passwordRepeat" placeholder="" > 
-            <span class="errors"><%= locals.errors && errors.passwordRepeat ? errors.passwordRepeat.msg : null %></span>
+            <span class="errors" name="passwordRepeat"><%= locals.errors && errors.passwordRepeat ? errors.passwordRepeat.msg : null %></span>
             
             <%- include("../partials/input-avatar") %>
                       
