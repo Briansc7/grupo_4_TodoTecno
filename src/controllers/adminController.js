@@ -1,5 +1,6 @@
 
 const path = require("path");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
@@ -20,6 +21,14 @@ productCreate: async (req, res) => res.render("./admin/productCreate", {head: pr
 
 productStore: async (req, res) => {
     try {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){ //si hay errores
+            let product = req.body;
+
+            return res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories(), errors: errors.mapped(), product: product})
+        }
+
         let newProduct = {
             subCategoryId: req.body.subCategory,
             brandId: req.body.brand,
@@ -34,7 +43,9 @@ productStore: async (req, res) => {
     
         let createdProduct = await database.productCreate(newProduct);
     
-        await database.AddProductImages(createdProduct.id, imagesUploaded);
+        if(imagesUploaded){
+            await database.AddProductImages(createdProduct.id, imagesUploaded);
+        }
     
         return res.redirect("/products/productDetail/"+createdProduct.id);
     } catch (error) {
