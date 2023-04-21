@@ -26,14 +26,14 @@
                 <h5>Correo electronico*</h5>
                 <input class="input" type="email" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
                     <br>
-                    <span class="errors"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
+                    <span class="errors" name="email"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
                     <br>
                 <h5>Contraseña*</h5>
                
                 <input  class="input" type="password" name="password" placeholder="Ingresa tu contraseña">
              
                 <br>
-                <span class="errors"><%= locals.errors && errors.password ? errors.password.msg : null %></span>
+                <span class="errors" name="password"><%= locals.errors && errors.password ? errors.password.msg : null %></span>
                 <br>
                 <span>Recordarme: <input type="checkbox" name="rememberUser" id="rememberUser"></span>
                 
