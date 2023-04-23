@@ -1,8 +1,9 @@
 const { body } = require("express-validator");
 
 let validations = {
+    /* Validaciones de usuario para registro, login y crud de usuarios*/
     validateEmailFormat: body("email").notEmpty().withMessage("No ingresó ningún email").bail()
-    .isEmail().withMessage("Debe ingresar un email válido")
+    .isEmail().withMessage("Debe ingresar un email válido").bail()
     .isLength({max: 45}).withMessage("El email puede tener hasta 45 caracteres"),
 
     validatePasswordFormat: body("password").notEmpty().withMessage("No ingresó ninguna contraseña").bail()
@@ -26,6 +27,27 @@ let validations = {
         }        
     }),
 
+    userBirthday: body("birthday").isDate().withMessage("Debe ingresar una fecha").bail()
+    .optional({ checkFalsy: true }),
+
+    userAddress: body("address").isAlphanumeric('es-ES', {ignore: ' '}).withMessage("La dirección no puede tener caracteres especiales").bail()
+    .isLength({max: 45}).withMessage("La dirección puede tener hasta 45 caracteres")
+    .optional({ checkFalsy: true }),
+
+    userZipCode: body("zipCode").isAlphanumeric().withMessage("El código postal no puede tener caracteres especiales ni espacios").bail()
+    .isLength({min: 4, max: 8}).withMessage("El código postal debe tener entre 4 y 8 caracteres")
+    .optional({ checkFalsy: true }),    
+
+    userLocation: body("location").isAlpha('es-ES', {ignore: ' '}).withMessage("La localidad no puede tener números ni caracteres especiales").bail()
+    .isLength({max: 45}).withMessage("La localidad puede tener hasta 45 caracteres")
+    .optional({ checkFalsy: true }),
+
+    userProvince: body("province").isAlpha('es-ES', {ignore: ' '}).withMessage("La localidad no puede tener números ni caracteres especiales").bail()
+    .isLength({max: 45}).withMessage("La localidad puede tener hasta 45 caracteres")
+    .optional({ checkFalsy: true }),
+
+
+    /* Validaciones de productos*/
     validateProductModel: body("model").notEmpty().withMessage("No ingresó el modelo del producto").bail()
     .isAlphanumeric('es-ES', {ignore: ' '}).withMessage("El modelo no puede tener caracteres especiales"),
 
@@ -35,17 +57,9 @@ let validations = {
     validateProductPrice: body("price").isNumeric().withMessage("Debe ingresar un número en el precio del producto").bail(),
 
     validateProductDiscountPorc: body("discount").isNumeric().withMessage("Debe ingresar un número en el Porcentaje de descuento").bail()
-    .optional({ checkFalsy: true }),
+    .optional({ checkFalsy: true })
 
-    userBirthday: body("birthday"),
-
-    userAddress: body("address"),
-
-    userZipCode: body("zipCode"),    
-
-    userLocation: body("location"),
-
-    userProvince: body("province")
+    
 
 };
 
