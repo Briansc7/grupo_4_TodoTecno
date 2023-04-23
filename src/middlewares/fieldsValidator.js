@@ -54,9 +54,12 @@ let validations = {
     validateProductArtNumber: body("artNumber").isNumeric().withMessage("Debe ingresar un número en el número de artículo").bail()
     .optional({ checkFalsy: true }),
 
-    validateProductPrice: body("price").isNumeric().withMessage("Debe ingresar un número en el precio del producto").bail(),
+    validateProductPrice: body("price").notEmpty().withMessage("No ingresó el precio del producto").bail()
+    .isNumeric().withMessage("Debe ingresar un número en el precio del producto").bail()
+    .isFloat({min: 0, max: 99999999.99}).withMessage("El precio debe ser mayor a 0 y menor a 99999999.99"),
 
     validateProductDiscountPorc: body("discount").isNumeric().withMessage("Debe ingresar un número en el Porcentaje de descuento").bail()
+    .isInt({min:0, max: 100}).withMessage("El porcentaje de descuento debe ser mayor a 0 y menor a 100")
     .optional({ checkFalsy: true })
 
     
