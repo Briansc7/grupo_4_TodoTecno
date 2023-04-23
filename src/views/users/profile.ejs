@@ -26,7 +26,7 @@
             <p>Localidad: <%= userInfo.location?userInfo.location:"Sin especificar" %></p>
             <p>Provincia: <%= userInfo.province?userInfo.province:"Sin especificar" %></p>
         </section>
-        <button class="btn-profile" id="edit-profile-btn">Editar Perfil</button>
+        <a href="../partials/create-edit-user-inputs.ejs"><button class="btn-profile" id="edit-profile-btn">Editar Perfil</button></a>
         <form action="/users/logout" method="POST">
             <button type="submit">Cerrar Sesión</button>
         </form>
