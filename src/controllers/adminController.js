@@ -42,8 +42,13 @@ productStore: async (req, res) => {
         };
     
         let createdProduct = await database.productCreate(newProduct);
+        
+        let imagesUploaded = [];
+        req.files.forEach(img => {
+            imagesUploaded.push(img.filename);
+        });
     
-        if(imagesUploaded){
+        if(!imagesUploaded.isEmpty()){
             await database.AddProductImages(createdProduct.id, imagesUploaded);
         }
     
@@ -52,10 +57,7 @@ productStore: async (req, res) => {
         console.log(error);
         return res.status(500).send("Error interno del servidor");
     }
-    let imagesUploaded = [];
-    req.files.forEach(img => {
-        imagesUploaded.push(img.filename);
-    });
+    
 
     
 
