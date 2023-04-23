@@ -2,18 +2,19 @@ const { body } = require("express-validator");
 
 let validations = {
     validateEmailFormat: body("email").notEmpty().withMessage("No ingresó ningún email").bail()
-    .isEmail().withMessage("Debe ingresar un email válido"),
+    .isEmail().withMessage("Debe ingresar un email válido")
+    .isLength({max: 45}).withMessage("El email puede tener hasta 45 caracteres"),
 
     validatePasswordFormat: body("password").notEmpty().withMessage("No ingresó ninguna contraseña").bail()
-    .isAlphanumeric().withMessage("La contraseña sólo puede tener letras y números"),
+    .isLength({min: 8, max: 45}).withMessage("La contraseña debe tener entre 2 y 45 caracteres"),
 
     validateFirstNameFormat: body("firstName").notEmpty().withMessage("No ingresó ningún nombre").bail()
     .isAlpha('es-ES', {ignore: ' '}).withMessage("El nombre no puede tener números ni caracteres especiales").bail()
-    .isLength({max: 30}).withMessage("El nombre no puede superar los 30 caracteres"),
+    .isLength({min: 2, max: 45}).withMessage("El nombre debe tener entre 2 y 45 caracteres"),
 
     validateLastNameFormat: body("lastName").notEmpty().withMessage("No ingresó ningún apellido").bail()
     .isAlpha('es-ES', {ignore: ' '}).withMessage("El apellido no puede tener números ni caracteres especiales").bail()
-    .isLength({max: 30}).withMessage("El apellido no puede superar los 30 caracteres"), 
+    .isLength({min: 2, max: 45}).withMessage("El apellido debe tener entre 2 y 45 caracteres"), 
 
     validatePasswordRepeat: body("passwordRepeat").notEmpty().withMessage("Debe repetir la contraseña").bail()
     .custom((value,{req, loc, path}) => {
