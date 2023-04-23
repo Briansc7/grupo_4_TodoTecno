@@ -24,9 +24,9 @@ productStore: async (req, res) => {
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){ //si hay errores
-            let product = req.body;
+            let old = req.body;
 
-            return res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories(), errors: errors.mapped(), product: product})
+            return res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories(), errors: errors.mapped(), old: old})
         }
 
         let newProduct = {

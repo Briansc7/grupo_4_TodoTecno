@@ -26,13 +26,15 @@ let validations = {
     }),
 
     validateProductModel: body("model").notEmpty().withMessage("No ingresó el modelo del producto").bail()
-    .isAlphanumeric().withMessage("El modelo sólo puede tener letras y números"),
+    .isAlphanumeric('es-ES', {ignore: ' '}).withMessage("El modelo no puede tener caracteres especiales"),
 
-    validateProductArtNumber: body("artNumber").isNumeric().withMessage("Debe ingresar un número en el número de artículo").bail(),
+    validateProductArtNumber: body("artNumber").isNumeric().withMessage("Debe ingresar un número en el número de artículo").bail()
+    .optional({ checkFalsy: true }),
 
     validateProductPrice: body("price").isNumeric().withMessage("Debe ingresar un número en el precio del producto").bail(),
 
-    validateProductDiscountPorc: body("discount").isNumeric().withMessage("Debe ingresar un número en el Porcentaje de descuento").bail(),
+    validateProductDiscountPorc: body("discount").isNumeric().withMessage("Debe ingresar un número en el Porcentaje de descuento").bail()
+    .optional({ checkFalsy: true }),
 
     userBirthday: body("birthday"),
 
