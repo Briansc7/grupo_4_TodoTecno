@@ -10,11 +10,17 @@ set @user_role_id = LAST_INSERT_ID();
 insert into users (firstName, lastName, email, password,image, roleId) values ("Brian", "Samudio Caceres", "admin@todotecno.com", 
 "$2a$10$iex9S2k.svcncHIxlznVku3MQpy0roRETMZ9F.QFipvSJi5kSFN7S", "adminAvatar.jpg",@admin_role_id);
 
-insert into users (firstName, lastName, email, password, roleId, birthday, address, zipCode, location, province) values ("fernando", "perez", "usuario@email.com", 
+insert into users (firstName, lastName, email, password, roleId, birthday) 
+values ("fernando", "perez", "usuario@email.com", 
 "$2a$10$uaRb9LVNYGna6XKP7hEIJ.QF7NJQKROAsweUnDQ.AHQPcWCkrJh36",@user_role_id ,
-"2000-05-14", "calle 1", "1448", "la plata", "buenos aires"
-);
+"2000-05-14");
 set @user2 = LAST_INSERT_ID();
+
+insert into contactInformation (address, zipCode, location, province, phone)
+values ("calle 1", "1448", "la plata", "buenos aires", "02214834077");
+set @contactInformationUser2 = LAST_INSERT_ID();
+update users set contactInfoId = @contactInformationUser2
+where id = @user2;
 
 /*Categorías de productos y subcategorias*/
 insert into categories (name) values ("Tv y Video");
@@ -245,30 +251,51 @@ insert into boughttogether (product1, product2, timesBoughtTogether) values
 
 /*Sucursales*/
 
-insert into stores (name, address, location, phone, description, shoppingHours) values
-("Todo Tecno CABA", "Av. Corrientes 1107", "CABA", "011 4381-7777", 
+insert into contactInformation (address, zipCode, location, province, phone)
+values ("Av. Corrientes 1107", "B1406", "CABA", "buenos aires", "011 4381-7777");
+set @contactInfoSucursalCABA = LAST_INSERT_ID();
+
+insert into stores (name, contactInfoId, description, shoppingHours) values
+("Todo Tecno CABA", @contactInfoSucursalCABA,
 "Sucursal principal de Todo Tecno.
 Ven a visitarnos!",
 "Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
 set @sucursalCABA = LAST_INSERT_ID();
-insert into stores (name, address, location, phone, description, shoppingHours) values
-("Todo Tecno Pilar", "Av. V. Castro 907", "Pilar", "011 2342-7777", 
+
+insert into contactInformation (address, zipCode, location, province, phone)
+values ("Av. V. Castro 907", "B1629", "Pilar", "buenos aires", "011 2342-7777");
+set @contactInfoSucursalPilar = LAST_INSERT_ID();
+
+insert into stores (name, contactInfoId, description, shoppingHours) values
+("Todo Tecno Pilar", @contactInfoSucursalPilar, 
 "Sucursal Todo Tecno de Pilar.
 Ven a visitarnos!",
 "Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
 set @sucursalPilar = LAST_INSERT_ID();
-insert into stores (name, address, location, phone, description, shoppingHours) values
-("Todo Tecno Palermo", "Av. Santa Fé 4500", "Palermo", "011 4772-9999", 
+
+
+insert into contactInformation (address, zipCode, location, province, phone)
+values ("Av. Santa Fé 4500", "C1004", "Palermo", "buenos aires", "011 4772-9999");
+set @contactInfoSucursalPalermo = LAST_INSERT_ID();
+
+insert into stores (name, contactInfoId, description, shoppingHours) values
+("Todo Tecno Palermo", @contactInfoSucursalPalermo, 
 "Sucursal Todo Tecno de Palermo.
 Ven a visitarnos!",
 "Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
 set @sucursalPalermo = LAST_INSERT_ID();
-insert into stores (name, address, location, phone, description, shoppingHours) values
-("Todo Tecno Unicenter", "Paraná 3745", "Martínez", "011 4733-1111", 
+
+insert into contactInformation (address, zipCode, location, province, phone)
+values ("Paraná 3745", "B1640", "Martínez", "buenos aires", "011 4733-1111");
+set @contactInfoSucursalUnicenter = LAST_INSERT_ID();
+
+insert into stores (name, contactInfoId, description, shoppingHours) values
+("Todo Tecno Unicenter", @contactInfoSucursalUnicenter,
 "Sucursal Todo Tecno en Unicenter.
 Ven a visitarnos!",
 "Lun a Vi 9:00hs a 17:00hs. Sab 9:00hs a 13:30hs.");
 set @sucursalUnicenter = LAST_INSERT_ID();
+
 
 /* Estado de los productos en stock */
 insert into statusstock set name = "Disponible en tienda";
