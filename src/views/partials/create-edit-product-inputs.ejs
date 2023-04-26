@@ -2,7 +2,7 @@
         <select class="input" name="category" required>
             <option value="" class= "choose-option" disabled <%= !locals.selectedCategoryId?"selected":""%>>Selecciona una Categoría</option>
             <% locals.categories.forEach(category => { %>
-                <option value="<%= category.id %>" <%= category.id == (locals.selectedCategory?.id)?"selected":""%>><%= category.name %></option>
+                <option value="<%= category.id %>" <%= category.id == (locals.old?.category || locals.selectedCategory?.id)?"selected":""%>><%= category.name %></option>
             <% }) %>
         </select>
         <span class="errors" name="category"><%= locals.errors && errors.category ? errors.category.msg : null %></span>
@@ -11,7 +11,7 @@
         <select class="input" name="subCategory" required>
             <option value="" class= "choose-option" disabled <%= !locals.product?"selected":""%>>Selecciona una SubCategoría</option>
             <% locals.selectedCategory?.subCategories.forEach(subCategory => { %>
-                <option value="<%= subCategory.id %>" <%= subCategory.id == (locals.product?.subCategory.id)?"selected":""%>><%= subCategory.name %></option>
+                <option value="<%= subCategory.id %>" <%= subCategory.id == (locals.old?.subCategory || locals.product?.subCategory.id)?"selected":""%>><%= subCategory.name %></option>
             <% }) %>            
         </select>
         <span class="errors" name="subCategory"><%= locals.errors && errors.subCategory ? errors.subCategory.msg : null %></span>
@@ -20,37 +20,37 @@
         <select class="input" name="brand" required>
             <option value="" disabled <%= !locals.product?"selected":""%>>Selecciona una Marca</option>
             <% locals.selectedCategory?.brandsOfCategory.forEach(brand => { %>
-                <option value="<%= brand.id %>" <%= brand.id == (locals.product?.brandId)?"selected":""%>><%= brand.name %></option>
+                <option value="<%= brand.id %>" <%= brand.id == (locals.old?.brandId || locals.product?.brandId)?"selected":""%>><%= brand.name %></option>
             <% }) %> 
         </select>
         <span class="errors" name="brand"><%= locals.errors && errors.brand ? errors.brand.msg : null %></span>
     </div>   
     <div class="input-section"><h5>Modelo</h5>
-        <input class="input" type="text" name="model" placeholder="" required value="<%= locals.product && product.model %>">
+        <input class="input" type="text" name="model" placeholder="" value="<%= locals.old?.model || locals.product?.model %>">
         <span class="errors" name="model"><%= locals.errors && errors.model ? errors.model.msg : null %></span>
     </div>
     <div class="input-section"><h5>Numero de articulo</h5>
-       <input class="input" type="number" name="artNumber" placeholder="" required value="<%= locals.product && product.artNumber %>">
+       <input class="input" type="number" name="artNumber" placeholder="" value="<%= locals.old?.artNumber || locals.product?.artNumber %>">
        <span class="errors" name="artNumber"><%= locals.errors && errors.artNumber ? errors.artNumber.msg : null %></span>
     </div>
     <div class="input-section"><h5>Precio</h5>
-        <input class="input" type="number" name="price" placeholder="" required value="<%= locals.product && product.price %>">
+        <input class="input" type="number" name="price" placeholder="" value="<%= locals.old?.price || locals.product?.price %>">
         <span class="errors" name="price"><%= locals.errors && errors.price ? errors.price.msg : null %></span>
     </div>   
     <div class="input-section"><h5>Descuento [%]</h5>
-        <input class="input" type="number" name="discount" placeholder="" required value="<%= locals.product && product.discountPorc %>">
+        <input class="input" type="number" name="discount" placeholder="" value="<%= locals.old?.discountPorc || locals.product?.discountPorc %>">
         <span class="errors" name="discount"><%= locals.errors && errors.discount ? errors.discount.msg : null %></span>
     </div>
         <br>
         <h5>Descuento habilitado: <input  type="checkbox" name="isOnSale" 
-            <% if(locals.product && product.isOnSale){ %>
+            <% if(locals.old?.isOnSale || locals.product?.isOnSale){ %>
                 checked
             <% } %>
         </h5>
         <span class="errors" name="isOnSale"><%= locals.errors && errors.isOnSale ? errors.isOnSale.msg : null %></span>        
         <br>
         <h5>Es nueva adquisición: <input type="checkbox" name="isNew"
-            <% if(locals.product && product.isNew){ %>
+            <% if(locals.old?.isNew || locals.product?.isNew){ %>
                 checked
             <% } %>
         </h5>
@@ -58,7 +58,7 @@
         <br>      
     <div class="input-section"><h5>Descripción</h5>
         <textarea class="input" name="description">
-            <%= locals.product?.description %>
+            <%= locals.old?.description || locals.product?.description %>
         </textarea>
         <span class="errors" name="description"><%= locals.errors && errors.description ? errors.description.msg : null %></span>
     </div>
@@ -66,7 +66,7 @@
         
             <label for="images" class="form-label">Imágenes:</label>
         <div class="create-edite-img">
-			<input class="input"type="file" id="image" name="images" required multiple>
+			<input class="input"type="file" id="image" name="images" multiple>
         </div>
         <span class="errors" name="images"><%= locals.errors && errors.images ? errors.images.msg : null %></span>
         <% } %>        

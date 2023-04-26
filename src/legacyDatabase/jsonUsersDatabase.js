@@ -16,6 +16,7 @@ const { Op } = require("sequelize");
 
 const Users = db.User;
 const Roles = db.Role;
+const ContactInformation = db.ContactInformation;
 
 
 let usersDatabase = {
@@ -59,9 +60,9 @@ async function userRegister(userBody, avatar){
         roleId: userRoleId
     };
 
-    let newUserId = await Users.create(user);
+    let newUser = await Users.create(user);
 
-    return newUserId;
+    return newUser;
 }
 
 function userGetNewId(){
@@ -133,7 +134,7 @@ async function userGetUserId(email){
 
 async function userFindById(id){
 
-    let userFound = await Users.findByPk(id);
+    let userFound = await Users.findByPk(id,{include:["role", "userContactInformation"]});
 
     return userFound;
 }
@@ -143,8 +144,12 @@ async function getAllUsers(){
     return users;
 }
 
-async function userCreate(userInfo){
-    let newUser = await Users.create(userInfo)
+async function userCreate(onlyUserInfo, contactInfo){    
+
+    let newUser = await Users.create(onlyUserInfo)
+
+    await newUser.createUserContactInformation(contactInfo);
+
     return newUser
 }
 
@@ -153,8 +158,26 @@ async function userDeleteById(id){
     await Users.destroy({where: {id}});
 };
 
-async function userUpdate(id, userInfo){
+async function userUpdate(id, userInfo, userContactInfo){
 
-    await Users.update(userInfo,{where: {id}});
+    let userFound = await Users.findByPk(id);
+
+    userFound.set(userInfo); //se actualiza los datos del usuario con los datos ingresados
+
+    await userFound.save(); //se efectua la actualizacion de los datos del usuario
+
+    if(userContactInfo){ //en caso de que se hayan actualizado los datos de contacto del usuario
+        let contactInfo = await userFound.getUserContactInformation();
+
+        //en caso de tener datos de contacto en la BD, se actualizan, sino se crean
+        if(contactInfo){
+            await ContactInformation.update(userContactInfo, {where: {id: contactInfo.id}});
+        }else{
+            await userFound.createUserContactInformation(userContactInfo);
+        }
+    }
+    
+
+
 };
 module.exports = usersDatabase;

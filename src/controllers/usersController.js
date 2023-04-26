@@ -105,10 +105,11 @@ profile: async (req, res) => {
                 lastName: user.lastName,
                 email: user.email,
                 birthday: user.birthday,
-                address: user.address,
-                postalCode: user.zipCode,
-                location: user.location,
-                province: user.province,
+                address: user.userContactInformation.address,
+                postalCode: user.userContactInformation.zipCode,
+                location: user.userContactInformation.location,
+                province: user.userContactInformation.province,
+                phone: user.userContactInformation.phone,
                 image: user.image
             }, 
             head: profileHeadData
@@ -135,26 +136,40 @@ editProfile: async (req, res) => {
 },
 updateProfile: async (req, res) => {
     try {
-        const userId = (req.cookies && req.cookies.userId) || (req.session.user && req.session.user.userId);
+        const id = (req.cookies && req.cookies.userId) || (req.session.user && req.session.user.userId);
 
-        /*Solamente se van a mandar al update los campos que no están vacíos*/
-    let editedUser={};  //aca se van a cargar los inputs para el update
-    Object.entries(req.body).forEach(entry => { //se iteran los campos del objeto req.body
-        const [property, value] = entry;      //se separa en clave valor
-    
-        if(value&&value!=""&&property!="roleId"){
-            let updatedValue = value;
-
-            if(property=="password"){ //si el input leido es password, se tiene que encriptar
-                updatedValue = bcrypt.hashSync(updatedValue, 10);
-            }
-            
-            editedUser[property] = updatedValue; //se almacena el input que se va a actualizar el valor
+        let editedUser = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            birthday: req.body.birthday
         }
-
-    });
     
-    await usersDatabase.userUpdate(userId, editedUser);
+        if(req.body.password!= ""){
+            editedUser.password = bcrypt.hashSync(req.body.password, 10);
+        }
+    
+        let editedUserContactInfo = null;
+    
+        //si se ingresó alguno de los campos
+        if(req.body.address != "" ||
+            req.body.location != "" ||
+            req.body.province != "" ||
+            req.body.zipCode != "" ||
+            req.body.phone != ""
+            ){
+                editedUserContactInfo = {
+                    address: req.body.address,
+                    location: req.body.location,
+                    province: req.body.province,
+                    zipCode: req.body.zipCode,
+                    phone: req.body.phone
+                };
+            }
+    
+        
+    
+        await usersDatabase.userUpdate(id, editedUser, editedUserContactInfo);
 
     return res.redirect("/users/profile");
     } catch (error) {

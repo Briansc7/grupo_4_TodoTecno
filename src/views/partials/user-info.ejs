@@ -6,8 +6,9 @@
     <p>Apellido: <%= userInfo.lastName %></p>
     <p>Email: <%= userInfo.email %></p>
     <p>Cumpleaños: <%= userInfo.birthday?userInfo.birthday:"Sin especificar" %></p>
-    <p>Dirección: <%= userInfo.address?userInfo.address:"Sin especificar" %></p>
-    <p>Código Postal: <%= userInfo.postalCode?userInfo.postalCode:"Sin especificar" %></p>
-    <p>Localidad: <%= userInfo.location?userInfo.location:"Sin especificar" %></p>
-    <p>Provincia: <%= userInfo.province?userInfo.province:"Sin especificar" %></p>
+    <p>Dirección: <%= userInfo.userContactInformation?.address||userInfo.address||"Sin especificar" %></p>
+    <p>Código Postal: <%= userInfo.userContactInformation?.zipCode||userInfo.zipCode||"Sin especificar" %></p>
+    <p>Localidad: <%= userInfo.userContactInformation?.location||userInfo.location||"Sin especificar" %></p>
+    <p>Provincia: <%= userInfo.userContactInformation?.province||userInfo.province||"Sin especificar" %></p>
+    <p>Teléfono: <%= userInfo.userContactInformation?.phone||userInfo.phone||"Sin especificar" %></p>
 </section>

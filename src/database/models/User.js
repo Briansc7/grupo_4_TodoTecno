@@ -27,17 +27,8 @@ module.exports = (sequelize, dataTypes) => {
         birthday: {
             type: dataTypes.DATEONLY
         },
-        address: {
-            type: dataTypes.TEXT
-        },
-        zipCode: {
-            type: dataTypes.STRING(8)
-        },
-        location: {
-            type: dataTypes.TEXT
-        },
-        province: {
-            type: dataTypes.STRING(45)
+        contactInfoId: {
+            type: dataTypes.BIGINT(10).UNSIGNED
         },
         image: {
             type: dataTypes.STRING(45)
@@ -85,6 +76,11 @@ module.exports = (sequelize, dataTypes) => {
             through: 'CuponsUsedByUser',
             foreignKey: 'userId',
             otherKey: 'cuponId'
+        });
+
+        User.belongsTo(models.ContactInformation, {
+            as: "userContactInformation",
+            foreignKey: "contactInfoId"
         });
     };
  

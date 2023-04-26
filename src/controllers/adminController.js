@@ -1,5 +1,6 @@
 
 const path = require("path");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
@@ -20,6 +21,14 @@ productCreate: async (req, res) => res.render("./admin/productCreate", {head: pr
 
 productStore: async (req, res) => {
     try {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){ //si hay errores
+            let old = req.body;
+
+            return res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories(), errors: errors.mapped(), old: old})
+        }
+
         let newProduct = {
             subCategoryId: req.body.subCategory,
             brandId: req.body.brand,
@@ -33,18 +42,22 @@ productStore: async (req, res) => {
         };
     
         let createdProduct = await database.productCreate(newProduct);
+        
+        let imagesUploaded = [];
+        req.files.forEach(img => {
+            imagesUploaded.push(img.filename);
+        });
     
-        await database.AddProductImages(createdProduct.id, imagesUploaded);
+        if(imagesUploaded.length != 0){
+            await database.AddProductImages(createdProduct.id, imagesUploaded);
+        }
     
         return res.redirect("/products/productDetail/"+createdProduct.id);
     } catch (error) {
         console.log(error);
         return res.status(500).send("Error interno del servidor");
     }
-    let imagesUploaded = [];
-    req.files.forEach(img => {
-        imagesUploaded.push(img.filename);
-    });
+    
 
     
 
@@ -125,20 +138,25 @@ usersCreate: async(req, res) => {
     try {
         let avatar = req.file
 
-        let newUser={
+        let newUserInfo={
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email:req.body.email,
             password:bcrypt.hashSync(req.body.password, 10),
-            birthday:req.body.birthday,
+            birthday:req.body.birthday,            
+            image: avatar?avatar.filename:null,
+            roleId: req.body.roleId
+        };
+
+        let newUserContactInfo ={
             address:req.body.address,
             zipCode:req.body.zipCode,
             location:req.body.location,
             province:req.body.province,
-            image: avatar?avatar.filename:null,
-            roleId: req.body.roleId
-        };
-        await usersDatabase.userCreate(newUser);
+            phone: req.body.phone
+        }
+
+        await usersDatabase.userCreate(newUserInfo, newUserContactInfo);
     
         return res.redirect("/admin/users");
     } catch (error) {
@@ -167,26 +185,41 @@ usersEdit:  async(req, res) => {
 
 usersUpdate:async (req, res) => {
     try {
-        let id = req.params.id;
+        let id = req.params.id;    
 
-    /*Solamente se van a mandar al update los campos que no están vacíos*/
-    let editedUser={};  //aca se van a cargar los inputs para el update
-    Object.entries(req.body).forEach(entry => { //se iteran los campos del objeto req.body
-        const [property, value] = entry;      //se separa en clave valor
-    
-        if(value&&value!=""){
-            let updatedValue = value;
+    let editedUser = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        birthday: req.body.birthday,
+        roleId: req.body.roleId
+    }
 
-            if(property=="password"){ //si el input leido es password, se tiene que encriptar
-                updatedValue = bcrypt.hashSync(updatedValue, 10);
-            }
-            
-            editedUser[property] = updatedValue; //se almacena el input que se va a actualizar el valor
+    if(req.body.password!= ""){
+        editedUser.password = bcrypt.hashSync(req.body.password, 10);
+    }
+
+    let editedUserContactInfo = null;
+
+    //si se ingresó alguno de los campos
+    if(req.body.address != "" ||
+        req.body.location != "" ||
+        req.body.province != "" ||
+        req.body.zipCode != "" ||
+        req.body.phone != ""
+        ){
+            editedUserContactInfo = {
+                address: req.body.address,
+                location: req.body.location,
+                province: req.body.province,
+                zipCode: req.body.zipCode,
+                phone: req.body.phone
+            };
         }
 
-    });
     
-    await usersDatabase.userUpdate(id, editedUser);
+
+    await usersDatabase.userUpdate(id, editedUser, editedUserContactInfo);
 
     return res.redirect("/admin/users");
     } catch (error) {
