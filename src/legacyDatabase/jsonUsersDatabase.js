@@ -16,6 +16,7 @@ const { Op } = require("sequelize");
 
 const Users = db.User;
 const Roles = db.Role;
+const ContactInformation = db.ContactInformation;
 
 
 let usersDatabase = {
@@ -59,9 +60,9 @@ async function userRegister(userBody, avatar){
         roleId: userRoleId
     };
 
-    let newUserId = await Users.create(user);
+    let newUser = await Users.create(user);
 
-    return newUserId;
+    return newUser;
 }
 
 function userGetNewId(){
@@ -143,8 +144,12 @@ async function getAllUsers(){
     return users;
 }
 
-async function userCreate(userInfo){
-    let newUser = await Users.create(userInfo)
+async function userCreate(onlyUserInfo, contactInfo){    
+
+    let newUser = await Users.create(onlyUserInfo)
+
+    newUser.createUserContactInformation(contactInfo);
+
     return newUser
 }
 

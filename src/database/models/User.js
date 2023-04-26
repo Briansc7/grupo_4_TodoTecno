@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
         birthday: {
             type: dataTypes.DATEONLY
         },
-        contactInformationId: {
+        contactInfoId: {
             type: dataTypes.BIGINT(10).UNSIGNED
         },
         image: {
@@ -80,7 +80,7 @@ module.exports = (sequelize, dataTypes) => {
 
         User.belongsTo(models.ContactInformation, {
             as: "userContactInformation",
-            foreignKey: "contactInformationId"
+            foreignKey: "contactInfoId"
         });
     };
  

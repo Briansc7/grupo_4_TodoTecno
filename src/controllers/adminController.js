@@ -138,20 +138,25 @@ usersCreate: async(req, res) => {
     try {
         let avatar = req.file
 
-        let newUser={
+        let newUserInfo={
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email:req.body.email,
             password:bcrypt.hashSync(req.body.password, 10),
-            birthday:req.body.birthday,
+            birthday:req.body.birthday,            
+            image: avatar?avatar.filename:null,
+            roleId: req.body.roleId
+        };
+
+        let newUserContactInfo ={
             address:req.body.address,
             zipCode:req.body.zipCode,
             location:req.body.location,
             province:req.body.province,
-            image: avatar?avatar.filename:null,
-            roleId: req.body.roleId
-        };
-        await usersDatabase.userCreate(newUser);
+            phone: req.body.phone
+        }
+
+        await usersDatabase.userCreate(newUserInfo, newUserContactInfo);
     
         return res.redirect("/admin/users");
     } catch (error) {

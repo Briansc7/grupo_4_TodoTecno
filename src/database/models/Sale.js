@@ -60,7 +60,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.BIGINT(10).UNSIGNED,
             allowNull: false
         },
-        contactInformationId: {
+        contactInfoId: {
             type: dataTypes.BIGINT(10).UNSIGNED
         }
     };
@@ -98,7 +98,7 @@ module.exports = (sequelize, dataTypes) => {
 
         Sale.belongsTo(models.ContactInformation, {
             as: "saleContactInformation",
-            foreignKey: "contactInformationId"
+            foreignKey: "contactInfoId"
         });
     };
  

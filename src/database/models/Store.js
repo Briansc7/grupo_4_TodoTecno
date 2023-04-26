@@ -12,7 +12,7 @@ module.exports = (sequelize, dataTypes) => {
             unique: true,
             allowNull: false
         },
-        contactInformationId: {
+        contactInfoId: {
             type: dataTypes.BIGINT(10).UNSIGNED,
             allowNull: false
         },
@@ -44,7 +44,7 @@ module.exports = (sequelize, dataTypes) => {
 
         Store.belongsTo(models.ContactInformation, {
             as: "storeContactInformation",
-            foreignKey: "contactInformationId"
+            foreignKey: "contactInfoId"
         });
     };
  
