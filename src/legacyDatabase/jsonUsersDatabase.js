@@ -134,7 +134,7 @@ async function userGetUserId(email){
 
 async function userFindById(id){
 
-    let userFound = await Users.findByPk(id);
+    let userFound = await Users.findByPk(id,{include:["role", "userContactInformation"]});
 
     return userFound;
 }
