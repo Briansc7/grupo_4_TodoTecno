@@ -105,11 +105,11 @@ profile: async (req, res) => {
                 lastName: user.lastName,
                 email: user.email,
                 birthday: user.birthday,
-                address: user.userContactInformation.address,
-                postalCode: user.userContactInformation.zipCode,
-                location: user.userContactInformation.location,
-                province: user.userContactInformation.province,
-                phone: user.userContactInformation.phone,
+                address: user.userContactInformation?.address,
+                postalCode: user.userContactInformation?.zipCode,
+                location: user.userContactInformation?.location,
+                province: user.userContactInformation?.province,
+                phone: user.userContactInformation?.phone,
                 image: user.image
             }, 
             head: profileHeadData
