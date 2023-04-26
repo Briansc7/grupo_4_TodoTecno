@@ -34,3 +34,7 @@
 <input type="text" id="province" name="province" value= "<%= locals.user && user.province %>">
 <span class="errors" name="province"><%= locals.errors && errors.province ? errors.province.msg : null %></span>
 
+<label for="province">Teléfono:</label>
+<input type="text" id="phone" name="phone" value= "<%= locals.user && user.phone %>">
+<span class="errors" name="phone"><%= locals.errors && errors.phone ? errors.phone.msg : null %></span>
+
