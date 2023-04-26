@@ -2,6 +2,9 @@
 <h2>Users:</h2>
 Tabla destinada a almacenar los datos de los usuarios del sistema. Los usuarios pueden tener el rol admin o user según si son administradores o usuarios normales del sistema. En caso de ser administradores pueden tener acceso a funcionalidades privilegiadas del sitio web como por ejemplo editar los datos de un producto.
 
+<h2>ContactInformation:</h2>
+Tabla destinada a almacenar datos de contacto incluyendo dirección completa y número de teléfono. Se almacena los datos de contacto de los usuarios, de las sucursales y también de las ventas en caso de que se opte por el envío. Los datos para el envío pueden ser distintos al del usuario o puede ser que el usuario actualice sus datos de contacto de forma posterior a la venta. Es por ello que es necesario guardar dicho dato también para las ventas.
+
 <h2>Roles:</h2>
 Tabla destinada a almacenar los roles que pueden tener los usuarios.
 
