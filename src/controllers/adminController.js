@@ -48,7 +48,7 @@ productStore: async (req, res) => {
             imagesUploaded.push(img.filename);
         });
     
-        if(!imagesUploaded.isEmpty()){
+        if(imagesUploaded.length != 0){
             await database.AddProductImages(createdProduct.id, imagesUploaded);
         }
     
