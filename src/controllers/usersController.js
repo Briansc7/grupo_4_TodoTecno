@@ -8,7 +8,7 @@ const profileHeadData = {title: "Perfil", stylesheet: "/css/profile.css"};
 const editProfileHeadData = {title: "Editar Perfil", stylesheet: "/css/usersAdd.css"};
 
 const usersController = {
-login: (req, res) => res.render("./users/login", {head: loginHeadData}),
+login: (req, res) => res.render("./users/login", {head: loginHeadData, form_name: "form-login", view_name: "login"}),
 register: (req, res) => res.render("./users/register", {head: registerHeadData}),
 createUser: (req, res)=> {
     try {
