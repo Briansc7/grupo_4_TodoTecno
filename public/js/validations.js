@@ -42,6 +42,42 @@ window.onload = async () => {
                 
             ]
 
+        },
+        firstName:
+        {
+            name: "firstName",
+            validations: [
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    errorMsg: prefijo + "No ingresó ningún nombre"
+                },
+                {
+                    validation:(input) => validator.isAlpha(input.value,'es-ES', {ignore: ' '}),
+                    errorMsg: prefijo + "El nombre no puede tener números ni caracteres especiales"
+                },
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 2, max: 45}),
+                    errorMsg: prefijo + "El nombre debe tener entre 2 y 45 caracteres"
+                }
+            ]
+        },
+        lastName:
+        {
+            name: "lastName",
+            validations: [
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    errorMsg: prefijo + "No ingresó ningún apellido"
+                },
+                {
+                    validation:(input) => validator.isAlpha(input.value,'es-ES', {ignore: ' '}),
+                    errorMsg: prefijo + "El apellido no puede tener números ni caracteres especiales"
+                },
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 2, max: 45}),
+                    errorMsg: prefijo + "El apellido debe tener entre 2 y 45 caracteres"
+                }
+            ]
         }        
         
     };
