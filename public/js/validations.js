@@ -57,7 +57,6 @@ window.onload = async () => {
     
     //
     form.addEventListener("submit", function(e){  
-        e.preventDefault();
         
         //se elige con view_name el tipo de vista a validar y se itera por los campos que se van a validar
         formTypes[view_name].forEach(fieldValidation => {
