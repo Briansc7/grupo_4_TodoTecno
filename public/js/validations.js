@@ -1,8 +1,8 @@
 window.onload = async () => {
     //se obtiene que se va a validar (login, etc) desde los atributos en la inclusion del script en el html
-    let view_name = document.getElementById("validations").getAttribute("validate"); 
+    let view_name = document.getElementById("validations").getAttribute("view_name"); 
     //se obtiene la clase del formulario que se va a validar desde los atributos en la inclusion del script en el html
-    let form_name = document.getElementById("validations").getAttribute("form-name");
+    let form_name = document.getElementById("validations").getAttribute("form_name");
 
     let form = document.querySelector(`form.${form_name}`); //se obtiene el formulario a validar
 
