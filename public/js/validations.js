@@ -10,7 +10,7 @@ window.onload = async () => {
     let prefijo = "Validación Front: ";     
 
     //todos los tipos de validaciones de todos los campos posibles
-    let optional = (input) => (input) => validator.isLength(input.value,{max: 0}); //como es opcional, no realizo la validacion si el campo está vacío
+    let optional = (input) =>  validator.isLength(input.value,{max: 0}); //como es opcional, no realizo la validacion si el campo está vacío
 
     let fieldsValidations = {
         /* Validaciones de usuario para registro, login y crud de usuarios*/
@@ -43,7 +43,7 @@ window.onload = async () => {
                     errorMsg: prefijo + "La contraseña debe tener entre 8 y 45 caracteres"
                 }
                 
-            ]
+            ]//TODO: validacion de passwordRepeat
 
         },
         firstName:
@@ -147,7 +147,21 @@ window.onload = async () => {
                     errorMsg: prefijo + "La provincia puede tener hasta 45 caracteres"
                 }
             ]
-        }            
+        },
+        phone://TODO validacion de phone 
+        {
+            name: "phone",
+            validations: [
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isNumeric(input.value,{ignore: ' '}), 
+                    errorMsg: prefijo + "El teléfono no puede tener letras"
+                },
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isLength(input.value,{min: 8, max: 15}), 
+                    errorMsg: prefijo + "El teléfono debe tener entre 8 y 15 caracteres"
+                }
+            ]
+        }           
         
     };
 
