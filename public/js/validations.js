@@ -157,8 +157,25 @@ window.onload = async () => {
         login: [
             fieldsValidations.email,
             fieldsValidations.password
-        ]
-    }
+        ],
+        register: [
+            fieldsValidations.firstName,
+            fieldsValidations.lastName,
+            fieldsValidations.email,
+            fieldsValidations.password
+        ],
+
+        user: []
+    };
+
+    formTypes.user = [
+        ...formTypes.register,
+        fieldsValidations.birthday,
+        fieldsValidations.address,
+        fieldsValidations.zipCode,        
+        fieldsValidations.location,
+        fieldsValidations.province
+    ]
     
     //
     form.addEventListener("submit", function(e){  
