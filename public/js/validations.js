@@ -188,7 +188,8 @@ window.onload = async () => {
         fieldsValidations.address,
         fieldsValidations.zipCode,        
         fieldsValidations.location,
-        fieldsValidations.province
+        fieldsValidations.province,
+        fieldsValidations.phone
     ]
     
     //
@@ -206,7 +207,8 @@ window.onload = async () => {
                     e.preventDefault();
                     return false;   //ya no se comprueban las demás validaciones de este campo como se hacía con el bail()
                 }else{
-                    error.innerHTML = "";   //borro los errores que pueden existir de una anterior ejecución
+                    error.innerHTML = "";//borro los errores que pueden existir de una anterior ejecución
+                    return true;   //se sigue comprobando las demás validaciones de este campo
                 }
             });
         });
