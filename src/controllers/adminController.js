@@ -103,7 +103,7 @@ productDestroy: async (req, res) => {
 },
 
 usersAdd: (req, res) => {
-    return res.render("./admin/usersAdd", {head: usersAddHeadData})
+    return res.render("./admin/usersAdd", {head: usersAddHeadData, form_name: "form-container", view_name: "user"});
 },
 
 usersList: async (req, res) => {

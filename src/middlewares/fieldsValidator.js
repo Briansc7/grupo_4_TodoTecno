@@ -42,10 +42,11 @@ let validations = {
     .isLength({max: 45}).withMessage("La localidad puede tener hasta 45 caracteres")
     .optional({ checkFalsy: true }),
 
-    userProvince: body("province").isAlpha('es-ES', {ignore: ' '}).withMessage("La localidad no puede tener números ni caracteres especiales").bail()
-    .isLength({max: 45}).withMessage("La localidad puede tener hasta 45 caracteres")
+    userProvince: body("province").isAlpha('es-ES', {ignore: ' '}).withMessage("La provincia no puede tener números ni caracteres especiales").bail()
+    .isLength({max: 45}).withMessage("La provincia puede tener hasta 45 caracteres")
     .optional({ checkFalsy: true }),
 
+    //TODO validacion de phone 
 
     /* Validaciones de productos*/
     validateProductModel: body("model").notEmpty().withMessage("No ingresó el modelo del producto").bail()
@@ -98,7 +99,7 @@ fieldsValidator.userFormatValidation = [
     validations.userZipCode,        
     validations.userLocation,
     validations.userProvince
-]
+];//TODO validacion de phone 
 
 
 
