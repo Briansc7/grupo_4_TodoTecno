@@ -42,8 +42,8 @@ let validations = {
     .isLength({max: 45}).withMessage("La localidad puede tener hasta 45 caracteres")
     .optional({ checkFalsy: true }),
 
-    userProvince: body("province").isAlpha('es-ES', {ignore: ' '}).withMessage("La localidad no puede tener números ni caracteres especiales").bail()
-    .isLength({max: 45}).withMessage("La localidad puede tener hasta 45 caracteres")
+    userProvince: body("province").isAlpha('es-ES', {ignore: ' '}).withMessage("La provincia no puede tener números ni caracteres especiales").bail()
+    .isLength({max: 45}).withMessage("La provincia puede tener hasta 45 caracteres")
     .optional({ checkFalsy: true }),
 
 

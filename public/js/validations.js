@@ -10,7 +10,10 @@ window.onload = async () => {
     let prefijo = "Validación Front: ";     
 
     //todos los tipos de validaciones de todos los campos posibles
+    let optional = (input) => (input) => validator.isLength(input.value,{max: 0}); //como es opcional, no realizo la validacion si el campo está vacío
+
     let fieldsValidations = {
+        /* Validaciones de usuario para registro, login y crud de usuarios*/
         email: {
             name: "email",
             validations: [{
@@ -78,7 +81,73 @@ window.onload = async () => {
                     errorMsg: prefijo + "El apellido debe tener entre 2 y 45 caracteres"
                 }
             ]
-        }        
+        },
+        birthday:
+        {
+            name: "birthday",
+            validations: [
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isDate(input.value), 
+                    errorMsg: prefijo + "Debe ingresar una fecha"
+                }
+            ]
+        },
+        address:
+        {
+            name: "address",
+            validations: [
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isAlphanumeric(input.value,'es-ES', {ignore: ' '}), 
+                    errorMsg: prefijo + "La dirección no puede tener caracteres especiales"
+                },
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isLength(input.value,{max: 45}), 
+                    errorMsg: prefijo + "La dirección puede tener hasta 45 caracteres"
+                }
+            ]
+        },
+        zipCode:
+        {
+            name: "zipCode",
+            validations: [
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isAlphanumeric(input.value), 
+                    errorMsg: prefijo + "El código postal no puede tener caracteres especiales ni espacios"
+                },
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isLength(input.value,{min: 4, max: 8}), 
+                    errorMsg: prefijo + "El código postal debe tener entre 4 y 8 caracteres"
+                }
+            ]
+        },
+        location:
+        {
+            name: "location",
+            validations: [
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isAlpha(input.value, 'es-ES', {ignore: ' '}), 
+                    errorMsg: prefijo + "La localidad no puede tener números ni caracteres especiales"
+                },
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isLength(input.value,{max: 45}), 
+                    errorMsg: prefijo + "La localidad puede tener hasta 45 caracteres"
+                }
+            ]
+        },
+        province:
+        {
+            name: "province",
+            validations: [
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isAlpha(input.value, 'es-ES', {ignore: ' '}), 
+                    errorMsg: prefijo + "La provincia no puede tener números ni caracteres especiales"
+                },
+                {   //como es opcional, no realizo la validacion si el campo está vacío
+                    validation:(input) => optional(input) || validator.isLength(input.value,{max: 45}), 
+                    errorMsg: prefijo + "La provincia puede tener hasta 45 caracteres"
+                }
+            ]
+        }            
         
     };
 
