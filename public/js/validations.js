@@ -153,7 +153,8 @@ window.onload = async () => {
             name: "phone",
             validations: [
                 {   //como es opcional, no realizo la validacion si el campo está vacío
-                    validation:(input) => optional(input) || validator.isNumeric(input.value,{ignore: ' '}), 
+                    //se admite los caracteres +, -, y el espacio vacío en los números de teléfono
+                    validation:(input) => optional(input) || validator.isNumeric(removeCharacters(input.value, [" ","+","-"])), 
                     errorMsg: prefijo + "El teléfono no puede tener letras"
                 },
                 {   //como es opcional, no realizo la validacion si el campo está vacío
@@ -219,4 +220,15 @@ window.onload = async () => {
 
 
 
+}
+
+//funcion para ser usada donde validator js no soporte la opción ignore
+function removeCharacters(string, charactersToRemove){
+    let stringResult = string;
+
+    charactersToRemove.forEach(characterToRemove=>{
+        stringResult = stringResult.replace(characterToRemove, "");
+    });
+
+    return stringResult;
 }
