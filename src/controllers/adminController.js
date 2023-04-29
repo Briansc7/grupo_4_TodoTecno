@@ -8,15 +8,16 @@ const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUse
 
 const diccionary = require(path.resolve(__dirname, "../diccionary/"));
 const frontValidationData = diccionary.frontValidationData;
+const headData = diccionary.headData;
 
-const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
-const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
+const productCreateHeadData = headData.admin.productCreate;
+const productEditHeadData = headData.admin.productEdit;
 
-const usersAddHeadData = {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"};
-const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersAdd.css"};
+const usersAddHeadData = headData.admin.usersAdd;
+const usersEditHeadData = headData.admin.usersEdit;
 
-const usersListHeadData = {title: "Listado de Usuarios", stylesheet: "/css/usersList.css"};
-const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/usersDetail.css"};
+const usersListHeadData = headData.admin.usersList;
+const usersDetailHeadData = headData.admin.usersDetail;
 
 const adminController = {
 

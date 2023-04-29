@@ -1,8 +1,11 @@
 const path = require("path");
 const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
 
-const indexHeadData = {title: "Home", stylesheet: "/css/home.css"};
-const searchHeadData = {title: "Búsqueda", stylesheet: "/css/search.css"};
+const diccionary = require(path.resolve(__dirname, "../diccionary/"));
+const headData = diccionary.headData;
+
+const indexHeadData = headData.main.home;
+const searchHeadData = headData.main.search;
 
 const mainController = {
 home: async (req, res) => res.render("index", {head: indexHeadData, productsNew: await database.productsThatAreNew(), productsOnSale: await database.productsThatAreOnSale()}),
