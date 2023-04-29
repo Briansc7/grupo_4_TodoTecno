@@ -6,14 +6,18 @@ const bcrypt = require("bcryptjs");
 const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
 const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
 
-const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
-const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
+const diccionary = require(path.resolve(__dirname, "../diccionary/"));
+const frontValidationData = diccionary.frontValidationData;
+const headData = diccionary.headData;
 
-const usersAddHeadData = {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"};
-const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersAdd.css"};
+const productCreateHeadData = headData.admin.productCreate;
+const productEditHeadData = headData.admin.productEdit;
 
-const usersListHeadData = {title: "Listado de Usuarios", stylesheet: "/css/usersList.css"};
-const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/usersDetail.css"};
+const usersAddHeadData = headData.admin.usersAdd;
+const usersEditHeadData = headData.admin.usersEdit;
+
+const usersListHeadData = headData.admin.usersList;
+const usersDetailHeadData = headData.admin.usersDetail;
 
 const adminController = {
 
@@ -103,7 +107,7 @@ productDestroy: async (req, res) => {
 },
 
 usersAdd: (req, res) => {
-    return res.render("./admin/usersAdd", {head: usersAddHeadData, form_name: "form-container", view_name: "user"});
+    return res.render("./admin/usersAdd", {head: usersAddHeadData, form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
 },
 
 usersList: async (req, res) => {
