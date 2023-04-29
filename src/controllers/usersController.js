@@ -3,11 +3,12 @@ const { validationResult } = require("express-validator");
 const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
 const diccionary = require(path.resolve(__dirname, "../diccionary/"));
 const frontValidationData = diccionary.frontValidationData;
+const headData = diccionary.headData;
 
-const loginHeadData = {title: "Login", stylesheet: "/css/login.css"};
-const registerHeadData = {title: "Registro", stylesheet: "/css/register.css"};
-const profileHeadData = {title: "Perfil", stylesheet: "/css/profile.css"};
-const editProfileHeadData = {title: "Editar Perfil", stylesheet: "/css/usersAdd.css"};
+const loginHeadData = headData.user.login;
+const registerHeadData = headData.user.register;
+const profileHeadData = headData.user.profile;
+const editProfileHeadData = headData.user.editProfile;
 
 const usersController = {
 login: (req, res) => res.render("./users/login", {head: loginHeadData, form_name: frontValidationData.login.form_name, view_name: frontValidationData.login.view_name}),
