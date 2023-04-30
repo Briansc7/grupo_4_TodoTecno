@@ -107,7 +107,8 @@ productDestroy: async (req, res) => {
 },
 
 usersAdd: (req, res) => {
-    return res.render("./admin/usersAdd", {head: usersAddHeadData, form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
+    return res.render("./admin/usersAdd", {head: usersAddHeadData, 
+        form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
 },
 
 usersList: async (req, res) => {

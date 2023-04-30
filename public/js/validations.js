@@ -6,6 +6,8 @@ window.onload = async () => {
 
     let form = document.querySelector(`form.${form_name}`); //se obtiene el formulario a validar
 
+    console.log(form);
+
     //prefijo para saber que estas validaciones son de frontend y no de backend. Dejar como "" en producción
     let prefijo = "Validación Front: ";     
 
@@ -180,26 +182,43 @@ window.onload = async () => {
             fieldsValidations.password
         ],
 
-        user: []
+        user: [
+            fieldsValidations.firstName,
+            fieldsValidations.lastName,
+            fieldsValidations.email,
+            fieldsValidations.password,
+            fieldsValidations.birthday,
+            fieldsValidations.address,
+            fieldsValidations.zipCode,        
+            fieldsValidations.location,
+            fieldsValidations.province,
+            fieldsValidations.phone
+        ],
+
+        edit_profile: [
+            fieldsValidations.firstName,
+            fieldsValidations.lastName,
+            //fieldsValidations.email,
+            //fieldsValidations.password,
+            fieldsValidations.birthday,
+            fieldsValidations.address,
+            fieldsValidations.zipCode,        
+            fieldsValidations.location,
+            fieldsValidations.province,
+            fieldsValidations.phone
+        ]
     };
 
-    formTypes.user = [
-        ...formTypes.register,
-        fieldsValidations.birthday,
-        fieldsValidations.address,
-        fieldsValidations.zipCode,        
-        fieldsValidations.location,
-        fieldsValidations.province,
-        fieldsValidations.phone
-    ]
     
     //
     form.addEventListener("submit", function(e){  
-        
+        //e.preventDefault();
         //se elige con view_name el tipo de vista a validar y se itera por los campos que se van a validar
         formTypes[view_name].forEach(fieldValidation => {
             let input = document.querySelector(`input[name=${fieldValidation.name}]`);
             let error = document.querySelector(`span.errors[name=${fieldValidation.name}]`);
+
+            console.log(input);
 
             //Para el campo a validar, se itera por todas las validaciones de ese campo en específico
             fieldValidation.validations.every(validation => { //every es como foreach pero se detiene al retornar false
