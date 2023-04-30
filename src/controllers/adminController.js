@@ -141,7 +141,24 @@ usersDetail: async (req, res) =>{
 
 usersCreate: async(req, res) => {
     try {
-        let avatar = req.file
+        const errors = validationResult(req);
+
+        if(emailExist(req.body.email)){
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
+
+            errors.errors.push({
+                value: "",
+                msg: "Ya existe un usuario registrado con este email",
+                param: "email",
+                location: "body"
+            });
+        }
+
+        if(errors.isEmpty()){
+
+            let avatar = req.file
 
         let newUserInfo={
             firstName: req.body.firstName,
@@ -164,6 +181,30 @@ usersCreate: async(req, res) => {
         await usersDatabase.userCreate(newUserInfo, newUserContactInfo);
     
         return res.redirect("/admin/users");
+
+        }else{
+            const user = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password: req.body.password,
+                birthday:req.body.birthday,
+                roleId: req.body.roleId,
+
+                userContactInformation: {
+                    address:req.body.address,
+                    zipCode:req.body.zipCode,
+                    location:req.body.location,
+                    province:req.body.province,
+                    phone: req.body.phone
+                }
+            };
+
+            return res.render("./admin/usersAdd", {errors: errors.mapped(), user: user, head: usersAddHeadData, 
+                form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
+        }
+
+        
     } catch (error) {
         console.log(error);
         return res.status(500).send("Error interno del servidor");
@@ -247,5 +288,8 @@ usersDestroy: async (req, res) => {
 
 }
 
+async function emailExist(email){
+    return await usersDatabase.userFindByEmail(email);
+}
 
 module.exports = adminController;

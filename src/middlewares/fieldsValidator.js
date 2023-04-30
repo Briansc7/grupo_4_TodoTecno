@@ -46,6 +46,19 @@ let validations = {
     .isLength({max: 45}).withMessage("La provincia puede tener hasta 45 caracteres")
     .optional({ checkFalsy: true }),
 
+    userPhone: body("phone").custom((value,{req, loc, path}) => { 
+        let cleanValue = removeCharacters(value,[" ","+","-"]);//Validacion custom para permitir espacios, y simbolos + y - en el numero de telefono
+        if (isNaN(cleanValue)) {
+            // throw error if passwords do not match
+            throw new Error("El teléfono no puede tener letras");
+        } else {
+            return value;
+        }        
+    })    
+    .bail()    
+    .isLength({min: 8, max: 15}).withMessage("El teléfono debe tener entre 8 y 15 caracteres")
+    .optional({ checkFalsy: true }),
+
     //TODO validacion de phone 
 
     /* Validaciones de productos*/
@@ -98,9 +111,18 @@ fieldsValidator.userFormatValidation = [
     validations.userAddress,
     validations.userZipCode,        
     validations.userLocation,
-    validations.userProvince
-];//TODO validacion de phone 
+    validations.userProvince,
+    validations.userPhone
+];
 
+function removeCharacters(string, charactersToRemove){
+    let stringResult = string;
 
+    charactersToRemove.forEach(characterToRemove=>{
+        stringResult = stringResult.replace(characterToRemove, "");
+    });
+
+    return stringResult;
+}
 
 module.exports = fieldsValidator;
