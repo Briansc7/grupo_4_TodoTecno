@@ -101,19 +101,34 @@ let fieldsValidator = {
         validations.validateProductDiscountPorc
     ],
 
-    userFormatValidation: []
-};
+    userFormatValidation: [
+        validations.validateFirstNameFormat,
+        validations.validateLastNameFormat,
+        validations.validateEmailFormat,
+        validations.validatePasswordFormat,
+        
+        validations.userBirthday,
+        validations.userAddress,
+        validations.userZipCode,        
+        validations.userLocation,
+        validations.userProvince,
+        validations.userPhone
+    ],
 
-/* Validaciones que requieren que fieldsValidator esté inicializado*/
-fieldsValidator.userFormatValidation = [
-    ...fieldsValidator.registerFormatValidation,
-    validations.userBirthday,
-    validations.userAddress,
-    validations.userZipCode,        
-    validations.userLocation,
-    validations.userProvince,
-    validations.userPhone
-];
+    userEditFormatValidation: [
+        validations.validateFirstNameFormat,
+        validations.validateLastNameFormat,
+        validations.validateEmailFormat,
+        validations.validatePasswordFormat.optional({ checkFalsy: true }),
+        
+        validations.userBirthday,
+        validations.userAddress,
+        validations.userZipCode,        
+        validations.userLocation,
+        validations.userProvince,
+        validations.userPhone
+    ]
+};
 
 function removeCharacters(string, charactersToRemove){
     let stringResult = string;

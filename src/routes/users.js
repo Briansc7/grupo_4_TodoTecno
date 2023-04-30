@@ -3,9 +3,12 @@ const path = require("path");
 const usersRouter =  express.Router();
 const usersController = require("../controllers/usersController");
 const multer = require("multer");
+
 const fieldsValidator = require("../middlewares/fieldsValidator");
 const loginFormatValidation = fieldsValidator.loginFormatValidation;
 const registerFormatValidation = fieldsValidator.registerFormatValidation;
+const userFormatValidation = fieldsValidator.userFormatValidation;
+
 const registeredUsersOnlyAccessValidation = require("../middlewares/registeredUsersOnlyAccessValidation");
 const visitorsOnlyAccessValidation = require("../middlewares/visitorsOnlyAccessValidation");
 
@@ -23,7 +26,7 @@ usersRouter.get("/register", visitorsOnlyAccessValidation, usersController.regis
 usersRouter.get("/profile", registeredUsersOnlyAccessValidation, usersController.profile);
 usersRouter.get("/edit-profile", registeredUsersOnlyAccessValidation, usersController.editProfile);
 
-usersRouter.put("/update-profile", registeredUsersOnlyAccessValidation, usersController.updateProfile);
+usersRouter.put("/update-profile", registeredUsersOnlyAccessValidation, userFormatValidation, usersController.updateProfile);
 
 usersRouter.post("/", uploadAvatar.single("avatar"), registerFormatValidation, usersController.createUser);
 usersRouter.post("/login", loginFormatValidation, usersController.loginSubmit);
