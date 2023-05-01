@@ -30,15 +30,15 @@
         <span class="errors" name="model"><%= locals.errors && errors.model ? errors.model.msg : null %></span>
     </div>
     <div class="input-section"><h5>Numero de articulo</h5>
-       <input class="input" type="number" name="artNumber" placeholder="" value="<%= locals.old?.artNumber || locals.product?.artNumber %>">
+       <input class="input" type="text" name="artNumber" placeholder="" value="<%= locals.old?.artNumber || locals.product?.artNumber %>">
        <span class="errors" name="artNumber"><%= locals.errors && errors.artNumber ? errors.artNumber.msg : null %></span>
     </div>
     <div class="input-section"><h5>Precio</h5>
-        <input class="input" type="number" name="price" placeholder="" value="<%= locals.old?.price || locals.product?.price %>">
+        <input class="input" type="text" name="price" placeholder="" value="<%= locals.old?.price || locals.product?.price %>">
         <span class="errors" name="price"><%= locals.errors && errors.price ? errors.price.msg : null %></span>
     </div>   
     <div class="input-section"><h5>Descuento [%]</h5>
-        <input class="input" type="number" name="discount" placeholder="" value="<%= locals.old?.discountPorc || locals.product?.discountPorc %>">
+        <input class="input" type="text" name="discount" placeholder="" value="<%= locals.old?.discountPorc || locals.product?.discountPorc %>">
         <span class="errors" name="discount"><%= locals.errors && errors.discount ? errors.discount.msg : null %></span>
     </div>
         <br>

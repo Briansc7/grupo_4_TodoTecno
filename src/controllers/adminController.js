@@ -69,11 +69,25 @@ productStore: async (req, res) => {
 },
 
 productEdit: async (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), categories: await database.getAllCategories(), selectedCategory: await database.getSelectedCategory(req.params.id)}
+    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), 
+        categories: await database.getAllCategories(), 
+        selectedCategory: await database.getSelectedCategory(req.params.id)}
     ),
 
 productUpdate: async (req, res) => {
     try {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){ //si hay errores
+            let old = req.body;
+
+            return res.render("./admin/productEdit", 
+            {head: productEditHeadData, 
+                categories: await database.getAllCategories(),
+                selectedCategory: await database.getSelectedCategory(req.params.id), 
+                errors: errors.mapped(), product: old})
+        }
+
         let editedProduct = {
             brandId: req.body.brand,
             model: req.body.model,
