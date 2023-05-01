@@ -11,8 +11,10 @@ const profileHeadData = headData.user.profile;
 const editProfileHeadData = headData.user.editProfile;
 
 const usersController = {
-login: (req, res) => res.render("./users/login", {head: loginHeadData, form_name: frontValidationData.login.form_name, view_name: frontValidationData.login.view_name}),
-register: (req, res) => res.render("./users/register", {head: registerHeadData}),
+login: (req, res) => res.render("./users/login", {head: loginHeadData, 
+    form_name: frontValidationData.login.form_name, view_name: frontValidationData.login.view_name}),
+register: (req, res) => res.render("./users/register", {head: registerHeadData, 
+    form_name: frontValidationData.register.form_name, view_name: frontValidationData.register.view_name}),
 createUser: (req, res)=> {
     try {
         const errors = validationResult(req);
@@ -130,7 +132,8 @@ editProfile: async (req, res) => {
 
         return res.render("./users/editProfile", {
             head: editProfileHeadData,
-            user: user
+            user: user,
+            form_name: frontValidationData.edit_profile.form_name, view_name: frontValidationData.edit_profile.view_name
         });
     } catch (error) {
         console.log(error);

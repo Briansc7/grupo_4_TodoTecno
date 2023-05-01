@@ -7,6 +7,7 @@ const adminAccessValidation = require("../middlewares/adminAccessValidation");
 const fieldsValidator = require("../middlewares/fieldsValidator");
 const productFormatValidation = fieldsValidator.productFormatValidation;
 const userFormatValidation = fieldsValidator.userFormatValidation;
+const userEditFormatValidation = fieldsValidator.userEditFormatValidation;
 
 
 let storage = multer.diskStorage({
@@ -49,7 +50,7 @@ adminRouter.post('/users/create', adminAccessValidation, uploadAvatar.single("av
 adminRouter.get('/users/detail/:id', adminAccessValidation, adminController.usersDetail); 
 
 adminRouter.get("/users/edit/:id", adminAccessValidation, adminController.usersEdit);
-adminRouter.put("/users/update/:id", adminAccessValidation, userFormatValidation, adminController.usersUpdate);
+adminRouter.put("/users/update/:id", adminAccessValidation, userEditFormatValidation, adminController.usersUpdate);
 
 adminRouter.delete('/users/delete/:id', adminAccessValidation, adminController.usersDestroy); 
 

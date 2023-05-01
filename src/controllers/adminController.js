@@ -69,11 +69,25 @@ productStore: async (req, res) => {
 },
 
 productEdit: async (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), categories: await database.getAllCategories(), selectedCategory: await database.getSelectedCategory(req.params.id)}
+    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), 
+        categories: await database.getAllCategories(), 
+        selectedCategory: await database.getSelectedCategory(req.params.id)}
     ),
 
 productUpdate: async (req, res) => {
     try {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){ //si hay errores
+            let old = req.body;
+
+            return res.render("./admin/productEdit", 
+            {head: productEditHeadData, 
+                categories: await database.getAllCategories(),
+                selectedCategory: await database.getSelectedCategory(req.params.id), 
+                errors: errors.mapped(), product: old})
+        }
+
         let editedProduct = {
             brandId: req.body.brand,
             model: req.body.model,
@@ -107,7 +121,8 @@ productDestroy: async (req, res) => {
 },
 
 usersAdd: (req, res) => {
-    return res.render("./admin/usersAdd", {head: usersAddHeadData, form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
+    return res.render("./admin/usersAdd", {head: usersAddHeadData, 
+        form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
 },
 
 usersList: async (req, res) => {
@@ -140,29 +155,70 @@ usersDetail: async (req, res) =>{
 
 usersCreate: async(req, res) => {
     try {
-        let avatar = req.file
+        const errors = validationResult(req);
 
-        let newUserInfo={
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email:req.body.email,
-            password:bcrypt.hashSync(req.body.password, 10),
-            birthday:req.body.birthday,            
-            image: avatar?avatar.filename:null,
-            roleId: req.body.roleId
-        };
+        if(await emailExist(req.body.email)){
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
 
-        let newUserContactInfo ={
-            address:req.body.address,
-            zipCode:req.body.zipCode,
-            location:req.body.location,
-            province:req.body.province,
-            phone: req.body.phone
+            errors.errors.push({
+                value: "",
+                msg: "Ya existe un usuario registrado con este email",
+                param: "email",
+                location: "body"
+            });
         }
 
-        await usersDatabase.userCreate(newUserInfo, newUserContactInfo);
-    
-        return res.redirect("/admin/users");
+        if(errors.isEmpty()){
+
+            let avatar = req.file
+
+            let newUserInfo={
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password:bcrypt.hashSync(req.body.password, 10),
+                birthday:req.body.birthday,            
+                image: avatar?avatar.filename:null,
+                roleId: req.body.roleId
+            };
+
+            let newUserContactInfo ={
+                address:req.body.address,
+                zipCode:req.body.zipCode,
+                location:req.body.location,
+                province:req.body.province,
+                phone: req.body.phone
+            }
+
+            await usersDatabase.userCreate(newUserInfo, newUserContactInfo);
+        
+            return res.redirect("/admin/users");
+
+        }else{
+            const user = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password: req.body.password,
+                birthday:req.body.birthday,
+                roleId: req.body.roleId,
+
+                userContactInformation: {
+                    address:req.body.address,
+                    zipCode:req.body.zipCode,
+                    location:req.body.location,
+                    province:req.body.province,
+                    phone: req.body.phone
+                }
+            };
+
+            return res.render("./admin/usersAdd", {errors: errors.mapped(), user: user, head: usersAddHeadData, 
+                form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
+        }
+
+        
     } catch (error) {
         console.log(error);
         return res.status(500).send("Error interno del servidor");
@@ -189,43 +245,84 @@ usersEdit:  async(req, res) => {
 
 usersUpdate:async (req, res) => {
     try {
-        let id = req.params.id;    
+        let id = req.params.id; 
 
-    let editedUser = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        birthday: req.body.birthday,
-        roleId: req.body.roleId
-    }
+        const errors = validationResult(req);
 
-    if(req.body.password!= ""){
-        editedUser.password = bcrypt.hashSync(req.body.password, 10);
-    }
+        if(await anotherUserHasThisEmail(id, req.body.email)){ //compruebo si otro usuario ya usa el email ingresado
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
 
-    let editedUserContactInfo = null;
+            errors.errors.push({
+                value: "",
+                msg: "Ya existe un usuario registrado con este email",
+                param: "email",
+                location: "body"
+            });
+        }
+        
+        if(errors.isEmpty()){
 
-    //si se ingresó alguno de los campos
-    if(req.body.address != "" ||
-        req.body.location != "" ||
-        req.body.province != "" ||
-        req.body.zipCode != "" ||
-        req.body.phone != ""
-        ){
-            editedUserContactInfo = {
-                address: req.body.address,
-                location: req.body.location,
-                province: req.body.province,
-                zipCode: req.body.zipCode,
-                phone: req.body.phone
+            let editedUser = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                birthday: req.body.birthday,
+                roleId: req.body.roleId
+            }
+    
+            if(req.body.password!= ""){
+                editedUser.password = bcrypt.hashSync(req.body.password, 10);
+            }
+    
+            let editedUserContactInfo = null;
+    
+            //si se ingresó alguno de los campos
+            if(req.body.address != "" ||
+                req.body.location != "" ||
+                req.body.province != "" ||
+                req.body.zipCode != "" ||
+                req.body.phone != ""
+                ){
+                    editedUserContactInfo = {
+                        address: req.body.address,
+                        location: req.body.location,
+                        province: req.body.province,
+                        zipCode: req.body.zipCode,
+                        phone: req.body.phone
+                    };
+                }
+    
+            
+    
+            await usersDatabase.userUpdate(id, editedUser, editedUserContactInfo);
+    
+            return res.redirect("/admin/users");
+
+        }else{
+            const user = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password: req.body.password,
+                birthday:req.body.birthday,
+                roleId: req.body.roleId,
+
+                userContactInformation: {
+                    address:req.body.address,
+                    zipCode:req.body.zipCode,
+                    location:req.body.location,
+                    province:req.body.province,
+                    phone: req.body.phone
+                }
             };
+
+            return res.render("./admin/usersEdit", {errors: errors.mapped(), user: user, head: usersAddHeadData, 
+                form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
         }
 
-    
-
-    await usersDatabase.userUpdate(id, editedUser, editedUserContactInfo);
-
-    return res.redirect("/admin/users");
+        
     } catch (error) {
         console.log(error);
         return res.status(500).send("Error interno del servidor");
@@ -246,5 +343,13 @@ usersDestroy: async (req, res) => {
 
 }
 
+async function emailExist(email){
+    return await usersDatabase.userFindByEmail(email);
+}
+
+async function anotherUserHasThisEmail(userId, emailUpdated){
+    let founduserId = await usersDatabase.userGetUserId(emailUpdated);
+    return founduserId && (founduserId != userId);
+}
 
 module.exports = adminController;
