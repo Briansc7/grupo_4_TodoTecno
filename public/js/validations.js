@@ -1,12 +1,10 @@
-window.onload = async () => {
+window.addEventListener("load", async () => {
     //se obtiene que se va a validar (login, etc) desde los atributos en la inclusion del script en el html
     let view_name = document.getElementById("validations").getAttribute("view_name"); 
     //se obtiene la clase del formulario que se va a validar desde los atributos en la inclusion del script en el html
     let form_name = document.getElementById("validations").getAttribute("form_name");
 
     let form = document.querySelector(`form.${form_name}`); //se obtiene el formulario a validar
-
-    console.log(form);
 
     //prefijo para saber que estas validaciones son de frontend y no de backend. Dejar como "" en producción
     let prefijo = "Validación Front: ";     
@@ -19,7 +17,7 @@ window.onload = async () => {
         email: {
             name: "email",
             validations: [{
-                validation:(input) => validator.isLength(input.value,{min: 1}), //no existe isNotEmpty en validator js
+                validation:(input) => input?true:false, //no existe isNotEmpty en validator js
                 errorMsg: prefijo +"No ingresó ningún email"
             },
             {
@@ -37,7 +35,7 @@ window.onload = async () => {
             name: "password",
             validations:[
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó ninguna contraseña"
                 },
                 {
@@ -53,7 +51,7 @@ window.onload = async () => {
             name: "firstName",
             validations: [
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó ningún nombre"
                 },
                 {
@@ -71,7 +69,7 @@ window.onload = async () => {
             name: "lastName",
             validations: [
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó ningún apellido"
                 },
                 {
@@ -170,7 +168,7 @@ window.onload = async () => {
             name: "model",
             validations: [
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó el modelo del producto"
                 },
                 {
@@ -202,7 +200,7 @@ window.onload = async () => {
             name: "price",
             validations: [
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó el precio del producto"
                 },
                 {
@@ -234,7 +232,7 @@ window.onload = async () => {
             name: "description",
             validations: [
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó una descripción para el producto"
                 },
                 {
@@ -308,8 +306,6 @@ window.onload = async () => {
             let input = document.querySelector(`input[name=${fieldValidation.name}]`);
             let error = document.querySelector(`span.errors[name=${fieldValidation.name}]`);
 
-            console.log(input);
-
             //Para el campo a validar, se itera por todas las validaciones de ese campo en específico
             fieldValidation.validations.every(validation => { //every es como foreach pero se detiene al retornar false
                 if(!validation.validation(input)){ //compruebo el valor ingresado con respecto a la validacion 
@@ -329,7 +325,7 @@ window.onload = async () => {
 
 
 
-}
+})
 
 //funcion para ser usada donde validator js no soporte la opción ignore
 function removeCharacters(string, charactersToRemove){
