@@ -1,12 +1,10 @@
-window.onload = async () => {
+window.addEventListener("load", async () => {
     //se obtiene que se va a validar (login, etc) desde los atributos en la inclusion del script en el html
     let view_name = document.getElementById("validations").getAttribute("view_name"); 
     //se obtiene la clase del formulario que se va a validar desde los atributos en la inclusion del script en el html
     let form_name = document.getElementById("validations").getAttribute("form_name");
 
     let form = document.querySelector(`form.${form_name}`); //se obtiene el formulario a validar
-
-    console.log(form);
 
     //prefijo para saber que estas validaciones son de frontend y no de backend. Dejar como "" en producción
     let prefijo = "Validación Front: ";     
@@ -19,7 +17,7 @@ window.onload = async () => {
         email: {
             name: "email",
             validations: [{
-                validation:(input) => validator.isLength(input.value,{min: 1}), //no existe isNotEmpty en validator js
+                validation:(input) => input?true:false, //no existe isNotEmpty en validator js
                 errorMsg: prefijo +"No ingresó ningún email"
             },
             {
@@ -37,7 +35,7 @@ window.onload = async () => {
             name: "password",
             validations:[
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó ninguna contraseña"
                 },
                 {
@@ -53,7 +51,7 @@ window.onload = async () => {
             name: "firstName",
             validations: [
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó ningún nombre"
                 },
                 {
@@ -71,7 +69,7 @@ window.onload = async () => {
             name: "lastName",
             validations: [
                 {
-                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    validation:(input) => input?true:false,
                     errorMsg: prefijo + "No ingresó ningún apellido"
                 },
                 {
@@ -150,7 +148,7 @@ window.onload = async () => {
                 }
             ]
         },
-        phone://TODO validacion de phone 
+        phone:
         {
             name: "phone",
             validations: [
@@ -162,6 +160,88 @@ window.onload = async () => {
                 {   //como es opcional, no realizo la validacion si el campo está vacío
                     validation:(input) => optional(input) || validator.isLength(input.value,{min: 8, max: 15}), 
                     errorMsg: prefijo + "El teléfono debe tener entre 8 y 15 caracteres"
+                }
+            ]
+        },
+        model:
+        {
+            name: "model",
+            validations: [
+                {
+                    validation:(input) => input?true:false,
+                    errorMsg: prefijo + "No ingresó el modelo del producto"
+                },
+                {
+                    validation:(input) => validator.isAlphanumeric(input.value, 'es-ES', {ignore: ' '}), 
+                    errorMsg: prefijo + "El modelo no puede tener caracteres especiales"
+                },
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 5, max: 45}), 
+                    errorMsg: prefijo + "El nombre del producto debe tener entre 5 y 45 caracteres"
+                }
+            ]
+        },
+        artNumber:
+        {
+            name: "artNumber",
+            validations: [
+                {
+                    validation:(input) => optional(input) || validator.isNumeric(input.value), 
+                    errorMsg: prefijo + "Debe ingresar un número en el número de artículo"
+                },
+                {
+                    validation:(input) => optional(input) || validator.isInt(input.value,{min:0, max: 9999999999999}), 
+                    errorMsg: prefijo + "El número de artículo debe estar entre 0 y 9999999999999"
+                }
+            ]
+        }, 
+        price:
+        {
+            name: "price",
+            validations: [
+                {
+                    validation:(input) => input?true:false,
+                    errorMsg: prefijo + "No ingresó el precio del producto"
+                },
+                {
+                    validation:(input) => validator.isNumeric(input.value), 
+                    errorMsg: prefijo + "Debe ingresar un número en el precio del producto"
+                },
+                {
+                    validation:(input) => validator.isFloat(input.value, {min: 0, max: 99999999.99}), 
+                    errorMsg: prefijo + "El precio debe ser mayor a 0 y menor a 99999999.99"
+                }
+            ]
+        }, 
+        discountPorc:
+        {
+            name: "discount",
+            validations: [
+                {
+                    validation:(input) => optional(input) || validator.isNumeric(input.value), 
+                    errorMsg: prefijo + "Debe ingresar un número en el Porcentaje de descuento"
+                },
+                {
+                    validation:(input) => optional(input) || validator.isInt(input.value,{min:0, max: 100}), 
+                    errorMsg: prefijo + "El porcentaje de descuento debe ser mayor a 0 y menor a 100"
+                }
+            ]
+        }, 
+        description:
+        {
+            name: "description",
+            validations: [
+                {
+                    validation:(input) => input?true:false,
+                    errorMsg: prefijo + "No ingresó una descripción para el producto"
+                },
+                {
+                    validation:(input) => validator.isAlphanumeric(input.value, 'es-ES', {ignore: ' '}), 
+                    errorMsg: prefijo + "La descripción no puede tener caracteres especiales"
+                },
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 20, max: 65535}), 
+                    errorMsg: prefijo + "La descripción debe tener entre 20 y 65535 caracteres"
                 }
             ]
         }           
@@ -195,7 +275,7 @@ window.onload = async () => {
             fieldsValidations.phone
         ],
 
-        edit_profile: [
+        edit_profile: [ //TODO solucionar problema con validacion de email
             fieldsValidations.firstName,
             fieldsValidations.lastName,
             //fieldsValidations.email,
@@ -206,6 +286,14 @@ window.onload = async () => {
             fieldsValidations.location,
             fieldsValidations.province,
             fieldsValidations.phone
+        ],
+
+        product: [
+            fieldsValidations.model,
+            fieldsValidations.artNumber,
+            fieldsValidations.price,
+            fieldsValidations.discountPorc,
+            fieldsValidations.description
         ]
     };
 
@@ -217,8 +305,6 @@ window.onload = async () => {
         formTypes[view_name].forEach(fieldValidation => {
             let input = document.querySelector(`input[name=${fieldValidation.name}]`);
             let error = document.querySelector(`span.errors[name=${fieldValidation.name}]`);
-
-            console.log(input);
 
             //Para el campo a validar, se itera por todas las validaciones de ese campo en específico
             fieldValidation.validations.every(validation => { //every es como foreach pero se detiene al retornar false
@@ -239,7 +325,7 @@ window.onload = async () => {
 
 
 
-}
+})
 
 //funcion para ser usada donde validator js no soporte la opción ignore
 function removeCharacters(string, charactersToRemove){

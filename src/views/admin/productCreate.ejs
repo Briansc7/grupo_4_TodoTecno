@@ -6,7 +6,7 @@
 <body>
     <%- include("../partials/header") %>
  
-<main class="main-product-create"><form action="/admin/productCreate" method="POST" enctype="multipart/form-data">
+<main class="main-product-create"><form class="product" action="/admin/productCreate" method="POST" enctype="multipart/form-data">
     
 <h1>Crear nuevo producto</h1>
 
@@ -19,6 +19,8 @@
 
 
     <%- include("../partials/footer") %>
+    <%- include("../partials/formatValidationScripts", {form_name: locals.form_name, view_name: locals.view_name}) %>
     <script src="/js/productCreateEdit.js"></script>
+    
 </body>
 </html>

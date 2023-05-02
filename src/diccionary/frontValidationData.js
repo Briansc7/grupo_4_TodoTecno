@@ -14,5 +14,9 @@ module.exports = {
     user: {
         form_name: "form-container",
         view_name: "user"
+    },
+    product: {
+        form_name: "product",
+        view_name: "product"
     }
 };

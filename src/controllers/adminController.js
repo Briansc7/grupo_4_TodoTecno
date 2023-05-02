@@ -21,7 +21,13 @@ const usersDetailHeadData = headData.admin.usersDetail;
 
 const adminController = {
 
-productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories()}),
+productCreate: async (req, res) => res.render("./admin/productCreate",
+    {
+        head: productCreateHeadData, 
+        categories: await database.getAllCategories(),
+        form_name: frontValidationData.product.form_name, 
+        view_name: frontValidationData.product.view_name
+    }),
 
 productStore: async (req, res) => {
     try {
@@ -30,7 +36,13 @@ productStore: async (req, res) => {
         if(!errors.isEmpty()){ //si hay errores
             let old = req.body;
 
-            return res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories(), errors: errors.mapped(), old: old})
+            return res.render("./admin/productCreate", 
+            {
+                head: productCreateHeadData, 
+                categories: await database.getAllCategories(), 
+                errors: errors.mapped(), 
+                old: old
+            })
         }
 
         let newProduct = {

@@ -1,4 +1,4 @@
-window.onload = async () => {
+window.addEventListener("load",  async () => {
     //const defaultOptionSubcategory = document.querySelector("select[name='subcategory'] option.choose-option");
     //defaultOptionSubcategory.appendS
     
@@ -50,4 +50,4 @@ window.onload = async () => {
     
 
     
-}
+})
