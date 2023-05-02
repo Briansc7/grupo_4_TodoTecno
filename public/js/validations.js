@@ -150,7 +150,7 @@ window.onload = async () => {
                 }
             ]
         },
-        phone://TODO validacion de phone 
+        phone:
         {
             name: "phone",
             validations: [
@@ -162,6 +162,88 @@ window.onload = async () => {
                 {   //como es opcional, no realizo la validacion si el campo está vacío
                     validation:(input) => optional(input) || validator.isLength(input.value,{min: 8, max: 15}), 
                     errorMsg: prefijo + "El teléfono debe tener entre 8 y 15 caracteres"
+                }
+            ]
+        },
+        model:
+        {
+            name: "model",
+            validations: [
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    errorMsg: prefijo + "No ingresó el modelo del producto"
+                },
+                {
+                    validation:(input) => validator.isAlphanumeric(input.value, 'es-ES', {ignore: ' '}), 
+                    errorMsg: prefijo + "El modelo no puede tener caracteres especiales"
+                },
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 5, max: 45}), 
+                    errorMsg: prefijo + "El nombre del producto debe tener entre 5 y 45 caracteres"
+                }
+            ]
+        },
+        artNumber:
+        {
+            name: "artNumber",
+            validations: [
+                {
+                    validation:(input) => optional(input) || validator.isNumeric(input.value), 
+                    errorMsg: prefijo + "Debe ingresar un número en el número de artículo"
+                },
+                {
+                    validation:(input) => optional(input) || validator.isInt(input.value,{min:0, max: 9999999999999}), 
+                    errorMsg: prefijo + "El número de artículo debe estar entre 0 y 9999999999999"
+                }
+            ]
+        }, 
+        price:
+        {
+            name: "price",
+            validations: [
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    errorMsg: prefijo + "No ingresó el precio del producto"
+                },
+                {
+                    validation:(input) => validator.isNumeric(input.value), 
+                    errorMsg: prefijo + "Debe ingresar un número en el precio del producto"
+                },
+                {
+                    validation:(input) => validator.isFloat(input.value, {min: 0, max: 99999999.99}), 
+                    errorMsg: prefijo + "El precio debe ser mayor a 0 y menor a 99999999.99"
+                }
+            ]
+        }, 
+        discountPorc:
+        {
+            name: "discount",
+            validations: [
+                {
+                    validation:(input) => optional(input) || validator.isNumeric(input.value), 
+                    errorMsg: prefijo + "Debe ingresar un número en el Porcentaje de descuento"
+                },
+                {
+                    validation:(input) => optional(input) || validator.isInt(input.value,{min:0, max: 100}), 
+                    errorMsg: prefijo + "El porcentaje de descuento debe ser mayor a 0 y menor a 100"
+                }
+            ]
+        }, 
+        description:
+        {
+            name: "description",
+            validations: [
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 1}),
+                    errorMsg: prefijo + "No ingresó una descripción para el producto"
+                },
+                {
+                    validation:(input) => validator.isAlphanumeric(input.value, 'es-ES', {ignore: ' '}), 
+                    errorMsg: prefijo + "La descripción no puede tener caracteres especiales"
+                },
+                {
+                    validation:(input) => validator.isLength(input.value,{min: 20, max: 65535}), 
+                    errorMsg: prefijo + "La descripción debe tener entre 20 y 65535 caracteres"
                 }
             ]
         }           
@@ -195,7 +277,7 @@ window.onload = async () => {
             fieldsValidations.phone
         ],
 
-        edit_profile: [
+        edit_profile: [ //TODO solucionar problema con validacion de email
             fieldsValidations.firstName,
             fieldsValidations.lastName,
             //fieldsValidations.email,
@@ -206,6 +288,14 @@ window.onload = async () => {
             fieldsValidations.location,
             fieldsValidations.province,
             fieldsValidations.phone
+        ],
+
+        product: [
+            fieldsValidations.model,
+            fieldsValidations.artNumber,
+            fieldsValidations.price,
+            fieldsValidations.discountPorc,
+            fieldsValidations.description
         ]
     };
 
