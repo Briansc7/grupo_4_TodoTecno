@@ -16,18 +16,19 @@ window.addEventListener("load", async () => {
         /* Validaciones de usuario para registro, login y crud de usuarios*/
         email: {
             name: "email",
-            validations: [{
-                validation:(input) => input?true:false, //no existe isNotEmpty en validator js
-                errorMsg: prefijo +"No ingresó ningún email"
-            },
-            {
-                validation:(input) => validator.isEmail(input.value),
-                errorMsg: prefijo + "Debe ingresar un email válido"
-            },
-            {
-                validation:(input) => validator.isLength({max: 45}),
-                errorMsg: prefijo + "El email puede tener hasta 45 caracteres"
-            }            
+            validations: [
+                {
+                    validation:(input) => input?true:false, //no existe isNotEmpty en validator js
+                    errorMsg: prefijo +"No ingresó ningún email"
+                },
+                {
+                    validation:(input) => validator.isEmail(input.value),
+                    errorMsg: prefijo + "Debe ingresar un email válido"
+                },
+                {
+                    validation:(input) => validator.isLength(input.value, {max: 45}),
+                    errorMsg: prefijo + "El email puede tener hasta 45 caracteres"
+                }            
             ]
         },
         password: 
@@ -40,6 +41,18 @@ window.addEventListener("load", async () => {
                 },
                 {
                     validation:(input) => validator.isLength(input.value,{min: 8, max: 45}),
+                    errorMsg: prefijo + "La contraseña debe tener entre 8 y 45 caracteres"
+                }
+                
+            ]//TODO: validacion de passwordRepeat
+
+        },
+        passwordOptional: 
+        {
+            name: "password",
+            validations:[
+                {
+                    validation:(input) => optional(input) || validator.isLength(input.value,{min: 8, max: 45}),
                     errorMsg: prefijo + "La contraseña debe tener entre 8 y 45 caracteres"
                 }
                 
@@ -274,8 +287,8 @@ window.addEventListener("load", async () => {
         edit_profile: [ //TODO solucionar problema con validacion de email
             fieldsValidations.firstName,
             fieldsValidations.lastName,
-            //fieldsValidations.email,
-            //fieldsValidations.password,
+            fieldsValidations.email,
+            fieldsValidations.passwordOptional,
             fieldsValidations.birthday,
             fieldsValidations.address,
             fieldsValidations.zipCode,        
