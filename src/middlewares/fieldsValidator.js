@@ -79,7 +79,6 @@ let validations = {
     .optional({ checkFalsy: true }),
 
     validateProductDescription: body("description").notEmpty().withMessage("No ingresó una descripción para el producto").bail()
-    .isAlphanumeric('es-ES', {ignore: ' '}).withMessage("La descripción no puede tener caracteres especiales").bail()
     .isLength({min: 20, max: 65535}).withMessage("La descripción debe tener entre 20 y 65535 caracteres")
     
 

@@ -57,9 +57,7 @@
         <span class="errors" name="isNew"><%= locals.errors && errors.isNew ? errors.isNew.msg : null %></span>
         <br>      
     <div class="input-section"><h5>Descripción</h5>
-        <textarea class="input" name="description">
-            <%= locals.old?.description || locals.product?.description %>
-        </textarea>
+        <textarea class="input" name="description"><%= locals.old?.description || locals.product?.description %></textarea>
         <span class="errors" name="description"><%= locals.errors && errors.description ? errors.description.msg : null %></span>
     </div>
         <% if (!locals.product) { %>
