@@ -41,7 +41,9 @@ productStore: async (req, res) => {
                 head: productCreateHeadData, 
                 categories: await database.getAllCategories(), 
                 errors: errors.mapped(), 
-                old: old
+                old: old,
+                form_name: frontValidationData.product.form_name, 
+                view_name: frontValidationData.product.view_name
             })
         }
 
@@ -81,9 +83,13 @@ productStore: async (req, res) => {
 },
 
 productEdit: async (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), 
+    {
+        head: productEditHeadData, product: await database.productDetailGetById(req.params.id), 
         categories: await database.getAllCategories(), 
-        selectedCategory: await database.getSelectedCategory(req.params.id)}
+        selectedCategory: await database.getSelectedCategory(req.params.id),
+        form_name: frontValidationData.product.form_name, 
+        view_name: frontValidationData.product.view_name
+    }
     ),
 
 productUpdate: async (req, res) => {
@@ -94,10 +100,14 @@ productUpdate: async (req, res) => {
             let old = req.body;
 
             return res.render("./admin/productEdit", 
-            {head: productEditHeadData, 
+            {
+                head: productEditHeadData, 
                 categories: await database.getAllCategories(),
                 selectedCategory: await database.getSelectedCategory(req.params.id), 
-                errors: errors.mapped(), product: old})
+                errors: errors.mapped(), product: old,
+                form_name: frontValidationData.product.form_name, 
+                view_name: frontValidationData.product.view_name
+            })
         }
 
         let editedProduct = {

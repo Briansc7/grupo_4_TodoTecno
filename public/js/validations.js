@@ -232,12 +232,8 @@ window.addEventListener("load", async () => {
             name: "description",
             validations: [
                 {
-                    validation:(input) => input?true:false,
+                    validation:(input) => validator.isLength(input.value,{min: 1}),
                     errorMsg: prefijo + "No ingresó una descripción para el producto"
-                },
-                {
-                    validation:(input) => validator.isAlphanumeric(input.value, 'es-ES', {ignore: ' '}), 
-                    errorMsg: prefijo + "La descripción no puede tener caracteres especiales"
                 },
                 {
                     validation:(input) => validator.isLength(input.value,{min: 20, max: 65535}), 
@@ -303,7 +299,7 @@ window.addEventListener("load", async () => {
         //e.preventDefault();
         //se elige con view_name el tipo de vista a validar y se itera por los campos que se van a validar
         formTypes[view_name].forEach(fieldValidation => {
-            let input = document.querySelector(`input[name=${fieldValidation.name}]`);
+            let input = document.querySelector(`input[name=${fieldValidation.name}]`) ?? document.querySelector(`textarea[name=${fieldValidation.name}]`);
             let error = document.querySelector(`span.errors[name=${fieldValidation.name}]`);
 
             //Para el campo a validar, se itera por todas las validaciones de ese campo en específico
