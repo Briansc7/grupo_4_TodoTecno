@@ -68,3 +68,22 @@ Durante el desarrollo del Sprint 6 se continuó en la división de tareas anteri
 <h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, por el contrario hacer más es principal objetivo para el futuro.
 
 <h4>5) Dejar de hacer:</h4> En esta etapa no hemos identificado acciones que perjudiquen al grupo o proyecto para dejar de hacer.
+
+<h2>Retrospectiva Sprint 7</h2>
+
+Durante el desarrollo del Sprint 7 se dividió las tareas entre los miembros del equipo en validación de backend y validación de frontend. Pero debido a problemas personales de algunos miembros y también a no dedicar el suficiente tiempo en comprender los temas vistos durante el curso para poder implementarlos en el proyecto, todas las tareas del Sprint 7 terminaron siendo realizadas por un solo miembro del equipo. En consecuencia, no se logró completar los objetivos del sprint en el plazo establecido.
+
+
+<h3>Comenzar a hacer, Hacer más, Continuar haciendo y Hacer menos</h3>
+
+<h4>1) Comenzar a hacer:</h4> El retraso del sprint se debió en parte a la falta de tiempo y dedicación de algunos miembros del equipo. Se propone que realicen una mejor planificación de su tiempo disponible y asignen una mayor prioridad a las tareas del proyecto por sobre otras actividades ajenas al mismo.
+
+<h4>2) Hacer más:</h4> El uso de trello es fundamental para determinar el estado del sprint, las tareas a realizar y la asignación de tareas. Pero no es usado de forma activa por algunos miembros del grupo. Se propone enfatizar la gran utilidad del uso de trello para una mejor organización del proyecto.
+Algunos miembros del equipo, al intentar resolver las tareas por sí mismos, terminan frustrados al no poder encontrar una solución. Se propone que ante dicha situación, recurran más a pedirle ayuda a los demás miembros del grupo, a consultar en el grupo de discord y también a consultar a los docentes sus dudas.
+
+<h4>3) Continuar haciendo:</h4> El desarrollo del proyecto ha requerido investigar exhaustivamente para poder implementar las funcionalidades necesarias ya que algunas configuraciones e implementaciones particulares no se incluyen en las clases del curso. Se propone continuar con la investigación activa para el desarrollo de las tareas del proyecto.
+
+<h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos, sino más bien un punto importante para dejar de hacer.
+
+<h4>5) Dejar de hacer:</h4> Algunos miembros del equipo han dejado de comunicarse por períodos prolongados de tiempo. Se propone que los mismos realicen una autocrítica respecto a los objetivos personales que esperan lograr con el curso y con el proyecto a fin de que la comunicación vuelva a ser fluida y ya no afecte el desarrollo de las tareas del proyecto.
+
