@@ -1,9 +1,13 @@
 const express = require("express");
 const adminRouter =  express.Router();
 const adminController = require("../controllers/adminController");
+
 const multer = require("multer");
+const multerUtils = require("../utils/multerUtils");
+
 const path = require("path");
 const adminAccessValidation = require("../middlewares/adminAccessValidation");
+
 const fieldsValidator = require("../middlewares/fieldsValidator");
 const productFormatValidation = fieldsValidator.productFormatValidation;
 const userFormatValidation = fieldsValidator.userFormatValidation;
@@ -19,7 +23,14 @@ cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
 
 
 
-let upload = multer({ storage: storage });
+let upload = multer(
+    { 
+        storage: storage,
+        fileFilter: function(_req, file, cb){ //opcion para impedir que se suban archivos que no cumplan con el filtrado
+            multerUtils.validImageType(file, cb);
+        } 
+    }
+);
 
 let storageAvatar = multer.diskStorage({
     destination: (req, file, cb) => cb(null, "./public/images/users"),
@@ -28,7 +39,15 @@ cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
     } 
 });
 
-let uploadAvatar = multer({ storage: storageAvatar });
+let uploadAvatar = multer(
+    { 
+        storage: storageAvatar,
+
+        fileFilter: function(req, file, cb){ //opcion para impedir que se suban archivos que no cumplan con el filtrado
+            multerUtils.validImageType(req, file, cb);
+        } 
+    }
+);
 
 
 

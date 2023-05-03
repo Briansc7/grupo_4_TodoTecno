@@ -179,6 +179,19 @@ usersCreate: async(req, res) => {
     try {
         const errors = validationResult(req);
 
+        if(req.body.imageBadFormat){//validación del formato de la imagen
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
+
+            errors.errors.push({
+                value: "",
+                msg: "La imagen debe ser un archivo jpeg, jpg, png, o gif",
+                param: "avatar",
+                location: "body"
+            });
+        }
+
         if(await emailExist(req.body.email)){
             if(errors.isEmpty()){
                 errors.errors= [];
