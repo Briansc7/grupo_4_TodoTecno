@@ -18,6 +18,19 @@ register: (req, res) => res.render("./users/register", {head: registerHeadData,
 createUser: (req, res)=> {
     try {
         const errors = validationResult(req);
+
+        if(req.body.imageBadFormat){//validación del formato de la imagen
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
+
+            errors.errors.push({
+                value: "",
+                msg: "La imagen debe ser un archivo jpeg, jpg, png, o gif",
+                param: "avatar",
+                location: "body"
+            });
+        }
     
         if(errors.isEmpty()){
             if(usersDatabase.userRegister(req.body, req.file) == -1){ //se procede a registrar al usuario

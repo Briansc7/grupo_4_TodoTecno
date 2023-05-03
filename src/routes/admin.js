@@ -26,8 +26,8 @@ cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
 let upload = multer(
     { 
         storage: storage,
-        fileFilter: function(_req, file, cb){ //opcion para impedir que se suban archivos que no cumplan con el filtrado
-            multerUtils.validImageType(file, cb);
+        fileFilter: function(req, file, cb){ //opcion para impedir que se suban archivos que no cumplan con el filtrado
+            multerUtils.validImageType(req, file, cb);
         } 
     }
 );
