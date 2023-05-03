@@ -33,6 +33,19 @@ productStore: async (req, res) => {
     try {
         const errors = validationResult(req);
 
+        if(req.body.imageBadFormat){//validación del formato de la imagen
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
+
+            errors.errors.push({
+                value: "",
+                msg: "La imágenes deben ser archivos jpeg, jpg, png, o gif",
+                param: "images",
+                location: "body"
+            });
+        }
+
         if(!errors.isEmpty()){ //si hay errores
             let old = req.body;
 
