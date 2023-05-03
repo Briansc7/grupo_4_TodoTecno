@@ -179,6 +179,19 @@ usersCreate: async(req, res) => {
     try {
         const errors = validationResult(req);
 
+        if(req.body.imageBadFormat){//validación del formato de la imagen
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
+
+            errors.errors.push({
+                value: "",
+                msg: "La imagen debe ser un archivo jpeg, jpg, png, o gif",
+                param: "avatar",
+                location: "body"
+            });
+        }
+
         if(await emailExist(req.body.email)){
             if(errors.isEmpty()){
                 errors.errors= [];
@@ -256,7 +269,9 @@ usersEdit:  async(req, res) => {
 
         return res.render("./admin/usersEdit", {
             head: usersEditHeadData,
-            user: user
+            user: user,
+            form_name: frontValidationData.edit_profile.form_name, 
+            view_name: frontValidationData.edit_profile.view_name
         });
     } catch (error) {
         console.log(error);
@@ -341,7 +356,7 @@ usersUpdate:async (req, res) => {
             };
 
             return res.render("./admin/usersEdit", {errors: errors.mapped(), user: user, head: usersAddHeadData, 
-                form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
+                form_name: frontValidationData.edit_profile.form_name, view_name: frontValidationData.edit_profile.view_name});
         }
 
         
