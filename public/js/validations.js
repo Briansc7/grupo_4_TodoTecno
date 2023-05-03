@@ -350,7 +350,8 @@ window.addEventListener("load", async () => {
             fieldsValidations.artNumber,
             fieldsValidations.price,
             fieldsValidations.discountPorc,
-            fieldsValidations.description
+            fieldsValidations.description,
+            fieldsValidations.images
         ]
     };
 
