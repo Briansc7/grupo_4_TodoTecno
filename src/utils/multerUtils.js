@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports={
     validImageType: function(req, file, cb){
-        const filetypes = [".jpeg", ".jpg", ".png", ".gif"];//typos de archivos permitidos
+        const filetypes = [".jpeg", ".jpg", ".png", ".gif"];//tipos de archivos permitidos
 
         const extname = filetypes.includes(path.extname(file.originalname).toLowerCase());//comparacion con typo de archivo recibido
 

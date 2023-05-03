@@ -176,6 +176,30 @@ window.addEventListener("load", async () => {
                 }
             ]
         },
+        avatar:
+        {
+            name: "avatar",
+            validations: [
+                {
+                    validation:(input) => {
+                        const filetypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];//typos de archivos permitidos
+                        const files = input.files;
+
+                        for (const file of files) {
+                            if(!filetypes.includes(file.type)){
+                                return false;
+                            }
+                        }
+
+                        return true;
+
+                    }, 
+                    errorMsg: prefijo + "La imagen debe ser un archivo jpeg, jpg, png, o gif"
+                }
+            ]
+        },
+
+        //Validaciones de campos de productos
         model:
         {
             name: "model",
@@ -253,6 +277,28 @@ window.addEventListener("load", async () => {
                     errorMsg: prefijo + "La descripción debe tener entre 20 y 65535 caracteres"
                 }
             ]
+        },
+        images:
+        {
+            name: "images",
+            validations: [
+                {
+                    validation:(input) => {
+                        const filetypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];//tipos de archivos permitidos
+                        const files = input.files;
+
+                        for (const file of files) {
+                            if(!filetypes.includes(file.type)){
+                                return false;
+                            }
+                        }
+
+                        return true;
+
+                    }, 
+                    errorMsg: prefijo + "Las imágenes deben ser archivos jpeg, jpg, png, o gif"
+                }
+            ]
         }           
         
     };
@@ -268,7 +314,8 @@ window.addEventListener("load", async () => {
             fieldsValidations.firstName,
             fieldsValidations.lastName,
             fieldsValidations.email,
-            fieldsValidations.password
+            fieldsValidations.password,
+            fieldsValidations.avatar
         ],
 
         user: [
