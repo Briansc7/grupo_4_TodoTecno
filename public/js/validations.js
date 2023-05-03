@@ -328,10 +328,11 @@ window.addEventListener("load", async () => {
             fieldsValidations.zipCode,        
             fieldsValidations.location,
             fieldsValidations.province,
-            fieldsValidations.phone
+            fieldsValidations.phone,
+            fieldsValidations.avatar
         ],
 
-        edit_profile: [ //TODO solucionar problema con validacion de email
+        edit_profile: [
             fieldsValidations.firstName,
             fieldsValidations.lastName,
             fieldsValidations.email,
