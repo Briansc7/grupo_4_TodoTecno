@@ -7,7 +7,8 @@ window.addEventListener("load", async () => {
     let form = document.querySelector(`form.${form_name}`); //se obtiene el formulario a validar
 
     //prefijo para saber que estas validaciones son de frontend y no de backend. Dejar como "" en producción
-    let prefijo = "Validación Front: ";     
+    //let prefijo = "Validación Front: ";
+    let prefijo = "";     
 
     //todos los tipos de validaciones de todos los campos posibles
     let optional = (input) =>  validator.isLength(input.value,{max: 0}); //como es opcional, no realizo la validacion si el campo está vacío
