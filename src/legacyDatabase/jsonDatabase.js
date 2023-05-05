@@ -15,6 +15,7 @@ const Products = db.Product;
 const ProductImages = db.ProductImage;
 const RelatedProducts = db.BoughtTogether;
 const Characteristic = db.Characteristic;
+const SubCharacteristic = db.SubCharacteristic;
 const Brands = db.Brand;
 const Categories = db.Category;
 const SubCategories = db.SubCategory;
@@ -180,7 +181,8 @@ async function getAllProductsWithSomeDetails(){
             [
                 "productImages", 
                 {model: Brands, as: "brand"}, 
-                {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]}
+                {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]},
+                {model: Characteristic, as: "characteristics", include: ["subCharacteristics"]}
             ]
         }
     );
@@ -190,7 +192,7 @@ async function getAllProductsWithSomeDetails(){
 
 async function getAllCategoriesWithSubcategories(){
     let categories = await Categories.findAll({include:[
-        {model: SubCategories, as: "subCategories", include: [{model: Products, as: "products"}]}
+        {model: SubCategories, as: "subCategories", include: [{model: Products, as: "products"}]} 
     ]});
     return categories;
 }

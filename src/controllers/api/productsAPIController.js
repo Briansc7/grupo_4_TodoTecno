@@ -18,6 +18,28 @@ const productsAPIController = {
             const host = req.protocol + "://" + req.get('host');
             const detailPath = "/products/productDetail/";
 
+            let characteristics = [];
+
+            product.characteristics.forEach((characteristic, i) => {
+                characteristics.push(
+                    {
+                    id: characteristic.id,
+                    name: characteristic.name,
+                    subCharacteristics: []
+                    }
+                );
+
+                characteristic.subCharacteristics.forEach(subCharacteristic => {
+                    characteristics[i].subCharacteristics.push(
+                        {
+                            id: subCharacteristic.id,
+                            name: subCharacteristic.name,
+                            value: subCharacteristic.value
+                        }
+                    );
+                });
+            });
+
             response.products.push(
                 {
                     id: product.id,
@@ -32,6 +54,7 @@ const productsAPIController = {
                         id: product.subCategory.id,
                         name: product.subCategory.name
                     },
+                    characteristics: characteristics,
                     detail: host + detailPath + product.id
                 }
             )
