@@ -11,7 +11,7 @@ module.exports={
         usersAdd: {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"},
         usersEdit: {title: "Modificar Usuario", stylesheet: "/css/usersAdd.css"},
         usersList: {title: "Listado de Usuarios", stylesheet: "/css/usersList.css"},
-        usersDetail: {title: "Detalles de Usuario", stylesheet: "/css/usersDetail.css"}
+        usersDetail: {title: "Detalles de Usuario", stylesheet: "/css/profile.css"}
     },
     main: {
         home: {title: "Home", stylesheet: "/css/home.css"},
