@@ -35,7 +35,9 @@ let database = {
     getAllProducts: getAllProducts,
     getAllBrands: getAllBrands,
     getAllCategories: getAllCategories,
-    getSelectedCategory: getSelectedCategory
+    getSelectedCategory: getSelectedCategory,
+    getAllProductsWithSomeDetails: getAllProductsWithSomeDetails,
+    getAllCategoriesWithSubcategories: getAllCategoriesWithSubcategories
 }
 
 async function productGetById(id){
@@ -170,6 +172,27 @@ async function getSelectedCategory(productId){
     let categoryId = product.subCategory.categoryId;
     let Category = await Categories.findByPk(categoryId,{include:["subCategories","brandsOfCategory"]});
     return Category;
+}
+
+async function getAllProductsWithSomeDetails(){
+    let products = await Products.findAll(
+        {include: 
+            [
+                "productImages", 
+                {model: Brands, as: "brand"}, 
+                {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]}
+            ]
+        }
+    );
+
+    return products;
+}
+
+async function getAllCategoriesWithSubcategories(){
+    let categories = await Categories.findAll({include:[
+        {model: SubCategories, as: "subCategories", include: [{model: Products, as: "products"}]}
+    ]});
+    return categories;
 }
 
 module.exports = database;
