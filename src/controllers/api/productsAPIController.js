@@ -12,31 +12,34 @@ const productsAPIController = {
             products: []
         };
 
-        response.count = products.length;
+        response.count = products.length; //cantidad total de productos
 
-        products.forEach(product => {
-            let productData = productGetSomeDetails(req, product);
+        products.forEach(product => { //se cargan todos los productos con algunos detalles de los mismos
+            const host = req.protocol + "://" + req.get('host');
+            const detailPath = "/products/productDetail/";
+
+            let productData = productGetSomeDetails(product);
+
+            productData.detail = host + detailPath + product.id;
 
             response.products.push(
                 productData
             )
         });
 
-        categories.forEach(category => {
+        categories.forEach(category => { //se obtiene la cantidad total de productos para una categoria especifica
             response.countByCategory[category.name] = {
                 count: 0,
-                countBySubcategories: {
-
-                }
+                countBySubcategories: {}
             };
 
             let categoryCount = 0;
-            category.subCategories.forEach(subCategory => {
+            category.subCategories.forEach(subCategory => { //se obtiene la cantidad total de productos para una subcategoria especifica
                 categoryCount+= subCategory.products.length;
                 response.countByCategory[category.name].countBySubcategories[subCategory.name] = subCategory.products.length;
             });
 
-            response.countByCategory[category.name].count = categoryCount;
+            response.countByCategory[category.name].count = categoryCount; //la cantidad de productos de una categoria es la sumatoria de los productos de sus subcategorias
         });
 
         return res.json(response);
@@ -45,19 +48,26 @@ const productsAPIController = {
     productDetail: async (req, res) => {
         const product = await productsDatabase.getAllProductDetailsById(req.params.id);
 
-        let productData = productGetSomeDetails(req, product);
+        let productData = productGetSomeDetails(product);
 
-        let response = productData;
+        /* Atributos restantes no disponibles en productGetSomeDetails */
 
-        return res.json(response);
+        productData.artNumber = product.artNumber;
+        productData.price = product.price;
+        productData.discountPorc = product.discountPorc;
+        productData.isOnSale = product.isOnSale;
+        productData.isNew = product.isNew;
+
+        productData.images = product.productImages; //array relacion uno a muchos
+
+        return res.json(productData);
     }
 };
 
-function productGetSomeDetails(req, product) {
-    const host = req.protocol + "://" + req.get('host');
-    const detailPath = "/products/productDetail/";
+function productGetSomeDetails(product) {
+    
 
-    let characteristics = getProductCharacteristicsAndSubCharacteristics(product);
+    let characteristics = getProductCharacteristicsAndSubCharacteristics(product); //array relacion uno a muchos principal para el producto
 
     let productData = {
         id: product.id,
@@ -72,8 +82,7 @@ function productGetSomeDetails(req, product) {
             id: product.subCategory.id,
             name: product.subCategory.name
         },
-        characteristics: characteristics,
-        detail: host + detailPath + product.id
+        characteristics: characteristics
     };
     return productData;
 }
