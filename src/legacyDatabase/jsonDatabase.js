@@ -38,7 +38,8 @@ let database = {
     getAllCategories: getAllCategories,
     getSelectedCategory: getSelectedCategory,
     getAllProductsWithSomeDetails: getAllProductsWithSomeDetails,
-    getAllCategoriesWithSubcategories: getAllCategoriesWithSubcategories
+    getAllCategoriesWithSubcategories: getAllCategoriesWithSubcategories,
+    getAllProductDetailsById: getAllProductDetailsById
 }
 
 async function productGetById(id){
@@ -195,6 +196,14 @@ async function getAllCategoriesWithSubcategories(){
         {model: SubCategories, as: "subCategories", include: [{model: Products, as: "products"}]} 
     ]});
     return categories;
+}
+
+async function getAllProductDetailsById(id){
+    let product = await Products.findByPk(id, {include: ["productImages", "brand", 
+        {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]},
+        {model: Characteristic, as: "characteristics", include:["subCharacteristics"]}]});
+
+    return product;
 }
 
 module.exports = database;
