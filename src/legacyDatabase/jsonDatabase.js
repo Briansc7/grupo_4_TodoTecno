@@ -38,7 +38,8 @@ let database = {
     getSelectedCategory: getSelectedCategory,
     getAllProductsWithSomeDetails: getAllProductsWithSomeDetails,
     getAllCategoriesWithSubcategories: getAllCategoriesWithSubcategories,
-    getAllProductDetailsById: getAllProductDetailsById
+    getAllProductDetailsById: getAllProductDetailsById,
+    totalProductsCount: totalProductsCount
 }
 
 async function productGetById(id){
@@ -175,9 +176,13 @@ async function getSelectedCategory(productId){
     return Category;
 }
 
-async function getAllProductsWithSomeDetails(){
+async function getAllProductsWithSomeDetails(options){
+    let limit = options.limit;
+    let page = options.page;
+    let offset = page>1?(page-1)*limit:0;
     let products = await Products.findAll(
-        {include: 
+        {limit: limit+1, offset,
+        include: 
             [
                 "productImages", 
                 {model: Brands, as: "brand"}, 
@@ -207,6 +212,12 @@ async function getAllProductDetailsById(id){
     ]});
 
     return product;
+}
+
+async function totalProductsCount(){
+    let products = await Products.findAll();
+
+    return products.length;
 }
 
 module.exports = database;

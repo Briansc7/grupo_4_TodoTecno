@@ -4,18 +4,35 @@ const productsDatabase = require(path.resolve(__dirname, "../../legacyDatabase/j
 const productsAPIController = {
     productsList: async (req, res) => {
         try{
-            const products = await productsDatabase.getAllProductsWithSomeDetails();
+            const limit = 10;
+            const page = Number(req.query.page) ?? 1;
+            const totalProductsCount = await productsDatabase.totalProductsCount(); //cantidad total de productos
+            const products = await productsDatabase.getAllProductsWithSomeDetails({limit, page});
             const categories = await productsDatabase.getAllCategoriesWithSubcategories();
+
+            let productsPageCount = products.length; //cantidad total de productos en la página
+
+            const host = req.protocol + "://" + req.get('host');
+            const apiPath = "/api/products/";
+            const partialURL = host + apiPath + "?page="
+
+            let nextUrl = productsPageCount>limit ? partialURL+(page+1) : null;
+            let previousUrl = page==1?null: partialURL+(page-1);
     
             let response = {
-                count: 0,
+                count: totalProductsCount,
                 countByCategory: {},
-                products: []
+                products: [],
+                next: nextUrl,
+                previous: previousUrl
             };
     
-            response.count = products.length; //cantidad total de productos
+            
     
-            products.forEach(product => { //se cargan todos los productos con algunos detalles de los mismos
+            products.every((product,i) => { //se cargan todos los productos con algunos detalles de los mismos
+                if(i==limit){
+                    return false;
+                }
                 const host = req.protocol + "://" + req.get('host');
                 const detailPath = "/products/productDetail/";
     
@@ -25,7 +42,9 @@ const productsAPIController = {
     
                 response.products.push(
                     productData
-                )
+                );
+
+                return true;
             });
     
             categories.forEach(category => { //se obtiene la cantidad total de productos para una categoria especifica
