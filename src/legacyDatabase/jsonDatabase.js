@@ -15,7 +15,6 @@ const Products = db.Product;
 const ProductImages = db.ProductImage;
 const RelatedProducts = db.BoughtTogether;
 const Characteristic = db.Characteristic;
-const SubCharacteristic = db.SubCharacteristic;
 const Brands = db.Brand;
 const Categories = db.Category;
 const SubCategories = db.SubCategory;
@@ -201,7 +200,11 @@ async function getAllCategoriesWithSubcategories(){
 async function getAllProductDetailsById(id){
     let product = await Products.findByPk(id, {include: ["productImages", "brand", 
         {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]},
-        {model: Characteristic, as: "characteristics", include:["subCharacteristics"]}]});
+        {model: Characteristic, as: "characteristics", include:["subCharacteristics"]},
+        {model: RelatedProducts, as: "product1BoughtTogethers", include:[
+            {model: Products, as: "productB", include:["brand"]}
+        ]}
+    ]});
 
     return product;
 }
