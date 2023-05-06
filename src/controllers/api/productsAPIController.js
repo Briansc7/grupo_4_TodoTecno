@@ -67,7 +67,18 @@ const productsAPIController = {
         productData.isOnSale = product.isOnSale;
         productData.isNew = product.isNew;
 
-        productData.images = product.productImages; //array relacion uno a muchos
+        productData.images = []; //array relacion uno a muchos
+
+        product.productImages.forEach(image => {
+            const host = req.protocol + "://" + req.get('host');
+            const imagePath = "/images/products/";
+            productData.images.push({
+                id: image.id,
+                imageUrl: host + imagePath + image.fileName,
+                createdAt: image.createdAt,
+                updatedAt: image.updatedAt
+            });
+        });
 
         productData.relatedProducts = [];
 
