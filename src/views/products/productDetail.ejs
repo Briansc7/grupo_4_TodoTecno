@@ -20,7 +20,7 @@
             </nav>
         </section>
         <section class="picture">
-            <img src="/images/products/<%= product.productImages[0].fileName %>" alt="" class="product-picture">
+            <img src="/images/products/<%= product.productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="" class="product-picture">
         </section>
         <section class="prod-main-info">
             <h3><%= product.category %> <%= product.brand.name %> <%= product.model %></h3>
@@ -47,7 +47,7 @@
 
             <% for(i=0;i<recommendations.length;i++) { %>
                 <article class="recommendation-item">
-                    <img src="/images/products/<%= recommendations[i].productB.productImages[0].fileName %>" alt="" class="recomendation-pic">
+                    <img src="/images/products/<%= recommendations[i].productB.productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="" class="recomendation-pic">
                     <h5><%= recommendations[i].category %> <%= recommendations[i].productB.brand %> <%= recommendations[i].productB.model %></h5>
                     <label for="" class="recomend-price">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].productB.price) %></label>
                 </article>

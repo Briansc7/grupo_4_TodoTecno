@@ -60,7 +60,7 @@
                         <section class="product-box">
                             <a href="/products/productDetail/<%= products[i].id %>">
                                 <div class="home-image">
-                                    <img src="/images/products/<%= products[i].productImages[0].fileName %>" alt="imagen de producto" class="product_img">
+                                    <img src="/images/products/<%= products[i].productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="imagen de producto" class="product_img">
                                   </div>
                                   <div class="main-article">
                                     <p class="price">$<%= products[i].price %></p>
