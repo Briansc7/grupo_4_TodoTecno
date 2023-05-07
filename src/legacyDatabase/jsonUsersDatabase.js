@@ -139,9 +139,22 @@ async function userFindById(id){
     return userFound;
 }
 
-async function getAllUsers(){
-    let users = await Users.findAll({include: ["role"]});
-    return users;
+async function getAllUsers(options = {}){
+
+    if(Object.keys(options).length == 0){
+        return await Users.findAll({include: ["role"]});
+    }
+
+    let limit = Number(options.limit);
+    let page = Number(options.page);
+
+    if(isNaN(limit) || isNaN(page)){ //alguno de los parámetros recibidos no es un numero
+        return []; //retorno un array de productos vacío
+    }
+
+    let offset = page>1?(page-1)*limit:0;
+
+    return await Users.findAll({limit: limit+1, offset, include: ["role"]});
 }
 
 async function userCreate(onlyUserInfo, contactInfo){    

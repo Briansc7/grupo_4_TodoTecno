@@ -177,8 +177,13 @@ async function getSelectedCategory(productId){
 }
 
 async function getAllProductsWithSomeDetails(options){
-    let limit = options.limit;
-    let page = options.page;
+    let limit = Number(options.limit);
+    let page = Number(options.page);
+
+    if(isNaN(limit) || isNaN(page)){ //alguno de los parámetros recibidos no es un numero
+        return []; //retorno un array de productos vacío
+    }
+
     let offset = page>1?(page-1)*limit:0;
     let products = await Products.findAll(
         {limit: limit+1, offset,

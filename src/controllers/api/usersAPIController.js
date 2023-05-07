@@ -4,16 +4,39 @@ const usersDatabase = require(path.resolve(__dirname, "../../legacyDatabase/json
 const usersAPIController = {
     usersList: async (req, res) => {
         try{
+            if(!(req.query.page) ||  isNaN(Number(req.query.page))){ //se muestra error en caso de no recibir pagina o sea invalida
+                return res.status(500).json({
+                    errorMsg: "Invalid Page"
+                });
+            }
+
+            const limit = 10;
+            const page = Number(req.query.page) ?? 1;
+            const host = req.protocol + "://" + req.get('host');
+            const apiPath = "/api/users/";
+            const partialURL = host + apiPath + "?page="
+
             const allUsers = await usersDatabase.getAllUsers();
+            const allUsersCount = allUsers.length;
+
+            const pagedUsers = await usersDatabase.getAllUsers({limit, page});
+
+            let usersPageCount = pagedUsers.length; //cantidad de usuarios recibidos en paginado 
+
+            let nextUrl = usersPageCount>limit ? partialURL+(page+1) : null;
+            let previousUrl = page==1?null: partialURL+(page-1);
 
             let response = {
-                count: 0,
-                users: []
+                count: allUsersCount,
+                users: [],
+                next: nextUrl,
+                previous: previousUrl
             };
     
-            response.count = allUsers.length;
-    
-            allUsers.forEach(user => {
+            pagedUsers.every((user,i) => {
+                if(i==limit){ //se recibe uno extra solo para facilitar el paginado, no se debe retornar
+                    return false;
+                }
                 const host = req.protocol + "://" + req.get('host');
                 const detailPath = "/admin/users/detail/";
                 response.users.push(
@@ -24,7 +47,8 @@ const usersAPIController = {
                         email: user.email,
                         detail: host + detailPath + user.id
                     }
-                )
+                );
+                return true;
             });
     
             return res.json(response);

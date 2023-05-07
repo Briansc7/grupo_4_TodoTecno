@@ -4,13 +4,19 @@ const productsDatabase = require(path.resolve(__dirname, "../../legacyDatabase/j
 const productsAPIController = {
     productsList: async (req, res) => {
         try{
+            if(!(req.query.page) ||  isNaN(Number(req.query.page))){ //se muestra error en caso de no recibir pagina o sea invalida
+                return res.status(500).json({
+                    errorMsg: "Invalid Page"
+                });
+            }
+
             const limit = 10;
             const page = Number(req.query.page) ?? 1;
             const totalProductsCount = await productsDatabase.totalProductsCount(); //cantidad total de productos
             const products = await productsDatabase.getAllProductsWithSomeDetails({limit, page});
             const categories = await productsDatabase.getAllCategoriesWithSubcategories();
 
-            let productsPageCount = products.length; //cantidad total de productos en la página
+            let productsPageCount = products.length; //cantidad de productos recibidos en el paginado
 
             const host = req.protocol + "://" + req.get('host');
             const apiPath = "/api/products/";
@@ -29,8 +35,8 @@ const productsAPIController = {
     
             
     
-            products.every((product,i) => { //se cargan todos los productos con algunos detalles de los mismos
-                if(i==limit){
+            products.every((product,i) => { //se cargan todos los productos de la pagina con algunos detalles de los mismos
+                if(i==limit){//se recibe uno extra solo para facilitar el paginado, no se debe retornar
                     return false;
                 }
                 const host = req.protocol + "://" + req.get('host');
