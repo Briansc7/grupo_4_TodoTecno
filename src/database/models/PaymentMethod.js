@@ -9,6 +9,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         name: {
             type: dataTypes.STRING(60),
+            unique: true,
             allowNull: false
         },
         interestOption: { //puede no tenerlo y ser null

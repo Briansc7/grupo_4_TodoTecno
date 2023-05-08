@@ -1,112 +1,278 @@
 
 const path = require("path");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const database = require(path.resolve(__dirname, "../legacyDatabase/jsonDatabase"));
 const usersDatabase = require(path.resolve(__dirname, "../legacyDatabase/jsonUsersDatabase"));
 
-const productCreateHeadData = {title: "Crear Producto", stylesheet: "/css/productCreate.css"};
-const productEditHeadData = {title: "Modificar Producto", stylesheet: "/css/productEdit.css"};
+const diccionary = require(path.resolve(__dirname, "../diccionary/"));
+const frontValidationData = diccionary.frontValidationData;
+const headData = diccionary.headData;
 
-const usersAddHeadData = {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"};
-const usersEditHeadData = {title: "Modificar Usuario", stylesheet: "/css/usersAdd.css"};
+const productCreateHeadData = headData.admin.productCreate;
+const productEditHeadData = headData.admin.productEdit;
 
-const usersListHeadData = {title: "Listado de Usuarios", stylesheet: "/css/usersList.css"};
-const usersDetailHeadData = {title: "Detalles de Usuario", stylesheet: "/css/usersDetail.css"};
+const usersAddHeadData = headData.admin.usersAdd;
+const usersEditHeadData = headData.admin.usersEdit;
+
+const usersListHeadData = headData.admin.usersList;
+const usersDetailHeadData = headData.admin.usersDetail;
 
 const adminController = {
 
-productCreate: async (req, res) => res.render("./admin/productCreate", {head: productCreateHeadData, categories: await database.getAllCategories()}),
+productCreate: async (req, res) => res.render("./admin/productCreate",
+    {
+        head: productCreateHeadData, 
+        categories: await database.getAllCategories(),
+        form_name: frontValidationData.product.form_name, 
+        view_name: frontValidationData.product.view_name
+    }),
 
 productStore: async (req, res) => {
-    let imagesUploaded = [];
-    req.files.forEach(img => {
-        imagesUploaded.push(img.filename);
-    });
+    try {
+        const errors = validationResult(req);
 
-    let newProduct = {
-        subCategoryId: req.body.subCategory,
-        brandId: req.body.brand,
-        model: req.body.model,
-        artNumber: Number(req.body.artNumber),
-        price: Number(req.body.price),
-        discountPorc: Number(req.body.discount),
-        isOnSale: req.body.isOnSale=="on"?1:0,
-        isNew: req.body.isNew=="on"?1:0,
-        description: req.body.description
-    };
+        if(req.body.imageBadFormat){//validación del formato de la imagen
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
 
-    let createdProduct = await database.productCreate(newProduct);
+            errors.errors.push({
+                value: "",
+                msg: "La imágenes deben ser archivos jpeg, jpg, png, o gif",
+                param: "images",
+                location: "body"
+            });
+        }
 
-    await database.AddProductImages(createdProduct.id, imagesUploaded);
+        if(!errors.isEmpty()){ //si hay errores
+            let old = req.body;
 
-    return res.redirect("/products/productDetail/"+createdProduct.id);
+            return res.render("./admin/productCreate", 
+            {
+                head: productCreateHeadData, 
+                categories: await database.getAllCategories(), 
+                errors: errors.mapped(), 
+                old: old,
+                form_name: frontValidationData.product.form_name, 
+                view_name: frontValidationData.product.view_name
+            })
+        }
+
+        let newProduct = {
+            subCategoryId: req.body.subCategory,
+            brandId: req.body.brand,
+            model: req.body.model,
+            artNumber: Number(req.body.artNumber),
+            price: Number(req.body.price),
+            discountPorc: Number(req.body.discount),
+            isOnSale: req.body.isOnSale=="on"?1:0,
+            isNew: req.body.isNew=="on"?1:0,
+            description: req.body.description
+        };
+    
+        let createdProduct = await database.productCreate(newProduct);
+        
+        let imagesUploaded = [];
+        req.files.forEach(img => {
+            imagesUploaded.push(img.filename);
+        });
+    
+        if(imagesUploaded.length != 0){
+            await database.AddProductImages(createdProduct.id, imagesUploaded);
+        }
+    
+        return res.redirect("/products/productDetail/"+createdProduct.id);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+    
+
+    
 
 
 },
 
 productEdit: async (req, res) => res.render("./admin/productEdit",
-    {head: productEditHeadData, product: await database.productDetailGetById(req.params.id), categories: await database.getAllCategories(), selectedCategory: await database.getSelectedCategory(req.params.id)}
+    {
+        head: productEditHeadData, product: await database.productDetailGetById(req.params.id), 
+        categories: await database.getAllCategories(), 
+        selectedCategory: await database.getSelectedCategory(req.params.id),
+        form_name: frontValidationData.product.form_name, 
+        view_name: frontValidationData.product.view_name
+    }
     ),
 
 productUpdate: async (req, res) => {
-    let editedProduct = {
-        brandId: req.body.brand,
-        model: req.body.model,
-        artNumber: Number(req.body.artNumber),
-        price: Number(req.body.price),
-        discountPorc: Number(req.body.discount),
-        isOnSale: req.body.isOnSale=="on"?1:0,
-        isNew: req.body.isNew=="on"?1:0,
-        description: req.body.description
-    };
+    try {
+        const errors = validationResult(req);
 
-    await database.productEdit(req.params.id, editedProduct);
+        if(!errors.isEmpty()){ //si hay errores
+            let old = req.body;
 
-    return res.redirect("/admin/productEdit/"+req.params.id);
+            return res.render("./admin/productEdit", 
+            {
+                head: productEditHeadData, 
+                categories: await database.getAllCategories(),
+                selectedCategory: await database.getSelectedCategory(req.params.id), 
+                errors: errors.mapped(), product: old,
+                form_name: frontValidationData.product.form_name, 
+                view_name: frontValidationData.product.view_name
+            })
+        }
+
+        let editedProduct = {
+            brandId: req.body.brand,
+            model: req.body.model,
+            artNumber: Number(req.body.artNumber),
+            price: Number(req.body.price),
+            discountPorc: Number(req.body.discount),
+            isOnSale: req.body.isOnSale=="on"?1:0,
+            isNew: req.body.isNew=="on"?1:0,
+            description: req.body.description
+        };
+    
+        await database.productEdit(req.params.id, editedProduct);
+    
+        return res.redirect("/admin/productEdit/"+req.params.id);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+    
 },
 
 productDestroy: async (req, res) => {
-    await database.productDeleteById(req.params.id);
-    return res.redirect("/");
+    try {
+        await database.productDeleteById(req.params.id);
+        return res.redirect("/");
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+    
 },
 
 usersAdd: (req, res) => {
-    return res.render("./admin/usersAdd", {head: usersAddHeadData})
+    return res.render("./admin/usersAdd", {head: usersAddHeadData, 
+        form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
 },
 
 usersList: async (req, res) => {
-    let users = await usersDatabase.getAllUsers();
+    try {
+        let users = await usersDatabase.getAllUsers();
 
-    console.log(users);
-
-    return res.render("./admin/usersList", {head: usersListHeadData, users})
+        return res.render("./admin/usersList", {head: usersListHeadData, users});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+    
 },
 
 usersDetail: async (req, res) =>{
-    let id = req.params.id;
+    try {
+        let id = req.params.id;
 
-    let user = await usersDatabase.getUserByPk(id);
+        let user = await usersDatabase.userFindById(id);
 
-    return res.render("./admin/usersDetail", {head: usersDetailHeadData, user});
+        user.id = id;
+
+    return res.render("./admin/usersDetail", {head: usersDetailHeadData, userInfo: user});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+    
 },
 
 usersCreate: async(req, res) => {
-        let newUser={
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email:req.body.email,
-        password:bcrypt.hashSync(req.body.password, 10),
-        birthday:req.body.birthday,
-        address:req.body.address,
-        zipCode:req.body.zipCode,
-        location:req.body.location,
-        province:req.body.province,
-        roleId: req.body.roleId
-    };
-    await usersDatabase.userCreate(newUser);
+    try {
+        const errors = validationResult(req);
 
-    return res.redirect("/admin/users");
+        if(req.body.imageBadFormat){//validación del formato de la imagen
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
+
+            errors.errors.push({
+                value: "",
+                msg: "La imagen debe ser un archivo jpeg, jpg, png, o gif",
+                param: "avatar",
+                location: "body"
+            });
+        }
+
+        if(await emailExist(req.body.email)){
+            if(errors.isEmpty()){
+                errors.errors= [];
+            }
+
+            errors.errors.push({
+                value: "",
+                msg: "Ya existe un usuario registrado con este email",
+                param: "email",
+                location: "body"
+            });
+        }
+
+        if(errors.isEmpty()){
+
+            let avatar = req.file
+
+            let newUserInfo={
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password:bcrypt.hashSync(req.body.password, 10),
+                birthday:req.body.birthday,            
+                image: avatar?avatar.filename:null,
+                roleId: req.body.roleId
+            };
+
+            let newUserContactInfo ={
+                address:req.body.address,
+                zipCode:req.body.zipCode,
+                location:req.body.location,
+                province:req.body.province,
+                phone: req.body.phone
+            }
+
+            await usersDatabase.userCreate(newUserInfo, newUserContactInfo);
+        
+            return res.redirect("/admin/users");
+
+        }else{
+            const user = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password: req.body.password,
+                birthday:req.body.birthday,
+                roleId: req.body.roleId,
+
+                userContactInformation: {
+                    address:req.body.address,
+                    zipCode:req.body.zipCode,
+                    location:req.body.location,
+                    province:req.body.province,
+                    phone: req.body.phone
+                }
+            };
+
+            return res.render("./admin/usersAdd", {errors: errors.mapped(), user: user, head: usersAddHeadData, 
+                form_name: frontValidationData.user.form_name, view_name: frontValidationData.user.view_name});
+        }
+
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+
+        
 },
 
 usersEdit:  async(req, res) => {
@@ -116,7 +282,9 @@ usersEdit:  async(req, res) => {
 
         return res.render("./admin/usersEdit", {
             head: usersEditHeadData,
-            user: user
+            user: user,
+            form_name: frontValidationData.edit_profile.form_name, 
+            view_name: frontValidationData.edit_profile.view_name
         });
     } catch (error) {
         console.log(error);
@@ -126,36 +294,113 @@ usersEdit:  async(req, res) => {
 ,
 
 usersUpdate:async (req, res) => {
-    let id = req.params.id;
+    try {
+        let id = req.params.id; 
 
-    /*Solamente se van a mandar al update los campos que no están vacíos*/
-    let editedUser={};  //aca se van a cargar los inputs para el update
-    Object.entries(req.body).forEach(entry => { //se iteran los campos del objeto req.body
-        const [property, value] = entry;      //se separa en clave valor
-    
-        if(value&&value!=""){
-            let updatedValue = value;
+        const errors = validationResult(req);
 
-            if(property=="password"){ //si el input leido es password, se tiene que encriptar
-                updatedValue = bcrypt.hashSync(updatedValue, 10);
+        if(await anotherUserHasThisEmail(id, req.body.email)){ //compruebo si otro usuario ya usa el email ingresado
+            if(errors.isEmpty()){
+                errors.errors= [];
             }
+
+            errors.errors.push({
+                value: "",
+                msg: "Ya existe un usuario registrado con este email",
+                param: "email",
+                location: "body"
+            });
+        }
+        
+        if(errors.isEmpty()){
+
+            let editedUser = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                birthday: req.body.birthday,
+                roleId: req.body.roleId
+            }
+    
+            if(req.body.password!= ""){
+                editedUser.password = bcrypt.hashSync(req.body.password, 10);
+            }
+    
+            let editedUserContactInfo = null;
+    
+            //si se ingresó alguno de los campos
+            if(req.body.address != "" ||
+                req.body.location != "" ||
+                req.body.province != "" ||
+                req.body.zipCode != "" ||
+                req.body.phone != ""
+                ){
+                    editedUserContactInfo = {
+                        address: req.body.address,
+                        location: req.body.location,
+                        province: req.body.province,
+                        zipCode: req.body.zipCode,
+                        phone: req.body.phone
+                    };
+                }
+    
             
-            editedUser[property] = updatedValue; //se almacena el input que se va a actualizar el valor
+    
+            await usersDatabase.userUpdate(id, editedUser, editedUserContactInfo);
+    
+            return res.redirect("/admin/users");
+
+        }else{
+            const user = {
+                id: id,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password: req.body.password,
+                birthday:req.body.birthday,
+                roleId: req.body.roleId,
+
+                userContactInformation: {
+                    address:req.body.address,
+                    zipCode:req.body.zipCode,
+                    location:req.body.location,
+                    province:req.body.province,
+                    phone: req.body.phone
+                }
+            };
+
+            return res.render("./admin/usersEdit", {errors: errors.mapped(), user: user, head: usersAddHeadData, 
+                form_name: frontValidationData.edit_profile.form_name, view_name: frontValidationData.edit_profile.view_name});
         }
 
-    });
-    
-    await usersDatabase.userUpdate(id, editedUser);
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
 
-    return res.redirect("/admin/users");
+    
 },
 
 usersDestroy: async (req, res) => {
-    await usersDatabase.userDeleteById(req.params.id);
-    return res.redirect("/admin/users");
+    try {
+        await usersDatabase.userDeleteById(req.params.id);
+        return res.redirect("/admin/users");
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
 },
 
 }
 
+async function emailExist(email){
+    return await usersDatabase.userFindByEmail(email);
+}
+
+async function anotherUserHasThisEmail(userId, emailUpdated){
+    let founduserId = await usersDatabase.userGetUserId(emailUpdated);
+    return founduserId && (founduserId != userId);
+}
 
 module.exports = adminController;

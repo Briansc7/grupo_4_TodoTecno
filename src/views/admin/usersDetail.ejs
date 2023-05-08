@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include("../partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
+
+<body>
+
+    <%- include("../partials/header") %>
+
+    <main>
+        <%- include("../partials/user-info") %>
+
+        <p>Rol: <%= userInfo.role?userInfo.role.name:"Sin especificar" %></p>
+
+        <a href="/admin/users/edit/<%= userInfo.id %>"><button class="edit" id="edit-profile-btn">Editar</button></a>
+        <form class="form-delete" action="/admin/users/delete/<%= userInfo.id %>?_method=DELETE" method="POST">
+            <button class="delete">Eliminar</button>
+         </form>
+        
+    </main>
+
+    <%- include("../partials/footer") %>
+</body>
+</html>

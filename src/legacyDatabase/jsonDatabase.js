@@ -1,14 +1,10 @@
 /*
-Manejador de Tablas Json. Esta lógica también podría ir en el controlador
+Manejador de Bases de Datos relacionadas con los productos
+TODO renombrar porque ya no se usa json
 */ 
 
 const path = require("path");
 const fs = require("fs");
-
-//Se obtienen los datos de los productos
-const productsJsonPath = path.resolve(__dirname,"./products.json");
-let productsJsonRawData = fs.readFileSync(productsJsonPath); //guardo contenido json en variable
-let productsData = JSON.parse(productsJsonRawData); //convierto json a objeto array
 
 //agregado uso de BD mysql
 const db = require('../database/models');
@@ -39,7 +35,11 @@ let database = {
     getAllProducts: getAllProducts,
     getAllBrands: getAllBrands,
     getAllCategories: getAllCategories,
-    getSelectedCategory: getSelectedCategory
+    getSelectedCategory: getSelectedCategory,
+    getAllProductsWithSomeDetails: getAllProductsWithSomeDetails,
+    getAllCategoriesWithSubcategories: getAllCategoriesWithSubcategories,
+    getAllProductDetailsById: getAllProductDetailsById,
+    totalProductsCount: totalProductsCount
 }
 
 async function productGetById(id){
@@ -174,6 +174,55 @@ async function getSelectedCategory(productId){
     let categoryId = product.subCategory.categoryId;
     let Category = await Categories.findByPk(categoryId,{include:["subCategories","brandsOfCategory"]});
     return Category;
+}
+
+async function getAllProductsWithSomeDetails(options){
+    let limit = Number(options.limit);
+    let page = Number(options.page);
+
+    if(isNaN(limit) || isNaN(page)){ //alguno de los parámetros recibidos no es un numero
+        return []; //retorno un array de productos vacío
+    }
+
+    let offset = page>1?(page-1)*limit:0;
+    let products = await Products.findAll(
+        {limit: limit+1, offset,
+        include: 
+            [
+                "productImages", 
+                {model: Brands, as: "brand"}, 
+                {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]},
+                {model: Characteristic, as: "characteristics", include: ["subCharacteristics"]}
+            ]
+        }
+    );
+
+    return products;
+}
+
+async function getAllCategoriesWithSubcategories(){
+    let categories = await Categories.findAll({include:[
+        {model: SubCategories, as: "subCategories", include: [{model: Products, as: "products"}]} 
+    ]});
+    return categories;
+}
+
+async function getAllProductDetailsById(id){
+    let product = await Products.findByPk(id, {include: ["productImages", "brand", 
+        {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]},
+        {model: Characteristic, as: "characteristics", include:["subCharacteristics"]},
+        {model: RelatedProducts, as: "product1BoughtTogethers", include:[
+            {model: Products, as: "productB", include:["brand"]}
+        ]}
+    ]});
+
+    return product;
+}
+
+async function totalProductsCount(){
+    let products = await Products.findAll();
+
+    return products.length;
 }
 
 module.exports = database;

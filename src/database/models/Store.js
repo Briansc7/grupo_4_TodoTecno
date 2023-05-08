@@ -9,18 +9,11 @@ module.exports = (sequelize, dataTypes) => {
         },
         name: {
             type: dataTypes.STRING(45),
+            unique: true,
             allowNull: false
         },
-        address: {
-            type: dataTypes.TEXT,
-            allowNull: false
-        },
-        location: {
-            type: dataTypes.TEXT,
-            allowNull: false
-        },
-        phone: {
-            type: dataTypes.STRING(15),
+        contactInfoId: {
+            type: dataTypes.BIGINT(10).UNSIGNED,
             allowNull: false
         },
         description: {
@@ -47,6 +40,11 @@ module.exports = (sequelize, dataTypes) => {
         Store.hasMany(models.Stock, {
             as: "stocks",
             foreignKey: "storeId"
+        });
+
+        Store.belongsTo(models.ContactInformation, {
+            as: "storeContactInformation",
+            foreignKey: "contactInfoId"
         });
     };
  

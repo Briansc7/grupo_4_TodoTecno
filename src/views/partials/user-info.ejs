@@ -1,0 +1,14 @@
+<section class="profile-avatar-container">
+    <img src="/images/users/<%= userInfo.image?userInfo.image:"defaultUser.png" %>" alt="" class="profile-avatar-img">
+</section>
+<section class="personal-infomation">
+    <p>Nombre: <%= userInfo.firstName %></p>
+    <p>Apellido: <%= userInfo.lastName %></p>
+    <p>Email: <%= userInfo.email %></p>
+    <p>Cumpleaños: <%= userInfo.birthday?userInfo.birthday:"Sin especificar" %></p>
+    <p>Dirección: <%= userInfo.userContactInformation?.address||userInfo.address||"Sin especificar" %></p>
+    <p>Código Postal: <%= userInfo.userContactInformation?.zipCode||userInfo.zipCode||"Sin especificar" %></p>
+    <p>Localidad: <%= userInfo.userContactInformation?.location||userInfo.location||"Sin especificar" %></p>
+    <p>Provincia: <%= userInfo.userContactInformation?.province||userInfo.province||"Sin especificar" %></p>
+    <p>Teléfono: <%= userInfo.userContactInformation?.phone||userInfo.phone||"Sin especificar" %></p>
+</section>

@@ -2,6 +2,9 @@
 <h2>Users:</h2>
 Tabla destinada a almacenar los datos de los usuarios del sistema. Los usuarios pueden tener el rol admin o user según si son administradores o usuarios normales del sistema. En caso de ser administradores pueden tener acceso a funcionalidades privilegiadas del sitio web como por ejemplo editar los datos de un producto.
 
+<h2>ContactInformation:</h2>
+Tabla destinada a almacenar datos de contacto incluyendo dirección completa y número de teléfono. Se almacena los datos de contacto de los usuarios, de las sucursales y también de las ventas en caso de que se opte por el envío. Los datos para el envío pueden ser distintos al del usuario o puede ser que el usuario actualice sus datos de contacto de forma posterior a la venta. Es por ello que es necesario guardar dicho dato también para las ventas.
+
 <h2>Roles:</h2>
 Tabla destinada a almacenar los roles que pueden tener los usuarios.
 
@@ -9,6 +12,9 @@ Tabla destinada a almacenar los roles que pueden tener los usuarios.
 Almacena los datos de los productos. Ya que un producto puede tener más de una imagen, la referencia a las mismas se almacenar en una tabla a parte llamada <b>ProductImages</b>.
 A su vez un producto tiene asociada una marca, la cual se almacena en la tabla <b>Brands</b>. Entre la información relevante de un producto, se encuentran las características y subcaracterísticas del mismo, las cuales se guardas en las tablas <b>Characteristics</b> y <b>SubCharacteristics</b>. Por ejemplo una características de un televisor podría ser Dimensiones y las subcaracterísticas de dicha características podrían ser ancho, profundidad y peso.
 Para tener una mejor organización de los productos, los mismos tienen asociado una subcategoría, la cual pertenece a una categoría de mayor jerarquía. Por ejemplo, la subcategoría "Tv" que pertenece a una categoría más general llamada "Tv y Video". Estos se almacenan en las tablas <b>Subcategories</b> y <b>Categories</b>.
+
+<h2>BoughtTogether:</h2>
+Almacena pares de productos que fueron comprados juntos con la cantidad de veces que se compraron juntos en la misma compra. Dicha tabla se utiliza para sugerir otros productos en la vista de detalle de un producto.
 
 <h2>Categories:</h2>
 Almacena los tipos (categorías) de productos existentes. Además de existir subcategorías que dependen jerárquicamente de una categoría, las marcas también se asocian a una categoría. Lo cual nos permite a la hora de querer elegir una marca en un formulario, la misma tenga sentido para el tipo de producto a crear o editar. Como una categoría puede tener muchas marcas, pero a su vez una marca puede estar presente en distintos tipos de productos, dicha relación muchos a muchos se resuelve con la tabla intermedia <b>brandsOfCategories</b>

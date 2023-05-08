@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
+
+<body>
+    <%- include("../partials/header") %>
+ 
+<main class="main-user-create">
+    <form class="form-container" action="/users/update-profile?_method=PUT" method="POST">
+    
+        <h1>Editar Perfil</h1>
+
+        <%- include("../partials/create-edit-user-inputs") %>  
+
+        <button type="submit">Actualizar</button>
+</main>
+
+
+    <%- include("../partials/footer") %>
+    <%- include("../partials/formatValidationScripts", {form_name: locals.form_name, view_name: locals.view_name}) %>
+</body>
+</html>

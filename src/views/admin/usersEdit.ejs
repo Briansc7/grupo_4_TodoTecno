@@ -12,11 +12,13 @@
         <h1>Editar Usuario</h1>
 
         <%- include("../partials/create-edit-user-inputs") %>  
+        <%- include("../partials/roleId-selector") %> 
 
         <button type="submit">Actualizar</button>
 </main>
 
 
     <%- include("../partials/footer") %>
+    <%- include("../partials/formatValidationScripts", {form_name: locals.form_name, view_name: locals.view_name}) %>
 </body>
 </html>

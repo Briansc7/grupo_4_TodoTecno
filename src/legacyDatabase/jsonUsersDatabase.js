@@ -1,16 +1,13 @@
 /*
-Manejador de Tablas Json. Esta lógica también podría ir en el controlador
+Manejador de Bases de Datos relacionadas con el usuario.
+Antes se usaba para almacenar los datos en json, ahora se usa mysql
+TODO renombrar nombre quitando Json
 */ 
 
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcryptjs");
 const authTokenUtilities = require(path.resolve(__dirname,"../legacyDatabase/authTokenUtilities"));
-
-//Se obtienen los datos de los usuarios
-const usersJsonPath = path.resolve(__dirname,"./users.json");
-let usersJsonRawData = fs.readFileSync(usersJsonPath); //guardo contenido json en variable
-let usersData = JSON.parse(usersJsonRawData); //convierto json a objeto array
 
 //agregado uso de BD mysql
 const db = require('../database/models');
@@ -19,10 +16,10 @@ const { Op } = require("sequelize");
 
 const Users = db.User;
 const Roles = db.Role;
+const ContactInformation = db.ContactInformation;
 
 
 let usersDatabase = {
-    usersData: usersData,
     userRegister: userRegister,
     userGetNewId: userGetNewId,
     userFindByEmail: userFindByEmail,
@@ -39,35 +36,6 @@ let usersDatabase = {
 };
 
 async function userRegister(userBody, avatar){
-
-    /* if(this.userFindByEmail(userBody.email)){
-        console.log("Email ya existe");
-        return -1; //no se registra si el email ya fue registrado por otro usuario
-    }
-
-
-    const newId = this.userGetNewId();
-
-    const user = {
-        id: newId,
-        email: userBody.email,
-        firstName: userBody.firstName,
-        lastName: userBody.lastName,
-        password: bcrypt.hashSync(userBody.password, 10),
-        birthday: null,
-        address: null,
-        postalCode: null,
-        location: null,
-        province: null,
-        image: avatar?avatar.filename:null,
-        role: "user"
-    }
-
-    this.usersData.push(user);
-
-    writeJson(usersJsonPath, this.usersData);
-
-    return user.id; */
 
     if(await this.userFindByEmail(userBody.email)){
         console.log("Email ya existe");
@@ -92,14 +60,9 @@ async function userRegister(userBody, avatar){
         roleId: userRoleId
     };
 
-    let newUserId = await Users.create(user);
+    let newUser = await Users.create(user);
 
-    return newUserId;
-}
-
-function writeJson(destination, data) {
-    let jsonRawData = JSON.stringify(data, null, 2);
-    fs.writeFileSync(destination, jsonRawData);
+    return newUser;
 }
 
 function userGetNewId(){
@@ -107,7 +70,6 @@ function userGetNewId(){
 }
 
 async function userFindByEmail(email){
-    //return this.usersData.find(user=>user.email==email);
     let userFound = await Users.findAll({
         where: {email: email}
     });  
@@ -171,20 +133,36 @@ async function userGetUserId(email){
 }
 
 async function userFindById(id){
-    //return this.usersData.find(user=>user.id==id);
 
-    let userFound = await Users.findByPk(id);
+    let userFound = await Users.findByPk(id,{include:["role", "userContactInformation"]});
 
     return userFound;
 }
 
-async function getAllUsers(){
-    let users = await Users.findAll({include: ["role"]});
-    return users;
+async function getAllUsers(options = {}){
+
+    if(Object.keys(options).length == 0){
+        return await Users.findAll({include: ["role"]});
+    }
+
+    let limit = Number(options.limit);
+    let page = Number(options.page);
+
+    if(isNaN(limit) || isNaN(page)){ //alguno de los parámetros recibidos no es un numero
+        return []; //retorno un array de productos vacío
+    }
+
+    let offset = page>1?(page-1)*limit:0;
+
+    return await Users.findAll({limit: limit+1, offset, include: ["role"]});
 }
 
-async function userCreate(userInfo){
-    let newUser = await Users.create(userInfo)
+async function userCreate(onlyUserInfo, contactInfo){    
+
+    let newUser = await Users.create(onlyUserInfo)
+
+    await newUser.createUserContactInformation(contactInfo);
+
     return newUser
 }
 
@@ -193,8 +171,26 @@ async function userDeleteById(id){
     await Users.destroy({where: {id}});
 };
 
-async function userUpdate(id, userInfo){
+async function userUpdate(id, userInfo, userContactInfo){
 
-    await Users.update(userInfo,{where: {id}});
+    let userFound = await Users.findByPk(id);
+
+    userFound.set(userInfo); //se actualiza los datos del usuario con los datos ingresados
+
+    await userFound.save(); //se efectua la actualizacion de los datos del usuario
+
+    if(userContactInfo){ //en caso de que se hayan actualizado los datos de contacto del usuario
+        let contactInfo = await userFound.getUserContactInformation();
+
+        //en caso de tener datos de contacto en la BD, se actualizan, sino se crean
+        if(contactInfo){
+            await ContactInformation.update(userContactInfo, {where: {id: contactInfo.id}});
+        }else{
+            await userFound.createUserContactInformation(userContactInfo);
+        }
+    }
+    
+
+
 };
 module.exports = usersDatabase;

@@ -13,6 +13,9 @@
         <h1>Crear nuevo usuario</h1>
 
         <%- include("../partials/create-edit-user-inputs") %>  
+        <%- include("../partials/roleId-selector") %>
+
+        <%- include("../partials/input-avatar") %>
 
         <button type="submit">Crear</button>
 
@@ -23,5 +26,6 @@
 
 
     <%- include("../partials/footer") %>
+    <%- include("../partials/formatValidationScripts", {form_name: locals.form_name, view_name: locals.view_name}) %>
 </body>
 </html>
