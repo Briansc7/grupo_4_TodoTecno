@@ -1,14 +1,39 @@
-<section class="profile-avatar-container">
-    <img src="/images/users/<%= userInfo.image?userInfo.image:"defaultUser.png" %>" alt="" class="profile-avatar-img">
-</section>
-<section class="personal-infomation">
-    <p>Nombre: <%= userInfo.firstName %></p>
-    <p>Apellido: <%= userInfo.lastName %></p>
-    <p>Email: <%= userInfo.email %></p>
-    <p>Cumpleaños: <%= userInfo.birthday?userInfo.birthday:"Sin especificar" %></p>
-    <p>Dirección: <%= userInfo.userContactInformation?.address||userInfo.address||"Sin especificar" %></p>
-    <p>Código Postal: <%= userInfo.userContactInformation?.zipCode||userInfo.zipCode||"Sin especificar" %></p>
-    <p>Localidad: <%= userInfo.userContactInformation?.location||userInfo.location||"Sin especificar" %></p>
-    <p>Provincia: <%= userInfo.userContactInformation?.province||userInfo.province||"Sin especificar" %></p>
-    <p>Teléfono: <%= userInfo.userContactInformation?.phone||userInfo.phone||"Sin especificar" %></p>
-</section>
+<div class="profile-container">
+    <section class="profile-avatar-container">
+      <img src="/images/users/<%= userInfo.image?userInfo.image:"defaultUser.png" %>" alt="" class="profile-avatar-img">
+    </section>
+    <section class="personal-information">
+      <h2 class="profile-name"><%= userInfo.firstName %> <%= userInfo.lastName %></h2>
+      <ul class="profile-details">
+        <li>
+          <span class="detail-label">Email:</span>
+          <span class="detail-value"><%= userInfo.email %></span>
+        </li>
+        <li>
+          <span class="detail-label">Cumpleaños:</span>
+          <span class="detail-value"><%= userInfo.birthday?userInfo.birthday:"Sin especificar" %></span>
+        </li>
+        <li>
+          <span class="detail-label">Dirección:</span>
+          <span class="detail-value"><%= userInfo.userContactInformation?.address||userInfo.address||"Sin especificar" %></span>
+        </li>
+        <li>
+          <span class="detail-label">Código Postal:</span>
+          <span class="detail-value"><%= userInfo.userContactInformation?.zipCode||userInfo.zipCode||"Sin especificar" %></span>
+        </li>
+        <li>
+          <span class="detail-label">Localidad:</span>
+          <span class="detail-value"><%= userInfo.userContactInformation?.location||userInfo.location||"Sin especificar" %></span>
+        </li>
+        <li>
+          <span class="detail-label">Provincia:</span>
+          <span class="detail-value"><%= userInfo.userContactInformation?.province||userInfo.province||"Sin especificar" %></span>
+        </li>
+        <li>
+          <span class="detail-label">Teléfono:</span>
+          <span class="detail-value"><%= userInfo.userContactInformation?.phone||userInfo.phone||"Sin especificar" %></span>
+        </li>
+      </ul>
+    </section>
+  </div>
+  

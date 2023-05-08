@@ -9,10 +9,15 @@
 
     <main>
         <%- include("../partials/user-info") %>
-        <a href="/users/edit-profile"><button class="btn-profile" id="edit-profile-btn">Editar Perfil</button></a>
+        <div class="buttons">
+            <% if(locals.isAdmin&&isAdmin){ %>
+        <a href="#"><button class="admin-panel"><i class="fa-solid fa-screwdriver-wrench"></i> Panel De Administrador</button></a>
+        <% } %>
+        <a href="/users/edit-profile"><button class="edit-profile"><i class="fa-regular fa-pen-to-square"></i> Editar Perfil</button></a>
         <form action="/users/logout" method="POST">
-            <button type="submit">Cerrar Sesión</button>
+            <button type="submit" class="logout-profile"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión</button>
         </form>
+    </div>>
         
     </main>
 
