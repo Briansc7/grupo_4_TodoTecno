@@ -6,6 +6,7 @@ module.exports={
         editProfile: {title: "Editar Perfil", stylesheet: "/css/usersAdd.css"}
     },
     admin: {
+        panelAdmin: {title: "Panel De Administrador", stylesheet:"/css/panelAdmin.css"},
         productCreate: {title: "Crear Producto", stylesheet: "/css/productCreate.css"},
         productEdit: {title: "Modificar Producto", stylesheet: "/css/productEdit.css"},
         usersAdd: {title: "Crear Nuevo Usuario", stylesheet: "/css/usersAdd.css"},

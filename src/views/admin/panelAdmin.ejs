@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/head",{title: head.title, stylesheet: head.stylesheet}) %>
+
+<body>
+    <%- include("../partials/header") %>
+ 
+
+    <main>
+        <div class="container">
+            <h1>Hola, Admin <%= locals.currentUser?.name %></h1>
+            <div class="button-container">
+              <label for="listUsers">Lista De Usuarios</label>
+              <a href="/admin/users"><button class="listUsers list-button"><i class="fas fa-users"></i></button></a>
+              <label for="dash">Dashboard</label>
+              <a href="http://localhost:3002"><button class="dash dashboard-button"><i class="fas fa-chart-bar"></i></button></a>
+              <label for="crearteProduct">Crear Producto</label>
+              <a href="/admin/productCreate"><button class="crearteProduct create-product"><i class="fa-solid fa-plus"></i></button></a>
+              <label for="back">Volver Atras</label>
+              <a href="../users/profile"><button class="back exit-button"><i class="fas fa-arrow-left"></i></button></a>
+            </div>
+          </div>
+    </main>
+
+    <%- include("../partials/footer") %>
+</body>
+</html>

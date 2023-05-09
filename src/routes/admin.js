@@ -49,7 +49,7 @@ let uploadAvatar = multer(
     }
 );
 
-
+adminRouter.get("/panelAdmin", adminAccessValidation, adminController.panelAdmin);
 
 //Rutas para CRUD de productos 
 adminRouter.get("/productCreate", adminAccessValidation, adminController.productCreate);
