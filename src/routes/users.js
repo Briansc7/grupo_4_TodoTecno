@@ -12,6 +12,7 @@ const userFormatValidation = fieldsValidator.userFormatValidation;
 
 const registeredUsersOnlyAccessValidation = require("../middlewares/registeredUsersOnlyAccessValidation");
 const visitorsOnlyAccessValidation = require("../middlewares/visitorsOnlyAccessValidation");
+const adminOptionsVisibilityAccessValidation = require("../middlewares/adminOptionsVisibilityAccessValidation");
 
 let storageAvatar = multer.diskStorage({
     destination: (req, file, cb) => cb(null, "./public/images/users"),
@@ -30,7 +31,7 @@ let uploadAvatar = multer(
 
 usersRouter.get("/login", visitorsOnlyAccessValidation, usersController.login);
 usersRouter.get("/register", visitorsOnlyAccessValidation, usersController.register);
-usersRouter.get("/profile", registeredUsersOnlyAccessValidation, usersController.profile);
+usersRouter.get("/profile",  adminOptionsVisibilityAccessValidation, registeredUsersOnlyAccessValidation, usersController.profile);
 usersRouter.get("/edit-profile", registeredUsersOnlyAccessValidation, usersController.editProfile);
 
 usersRouter.put("/update-profile", registeredUsersOnlyAccessValidation, userFormatValidation, usersController.updateProfile);
