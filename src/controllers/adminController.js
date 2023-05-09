@@ -10,6 +10,8 @@ const diccionary = require(path.resolve(__dirname, "../diccionary/"));
 const frontValidationData = diccionary.frontValidationData;
 const headData = diccionary.headData;
 
+const panelAdminHeadData = headData.admin.panelAdmin;
+
 const productCreateHeadData = headData.admin.productCreate;
 const productEditHeadData = headData.admin.productEdit;
 
@@ -392,7 +394,19 @@ usersDestroy: async (req, res) => {
     }
 },
 
+panelAdmin: async (req, res) => {
+    try {
+        return res.render("./admin/panelAdmin", {
+            head: panelAdminHeadData
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor");
+    }
+},
+
 }
+
 
 async function emailExist(email){
     return await usersDatabase.userFindByEmail(email);
