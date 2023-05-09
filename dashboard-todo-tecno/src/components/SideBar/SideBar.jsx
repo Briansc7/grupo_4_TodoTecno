@@ -1,6 +1,8 @@
 import React from "react";
-import LogoDH from "../../assets/images/logo-DH.png";
+//import Logo from "../../assets/images/logo-DH.png";
 import { Link } from "react-router-dom";
+
+const Logo = "http://localhost:3000/images/logo-tablet.png";
 
 function SideBar(props){
     return(
@@ -9,7 +11,7 @@ function SideBar(props){
         {/* <!-- Sidebar - Brand --> */}
         <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div className="sidebar-brand-icon">
-                <img className="w-100" src={LogoDH} alt="Digital House" />
+                <img className="w-100" src={Logo} alt="Todo Tecno" />
             </div>
         </a>
 
@@ -20,7 +22,7 @@ function SideBar(props){
         <li className="nav-item active">
             <Link className="nav-link" to="/">
                 <i className="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard - DH movies</span></Link>
+                <span>Dashboard - Todo Tecno</span></Link>
         </li>
 
         {/* <!-- Divider --> */}
@@ -33,7 +35,7 @@ function SideBar(props){
         <li className="nav-item">
             <Link className="nav-link collapsed" to="/last-movie">
                 <i className="fas fa-fw fa-folder"></i>
-                <span>Last Movie</span>
+                <span>Información de Ventas</span>
             </Link>
         </li>
 
@@ -41,20 +43,14 @@ function SideBar(props){
         <li className="nav-item">
             <Link className="nav-link" to="/generos">
                 <i className="fas fa-fw fa-chart-area"></i>
-                <span>Generos</span></Link>
+                <span>Crear Producto</span></Link>
         </li>
 
         {/* <!-- Nav Item - Tables --> */}
         <li className="nav-item">
             <Link className="nav-link" to="/listado">
                 <i className="fas fa-fw fa-table"></i>
-                <span>Listado Peliculas</span></Link>
-        </li>
-
-        <li className="nav-item">
-            <Link className="nav-link" to="/busqueda">
-                <i className="fas fa-fw fa-table"></i>
-                <span>Buscador Peliculas</span></Link>
+                <span>Editar/Eliminar Producto</span></Link>
         </li>
 
         {/* <!-- Divider --> */}

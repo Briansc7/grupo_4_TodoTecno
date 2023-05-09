@@ -1,30 +1,58 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Card from "./subcomponents/Card/Card";
 import LastMovieInDB from "./subcomponents/LastMovieInDB/LastMovieInDB";
 import GenresInDB from "./subcomponents/GenresInDB/GenresInDB";
 
 function ContentRowTop(){
 
-    let arrayCards = [
-        {
-            
-            cifra: 21,
-            color: "primary",
-            icono:"fa-film"
-        },
-        {
-            titulo: "Total awards",
-            cifra: 79,
-            color: "success",
-            icono:"fa-award"
-        },
-        {
-            titulo: "Actors quantity",
-            cifra: 49,
-            color: "warning",
-            icono:"fa-user"
-        }
-    ]
+    const [arrayCards, setArrayCards] = useState([]);
+
+    const URL_BASE = "http://localhost:3000/";
+
+    const page = 1;
+
+	const URL_API_PRODUCTS = URL_BASE + "api/products?page=" + page;
+
+    const URL_API_USERS = URL_BASE + "api/users?page=" + page;
+
+    useEffect(() => {
+        async function loadArrayCardsData(){
+            let response, productsData, usersData, categoryCount;
+
+            response = await fetch(URL_API_PRODUCTS);
+			productsData = await response.json();
+
+            categoryCount = Object.keys(productsData.countByCategory).length;
+
+            response = await fetch(URL_API_USERS);
+			usersData = await response.json();
+
+            let arrayCardsData = [
+                {
+                    titulo: "Total de Productos",
+                    cifra: productsData.count,
+                    color: "primary",
+                    icono:"fa-cart-shopping"
+                },
+                {
+                    titulo: "Total de Usuarios",
+                    cifra: usersData.count,
+                    color: "success",
+                    icono:"fa-user"
+                },
+                {
+                    titulo: "Total de Categorías",
+                    cifra: categoryCount,
+                    color: "warning",
+                    icono:"fa-list"
+                }
+            ];
+
+            setArrayCards(arrayCardsData);
+        };
+        
+        loadArrayCardsData();
+    },[]);
 
     return(
         <div className="container-fluid">
