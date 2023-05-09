@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./assets/css/app.css";
+import SideBar from "./components/SideBar/SideBar";
+import ContentWrapper from "./views/ContentWrapper/ContentWrapper";
+import Footer from "./components/Footer/Footer";
+import { Routes, Route } from "react-router-dom";
+import TopBar from "./components/TopBar/TopBar";
+import NotFound from "./views/404/NotFound";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+		<div id="wrapper">
+			{/* <!-- Sidebar --> */}
+			<SideBar />
+			{/* <!-- End of Sidebar --> */}
+
+			<div id="content-wrapper" className="d-flex flex-column">
+				<TopBar />
+
+				<Routes>
+					<Route path="/" element={<ContentWrapper />} />
+					<Route path="*" element={<NotFound />} />					
+				</Routes>
+
+				<Footer />
+			</div>
+		</div>
+	);
 }
 
 export default App;
