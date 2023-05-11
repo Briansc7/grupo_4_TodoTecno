@@ -8,9 +8,9 @@ function ContentWrapper() {
 
     const [columnNames, setColumnNames] = useState({});
 
-    const URL_BASE = "http://localhost:3000/";
+    const [page, setPage] = useState(1);	
 
-    const page = 1;
+    const URL_BASE = "http://localhost:3000/";
 
 	const URL_API_PRODUCTS = URL_BASE + "api/products?page=" + page;
 
@@ -18,7 +18,7 @@ function ContentWrapper() {
         async function loadData(){
             let response, productsData, rowsData = [];
 
-            setColumnNames({ id: "Id", brandName: "Marca", model: "Modelo", categoryName: "Categoría", subCategoryName: "Subcategoría", detail: "Detalle"});
+            setColumnNames({ id: "Id", brandName: "Marca", model: "Modelo", categoryName: "Categoría", subCategoryName: "Subcategoría"});//, detail: "Detalle"});
 
             response = await fetch(URL_API_PRODUCTS);
 			productsData = await response.json();
@@ -31,7 +31,7 @@ function ContentWrapper() {
                     model: product.model, 
                     categoryName: product.category.name, 
                     subCategoryName: product.subCategory.name,
-                    detail: product.detail
+                    //detail: product.detail
                 })
             });
 
@@ -42,7 +42,15 @@ function ContentWrapper() {
 
     },[URL_API_PRODUCTS]);
 
-      
+    function pageDown(){
+        if(page>1){
+            setPage(page-1);
+        }
+    }
+    
+    function pageUp(){
+        setPage(page+1);
+    } 
 
     return (
             <div id="content">
@@ -50,7 +58,12 @@ function ContentWrapper() {
                 <ContentRowTop />
                 {/* <!--End Content Row Top--> */}
                 {<Table data={tableRows} 
-                columns={columnNames} />}
+                columns={columnNames} />} 
+                 
+                <div class="d-flex justify-content-around">
+                    <button class="btn btn-dark p-3" onClick={pageDown}>{"<"}</button>
+                    <button class="btn btn-dark p-3" onClick={pageUp}>{">"}</button>
+                </div>              
             </div>
     );
 }
