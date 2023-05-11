@@ -8,15 +8,39 @@ function ContentWrapper() {
 
     const [columnNames, setColumnNames] = useState({});
 
+    const URL_BASE = "http://localhost:3000/";
+
+    const page = 1;
+
+	const URL_API_PRODUCTS = URL_BASE + "api/products?page=" + page;
+
     useEffect(() => {
         async function loadData(){
-            setColumnNames({ name: "Nombre", lastname: "Apellido"});
-            setTableRows([{name: "Fede", lastname: "Garcia"}, {name: "Lauti", lastname: "Nuñez"}, {name: "Hernan", lastname: "Garcia"}]);
+            let response, productsData, rowsData = [];
+
+            setColumnNames({ id: "Id", brandName: "Marca", model: "Modelo", categoryName: "Categoría", subCategoryName: "Subcategoría", detail: "Detalle"});
+
+            response = await fetch(URL_API_PRODUCTS);
+			productsData = await response.json();
+            productsData = productsData.products;
+
+            productsData.forEach(product => {
+                rowsData.push({
+                    id: product.id, 
+                    brandName: product.brandName, 
+                    model: product.model, 
+                    categoryName: product.category.name, 
+                    subCategoryName: product.subCategory.name,
+                    detail: product.detail
+                })
+            });
+
+            setTableRows(rowsData);
         }
         
         loadData();
 
-    },[]);
+    },[URL_API_PRODUCTS]);
 
       
 
