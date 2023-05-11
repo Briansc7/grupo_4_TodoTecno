@@ -1,35 +1,34 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ContentRowTop from "../../components/ContentRowTop/ContentRowTop";
-import TopBar from "../../components/TopBar/TopBar";
-import Footer from "../../components/Footer/Footer";
 import Table from "../../components/Table/Table";
 
-class ContentWrapper extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            arrayData: [],
-            columns: { name: "Nombre", lastname: "Apellido"}
+function ContentWrapper() {
+
+    const [tableRows, setTableRows] = useState([]);
+
+    const [columnNames, setColumnNames] = useState({});
+
+    useEffect(() => {
+        async function loadData(){
+            setColumnNames({ name: "Nombre", lastname: "Apellido"});
+            setTableRows([{name: "Fede", lastname: "Garcia"}, {name: "Lauti", lastname: "Nuñez"}, {name: "Hernan", lastname: "Garcia"}]);
         }
-    }
+        
+        loadData();
 
-    async componentDidMount() {
-        this.setState({
-            arrayData: [{name: "Fede", lastname: "Garcia"}, {name: "Lauti", lastname: "Nuñez"}, {name: "Hernan", lastname: "Garcia"}]
-        })
-    }
+    },[]);
 
-    render() {
+      
 
-        return (
+    return (
             <div id="content">
                 {/* <!-- Content Row Top --> */}
                 <ContentRowTop />
                 {/* <!--End Content Row Top--> */}
-                {<Table data={this.state.arrayData} columns={this.state.columns} />}
+                {<Table data={tableRows} 
+                columns={columnNames} />}
             </div>
-        )
-    }
+    );
 }
 
 export default ContentWrapper;
