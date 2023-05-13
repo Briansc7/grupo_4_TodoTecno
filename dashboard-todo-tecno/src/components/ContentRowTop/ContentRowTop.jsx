@@ -15,6 +15,8 @@ function ContentRowTop(){
 
     const URL_API_USERS = URL_BASE + "api/users?page=" + page;
 
+    const [categoriesInfo, setCategoriesInfo] = useState({});
+
     useEffect(() => {
         async function loadArrayCardsData(){
             let response, productsData, usersData, categoryCount;
@@ -23,6 +25,8 @@ function ContentRowTop(){
 			productsData = await response.json();
 
             categoryCount = Object.keys(productsData.countByCategory).length;
+
+            setCategoriesInfo(productsData.countByCategory);
 
             response = await fetch(URL_API_USERS);
 			usersData = await response.json();
@@ -78,7 +82,7 @@ function ContentRowTop(){
             {/* <!-- End content row last movie in Data Base --> */}
 
             {/* <!-- Genres in DB --> */}
-            <GenresInDB />
+            <GenresInDB categories={categoriesInfo}/>
         </div>
     </div>
     )
