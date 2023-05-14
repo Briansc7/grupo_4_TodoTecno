@@ -127,6 +127,54 @@ const productsAPIController = {
         }
 
         
+    },
+    lastProductDetail: async (req, res) => {
+        try{
+            let product = await productsDatabase.getAllLastProductDetail();
+
+            let productData = productGetSomeDetails(product);
+
+        /* Atributos restantes no disponibles en productGetSomeDetails */
+
+        productData.artNumber = product.artNumber;
+        productData.price = product.price;
+        productData.discountPorc = product.discountPorc;
+        productData.isOnSale = product.isOnSale;
+        productData.isNew = product.isNew;
+
+        productData.images = []; //array relacion uno a muchos
+
+        product.productImages.forEach(image => {
+            const host = req.protocol + "://" + req.get('host');
+            const imagePath = "/images/products/";
+            productData.images.push({
+                id: image.id,
+                imageUrl: host + imagePath + image.fileName,
+                createdAt: image.createdAt,
+                updatedAt: image.updatedAt
+            });
+        });
+
+        productData.relatedProducts = [];
+
+        product.product1BoughtTogethers.forEach(relatedProduct => {
+            productData.relatedProducts.push(
+                {
+                    id: relatedProduct.productB.id,
+                    brandName: relatedProduct.productB.brand.name,
+                    model: relatedProduct.productB.model,
+                    timesBoughtTogether: relatedProduct.timesBoughtTogether
+                }
+            )
+        }) 
+
+        return res.json(productData);
+        }catch(error){
+            console.log(error);
+            return res.status(500).json({
+                errorMsg: error.msg
+            });
+        }
     }
 };
 

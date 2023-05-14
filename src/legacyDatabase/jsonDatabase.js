@@ -39,7 +39,8 @@ let database = {
     getAllProductsWithSomeDetails: getAllProductsWithSomeDetails,
     getAllCategoriesWithSubcategories: getAllCategoriesWithSubcategories,
     getAllProductDetailsById: getAllProductDetailsById,
-    totalProductsCount: totalProductsCount
+    totalProductsCount: totalProductsCount,
+    getAllLastProductDetail: getAllLastProductDetail
 }
 
 async function productGetById(id){
@@ -223,6 +224,21 @@ async function totalProductsCount(){
     let products = await Products.findAll();
 
     return products.length;
+}
+
+async function getAllLastProductDetail(){
+    let product = await Products.findOne({
+        order: [ [ 'id', 'DESC' ]],
+        include: ["productImages", "brand", 
+        {model: SubCategories, as: "subCategory", include: [{model: Categories, as: "category"}]},
+        {model: Characteristic, as: "characteristics", include:["subCharacteristics"]},
+        {model: RelatedProducts, as: "product1BoughtTogethers", include:[
+            {model: Products, as: "productB", include:["brand"]}
+        ]}
+    ] 
+        });
+
+    return product;
 }
 
 module.exports = database;
