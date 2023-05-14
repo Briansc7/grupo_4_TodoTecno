@@ -61,3 +61,7 @@ body {
   .actions .delete {
     background-color: #f44336;
   }
+
+  .actions .usersDetails {
+    background-color: #45b169;
+  }
