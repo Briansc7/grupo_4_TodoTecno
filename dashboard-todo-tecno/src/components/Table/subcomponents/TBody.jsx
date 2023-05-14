@@ -10,7 +10,7 @@ function TBody(props) {
 
                     <tr key={row.title + i}>
                         {props.columns.map((col) => (
-                            <td>{col == "genre" ? row[col]?.name : row[col]}</td>
+                            <td>{row[col]}</td>
                         ))}
                     </tr>
                 ))

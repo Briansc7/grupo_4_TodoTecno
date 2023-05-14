@@ -7,7 +7,7 @@ function SuperCard(props) {
                     <h5 className="m-0 font-weight-bold text-gray-800">{props.title}</h5>
                 </div>
                 <div className={`card-body`}>
-                    <div className="row">
+                    <div className="d-flex align-items-center flex-column">
                         {props.children}
                     </div>
                 </div>

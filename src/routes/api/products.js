@@ -5,6 +5,8 @@ const productsAPIController = require(path.resolve(__dirname, "../../controllers
 
 router.get('/', productsAPIController.productsList);
 
+router.get('/lastProductDetail', productsAPIController.lastProductDetail);
+
 router.get('/:id', productsAPIController.productDetail);
 
 module.exports = router;
