@@ -37,7 +37,7 @@ function LastMovieInDB() {
             <div className="text-center">
                 <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: "40rem" }} src={photo} alt={`${lastProduct.brandName} ${lastProduct.model} Photo`}/>
             </div>
-            <p>{lastProduct.description}</p>
+            <p className="text-truncate-10-lines WhiteSpace-Pre-Line">{lastProduct.description}</p>
             <a className="btn btn-danger" target="_blank" rel="nofollow" href={detailLink}>Ver Producto en Todo Tecno</a>      
         </SuperCard>
 

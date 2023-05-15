@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import TopBar from "./components/TopBar/TopBar";
 import NotFound from "./views/404/NotFound";
+import './App.css';
 
 function App() {
   return (

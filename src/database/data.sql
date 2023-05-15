@@ -79,6 +79,8 @@ insert into brands set name="Philco";
 set @Philco = LAST_INSERT_ID();
 insert into brands set name="Peabody";
 set @Peabody = LAST_INSERT_ID();
+insert into brands set name="LG";
+set @Lg = LAST_INSERT_ID();
 
 /*Marcas de cada categoría de productos*/
 insert into brandsOfCategories (brandId, categoryId) values
@@ -96,7 +98,12 @@ insert into brandsOfCategories (brandId, categoryId) values
 (@Philco, @category_heladeras_freezers_cavas),
 (@Philco, @category_pequenios_electro),
 
-(@Peabody, @category_pequenios_electro);
+(@Peabody, @category_pequenios_electro),
+
+(@Lg, @category_tv_video),
+(@Lg, @category_audio),
+(@Lg, @category_heladeras_freezers_cavas),
+(@Lg, @category_pequenios_electro);
 
 /* Productos iniciales de prueba, con relacion a imagenes y caractetisticas*/
 insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
@@ -239,6 +246,87 @@ insert into characteristics (name, productId) values
 ("Modelo y origen", @productId);
 insert into subcharacteristics (name, value, characteristicId) values
 ("Modelo", "LN805R", LAST_INSERT_ID());
+
+insert into products (subCategoryId, brandId, model, artNumber, price, discountPorc,
+isOnSale, isNew, description) values (
+@tv_video_tv,
+@Lg,
+'Smart TV 4K 55" 55UP7750PSB', 502186, 215999, 18, 1, 1, 
+"Descripción
+Conectá tus dispositivos
+Mediante sus entradas HDMI podés conectar reproductores de audio y video; consolas de juegos y notebooks. Su gran capacidad de transmisión de datos permite disfrutar de imágenes en alta definición y un sonido de gran fidelidad. También, a través de sus puertos USB podrás reproducir contenido digital (música, imágenes y videos) almacenado en dispositivos externos como tablets, smartphones y pendrives.
+
+Navegá por la web
+Cuenta con la plataforma webOS exclusiva de LG, la cual es muy intuitiva, de fácil navegación y acceso a tu contenido preferido. Disfrutá de las app preinstaladas como Netflix, Youtube y Amazon, entre otras. Gracias a que posee WI-FI incorporado, podrás acceder a internet de forma inalámbrica, navegar y ejecutar tus aplicaciones favoritas.
+
+
+
+Procesador de cuatro núcleos 4K
+
+El procesador elimina el ruido de video y crea colores y contrastes más vibrantes. Las imágenes de baja resolución se mejoran y se reproducen con una calidad cercana a 4K.
+
+
+
+¿Crees que es inteligente? Piénsalo otra vez.
+
+LG ThinQ está aquí para maximizar tu experiencia con el televisor. Elige tu asistente de voz favorito y controla tu televisor con tu voz, con una pantalla de inicio totalmente nueva que ofrece más comodidad y control.
+
+Disfrutá 4K UHD
+Viví imágenes 4K más reales, con finos detalles y colores más vivos con este Smart TV, a través de las pantallas LG que ofrecen cuatro veces más resolución que los Full HD. Y disfruta de las imágenes mas vivas con HDR activo 4K que optimiza cada escena para proporcionar detalles delicados y mejores colores.
+
+
+
+Lleva el cine a casa
+
+FILMMAKER MODE™ y HDR te ofrecen una experiencia de visualización más envolvente. Conecta tus plataformas de transmisión favoritas para acceder a los contenidos que te gustan.
+
+
+
+Entra en la acción
+
+Optimizador de juegos, gráficos HDR ajustados y bajo retraso de entrada hacen que el juego sea más rápido y envolvente. Experiencia deportiva emocionante
+
+
+
+Siéntete como si estuvieras en el estadio
+
+Bluetooth Surround Ready te permite vivir el partido como si estuvieras al lado. Y con el Alerta de deportes siempre sabrás cuándo juegan tus equipos favoritos."
+);
+set @SmartTvLg = LAST_INSERT_ID();
+set @productId = LAST_INSERT_ID();
+insert into productimages (fileName, productId) values
+("LG-55UP7750PSB-01.jpg", @productId), ("LG-55UP7750PSB-02.jpg", @productId), ("LG-55UP7750PSB-03.jpg", @productId),
+("LG-55UP7750PSB-04.jpg", @productId), ("LG-55UP7750PSB-05.jpg", @productId), ("LG-55UP7750PSB-06.jpg", @productId),
+("LG-55UP7750PSB-07.jpg", @productId), ("LG-55UP7750PSB-08.jpg", @productId), ("LG-55UP7750PSB-09.jpg", @productId);
+insert into characteristics (name, productId) values
+("Imagen", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Pulgadas", "55", LAST_INSERT_ID()),
+("Resolución", "3840 x 2160p", LAST_INSERT_ID()),
+("Formato de pantalla", "Plano", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Características Generales", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Smart TV", "Sí", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Caracteristicas Smart", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Youtube", "Sí", LAST_INSERT_ID()),
+("Netflix", "Sí", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Conectividad", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Entradas HDMI", "3", LAST_INSERT_ID()),
+("Entradas USB", "2", LAST_INSERT_ID()),
+("Conexión a Internet", "Sí", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Que Incluye?", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Control Remoto", "Sí", LAST_INSERT_ID());
+insert into characteristics (name, productId) values
+("Modelo y origen", @productId);
+insert into subcharacteristics (name, value, characteristicId) values
+("Modelo", "55UP7750PSB", LAST_INSERT_ID());
 
 
 /* Relaciones entre productos con cantidad de veces que fueron comprados juntos*/
