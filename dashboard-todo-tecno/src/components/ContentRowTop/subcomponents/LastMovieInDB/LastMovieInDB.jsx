@@ -35,10 +35,10 @@ function LastMovieInDB() {
         <SuperCard title="Último Producto Agregado">
             <p><h1>{lastProduct.brandName} {lastProduct.model}</h1></p>
             <div className="text-center">
-                <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: "40rem" }} src={photo} alt=" Star Wars - Mandalorian " />
+                <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: "40rem" }} src={photo} alt={`${lastProduct.brandName} ${lastProduct.model} Photo`}/>
             </div>
             <p>{lastProduct.description}</p>
-            <a className="btn btn-danger" target="_blank" rel="nofollow" href={detailLink}>Ver Detalle de Producto</a>      
+            <a className="btn btn-danger" target="_blank" rel="nofollow" href={detailLink}>Ver Producto en Todo Tecno</a>      
         </SuperCard>
 
 
