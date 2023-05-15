@@ -8,29 +8,26 @@ function ContentWrapper() {
 
     const [columnNames, setColumnNames] = useState({});
 
-    const [page, setPage] = useState(1);
-
-    const [lastPage, setLastPage] = useState(1);    
-    const productsPerPage = 10;
+    const [previousPage, setPreviousPage] = useState(null);
+    const [nextPage, setNextPage] = useState(null);  
 
     const URL_BASE = "http://localhost:3000/";
 
-	const URL_API_PRODUCTS = URL_BASE + "api/products?page=" + page;
+    const [URL_API_PRODUCTS, setURL_API_PRODUCTS] = useState(URL_BASE + "api/products?page=1");
 
     useEffect(() => {
         async function loadData(){
-            let response, productsData, rowsData = [], productsCount;
+            let response, responseJson, productsData, rowsData = [], productsCount;
 
-            setColumnNames({ id: "Id", brandName: "Marca", model: "Modelo", categoryName: "Categoría", subCategoryName: "Subcategoría"});//, detail: "Detalle"});
+            setColumnNames({ id: "Id", brandName: "Marca", model: "Modelo", categoryName: "Categoría", subCategoryName: "Subcategoría"});
 
             response = await fetch(URL_API_PRODUCTS);
-			productsData = await response.json();
-            productsCount = productsData.count;
-            productsData = productsData.products;
+			responseJson = await response.json();
+            productsCount = responseJson.count;
+            productsData = responseJson.products;
 
-            const lastPageCalculation = Math.ceil(productsCount/productsPerPage);
-            console.log(lastPageCalculation);
-            setLastPage(lastPageCalculation);
+            setPreviousPage(responseJson.previous);
+            setNextPage(responseJson.next);
 
             productsData.forEach(product => {
                 rowsData.push({
@@ -38,8 +35,7 @@ function ContentWrapper() {
                     brandName: product.brandName, 
                     model: product.model, 
                     categoryName: product.category.name, 
-                    subCategoryName: product.subCategory.name,
-                    //detail: product.detail
+                    subCategoryName: product.subCategory.name
                 })
             });
 
@@ -51,15 +47,15 @@ function ContentWrapper() {
     },[URL_API_PRODUCTS]);
 
     function pageDown(){
-        if(page>1){
-            setPage(page-1);
+        if(previousPage){
+            setURL_API_PRODUCTS(previousPage);
         }
     }
     
     function pageUp(){
-        if(page < lastPage){
-            setPage(page+1);
-        }        
+        if(nextPage){
+            setURL_API_PRODUCTS(nextPage);
+        }   
     } 
 
     return (
@@ -71,8 +67,8 @@ function ContentWrapper() {
                 columns={columnNames} />} 
                  
                 <div class="d-flex justify-content-around">
-                    <button class={`btn p-3 ${page>1?"btn-dark":"btn-secondary"}`} onClick={pageDown}>{"<"}</button>
-                    <button class={`btn p-3 ${page<lastPage?"btn-dark":"btn-secondary"}`} onClick={pageUp}>{">"}</button>
+                    <button class={`btn p-3 ${previousPage?"btn-dark":"btn-secondary"}`} onClick={pageDown}>{"<"}</button>
+                    <button class={`btn p-3 ${nextPage?"btn-dark":"btn-secondary"}`} onClick={pageUp}>{">"}</button>
                 </div>              
             </div>
     );
