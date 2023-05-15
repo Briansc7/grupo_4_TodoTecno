@@ -18,10 +18,12 @@ function LastMovieInDB() {
 
             response = await fetch(URL_API_LAST_PRODUCT);
 			productData = await response.json();
-            
-            setPhoto("http://localhost:3000/images/products/"+(productData.images[0]??"defaultProduct.png"));
 
-            setDetailLink("http://localhost:3000/products/productDetail/"+productData.id);
+            console.log(productData);
+            
+            setPhoto(productData.images[0]?.imageUrl??`${URL_BASE}images/products/defaultProduct.png`);
+
+            setDetailLink(`${URL_BASE}products/productDetail/${productData.id}`);
 
             setLastProduct(productData);
         };
