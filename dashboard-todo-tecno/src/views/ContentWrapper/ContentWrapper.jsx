@@ -8,7 +8,10 @@ function ContentWrapper() {
 
     const [columnNames, setColumnNames] = useState({});
 
-    const [page, setPage] = useState(1);	
+    const [page, setPage] = useState(1);
+
+    const [lastPage, setLastPage] = useState(1);    
+    const productsPerPage = 10;
 
     const URL_BASE = "http://localhost:3000/";
 
@@ -16,13 +19,18 @@ function ContentWrapper() {
 
     useEffect(() => {
         async function loadData(){
-            let response, productsData, rowsData = [];
+            let response, productsData, rowsData = [], productsCount;
 
             setColumnNames({ id: "Id", brandName: "Marca", model: "Modelo", categoryName: "Categoría", subCategoryName: "Subcategoría"});//, detail: "Detalle"});
 
             response = await fetch(URL_API_PRODUCTS);
 			productsData = await response.json();
+            productsCount = productsData.count;
             productsData = productsData.products;
+
+            const lastPageCalculation = Math.ceil(productsCount/productsPerPage);
+            console.log(lastPageCalculation);
+            setLastPage(lastPageCalculation);
 
             productsData.forEach(product => {
                 rowsData.push({
@@ -49,7 +57,9 @@ function ContentWrapper() {
     }
     
     function pageUp(){
-        setPage(page+1);
+        if(page < lastPage){
+            setPage(page+1);
+        }        
     } 
 
     return (
@@ -61,8 +71,8 @@ function ContentWrapper() {
                 columns={columnNames} />} 
                  
                 <div class="d-flex justify-content-around">
-                    <button class="btn btn-dark p-3" onClick={pageDown}>{"<"}</button>
-                    <button class="btn btn-dark p-3" onClick={pageUp}>{">"}</button>
+                    <button class={`btn p-3 ${page>1?"btn-dark":"btn-secondary"}`} onClick={pageDown}>{"<"}</button>
+                    <button class={`btn p-3 ${page<lastPage?"btn-dark":"btn-secondary"}`} onClick={pageUp}>{">"}</button>
                 </div>              
             </div>
     );
