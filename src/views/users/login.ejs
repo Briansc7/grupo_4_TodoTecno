@@ -9,26 +9,18 @@
 
     <main class="main-login">
         <div class="login-form">
-        <form class="login-social" action="/users/login" method="POST">
-            <button href="#"  class="btn-google" type="" > 
-                <svg class="login-google"  viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"></path><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"></path><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"></path><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"></path><path fill="none" d="M2 2h44v44H2z"></path></svg>
-                    <p>Ingresa con Google</p></button>        
-            <button href="#" class="btn-facebook" type="submit">
-                <i class="fa-brands fa-square-facebook"></i>
-                    <p>Ingresa con Facebook</p></button>
-        </form>
           <form class="form-login" action="/users/login" method="POST">
             <div class="login">
                 <h2>Clientes Registrados</h2>
                 <p>Si tiene una cuenta, inicie sesión con su dirección de correo electrónico</p>
                     <br>
             
-                <h5>Correo electronico*</h5>
+                <h5>Correo electronico</h5>
                 <input class="input" type="text" name="email" placeholder="usuario@email.com" value="<%= locals.old && locals.old.email %>">
                     <br>
                     <span class="errors" name="email"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
                     <br>
-                <h5>Contraseña*</h5>
+                <h5>Contraseña</h5>
                
                 <input  class="input" type="password" name="password" placeholder="Ingresa tu contraseña">
              
@@ -40,12 +32,21 @@
                 <br>
                 <div>
                      <button  class="btn-submit" type="submit"><p>Iniciar sesion</p></button>
-                  
+                     <br>
+                     <h5 class="required-fields"><p>Campos requeridos *</p></h5>
                     <br>
                      <a href="#" class="forget-pass" type="submit">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
         </form>
+        <div class="login-gf">
+            <a href=""><button class="btn-google"> 
+                <svg class="login-google"  viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"></path><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"></path><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"></path><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"></path><path fill="none" d="M2 2h44v44H2z"></path></svg>
+            </button></a>        
+            <a href=""><button class="btn-facebook">
+                <i class="fa-brands fa-square-facebook"></i>
+            </button></a>
+        </div>
         <form class="new-login" action="/users/register" method="get">
             <div class= "new-register">   
                 <h2>Nuevos Clientes</h2>        
@@ -56,7 +57,7 @@
                 <button href="/views/users/register"  class="btn-register" type="submit"><p>Crear Cuenta</p></button>
             </div>
         </form>
-            <h5 class="required-fields"><p>Campos requeridos *</p></h5>
+            
 
        
         </div>
