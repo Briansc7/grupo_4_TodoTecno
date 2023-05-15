@@ -1,11 +1,9 @@
 
 .main-login{
-
+    margin: 25px;
     display: grid;
     padding: 1em 1em;
     justify-content: center;
-    border-top: solid black 2px;
-    border-bottom: solid black 2px;
 
 }
 
@@ -17,6 +15,32 @@
 
 .button{
     width: 100%;
+}
+
+.btn-google {
+  border: none;
+  width: 20%;
+  border-radius: 50%;
+  background-color: white;
+  padding: 25px;
+  
+} .btn-facebook {
+  border: none;
+  width: 20%;
+  border-radius: 50%;
+  background-color: white;
+  padding: 27px;
+} .login-gf {
+  margin: 10px 0px;
+  text-align: center;
+}
+
+.btn-google:hover {
+  border: 2px rgb(224, 107, 72) solid;
+  transform: rotate(-15deg);
+} .btn-facebook:hover {
+  border: 2px rgb(72, 74, 224) solid;
+  transform: rotate(-15deg);
 }
 
  .new-register{
