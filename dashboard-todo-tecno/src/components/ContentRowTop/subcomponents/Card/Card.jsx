@@ -7,7 +7,7 @@ function Card(props) {
         color = "danger",
         cifra = 0,
         icono = "",
-        myFunc = () => {}
+      //  myFunc = () => {}
     } = props;
 
     return(
