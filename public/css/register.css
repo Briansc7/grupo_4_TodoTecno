@@ -2,8 +2,6 @@
     width: 100%;
     display: grid;
     padding: 1em 1em;
-    border-top: solid black 2px;
-    border-bottom: solid black 2px;
     justify-content: center;    
 }
 
@@ -70,7 +68,28 @@ main div .submit {
     border-radius: 2em;
 }
 
-
+.btn-google {
+    border: none;
+    width: 20%;
+    border-radius: 50%;
+    background-color: white;
+    padding: 25px;
+  } .btn-facebook {
+    border: none;
+    width: 20%;
+    border-radius: 50%;
+    background-color: white;
+    padding: 27px;
+  } .login-gf {
+    margin: 10px 0px;
+    text-align: center;
+  }
+  
+  .btn-google:hover {
+    border: 2px rgb(224, 107, 72) solid;
+  } .btn-facebook:hover {
+    border: 2px rgb(72, 74, 224) solid;
+  }
 
  @media (min-width: 769px) {
        main .register{
