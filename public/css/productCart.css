@@ -51,13 +51,14 @@
   }
   
   /* Estilos para el botón de eliminar producto */
-  .icons {
+  .removeProduct {
+    border: none;
     font-size: 24px;
     color: #ff5722;
     cursor: pointer;
   }
   
-  .icons:hover {
+  .removeProduct:hover {
     color: #ff784e;
   }
   
@@ -250,7 +251,6 @@
 
   .removeProduct {
     background-color: transparent;
-    border: none;
     cursor: pointer;
     font-size: 20px;
     color: #ccc;
@@ -259,6 +259,7 @@
   
   .removeProduct:hover {
     color: #f00;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
 
   /* Webkit (Chrome, Safari, Opera) */
