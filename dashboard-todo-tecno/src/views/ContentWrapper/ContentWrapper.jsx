@@ -35,7 +35,8 @@ function ContentWrapper() {
                     brandName: product.brandName, 
                     model: product.model, 
                     categoryName: product.category.name, 
-                    subCategoryName: product.subCategory.name
+                    subCategoryName: product.subCategory.name,
+                    link: product.detail //debe ser el ultimo argumento para no mostrarse en las columnas
                 })
             });
 
