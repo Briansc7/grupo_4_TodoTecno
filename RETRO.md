@@ -87,3 +87,20 @@ Algunos miembros del equipo, al intentar resolver las tareas por sí mismos, ter
 
 <h4>5) Dejar de hacer:</h4> Algunos miembros del equipo han dejado de comunicarse por períodos prolongados de tiempo. Se propone que los mismos realicen una autocrítica respecto a los objetivos personales que esperan lograr con el curso y con el proyecto a fin de que la comunicación vuelva a ser fluida y ya no afecte el desarrollo de las tareas del proyecto.
 
+<h2>Retrospectiva Sprint 8</h2>
+
+Durante el desarrollo del Sprint 8 se implementó el dashboard y se terminaron de cerrar tareas pendientes de la página web. La mayoría de las tareas nuevamente se dividieron en frontend y backend como en entregas anteriores, según las habilidades de los integrantes del grupo. Durante este sprint, el equipo sufrió la baja de otro de sus integrantes, quedando el mismo con solamente dos miembros. Sin embargo se logró completar los objetivos propuestos en el desarrollo del sprint.
+
+
+<h3>Comenzar a hacer, Hacer más, Continuar haciendo y Hacer menos</h3>
+
+<h4>1) Comenzar a hacer:</h4> En esta entrega, se tuvieron reuniones dos veces por semana en la que se pudo trabajar en conjunto y solucionar problemas surgidos en el desarrollo del proyecto. Se propone agregar una reunión adicional los fines de semana para el mismo fin.
+
+<h4>2) Hacer más:</h4> En este sprint, los dos miembros restantes tuvieron mejor comunicación y la realización de las tareas fue más fluida. Pero aún sigue siendo necesaria más participación en Trello por parte de algunos integrantes del grupo. Se propone dividir la confección del product backlog entre todos los integrantes del equipo a fin de tener una mayor participación en el mismo.
+
+<h4>3) Continuar haciendo:</h4> En este sprint, se dividieron las tareas a realizar entre tareas obligatorias y opcionales de forma visual con colores distintos. Se propone continuar con esta división para visualizar más rápidamente la prioridad de las tareas a la hora de asignarlas.
+
+<h4>4) Hacer menos:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos hacer menos.
+
+<h4>5) Dejar de hacer:</h4> En esta etapa no hemos encontrado puntos en los que deberíamos dejar de hacer.
+
