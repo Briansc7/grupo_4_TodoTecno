@@ -55,8 +55,7 @@ a.action-button,
 a.buy-now-button,
 .btn-profile,
 .btn-register,
-.btn-submit,
-.btn-reset{
+.btn-submit{
      display: flex;
      align-items: center;
      justify-content: center;
@@ -81,7 +80,7 @@ a.buy-now-button:hover,
 
 /*INPUTS*/
 
-.input{
+/*.input{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +93,7 @@ a.buy-now-button:hover,
     color: black;
     padding: 5px;
    
-}
+} */
 
 .input-section{
 display:grid;

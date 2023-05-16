@@ -10,14 +10,54 @@
    padding-left: 15px;
 }
 
+h5 {
+    margin-bottom: 15px;
+}
+
+input[type="checkbox"]{
+    align-items: center;
+}
 
 .product-create{
-    width: 80%;
-    display: grid;
-    align-items: center;
+    text-align: left;
+    max-width: 500px;
+    margin: 25px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+.product-create input {
+    width: 100%;
     padding: 10px;
-   
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
 }
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.product-create option {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
 .create-edite-img{
     padding: 5px;
 }
@@ -25,17 +65,15 @@
     width: 100%;
 }
 
-.product-create-btn{
-    display: grid;
-    grid-template-columns: auto;
-    width: 100%;
-    padding: 5px;
-}
-.product-create-btn button{
-    padding: 10px;
-    border-radius: 2em;
+.container-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.container-buttons button {
+    margin: 0px 25px;
+}
 
 @media (min-width: 769px) {
     .product-create{
@@ -44,4 +82,41 @@
   
 }
 
+.button-create {
+    border: none;
+    background-color: rgb(82, 165, 82);
+    color: white;
+    padding: 10px;
+    border-radius: 10%;
+}
 
+.button-resset {
+    border: none;
+  background-color: rgb(233, 174, 66);
+  color: white;
+  padding: 10px;
+  border-radius: 10%;
+}
+
+select {
+    font-size: 16px;
+    color: #333;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+  }
+  
+  select:hover,
+  select:focus {
+    border-color: #aaa;
+    outline: none;
+  }
+  
+  select option {
+    font-size: 16px;
+    color: #333;
+  }
+  
