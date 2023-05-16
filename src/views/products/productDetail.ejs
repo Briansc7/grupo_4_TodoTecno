@@ -21,6 +21,11 @@
         </section>
         <section class="picture">
             <img src="/images/products/<%= product.productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="" class="product-picture">
+            <div class="images-products">
+            <img src="/images/products/<%= product.productImages[1]?.fileName ?? 'defaultProduct.png' %>" alt="" class="product-picture">
+            <img src="/images/products/<%= product.productImages[2]?.fileName ?? 'defaultProduct.png' %>" alt="" class="product-picture">
+            <img src="/images/products/<%= product.productImages[3]?.fileName ?? 'defaultProduct.png' %>" alt="" class="product-picture">
+        </div>
         </section>
         <section class="prod-main-info">
             <h3><%= product.category %> <%= product.brand.name %> <%= product.model %></h3>
@@ -70,7 +75,11 @@
                     <% } %>
                 </div>
                 </article>
-            <%  } %>                   
+
+            <%  } %>
+            <h3 class="description-title">Descripcion</h3>
+            <p class="description"><%= product.description %></p>
+
         </section>
         <% } %>
         <% }else { %>
@@ -80,4 +89,5 @@
 
     <%- include("../partials/footer") %>
 </body>
+    <script src="/js/productDetailMenu.js"></script>
 </html>
