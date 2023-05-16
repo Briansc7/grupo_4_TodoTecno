@@ -54,7 +54,7 @@
                 checked
             <% } %>
         </h5>
-        <span class="errors" name="isNew"><%= locals.errors && errors.isNew ? errors.isNew.msg : null %></span>
+        <span class="errors" name="isNew"><%= locals.errors && errors.isNew ? errors.isNew.msg : null %></span>   
         <br>      
     <div class="input-section"><h5>Descripción</h5>
         <textarea class="input" name="description"><%= locals.old?.description || locals.product?.description %></textarea>
@@ -69,10 +69,10 @@
         <span class="errors" name="images"><%= locals.errors && errors.images ? errors.images.msg : null %></span>
         <% } %>        
         
-        <div class="product-create-btn product-edit-btn">
-             <button class="btn-reset" type="reset">Reiniciar Campos</button>
+        <div class="container-buttons">
+             <button class="button-resset" type="reset">Reiniciar Campos</button>
              <br>
-             <button class="btn-submit" type="submit"><% if(!locals.product){%>
+             <button class="button-create" type="submit"><% if(!locals.product){%>
                 Crear Producto
             <%}else{%>
                 Guardar Cambios
