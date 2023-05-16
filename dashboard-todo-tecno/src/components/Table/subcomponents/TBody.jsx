@@ -8,7 +8,7 @@ function TBody(props) {
             {
                 props.data.map((row, i) => (
 
-                    <tr key={row.title + i} onClick={() => openLink(row.link)}>
+                    <tr key={row.title + i} onClick={() => openLink(row.link)} style={{cursor: "pointer"}}>
                         {props.columns.map((col) => (
                             <td>{row[col]}</td>
                         ))}
