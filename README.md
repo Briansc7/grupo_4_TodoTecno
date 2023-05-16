@@ -49,6 +49,8 @@ Cargar las imágenes de los productos precargados y crear archivo .env con el si
 Editar el archivo .env ubicado en la raíz del proyecto con el usuario y contraseña correspondiente a la base de datos mysql.
 Por defecto considera que el usuario es root y no posee contraseña.
 
+Levantar el servidor de Mysql.
+
 Importar la estructura de la base de datos a partir del archivo estruture.sql ubicado en /src/database.
 
 Realizar la carga inicial de la base de datos ejecutando el script data.sql ubicado en /src/database.
@@ -57,8 +59,13 @@ En la carpeta /src/database se puede ver el DER de la base de datos consultando 
 
 En caso de que hayan futuros cambios en el repositorio en cuanto a la estructura y/o datos precargado en la base de datos, es necesario volver a ejecutar los pasos anteriores desde la ejecución del comando npm run cdata.
 
-Para levantar el servidor ejecutar el comando:
+Para levantar el servidor de backend ejecutar el comando:
 > npm start
+
+Para levantar el dashboard, es necesario ubicarse en la carpeta dashboard-todo-tecno y dentro de la misma ejecutar el comando:
+>npm start
+
+El dashboard requiere que previamente se levanten tanto el servidor de Mysql con la base de datos, como levantar el servidor de backend.
 
 <h2>Rutas</h2>
 

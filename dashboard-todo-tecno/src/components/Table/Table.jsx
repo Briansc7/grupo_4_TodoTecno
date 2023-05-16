@@ -5,8 +5,8 @@ function Table(props) {
     const columns = Object.keys(props.columns);
 
     return(
-        <table className="table table-striped">
-                <thead>
+        <table className="table table-bordered table-hover">
+                <thead className="thead-dark">
                     <tr>
                         { columns.map((col, i) =>  <th key={col + i}>{props.columns[col]}</th> )}
                     </tr>
