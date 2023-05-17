@@ -85,3 +85,38 @@
     margin: 0px 10px;
   }
 }
+
+.rol {
+  text-align: center;
+  margin-right: 150px;
+}
+
+.rolUser {
+  font-weight: bold;
+
+}
+
+.edit {
+  border: none;
+  background-color: rgb(233, 174, 66);
+  color: white;
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.delete {
+  border: none;
+  background-color: rgb(192, 81, 81);
+  color: white;
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+} .button-container .delete {
+  margin-left: 15px;
+}
