@@ -20,9 +20,13 @@
                             <a href="/products/productDetail/<%=products[i].id%>" class= "product-search">                 
                                 <img src="/images/products/<%= products[i].productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="imagen de producto" class="product-search_img">
                                 <article class="product-search_data">
-                                    <p class="price">$<%= products[i].price %></p>
-                                    <p class="price-discount">$<%= products[i].price - (products[i].price * (products[i].discountPorc/100)) %></p>
-                                    <p class="discount"><%= products[i].discountPorc %>% OFF</p>
+                                    <% if(products[i].isOnSale){ %>
+                                        <p class="price">$<%= products[i].price %></p>
+                                        <p class="price-discount">$<%= products[i].price - (products[i].price * (products[i].discountPorc/100)) %></p>
+                                        <p class="discount"><%= products[i].discountPorc %>% OFF</p>
+                                    <% }else{ %>
+                                        <p class="price-discount">$<%= products[i].price %></p>
+                                    <% } %>
                                     <h4 class="description">[<%= products[i].subCategory.name %>] <%= products[i].brand.name %> <%= products[i].model %></h4>
                                 </article>
                             </a>  

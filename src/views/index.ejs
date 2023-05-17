@@ -92,9 +92,13 @@
                             <img src="images\products\<%= productsNew[i].productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="<%= productsNew[i].category %> <%= productsNew[i].brand %> <%= productsNew[i].model %>" class="product_img">
                             </div>
                             <div class="main-article">
-                                <p class="price">$<%= productsNew[i].price %></p>
-                                <p class="price-discount">$<%= productsNew[i].price - (productsNew[i].price * (productsNew[i].discountPorc/100)) %></p>
-                                <p class="discount"><%= productsNew[i].discountPorc %>% OFF</p>
+                                <% if(productsNew[i].isOnSale){ %>
+                                    <p class="price">$<%= productsNew[i].price %></p>
+                                    <p class="price-discount">$<%= productsNew[i].price - (productsNew[i].price * (productsNew[i].discountPorc/100)) %></p>
+                                    <p class="discount"><%= productsNew[i].discountPorc %>% OFF</p>
+                                <% }else{ %>
+                                    <p class="price-discount">$<%= productsNew[i].price %></p>
+                                <% } %>
                                 <h4 class="description">[<%= productsNew[i].subCategory.name %>] <%= productsNew[i].brand.name %> <%= productsNew[i].model %></h4>
                             </div>
                         </article>
