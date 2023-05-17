@@ -12,10 +12,10 @@
             <h2 class="title">Filtrar por</h2>
             <ul class="filter-list">
               <a href="#" class="filter-link"><h3>Categoria</h3></a>
-                <% for(i=0; i<products.length; i++) { %>
+                <% for(i=0; i<categories.length; i++) { %>
                   <li class="filter-item">
                      <ul class="sub-filter-list">
-                          <li class="sub-filter-item"><a href="#"><%= products[i].category %></a></li>
+                          <li class="sub-filter-item"><a href="#"><%= categories[i].name %></a></li>
                      </ul>
                   </li>
                 <% } %>   
