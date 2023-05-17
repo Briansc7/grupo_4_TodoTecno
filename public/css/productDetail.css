@@ -251,4 +251,9 @@ a.buy-now-button, a.action-button {
     font-weight: bold;
     color: var(--discountColor);
 }
+
+.price-initial {
+    font-size: 45px;
+    color: var(--verdeOscuro);
+}
  
