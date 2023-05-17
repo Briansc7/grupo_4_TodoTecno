@@ -36,7 +36,7 @@
                 <label class="price-discount"><h2>$ <%= product.price - (product.price * (product.discountPorc/100)) %></h2></label>
                 <label class="discount"><%= product.discountPorc %>% OFF</label>
             <% }else{ %>
-                <p class="price-discount">$<%= Intl.NumberFormat('de-DE').format(product.price) %></p>
+                <p class="price-initial">$<%= Intl.NumberFormat('de-DE').format(product.price) %></p>
             <% } %>
             <label><a href="">Ver todos los medios de pago</a></label>
         </section>
