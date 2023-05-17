@@ -175,7 +175,7 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @tv_video_accesorios,
 @Iofi,
-"TVS-MOV-17-905586", 20064031, 16999, 16, 1, 1,
+"TVS-MOV-17-905586", 20064031, 16999, 16, 0, 1,
 "DESCRIPCIÓN - Norma: vesa - Medida: 200 x 200 mm / 300 x 300 mm / 400 x 400 mm / 600 x 400 mm - Móvil: Si - Carga máxima: 65 Kg - Inclinación 15° - Giro: 60° Hacia ambos lados - Distancia a la pared: 69- 635 mm - Tipo de brazo: 6 brazos - Super resistente nivelando el peso en todos sus brazos - Kit de tornillos para instalación: Si"
 );
 set @SoporteTVIofi = LAST_INSERT_ID();
@@ -197,7 +197,7 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @ExhibidorasCavas,
 @Philco,
-"220V rgh94PHCAV052N hrf", 8458540, 124999, 3, 1, 1,
+"220V rgh94PHCAV052N hrf", 8458540, 124999, 3, 1, 0,
 "CAVA ELÉCTRICA PHILCO PHCAV052N 52 BOTELLAS - DISPLAY ELECTRÓNICO - CAPACIDAD: 52 BOTELLAS - IDEAL PARA ALMACENAMIENTO PROLONGADO - RANGO DE TEMPERATURA AJUSTABLE: 5 a 18°C - CONTROL DE VIBRACION GRACIAS A LOS ESTANTES DE MADERA - LUZ LED INTERIOR - SISTEMA DE ENFRIAMIENTO POR MOTOR COMPRESOR Y VENTILADOR INTERNO - SÚPER SILENCIOSO - MEDIDAS: 84 x 49,5 x 58 Cms - PESO: 38 KG "
 );
 set @CavaPhilco = LAST_INSERT_ID();
@@ -251,7 +251,7 @@ insert into products (subCategoryId, brandId, model, artNumber, price, discountP
 isOnSale, isNew, description) values (
 @tv_video_tv,
 @Lg,
-'Smart TV 4K 55" 55UP7750PSB', 502186, 215999, 18, 1, 1, 
+'Smart TV 4K 55" 55UP7750PSB', 502186, 215999, 18, 0, 1, 
 "Descripción
 Conectá tus dispositivos
 Mediante sus entradas HDMI podés conectar reproductores de audio y video; consolas de juegos y notebooks. Su gran capacidad de transmisión de datos permite disfrutar de imágenes en alta definición y un sonido de gran fidelidad. También, a través de sus puertos USB podrás reproducir contenido digital (música, imágenes y videos) almacenado en dispositivos externos como tablets, smartphones y pendrives.
