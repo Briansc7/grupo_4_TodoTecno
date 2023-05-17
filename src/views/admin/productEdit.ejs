@@ -8,21 +8,27 @@
  
 <main class=" main-create">
 <% if(product) { %>
+    <div class="product-edit">
+
 <form class= "product" action="/admin/productEdit/<%= product.id %>?_method=PUT" method="POST">
     
-<h1>Modificar producto</h1>
 
-    <div class="product-create">
+
+        <h1>Modificar producto</h1>
+
         <%- include("../partials/create-edit-product-inputs", {product}) %>        
-    </div>
 
 </form>
 <form class="form-delete" action="/admin/productDelete/<%= product.id %>?_method=DELETE" method="POST">
+    <div class="btn-dlt">
     <button class="btn-delete" type="submit">Eliminar Producto</button>
+    </div>
  </form>
  <% }else { %>
     <h2>No existe el producto</h2>
 <% } %>
+</div>
+
 </main>
 
 
