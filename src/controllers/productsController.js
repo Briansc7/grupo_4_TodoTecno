@@ -12,7 +12,7 @@ productDetail: async (req, res) => res.render("./products/productDetail",
 
 productCart: (req, res) => res.render("./products/productCart", {head: productCartHeadData}),
 
-productsList: async (req, res) => res.render("./products/productsList", {head: productsListHeadData, products: await database.getAllProducts(), categories: await database.getAllCategories()})
+productsList: async (req, res) => res.render("./products/productsList", {head: productsListHeadData, products: await database.getAllProducts(), categories: await database.getAllCategories(), brands: await database.getAllBrands()})
 }
 
 
