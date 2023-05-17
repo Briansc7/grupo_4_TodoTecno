@@ -30,6 +30,8 @@
         <section class="prod-main-info">
             <h3><%= product.category %> <%= product.brand.name %> <%= product.model %></h3>
             <label class="price"><h2>$ <%= Intl.NumberFormat('de-DE').format(product.price) %></h2></label>
+            <label class="price-discount"><h2>$ <%= product.price - (product.price * (product.discountPorc/100)) %></h2></label>
+            <label class="discount"><%= product.discountPorc %>% OFF</label>
             <label><a href="">Ver todos los medios de pago</a></label>
         </section>
         <section class="send-info">
@@ -55,6 +57,8 @@
                     <img src="/images/products/<%= recommendations[i].productB.productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="" class="recomendation-pic">
                     <h5><%= recommendations[i].category %> <%= recommendations[i].productB.brand %> <%= recommendations[i].productB.model %></h5>
                     <label for="" class="recomend-price">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].productB.price) %></label>
+                    <label class="recomend-price-discount">$ <%= recommendations[i].productB.price - (recommendations[i].productB.price * (recommendations[i].productB.discountPorc/100)) %></label>
+                    <label class="recomend-discount"><%= recommendations[i].productB.discountPorc %>% OFF</label>                                  
                 </article>
             <% } %> 
                      
