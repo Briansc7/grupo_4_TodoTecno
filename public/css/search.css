@@ -31,13 +31,22 @@
 }
 
 .discount{
-    color: red;
+    color: var(--discountColor);
+}
+
+.price {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.price-discount {
+  color: var(--verdeOscuro);
+  font-size: 25px;  
 }
 
 .product-container_search {
     background-color: white;
     width: 95%;
-    max-height: 450px;
     padding: 15px;
 }
 

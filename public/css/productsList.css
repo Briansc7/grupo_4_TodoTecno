@@ -43,7 +43,17 @@ article{
 }
 
 .discount{
-  color: red;
+  color: var(--discountColor);
+}
+
+.price {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.price-discount {
+  color: var(--verdeOscuro);
+  font-size: 25px;
 }
 
 .cont-product {

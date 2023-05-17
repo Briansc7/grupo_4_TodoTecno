@@ -64,6 +64,7 @@
                                   </div>
                                   <div class="main-article">
                                     <p class="price">$<%= products[i].price %></p>
+                                    <p class="price-discount">$<%= products[i].price - (products[i].price * (products[i].discountPorc/100)) %></p>
                                     <p class="discount"><%= products[i].discountPorc %>% OFF</p>
                                     <h4 class="description"><%= products[i].category %> <%= products[i].brand %> <%= products[i].model %></p>
                             </a>
