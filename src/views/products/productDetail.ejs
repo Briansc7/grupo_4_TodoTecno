@@ -59,17 +59,19 @@
             <h3 class="recommend-title">Personas Interesadas en el producto también compraron</h3>
 
             <% for(i=0;i<recommendations.length;i++) { %>
-                <article class="recommendation-item">
-                    <img src="/images/products/<%= recommendations[i].productB.productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="" class="recomendation-pic">
-                    <h5><%= recommendations[i].category %> <%= recommendations[i].productB.brand %> <%= recommendations[i].productB.model %></h5>
-                    <% if(recommendations[i].productB.isOnSale){ %>
-                        <label for="" class="recomend-price">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].productB.price) %></label>
-                        <label class="recomend-price-discount">$ <%= recommendations[i].productB.price - (recommendations[i].productB.price * (recommendations[i].productB.discountPorc/100)) %></label>
-                        <label class="recomend-discount"><%= recommendations[i].productB.discountPorc %>% OFF</label>
-                    <% }else{ %>
-                        <label class="recomend-price-discount">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].productB.price) %></label>
-                    <% } %>                                  
-                </article>
+                <a href="/products/productDetail/<%= recommendations[i].productB.id %>">
+                    <article class="recommendation-item">
+                        <img src="/images/products/<%= recommendations[i].productB.productImages[0]?.fileName ?? 'defaultProduct.png' %>" alt="" class="recomendation-pic">
+                        <h5><%= recommendations[i].category %> <%= recommendations[i].productB.brand %> <%= recommendations[i].productB.model %></h5>
+                        <% if(recommendations[i].productB.isOnSale){ %>
+                            <label for="" class="recomend-price">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].productB.price) %></label>
+                            <label class="recomend-price-discount">$ <%= recommendations[i].productB.price - (recommendations[i].productB.price * (recommendations[i].productB.discountPorc/100)) %></label>
+                            <label class="recomend-discount"><%= recommendations[i].productB.discountPorc %>% OFF</label>
+                        <% }else{ %>
+                            <label class="recomend-price-discount">$ <%= Intl.NumberFormat('de-DE').format(recommendations[i].productB.price) %></label>
+                        <% } %>                                  
+                    </article>
+                </a>                
             <% } %> 
                      
         </section>
