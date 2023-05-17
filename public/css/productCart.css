@@ -32,6 +32,7 @@
     width: 120px;
     height: 120px;
     margin-right: 20px;
+    mix-blend-mode: multiply; /*fondo blanco se hace transparente*/
   }
   
   .textProduct {
